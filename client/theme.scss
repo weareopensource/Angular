@@ -1,0 +1,34 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber';
+@import '~@angular/material/_theming';
+@import 'spinner';
+
+@include  mat-core();
+$primary: mat-palette($mat-blue-grey, 900);
+$accent: mat-palette($mat-cyan, A400);
+$warn:    mat-palette($mat-red, 600);
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin basic-frame-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use mat-color to extract individual colors from a palette as necessary.
+
+    background-color: white;
+    color:mat-color($primary);
+
+}
+@mixin Nav-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use mat-color to extract individual colors from a palette as necessary.
+
+    background-color: mat-color($primary);
+    border-color: mat-color($accent, A400);
+
+}

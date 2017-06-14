@@ -1,0 +1,11 @@
+<md-card class="article">
+  <md-card-header>
+    <md-card-title ><a [routerLink]="['/articles/article', article._id]">{{article.title}}</a></md-card-title>
+        <md-card-subtitle>{{article.created | date:'mediumDate'}} by {{article.author}} </md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <p>
+      {{article.content}}
+    </p>
+  </md-card-content>
+</md-card>

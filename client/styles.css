@@ -1,0 +1,154 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+html,
+body {
+  font-family: Roboto, sans-serif;
+  height: 100% !important;
+  margin: 0;
+  min-height: 100% !important;
+  overflow-x: hidden;
+  padding: 0;
+  background: #f9f9f9;
+}
+ul,li{
+  list-style-type : none;
+  padding: 0px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Environment
+ */
+
+/* scrollbar */
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  background-color: transparent;
+  display: block;
+  height: 15px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: gray;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+}
+
+
+/* General */
+a {
+  text-decoration: none;
+}
+
+/* Forms */
+textarea {
+  border: 1px solid #ddd;
+  height: 10em;
+}
+
+button:disabled {
+  cursor: no-drop;
+  opacity: .5;
+}
+/*
+ * Content
+ */
+
+.row {
+  margin: 10px 0 10px 0 !important;
+}
+
+
+/*
+ * Forms
+ */
+
+md-icon .fa {
+  padding-left: 2px !important;
+}
+
+
+/*
+ * base
+ */
+
+/* md-subheader */
+.base .md-subheader .rmt-subheader md-input-container {
+  margin: 0;
+}
+.base .md-subheader .rmt-subheader md-input-container md-select {
+  margin-top: 0;
+}
+.base .md-subheader .rmt-subheader md-input-container .md-errors-spacer {
+  display: none;
+}
+.base .md-subheader .rmt-subheader .md-title {
+  -webkit-margin-after: .33em;
+  -webkit-margin-before: .33em;
+}
+
+/* md-subheader */
+
+.base .md-subheader .md-button {
+  margin: 0 0 0 10px;
+}
+
+/* forms */
+form.base {
+  padding: 15px;
+}
+
+/* md list */
+md-list.base {
+  padding: 0;
+}
+/*
+ * md-toolbar
+ */
+
+/* font awesome icon */
+md-toolbar .md-icon-button .fa.fa-2x {
+  font-size: 1.5em;
+}
+
+/*
+ * md-list
+ */
+
+/* md-list-item */
+md-list-item .md-avatar {
+  background: #dedede;
+}
+
+/*
+ * Toast
+ */
+
+md-toast.md-top {
+  top: 50px !important;
+}
+
+/*
+  * Chip
+  */
+
+.base .md-chip-remove md-icon {
+  min-height: 20px;
+  min-width: 20px;
+}
+
+.md-chips-no-underline .md-chips {
+  box-shadow: none !important;
+}

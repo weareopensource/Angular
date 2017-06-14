@@ -1,0 +1,12 @@
+ 
+.demo-tooltip  .centered {
+    text-align: center;
+}
+
+ .demo-tooltip  .centered button {
+      margin: 16px;
+}
+
+.demo-tooltip .mat-radio-button {
+    display: block;
+  }
