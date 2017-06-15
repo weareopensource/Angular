@@ -106,7 +106,6 @@
     "run-sequence": "~1.2.2",
     "sass-loader": "^6.0.3",
     "should": "~11.1.0",
-    "snyk": "^1.29.0",
     "stylelint": "^7.10.1",
     "stylelint-config-primer": "^1.4.0",
     "stylelint-scss": "^1.4.4",
