@@ -4,7 +4,7 @@
 /server/public
 /tmp
 /out-tsc
-
+/dist-app
 # dependencies
 /node_modules
 
