@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers } from "@angular/http";
-import { Observable } from "rxjs/Rx";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import { select } from '@angular-redux/store';
-import { SessionActions } from "app/core";
+import { SessionActions } from 'app/core';
 
 
 @Injectable()
@@ -32,7 +32,7 @@ export class InterceptedHttp extends Http {
         }
 
         if (url instanceof Request) {
-            options.headers = url.headers
+            options.headers = url.headers;
         } else if (options.headers == null) {
             options.headers = new Headers();
         }
@@ -57,6 +57,6 @@ export class InterceptedHttp extends Http {
                 router.navigate(['/not-found']);
                 return Observable.of();
         }
-        return Observable.of(error);
+        return Observable.throw(error);
     }
 }

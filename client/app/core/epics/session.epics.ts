@@ -10,7 +10,6 @@ import { Action } from 'redux';
 import { environment } from '../../../environments/environment';
 import { IPayloadAction, SessionActions } from 'app/core';
 
-
 @Injectable()
 export class SessionEpics {
   _baseUrl: string ;
@@ -32,7 +31,7 @@ export class SessionEpics {
             type: SessionActions.LOGIN_USER_SUCCESS,
             payload: result.json()
           }))
-          .catch<Response, IPayloadAction>(err => Observable.of({
+          .catch(err => Observable.of<IPayloadAction>({
               type: SessionActions.LOGIN_USER_ERROR,
               payload: { hasMessage: err.json().message }
             })
@@ -48,15 +47,12 @@ export class SessionEpics {
         return this.http.put(backendURL, payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.PUT_USER_SUCCESS,
-            payload:{user : result.json()}
+            payload: {user : result.json()}
           }))
-          .catch<Response, IPayloadAction>(err => {
-            console.log(err);
-            return Observable.of({
+          .catch(err => Observable.of<IPayloadAction>({
               type: SessionActions.PUT_USER_ERROR,
               payload: { hasMessage: err.json().message }
             })
-          }
           );
         });
   }
@@ -71,7 +67,7 @@ export class SessionEpics {
             type: SessionActions.GET_USER_SUCCESS,
             payload: result.json()
           }))
-          .catch<any, Action>(() => Observable.of({
+          .catch(err => Observable.of<IPayloadAction>({
             type: SessionActions.GET_USER_ERROR,
             payload: {type : 'echec', message: 'An error occurred'}
           }));
@@ -82,13 +78,13 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.CHANGE_PASSWORD)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.password}` ;
-        return this.http.post(backendURL,payload)
+        const backendURL = `${this._baseUrl}${environment.backend.endpoints.password}` ;
+        return this.http.post(backendURL, payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.CHANGE_PASSWORD_SUCCESS,
-            payload: {type : 'success',message:result.json().message}
+            payload: {type : 'success', message: result.json().message}
           }))
-          .catch<Response, IPayloadAction>(err => Observable.of({
+          .catch(err => Observable.of<IPayloadAction>({
             type: SessionActions.CHANGE_PASSWORD_ERROR,
             payload: {hasMessage: err.json().message}
           }));
