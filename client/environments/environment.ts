@@ -12,7 +12,7 @@ export const environment = {
         endpoints: {
             signup: '/api/auth/signup',
             signin: '/api/auth/signin',
-            articles :'/api/articles',
+            articles : '/api/articles',
             users : '/api/users',
             profile : '/api/users/me',
             password: '/api/users/password'
