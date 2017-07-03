@@ -62,4 +62,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 We welcome pull requests from the community!
 
 ## License
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
