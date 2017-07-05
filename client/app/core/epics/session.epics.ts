@@ -63,6 +63,7 @@ export class SessionEpics {
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
         const backendURL = `${this._baseUrl}${environment.backend.endpoints.profile}` ;
         return this.http.get(backendURL)
+          .timeout(10000)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.GET_USER_SUCCESS,
             payload: result.json()

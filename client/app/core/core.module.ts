@@ -7,19 +7,19 @@ import { MaterialModule } from '@angular/material';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // HTTP PROVIDER
-import { HttpModule, Http, XHRBackend, RequestOptions } from "@angular/http";
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 
 // CORE COMPONENTS
-import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadRequestPageComponent } from '.';
+import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadRequestPageComponent,
+   ForbidenComponent } from '.';
 
 // CORE SERVICES
 import { SessionActions, MenuService, ToggleNavService, InterceptedHttp } from '.';
 
-export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,  router: Router, actions: SessionActions): Http {
+export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,
+         router: Router, actions: SessionActions): Http {
   return new InterceptedHttp(xhrBackend, requestOptions, router, actions);
 }
-
-
 
 @NgModule({
   imports: [
@@ -33,7 +33,8 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
     AppToolbarComponent,
     AppSidenavComponent,
     NotFoundPageComponent,
-    BadRequestPageComponent
+    BadRequestPageComponent,
+    ForbidenComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
@@ -45,7 +46,8 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
     AppToolbarComponent,
     AppSidenavComponent,
     NotFoundPageComponent,
-    BadRequestPageComponent
+    BadRequestPageComponent,
+    ForbidenComponent
   ]
 })
 

@@ -1,15 +1,15 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // ARTICLES COMPONENTS
 import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from '.';
 
-import { Auth } from 'app/users';
+import { AuthGuard } from 'app/users';
 
 const articlesRoutes: Routes = [{
         path: '',
         component: ArticlesComponent,
-        canActivate: [Auth],
+        canActivate: [AuthGuard],
         data : {
           roles : ['user', 'admin'],
           title : 'Articles'

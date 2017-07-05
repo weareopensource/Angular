@@ -4,24 +4,24 @@ import { CommonModule } from '@angular/common';
 // MATERIAL DESIGN MODULES
 import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {XHRBackend, Http, RequestOptions} from "@angular/http";
+import {XHRBackend, Http, RequestOptions} from '@angular/http';
 
 // LOGIN COMPONENTS
 import { LoginComponent, RegisterComponent, SettingsComponent, ProfileComponent,
    PasswordComponent, UsersListComponent, EqualValidator} from './index';
 
 // LOGIN ROUTES
-import { USERS_ROUTES } from './index';
+import { UsersRoutingModule } from '.';
 
 // LOGIN SERVICES
-import { UsersConfig, UsersService, Auth, AuthInterceptor } from './index';
+import { UsersConfig, UsersService, AuthGuard } from './index';
 export function usersFactory(config: UsersConfig) {
   return () => config.addMenu() ;
 }
 
 @NgModule({
   imports: [
-    USERS_ROUTES,
+    UsersRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,7 +45,7 @@ export class UsersModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: UsersModule,
-      providers: [Auth, AuthInterceptor]
+      providers: [AuthGuard]
     };
   }
 

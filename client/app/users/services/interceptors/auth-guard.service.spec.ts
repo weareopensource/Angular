@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { Auth } from './auth.service';
-import { UsersService } from './users.service';
+import { AuthGuard } from './auth-guard.service';
+import { UsersService } from '../users.service';
 import { NgReduxModule } from '@angular-redux/store';
 import { Observable } from 'rxjs/Rx';
 describe('AuthService', () => {
@@ -34,12 +34,12 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NgReduxModule],
-      providers: [Auth,
+      providers: [AuthGuard,
         { provide: UsersService, useClass: UsersServiceLock }]
     });
   });
 
-  it('should ...', inject([Auth], (service: Auth) => {
+  it('should ...', inject([AuthGuard], (service: AuthGuard) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionActions } from '../../core/actions';
-import {UsersService} from '../services/users.service';
+import { SessionActions } from 'app/core';
+import {UsersService} from '../../services';
 
 @Component({
   selector: 'users-list',
@@ -19,6 +19,6 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  
+
 
 }

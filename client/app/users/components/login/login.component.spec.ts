@@ -6,13 +6,13 @@ import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
-import { SessionActions } from '../../core/index';
+import { SessionActions } from 'app/core';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import {Observable} from 'rxjs/Rx';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgReduxRouter } from '@angular-redux/router';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services';
 
 
 describe('LoginComponent', () => {

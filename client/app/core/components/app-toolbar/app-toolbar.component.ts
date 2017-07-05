@@ -9,7 +9,7 @@ import 'rxjs/add/operator/mergeMap';
 
 import { MenuService, ToggleNavService } from '../../services';
 import { SessionActions } from '../../actions';
-import { IUserRecord } from "../../store";
+import { IUserRecord } from '../../store';
 
 @Component({
   selector: 'app-toolbar',
@@ -40,8 +40,9 @@ export class AppToolbarComponent implements OnInit {
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map(route => {
-        console.log('route: ', route);
-        while (route.firstChild) route = route.firstChild;
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
         return route;
       })
       .filter(route => route.outlet === 'primary')

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SessionActions } from '../../core/actions';
-import { UsersService } from '../services/index';
-import { User } from '../models/index';
-
+import { SessionActions } from 'app/core/actions';
+import { UsersService } from '../../services';
+import { User } from '../../models';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +13,7 @@ import { User } from '../models/index';
 export class RegisterComponent implements OnInit {
     form: FormGroup;
     model: any = {};
-    errMessage : string;
+    errMessage: string;
     loading = false;
     messageErr = null;
 
@@ -49,7 +48,7 @@ export class RegisterComponent implements OnInit {
                     console.log(error);
                     this.errMessage = error.json().message;
                     this.loading = false;
-                    this.messageErr = JSON.parse(error._body).message
+                    this.messageErr = JSON.parse(error._body).message;
                 });
   }
 

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from '@angular-redux/store';
 
-import { IMessage, SessionActions } from "app/core";
+import { IMessage, SessionActions } from 'app/core';
 import {EqualValidator} from '.';
 
 @Component({

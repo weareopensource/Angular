@@ -1,4 +1,4 @@
-import {actionTypes} from 'redux-localstorage'
+import {actionTypes} from 'redux-localstorage';
 import { SessionActions, IPayloadAction } from '../../actions/session.actions';
 import { ISessionRecord } from './session.types';
 import {
@@ -14,7 +14,7 @@ export const sessionReducer = (
     case SessionActions.LOGIN_USER:
       return state.merge({
         token: null,
-        user: INITIAL_USER_STATE,
+        user: UserFactory(),
         hasError: false,
         isLoading: true
       });
@@ -26,14 +26,14 @@ export const sessionReducer = (
         user: UserFactory(action.payload.user),
         hasError: false,
         isLoading: false,
-        hasMessage :null,
+        hasMessage : null,
         actionType : action.type
       });
 
     case SessionActions.LOGIN_USER_ERROR:
       return state.merge({
         token: null,
-        user: INITIAL_USER_STATE,
+        user: UserFactory(),
         hasError: true,
         isLoading: false,
         hasMessage : action.payload.hasMessage,
@@ -43,7 +43,7 @@ export const sessionReducer = (
     case SessionActions.LOGOUT_USER:
       return state.merge({
         token: null,
-        user: INITIAL_USER_STATE,
+        user: UserFactory(),
         hasError: false,
         isLoading: false,
         hasMessage : null,
@@ -89,19 +89,19 @@ export const sessionReducer = (
           return state.merge({
             hasError: false,
             isLoading: false,
-            hasMessage:null
+            hasMessage: null
         });
         case SessionActions.GET_USER_SUCCESS:
           return state.merge({
             user: UserFactory(action.payload),
             hasError: false,
             isLoading: false,
-            hasMessage:null
+            hasMessage: null
         });
         case SessionActions.GET_USER_ERROR:
           return state.merge({
             token: null,
-            user: INITIAL_USER_STATE,
+            user: UserFactory(),
             hasError: true,
             isLoading: false,
             hasMessage: null
@@ -111,7 +111,7 @@ export const sessionReducer = (
           return state.merge({
             hasError: false,
             isLoading: false,
-            hasMessage:null,
+            hasMessage: null,
             actionType : action.type
         });
         case SessionActions.CHANGE_PASSWORD_SUCCESS:
@@ -135,4 +135,4 @@ export const sessionReducer = (
         isLoading: false,
       });
   }
-}
+};

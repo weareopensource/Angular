@@ -16,12 +16,12 @@ import 'hammerjs';
 import { AppRoutingModule } from './app-routing.module';
 
 // APP COMPONENTS
-import { AppComponent } from ".";
+import { AppComponent } from '.';
 
-import { CoreModule, StoreModule } from "app/core";
+import { CoreModule, StoreModule } from 'app/core';
 import { HomeModule } from 'app/home';
 import { ArticlesConfigModule } from 'app/articles/config';
-import { UsersModule } from "app/users";
+import { UsersModule } from 'app/users';
 
 @NgModule({
   declarations: [
@@ -38,8 +38,8 @@ import { UsersModule } from "app/users";
     CoreModule,
     UsersModule.forRoot(),
     ArticlesConfigModule.forRoot(),
-    AppRoutingModule,
     HomeModule,
+    AppRoutingModule,
     BrowserModule
   ],
   providers: [
@@ -50,7 +50,7 @@ import { UsersModule } from "app/users";
 export class AppModule {
   // Diagnostic only: inspect router configuration
   constructor(router: Router) {
-    // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
   }
 
 }

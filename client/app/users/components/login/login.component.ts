@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SessionActions } from '../../core/actions';
+import { SessionActions } from 'app/core';
 import { select } from '@angular-redux/store';
-import {Observable} from 'rxjs/Observable';
-import {  IAppState} from '../../core/store';
+import { Observable } from 'rxjs/Observable';
+import { IAppState, IMessage } from 'app/core';
 import { NgRedux } from '@angular-redux/store';
-import { UsersService } from '../services/index';
-import { IMessage } from "../../core/store/session";
+import { UsersService } from '../../services';
 
 
 @Component({
@@ -39,10 +38,9 @@ export class LoginComponent implements OnInit {
         if (isLoggedIn) {
           this.router.navigate([this.returnUrl]);
         }
-
       },
       error => {
-        console.log('fail to check login')
+        console.log('fail to check login');
         this.actions.logoutUser();
       });
   }
