@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 
-import { ToggleNavService, MenuService } from '../../services';
+import { MenuService } from '../../services';
 import { IUser } from '../../store/session';
 import { SessionActions } from '../../actions';
 
@@ -26,7 +26,7 @@ export class AppSidenavComponent {
   @select(['session', 'toggleSideNav']) isToggled$: Observable<string>;
   @select(['session', 'user']) user$: Observable<IUser>;
 
-  constructor(private toggleNavService: ToggleNavService, private actions: SessionActions, private menuService: MenuService) {
+  constructor(private actions: SessionActions, private menuService: MenuService) {
     this.menuList = menuService.getMenu('sideNav').items;
   }
 
