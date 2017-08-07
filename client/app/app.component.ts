@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { select } from '@angular-redux/store';
 
 import { ToggleNavService } from './core';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,16 +12,8 @@ import { Subscription } from 'rxjs/Subscription';
   providers: [ToggleNavService]
 })
 export class AppComponent {
-  isToggled: boolean;
-  isNormalScreen:boolean=true;
-  
-  constructor(
-    private ToggleNavService: ToggleNavService) {
-    //subscribe toggle service
-    this.ToggleNavService.toggle().subscribe(toggled => {
-      this.isToggled = toggled;
-    });
+  @select(['session', 'toggleSideNav']) isToggled$: Observable<string>;
 
-  }
+  constructor() { }
 
 }

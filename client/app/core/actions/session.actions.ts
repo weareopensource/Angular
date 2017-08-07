@@ -21,6 +21,7 @@ export class SessionActions {
   static GET_USERS = 'GET_USERS';
   static GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
   static GET_USERS_ERROR = 'GET_USERS_ERROR';
+  static TOGGLE_SIDENAV = 'TOGGLE_SIDENAV';
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
@@ -47,11 +48,14 @@ export class SessionActions {
       payload: {}
     });
   }
-  changePassword(passwords){
+  changePassword(passwords) {
     this.ngRedux.dispatch({
       type: SessionActions.CHANGE_PASSWORD,
       payload: passwords
     });
+  }
+  toggleSideNav() {
+    this.ngRedux.dispatch({ type: SessionActions.TOGGLE_SIDENAV });
   }
 }
 

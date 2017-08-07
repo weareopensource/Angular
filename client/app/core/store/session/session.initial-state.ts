@@ -18,6 +18,7 @@ export const UserFactory = makeTypedFactory<IUser, IUserRecord>({
 export const INITIAL_USER_STATE = UserFactory();
 
 export const SessionFactory = makeTypedFactory<ISession, ISessionRecord>({
+  toggleSideNav: false,
   token: null,
   user: INITIAL_USER_STATE,
   hasError: false,

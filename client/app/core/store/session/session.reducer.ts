@@ -54,6 +54,7 @@ export const sessionReducer = (
       const persistedState = action.payload;
       if (persistedState) {
         return state.merge({
+          toggleSideNav: persistedState.session.toggleSideNav,
           token: persistedState.session.token,
           user: UserFactory(persistedState.session.user),
           hasError: persistedState.session.hasError,
@@ -128,6 +129,9 @@ export const sessionReducer = (
               isLoading: false,
               actionType : action.type
             });
+          case SessionActions.TOGGLE_SIDENAV:
+            return state.merge({toggleSideNav : false})
+              .merge({toggleSideNav : !state.toggleSideNav });
     default:
       return state.merge({
         hasMessage: null,

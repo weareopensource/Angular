@@ -15,7 +15,7 @@
 .sidenav {
   @include Nav-theme($theme);
   height: 100%;
-  margin-left: -120px;
+  margin-left: -60px;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
