@@ -16,7 +16,7 @@
         <ul>
           <li *ngFor="let item of menuList" >
             <div *ngIf="item.shouldRender((user$ | async)?.roles,item.roles)">
-              <a *ngIf="item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" routerLinkActive="active-link" routerLink="{{item.state}}"><i class="fa {{item.icon}} fa-fw"></i><span>{{item.title}}</span></a>
+              <a *ngIf="item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" routerLinkActive="active-link" routerLink="{{item.state}}" (click)="menuClick()"><i class="fa {{item.icon}} fa-fw"></i><span>{{item.title}}</span></a>
             </div>
           </li>
         </ul>
@@ -24,8 +24,8 @@
 
 
       <div class="user" *ngIf="loggedIn$ | async" routerLinkActive="active-link">
-        <div >
-          <a [routerLink]="['/user/settings/profile']" >
+        <div>
+          <a [routerLink]="['/user/settings/profile']" (click)="menuClick()">
             <md-icon>person</md-icon>
             <span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span>
           </a>
@@ -33,8 +33,8 @@
       </div>
       <div class="foot"  md-colors="{background: 'background-SIDENAVDARK'}" (click)="toggleNav()">
         <a class="center-align" >
-          <i class="fa fa-angle-left fa-fw" *ngIf="isToggled | async" ></i>
-          <i  class="fa fa-angle-right fa-fw" *ngIf="!(isToggled | async)"></i>
+          <i class="fa fa-angle-left fa-fw" *ngIf="isToggled$ | async" ></i>
+          <i  class="fa fa-angle-right fa-fw" *ngIf="!(isToggled$ | async)"></i>
         </a>
       </div>
     </div>
