@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgReduxRouter } from '@angular-redux/router';
 import { SessionEpics } from './core/index';
-import { ToggleNavService } from './core';
 import { HttpModule } from '@angular/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { MaterialModule } from '@angular/material';
@@ -47,8 +46,7 @@ describe('AppComponent', () => {
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [
         NgReduxRouter,
-        { provide: SessionEpics, useClass: SessionEpicsMock },
-        ToggleNavService]
+        { provide: SessionEpics, useClass: SessionEpicsMock }]
     }).compileComponents();
     MockNgRedux.reset();
   });

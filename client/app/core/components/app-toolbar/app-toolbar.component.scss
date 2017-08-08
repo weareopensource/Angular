@@ -9,75 +9,78 @@
   transition: all 0.3s ease;
 }
 
-.header {
-  @include basic-frame-theme($theme);
+/*
+ * Navbar
+ */
 
-  .top {
-    border-bottom: 1px solid #ddd;
-    height: 50px !important;
-    line-height: 50px !important;
-    padding: 0 1.25rem;
-    right: 0;
-    z-index: 46;
-    left: 0;
-    background: white;
-    position: fixed;
-
-    .nav-wrapper {
-      padding-left: 0;
-
-      .left {
-        float: left;
-      }
-
-      .right {
-        float: right;
-      }
-
-      ul {
-        margin-top: 0;
-        margin-bottom: 0;
-
-        a {
-          color: md-color($primary) !important;
-
-          &:hover {
-            background-color: md-color($primary,50);
-          }
-        }
-      }
-    }
-  }
+.header nav.top {
+  border-bottom: 1px solid #ddd;
+  height: 50px !important;
+  line-height: 50px !important;
+  margin-bottom: 20px;
+  padding: 0 1.25rem;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: 46;
 }
+
 /*toggle*/
-.header.toggled {
-  .top {
+.header.toggled nav.top {
     transform: translateX(190px);
-  }
 }
-/* for normal screen*/
-@media only screen and (min-width: 768px) {
-  .header {
-    .top {
-      .nav-wrapper {
-        padding-left: 60px;
-      }
-    }
-  }
-  /*toggle*/
-  .header.toggled {
-    .top {
-      transform: none;
-      padding-left: 210px;
-    }
-  }
+
+.header nav.top .nav-wrapper {
+  padding-left: 100px;
 }
+
+
+.header nav.top .top-menu-toggle,
+.header nav.top #top-menu-toggle {
+  display: none;
+}
+
+/* Page title */
+
+.header nav.top .page-title {
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* List */
-.header .top ul li.item {
+
+.header nav.top ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header nav.top ul.navigation {
+  float: right;
+}
+
+.header nav.top ul li {
+  float: left;
+  list-style-type: none;
+}
+.header .center-logo {
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 0 0 0;
+  position: absolute;
+  right: 0;
+}
+
+.header nav.top ul li.item {
   width: 50px;
 }
 
-.header .top ul li a {
+.header nav.top ul li a,
+.header nav.top ul li label {
   cursor: pointer;
   display: block;
   font-size: 1rem;
@@ -85,27 +88,106 @@
   text-align: center;
 }
 
-.header .top ul a:hover {
+.header nav.top ul a:hover {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,.1);
 }
-/*Page path title*/
-.header .page-title {
-  text-align: left;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 0 auto;
-  overflow: hidden;
-  white-space: nowrap;
+
+/* csslint ignore:stop */
+
+
+@media only screen and (max-width: 768px) {
+  .header nav.top {
+    padding: 0 .5rem;
+  }
+
+  .header nav.top .nav-wrapper {
+    padding-left: 0;
+  }
+
+  .header nav.top .page-title {
+    margin-left: 50px !important;
+    padding-top: 2px;
+  }
+
+  .header nav.top .top-menu-toggle,
+  .header nav.top .menu-toggle {
+    display: block;
+    text-align: center;
+    width: 50px;
+  }
+
+  .header nav.top .menu-toggle {
+    float: left;
+  }
+
+  .header nav.top .top-menu-toggle {
+    float: right;
+  }
+
+  .header nav.top ul.navigation {
+    visibility: hidden;
+  }
+
+  #top-menu-toggle:checked ~ ul.navigation {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: slideRight;
+    animation-name: slideRight;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    visibility: visible !important;
+  }
+
+  #top-menu-toggle:checked ~ .top-menu-toggle {
+    color: #7f8c8d;
+  }
+
+  #top-menu-toggle:checked ~ div.page-title {
+    visibility: hidden;
+  }
 }
-@media only screen and (min-width: 768px) {}
-/*Drop Down*/
-.header .dropdown-button.toolbox-btn {
-  padding-right: 0 !important;
-  text-align: right !important;
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(8%);
+  }
+  65% {
+    transform: translateX(-4%);
+  }
+  80% {
+    transform: translateX(4%);
+  }
+  95% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
-/*Menu Expand*/
-.header .expand-btn {
-  right: -15px;
-  position: relative;
+
+@-webkit-keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(-150%);
+  }
+  50% {
+    -webkit-transform: translateX(8%);
+  }
+  65% {
+    -webkit-transform: translateX(-4%);
+  }
+  80% {
+    -webkit-transform: translateX(4%);
+  }
+  95% {
+    -webkit-transform: translateX(-2%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
 }
+
+/* csslint ignore:stop */

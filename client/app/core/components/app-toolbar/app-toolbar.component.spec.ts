@@ -7,7 +7,7 @@ import { SessionActions } from 'app/core';
 import { AppToolbarComponent } from './app-toolbar.component';
 import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MenuService, ToggleNavService } from '../../services';
+import { MenuService } from '../../services';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 
 
@@ -15,12 +15,12 @@ import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing'
 describe('AppToolbarComponent', () => {
   let component: AppToolbarComponent;
   let fixture: ComponentFixture<AppToolbarComponent>;
-  const sessionActionMock = {}
+  const sessionActionMock = {};
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppToolbarComponent ],
       imports: [MaterialModule, RouterTestingModule, AngularFontAwesomeModule, NgReduxTestingModule],
-      providers: [{provide : SessionActions, useValue : sessionActionMock}, ToggleNavService, MenuService]
+      providers: [{provide : SessionActions, useValue : sessionActionMock}, MenuService]
     })
       .compileComponents();
   }));

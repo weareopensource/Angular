@@ -4,7 +4,7 @@
   <app-sidenav></app-sidenav>
 </div>
 <div class="jumbotron">
-    <div class="app-container" [class.toggled]="isToggled">
+    <div class="app-container" [class.toggled]="isToggled$ | async">
         <div>
         <router-outlet></router-outlet>
         </div>
