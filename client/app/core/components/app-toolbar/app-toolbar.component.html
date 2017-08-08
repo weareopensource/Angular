@@ -1,10 +1,13 @@
-<div class="extend-toolbar header" [class.toggled]="isToggled$ | async">
-  <div class="top" md-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
+<div class="header" [class.toggled]="isToggled$ | async">
+  <nav class="top" md-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
     <div class="nav-wrapper">
-      <ul class="left">
-        <b>{{title}}</b>
-      </ul>
-      <ul class="right">
+      
+      <!-- Mobile button -->
+      <input type="checkbox" class="top-menu-toggle" id="top-menu-toggle">
+      <label class="top-menu-toggle" for="top-menu-toggle" ><i class="fa fa-cog" aria-hidden="true"></i></label>
+
+      <!-- Navigation Top -->
+      <ul class="navigation">
         <li *ngIf="!(loggedIn$ | async)" mdTooltip="Sign in">
           <a [routerLink]="['user/login']" class="login">
             <fa name="sign-in" size="1x"></fa>
@@ -32,7 +35,11 @@
           </md-menu>
         </div>
       </ul>
+
+      <!-- Page Title -->
+      <div class="page-title"> <span kind="header">{{title}}</span></div>
+
     </div>
-  </div>
+  </nav>
 
 </div>

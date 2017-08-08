@@ -16,6 +16,7 @@ export class AppSidenavComponent {
 
   @ViewChild('sidenav') sidenav: ElementRef;
 
+  menuToogle = false;
   isNormalScreen = true;
   sideNavLock = false;
   isToggled: Observable<boolean>;
@@ -33,5 +34,8 @@ export class AppSidenavComponent {
   /* SideNav toggle action*/
   toggleNav() {
     this.actions.toggleSideNav();
+  }
+  menuClick(event) {
+    this.menuToogle = false;
   }
 }

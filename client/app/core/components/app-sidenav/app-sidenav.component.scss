@@ -307,3 +307,97 @@
 .logo .shape:hover {
   transition: all 0.2s;
 }
+
+
+/* csslint ignore:start */
+
+.menu-toggle,
+#menu-toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-toggle {
+    cursor: pointer;
+    display: block;
+    font-size: 140%;
+    height: 40px;
+    left: 15px;
+    line-height: 45px;
+    padding: 0;
+    position: absolute;
+    top: 5px;
+    width: 50px;
+    z-index: 999;
+  }
+
+  .wrapper,
+  .wrapper.toggled,
+  .nav-wrapper {
+    padding-left: 0 !important;
+  }
+
+  .sidenav {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100vw;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  #menu-toggle:checked ~ .sidenav {
+    height: 100vh;
+    transition: all .5s ease;
+    visibility: visible;
+  }
+
+  #menu-toggle:checked ~ .menu-toggle {
+    color: white;
+  }
+
+  .sidebar-nav {
+    text-align: center;
+    width: 100%;
+  }
+
+  .sidebar-nav span {
+    display: inline-block;
+  }
+
+  .sidenav .sidebar-nav .head {
+    text-align: center;
+    width: 100%;
+  }
+
+  .sidenav .sidebar-nav .head span {
+    display: none;
+  }
+
+  .sidenav .sidebar-nav .user {
+    bottom: 0;
+  }
+
+  .sidenav .sidebar-nav .foot {
+    display: none;
+  }
+
+  .sidenav .sidebar .fa {
+    margin-left: -10px;
+    margin-right: 20px;
+  }
+
+  .sidenav .sidebar ul li a {
+    padding: 20px 0;
+  }
+
+  .logo,
+  .logo:hover {
+    float: none;
+  }
+}
+
+/* csslint ignore:stop */

@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule } from '@angular/material';
@@ -24,6 +25,7 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
 @NgModule({
   imports: [
     RouterModule,
+    FormsModule,
     AngularFontAwesomeModule,
     HttpModule,
     MaterialModule,
