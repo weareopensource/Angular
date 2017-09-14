@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppSidenavComponent } from './app-sidenav.component';
-import { ToggleNavService, MenuService } from '../../services';
+import { MenuService } from '../../services';
 
 describe('AppSidenavComponent', () => {
   let component: AppSidenavComponent;
@@ -12,7 +12,7 @@ describe('AppSidenavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AppSidenavComponent ],
       imports: [MaterialModule, RouterTestingModule],
-      providers: [ToggleNavService, MenuService]
+      providers: [MenuService]
     })
     .compileComponents();
   }));

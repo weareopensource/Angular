@@ -7,7 +7,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { MenuService, ToggleNavService } from '../../services';
+import { MenuService } from '../../services';
 import { SessionActions } from '../../actions';
 import { IUserRecord } from '../../store';
 
@@ -28,7 +28,6 @@ export class AppToolbarComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private actions: SessionActions,
-              private toggleNavService: ToggleNavService,
               private menuService: MenuService ) {
     this.toolBarList = menuService.getMenu('toolBar').items;
     this.canDisplayMenu = menuService.shouldRenderMenu;
@@ -48,9 +47,6 @@ export class AppToolbarComponent implements OnInit {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) => this.title = event['title'] );
-    // subscribe toggle service
-    this.isToggled = this.toggleNavService.toggle$;
-
   }
 
   logout() {

@@ -1,11 +1,9 @@
-<div #sidenav class="sidenav " [class.toggled]="isToggled | async">
+<div #sidenav class="sidenav " [class.toggled]="sideToogle">
   <div class="sidebar-nav">
     <div class="head">
       <a routerLink="">
         <img src="assets/logo-mean.ico" width="40px" class="logo">
         <span style="font-size:28px; color:#fff;">Mean 2</span>
-        <!--<a class="right pin-icon" (click)="changePinStatus()" [hidden]="!(isNormalScreen && sideNavLock)"><i class=" fa fa-lock fa-fw"></i></a>
-        <a class="right pin-icon" ng-click="vm.changePinStatus()" [hidden]="!(isNormalScreen && !sideNavLock)"><i class=" fa fa-unlock fa-fw"></i></a>-->
       </a>
     </div>
     <div class="sidebar">
@@ -28,9 +26,9 @@
       </div>
     </div>
     <div class="foot" (click)="toggleNav()">
-      <a class="center-align" >
-        <i class="fa fa-angle-left fa-fw" *ngIf="isToggled | async" ></i>
-        <i  class="fa fa-angle-right fa-fw" *ngIf="!(isToggled | async)"></i>
+      <a class="center-align">
+        <i class="fa fa-angle-left fa-fw" *ngIf="sideToogle" ></i>
+        <i  class="fa fa-angle-right fa-fw" *ngIf="!sideToogle"></i>
       </a>
     </div>
   </div>

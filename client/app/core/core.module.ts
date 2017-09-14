@@ -14,7 +14,7 @@ import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadReq
    ForbidenComponent } from '.';
 
 // CORE SERVICES
-import { SessionActions, MenuService, ToggleNavService, InterceptedHttp } from '.';
+import { SessionActions, MenuService, InterceptedHttp } from '.';
 
 export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,
          router: Router, actions: SessionActions): Http {
@@ -39,7 +39,6 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     MenuService,
-    ToggleNavService,
     { provide: Http,  useFactory: httpFactory, deps: [XHRBackend, RequestOptions, Router, SessionActions]}
   ],
   exports: [
