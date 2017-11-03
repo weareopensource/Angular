@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '@angular/material';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 import { UsersListComponent } from './users-list.component';
 import { SessionActions } from '../../core/index';
@@ -37,7 +37,7 @@ describe('UsersListComponent', () => {
       }]);
     };
   }
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UsersListComponent],

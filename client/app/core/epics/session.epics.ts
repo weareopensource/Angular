@@ -6,8 +6,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/timeout';
 import { Action } from 'redux';
-import { environment } from '../../../environments/environment';
+import { environment } from 'environments/environment';
 import { IPayloadAction, SessionActions } from 'app/core/actions';
 
 @Injectable()

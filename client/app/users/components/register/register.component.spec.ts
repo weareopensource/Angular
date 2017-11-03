@@ -7,7 +7,7 @@ import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UsersService } from '../../services';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { SessionActions } from 'app/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('RegisterComponent', () => {

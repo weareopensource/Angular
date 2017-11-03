@@ -4,7 +4,7 @@ import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ArticleComponent } from './article.component';
 import { ArticlesService } from '../services/articles.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 describe('ArticlesListComponent', () => {
   let component: ArticlesListComponent;
   let fixture: ComponentFixture<ArticlesListComponent>;

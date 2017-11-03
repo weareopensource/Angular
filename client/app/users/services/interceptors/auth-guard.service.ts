@@ -3,6 +3,7 @@ import { Router, CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterSt
 import { select } from '@angular-redux/store';
 import { UsersService } from '../users.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/skip';
 import { IUserRecord, SessionActions } from 'app/core';
 
 @Injectable()
