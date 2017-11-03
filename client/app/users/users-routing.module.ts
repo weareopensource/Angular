@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // USERS COMPONENTS
-import { LoginComponent, RegisterComponent, SettingsComponent, UsersListComponent } from '.';
+import { LoginComponent, RegisterComponent, SettingsComponent, UsersListComponent } from './components';
 
 // AUTH SERVICE
 import { AuthGuard } from './services';

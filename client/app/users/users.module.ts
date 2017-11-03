@@ -8,13 +8,15 @@ import {XHRBackend, Http, RequestOptions} from '@angular/http';
 
 // LOGIN COMPONENTS
 import { LoginComponent, RegisterComponent, SettingsComponent, ProfileComponent,
-   PasswordComponent, UsersListComponent, EqualValidator} from './index';
+   PasswordComponent, UsersListComponent, EqualValidator} from './components';
 
 // LOGIN ROUTES
-import { UsersRoutingModule } from '.';
+import { UsersRoutingModule } from './users-routing.module';
 
 // LOGIN SERVICES
-import { UsersConfig, UsersService, AuthGuard } from './index';
+import { UsersService, AuthGuard } from './services';
+import { UsersConfig } from './users.config';
+
 export function usersFactory(config: UsersConfig) {
   return () => config.addMenu() ;
 }

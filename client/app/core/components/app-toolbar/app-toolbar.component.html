@@ -7,12 +7,12 @@
       <ul class="right">
         <li *ngIf="!(loggedIn$ | async)" mdTooltip="Sign in">
           <a [routerLink]="['user/login']" class="login">
-            <fa name="sign-in" size="1x"></fa>
+            <i class="fa fa-sign-in"></i>
           </a>
         </li>
         <div *ngIf="loggedIn$ | async">
           <a  [mdMenuTriggerFor]="menu" md-button class="logout">
-            <fa name="user-circle-o" size="1x"></fa>
+            <i class="fa fa-user-circle-o"></i>
             <span>{{ (user$ | async)?.username }}</span>
           </a>
           <md-menu #menu="mdMenu" [overlapTrigger]="false" >

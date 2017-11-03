@@ -2,8 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 
-import { MenuService } from '../../services';
-import { IUser } from "../../store/session";
+import { MenuService } from 'app/core/services';
+import { IUser } from '../../store/session';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AppSidenavComponent {
 
   @ViewChild('sidenav') sidenav: ElementRef;
 
-  sideToogle: boolean = false;
+  sideToogle = false;
   // Menu Item
   menuList: Array<Object> = [];
 
@@ -23,7 +23,7 @@ export class AppSidenavComponent {
   @select(['session', 'user']) user$: Observable<IUser>;
 
   constructor(private menuService : MenuService) {
-    this.menuList =menuService.getMenu('sideNav').items;
+    this.menuList = menuService.getMenu('sideNav').items;
   }
 
   ngAfterViewInit() {

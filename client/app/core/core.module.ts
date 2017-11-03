@@ -4,17 +4,17 @@ import { RouterModule, Router } from '@angular/router';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule } from '@angular/material';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // HTTP PROVIDER
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 
 // CORE COMPONENTS
 import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadRequestPageComponent,
-   ForbidenComponent } from '.';
+   ForbidenComponent } from './components';
 
 // CORE SERVICES
-import { SessionActions, MenuService, InterceptedHttp } from '.';
+import { MenuService, InterceptedHttp } from './services';
+import { SessionActions } from './actions';
 
 export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,
          router: Router, actions: SessionActions): Http {
@@ -24,7 +24,6 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
 @NgModule({
   imports: [
     RouterModule,
-    AngularFontAwesomeModule,
     HttpModule,
     MaterialModule,
     CommonModule

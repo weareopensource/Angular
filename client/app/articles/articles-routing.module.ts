@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from '.';
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from './components';
 
 import { AuthGuard } from 'app/users';
 

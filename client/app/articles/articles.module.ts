@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer, TooltipPosition } from '@angular/material';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent, ArticleComponent } from '.';
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent, ArticleComponent } from './components';
 
 // ARTICLES SERVICES
-import {ArticlesService} from '.';
+import {ArticlesService} from './services';
 
 // ARTICLES ROUTES MODULE
-import { ArticlesRoutingModule } from ".";
-import { CoreModule } from "app/core";
+import { ArticlesRoutingModule } from './articles-routing.module';
+import { CoreModule } from 'app/core';
 
 @NgModule({
   imports: [

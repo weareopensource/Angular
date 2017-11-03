@@ -8,7 +8,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
 import { Action } from 'redux';
 import { environment } from '../../../environments/environment';
-import { IPayloadAction, SessionActions } from 'app/core';
+import { IPayloadAction, SessionActions } from 'app/core/actions';
 
 @Injectable()
 export class SessionEpics {

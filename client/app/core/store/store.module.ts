@@ -14,7 +14,7 @@ import {
 } from '.';
 
 import { SessionActions } from '../actions';
-import { SessionEpics } from "../epics";
+import { SessionEpics } from '../epics';
 
 
 @NgModule({

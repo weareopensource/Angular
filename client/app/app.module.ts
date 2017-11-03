@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// FONT AWESOME
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
@@ -30,7 +28,6 @@ import { UsersModule } from 'app/users';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    AngularFontAwesomeModule,
     MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,

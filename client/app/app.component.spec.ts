@@ -7,7 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgReduxRouter } from '@angular-redux/router';
 import { SessionEpics } from './core/index';
 import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { MaterialModule } from '@angular/material';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 import { Observable } from 'rxjs/Observable';
