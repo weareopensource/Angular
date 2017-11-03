@@ -9,7 +9,7 @@ import { AuthGuard } from './services';
 
 const USERS_ROUTES: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-  { path: 'register', component: RegisterComponent, canDeactivate: [AuthGuard], data: { title: 'Register' } },
+  { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
   {
     path: 'settings/profile', component: SettingsComponent, canActivate: [AuthGuard], data: {
       roles: ['user', 'admin'],
