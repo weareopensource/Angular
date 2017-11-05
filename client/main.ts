@@ -8,4 +8,6 @@ if (environment.production) {
   enableProdMode();
 }
 
+import 'hammerjs';
+
 platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
