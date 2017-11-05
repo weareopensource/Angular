@@ -2,7 +2,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -35,7 +34,7 @@ describe('RegisterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterComponent],
-      imports: [ReactiveFormsModule, MaterialModule, RouterTestingModule, BrowserAnimationsModule],
+      imports: [ReactiveFormsModule, RouterTestingModule, BrowserAnimationsModule],
       providers: [{ provide: UsersService, useClass: UsersServiceLock },
       { provide: SessionActions, useValue: sessionActionMock }]
     })

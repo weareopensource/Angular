@@ -2,8 +2,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders 
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
-// MATERIAL DESIGN MODULES
-import { MaterialModule } from '@angular/material';
+// ANGULAR MATERIAL
+
+import { MatMenuModule, MatIconModule } from '@angular/material';
 
 // HTTP PROVIDER
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
@@ -24,8 +25,9 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
 @NgModule({
   imports: [
     RouterModule,
+    MatMenuModule,
+    MatIconModule,
     HttpModule,
-    MaterialModule,
     CommonModule
   ],
   declarations: [

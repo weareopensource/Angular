@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 
 // MATERIAL DESIGN MODULES
-import { MaterialModule, OverlayContainer } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
@@ -28,7 +27,6 @@ import { UsersModule } from 'app/users';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     StoreModule,
@@ -39,8 +37,7 @@ import { UsersModule } from 'app/users';
     AppRoutingModule,
     BrowserModule
   ],
-  providers: [
-    OverlayContainer],
+  providers: [],
   bootstrap: [AppComponent]
 
 })

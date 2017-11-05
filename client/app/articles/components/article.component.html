@@ -1,11 +1,11 @@
-<md-card class="article">
-  <md-card-header>
-    <md-card-title ><a [routerLink]="['/articles/article', article._id]">{{article.title}}</a></md-card-title>
-        <md-card-subtitle>{{article.created | date:'mediumDate'}} by {{article.author}} </md-card-subtitle>
-  </md-card-header>
-  <md-card-content>
+<mat-card class="article">
+  <mat-card-header>
+    <mat-card-title ><a [routerLink]="['/articles/article', article._id]">{{article.title}}</a></mat-card-title>
+        <mat-card-subtitle>{{article.created | date:'mediumatate'}} by {{article.author}} </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
     <p>
       {{article.content}}
     </p>
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>

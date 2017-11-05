@@ -2,7 +2,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, APP_INITIALIZER 
 import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
-import { MaterialModule } from '@angular/material';
+import { MatTabsModule, MatCardModule, MatToolbarModule,
+   MatInputModule, MatButtonModule } from '@angular/material';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {XHRBackend, Http, RequestOptions} from '@angular/http';
 
@@ -24,7 +26,11 @@ export function usersFactory(config: UsersConfig) {
 @NgModule({
   imports: [
     UsersRoutingModule,
-    MaterialModule,
+    MatTabsModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,

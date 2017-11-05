@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import {TooltipPosition} from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import 'rxjs/add/operator/filter';

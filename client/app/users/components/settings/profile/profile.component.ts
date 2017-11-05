@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from '@angular-redux/store';
 

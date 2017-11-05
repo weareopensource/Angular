@@ -1,7 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsComponent } from './settings.component';
-import { MaterialModule } from '@angular/material';
 import { ProfileComponent } from './profile/index';
 import { PasswordComponent } from './password/index';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +15,7 @@ describe('SettingsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsComponent, ProfileComponent, PasswordComponent ],
-      imports : [BrowserAnimationsModule, MaterialModule, ReactiveFormsModule, NgReduxModule],
+      imports : [BrowserAnimationsModule, ReactiveFormsModule, NgReduxModule],
       providers: [{ provide: SessionActions, useValue: sessionActionMock }]
 
     })

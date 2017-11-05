@@ -1,35 +1,35 @@
 <div class="extend-toolbar header" [class.toggled]="isToggled | async">
-  <div class="top" md-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
+  <div class="top" mat-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
     <div class="nav-wrapper">
       <ul class="left">
         <b>{{title}}</b>
       </ul>
       <ul class="right">
-        <li *ngIf="!(loggedIn$ | async)" mdTooltip="Sign in">
+        <li *ngIf="!(loggedIn$ | async)" matTooltip="Sign in">
           <a [routerLink]="['user/login']" class="login">
             <i class="fa fa-sign-in"></i>
           </a>
         </li>
         <div *ngIf="loggedIn$ | async">
-          <a  [mdMenuTriggerFor]="menu" md-button class="logout">
+          <a  [matMenuTriggerFor]="menu" mat-button class="logout">
             <i class="fa fa-user-circle-o"></i>
             <span>{{ (user$ | async)?.username }}</span>
           </a>
-          <md-menu #menu="mdMenu" [overlapTrigger]="false" >
+          <mat-menu #menu="matMenu" [overlapTrigger]="false" >
             <ul *ngIf="canDisplayMenu(this.toolBarList, (user$ | async)?.roles)" >
               <li *ngFor="let item of toolBarList"  >
-                  <a md-menu-item *ngIf="item.shouldRender((user$ | async)?.roles,item.roles) && item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" routerLinkActive="active-link"  routerLink="{{item.state}}"  >
-                    <md-icon class="md-24 fa-lg fa {{item.icon}} fa-fw"></md-icon>
+                  <a mat-menu-item *ngIf="item.shouldRender((user$ | async)?.roles,item.roles) && item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" routerLinkActive="active-link"  routerLink="{{item.state}}"  >
+                    <mat-icon class="mat-24 fa-lg fa {{item.icon}} fa-fw"></mat-icon>
                     <span>{{item.title}}</span>
                   </a>
               </li>
             </ul>
 
-            <button md-menu-item (click)="logout()" >
-              <md-icon class="md-24 fa-lg" fontSet="fa" fontIcon="fa-power-off"></md-icon>
+            <button mat-menu-item (click)="logout()" >
+              <mat-icon class="mat-24 fa-lg" fontSet="fa" fontIcon="fa-power-off"></mat-icon>
               <span> Sign-out </span>
             </button>
-          </md-menu>
+          </mat-menu>
         </div>
       </ul>
     </div>

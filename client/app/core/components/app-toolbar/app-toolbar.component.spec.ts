@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { SessionActions } from 'app/core';
 import { AppToolbarComponent } from './app-toolbar.component';
-import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MenuService } from '../../services';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
@@ -18,7 +17,7 @@ describe('AppToolbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppToolbarComponent ],
-      imports: [MaterialModule, RouterTestingModule, AngularFontAwesomeModule, NgReduxTestingModule],
+      imports: [RouterTestingModule, NgReduxTestingModule],
       providers: [{provide : SessionActions, useValue : sessionActionMock}, MenuService]
     })
       .compileComponents();

@@ -24,10 +24,10 @@
   z-index: 49;
 
   .head {
-    background-color: md-color($primary, 800);
+    background-color: mat-color($primary, 800);
   }
   .foot {
-    background-color: md-color($primary, 800);
+    background-color: mat-color($primary, 800);
     bottom: 0;
     height: 50px;
     line-height: 50px;
@@ -171,7 +171,7 @@
 
 }
 
-.sidenav .sidebar-nav .user a md-icon {
+.sidenav .sidebar-nav .user a mat-icon {
   margin-right: 30px;
 }
 

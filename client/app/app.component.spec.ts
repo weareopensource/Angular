@@ -7,7 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgReduxRouter } from '@angular-redux/router';
 import { SessionEpics } from './core/index';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 import { Observable } from 'rxjs/Observable';
 
@@ -39,9 +38,7 @@ describe('AppComponent', () => {
       imports: [
         NgReduxTestingModule,
         RouterTestingModule,
-        HttpModule,
-        MaterialModule,
-        AngularFontAwesomeModule],
+        HttpModule],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [
         NgReduxRouter,

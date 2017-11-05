@@ -20,7 +20,7 @@
     <div class="user" *ngIf="loggedIn$ | async" routerLinkActive="active-link">
       <div >
         <a [routerLink]="['/user/settings/profile']" >
-          <md-icon>person</md-icon>
+          <mat-icon>person</mat-icon>
           <span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span>
         </a>
       </div>

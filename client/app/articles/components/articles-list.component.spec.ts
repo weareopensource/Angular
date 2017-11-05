@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticlesListComponent } from './articles-list.component';
-import { MaterialModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ArticleComponent } from './article.component';
 import { ArticlesService } from '../services/articles.service';
@@ -34,7 +33,7 @@ describe('ArticlesListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ArticlesListComponent, ArticleComponent],
-      imports: [MaterialModule, RouterTestingModule],
+      imports: [ RouterTestingModule],
       providers: [{ provide: ArticlesService, useClass: ArticlesServiceMock }]
     })
       .compileComponents();

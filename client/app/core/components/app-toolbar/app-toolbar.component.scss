@@ -39,10 +39,10 @@
         margin-bottom: 0;
 
         a {
-          color: md-color($primary) !important;
+          color: mat-color($primary) !important;
 
           &:hover {
-            background-color: md-color($primary,50);
+            background-color: mat-color($primary,50);
           }
         }
       }

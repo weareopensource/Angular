@@ -1,8 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// MATERIAL DESIGN MODULES
-import { MaterialModule, OverlayContainer, TooltipPosition } from '@angular/material';
+// ANGULAR MATERIAL
+import { MatCardModule, MatGridListModule } from '@angular/material';
 
 // ARTICLES COMPONENTS
 import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent, ArticleComponent } from './components';
@@ -17,7 +17,8 @@ import { CoreModule } from 'app/core';
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    MatCardModule,
+    MatGridListModule,
     CoreModule,
     ArticlesRoutingModule
   ],
@@ -28,7 +29,7 @@ import { CoreModule } from 'app/core';
     ArticleComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [OverlayContainer, ArticlesService],
+  providers: [ArticlesService],
 
 })
 export class ArticlesModule {}

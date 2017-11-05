@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/first';
 import { SessionActions } from 'app/core';
 import {UsersService} from '../../services';
 
