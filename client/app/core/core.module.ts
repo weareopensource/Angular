@@ -1,54 +1,70 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { AppComponent, HomeComponent, NotFoundComponent } from './components';
+import { CoreRoutingModule } from './core-routing.module';
+import {
+  MatButtonModule,
+  MatTooltipModule,
+  MatToolbarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatDialogModule,
+  MatIconModule,
+  MatCardModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatListModule
+ } from '@angular/material';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/core.reducer'
 
-// ANGULAR MATERIAL
+ export const COMPONENTS = [
+  AppComponent,
+  HomeComponent,
+  NotFoundComponent
+];
 
-import { MatMenuModule, MatIconModule } from '@angular/material';
+const MATERIAL_MODULES = [
+  MatButtonModule,
+  MatTooltipModule,
+  MatToolbarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatDialogModule,
+  MatIconModule,
+  MatCardModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatListModule
+ ];
 
-// HTTP PROVIDER
-import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-
-// CORE COMPONENTS
-import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadRequestPageComponent,
-   ForbidenComponent } from './components';
-
-// CORE SERVICES
-import { MenuService, InterceptedHttp } from './services';
-import { SessionActions } from './actions';
-
-export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,
-         router: Router, actions: SessionActions): Http {
-  return new InterceptedHttp(xhrBackend, requestOptions, router, actions);
+@NgModule({
+  imports: [
+    CommonModule,
+    HttpModule,
+    RouterModule,
+    ...MATERIAL_MODULES,
+    CoreRoutingModule
+  ],
+  declarations: COMPONENTS
+})
+export class CoreModule {
+  static forRoot() {
+    return {
+      ngModule: RootCoreModule
+    };
+  }
 }
 
 @NgModule({
   imports: [
-    RouterModule,
-    MatMenuModule,
-    MatIconModule,
-    HttpModule,
-    CommonModule
+    CoreModule,
+    CoreRoutingModule,
+    StoreModule.forFeature('core', reducer)
   ],
-  declarations: [
-    AppToolbarComponent,
-    AppSidenavComponent,
-    NotFoundPageComponent,
-    BadRequestPageComponent,
-    ForbidenComponent
-  ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [
-    MenuService,
-    { provide: Http,  useFactory: httpFactory, deps: [XHRBackend, RequestOptions, Router, SessionActions]}
-  ],
-  exports: [
-    AppToolbarComponent,
-    AppSidenavComponent,
-    NotFoundPageComponent,
-    BadRequestPageComponent,
-    ForbidenComponent
-  ]
 })
-
-export class CoreModule {}
+export class RootCoreModule { }

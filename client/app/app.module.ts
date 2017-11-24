@@ -1,50 +1,46 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+// import { DBModule } from '@ngrx/db';
+// import { schema } from './auth/store/db';
 
-// MATERIAL DESIGN MODULES
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import 'hammerjs';
+import {
+  StoreRouterConnectingModule,
+  RouterStateSerializer,
+} from '@ngrx/router-store';
 
-// APP ROUTING
+import { environment } from 'environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+// import { ApiModule } from './shared/api/api.module';
 
-// APP COMPONENTS
-import { AppComponent } from '.';
+import { reducer, metaReducers } from './store/reducer';
 
-import { CoreModule, StoreModule } from 'app/core';
-import { HomeModule } from 'app/home';
-import { ArticlesConfigModule } from 'app/articles/config';
-import { UsersModule } from 'app/users';
+import { AppComponent } from './core/components';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    FlexLayoutModule,
+    CommonModule,
+    BrowserModule,
     BrowserAnimationsModule,
-    StoreModule,
-    CoreModule,
-    UsersModule.forRoot(),
-    ArticlesConfigModule.forRoot(),
-    HomeModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducer, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([]),
+  //  StoreRouterConnectingModule,
+    // DBModule.provideDB(schema),
     AppRoutingModule,
-    BrowserModule
+
+    AuthenticationModule.forRoot(),
+    CoreModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
-
+  bootstrap: [ AppComponent ]
 })
-export class AppModule {
-  // Diagnostic only: inspect router configuration
-  constructor(router: Router) {
-    // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
-  }
-
-}
+export class AppModule { }

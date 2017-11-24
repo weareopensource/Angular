@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  height:100%;
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 300px;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-list-item:focus {
+  outline: none;
+}

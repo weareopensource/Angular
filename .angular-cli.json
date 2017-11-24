@@ -6,10 +6,16 @@
   "apps": [
     {
       "root": "client",
+      "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
-      ],
+        "favicon.ico",
+         { "glob": "svg-sprite-file.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
+         { "glob": "svg-sprite-editor.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
+         { "glob": "svg-sprite-action.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
+         { "glob": "svg-sprite-navigation.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
+         { "glob": "svg-sprite-av.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" }
+        ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -18,17 +24,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "theme.scss",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "styles.scss",
+        "theme.scss"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "demo": "environments/environment.demo.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "demo": "environments/environment.demo.ts"
       }
     }
   ],
@@ -39,13 +43,16 @@
   },
   "lint": [
     {
-      "project": "client/tsconfig.app.json"
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "client/tsconfig.spec.json"
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
@@ -55,7 +62,6 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {
-    }
+    "component": {}
   }
 }
