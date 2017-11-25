@@ -1,5 +1,6 @@
+test {{ sidenavOpened$ | async | json }}
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over">
+  <mat-sidenav #sidenav mode="over" [opened]="sidenavOpened$ | async" (closedStart)="closeSidenav()">
     <mat-nav-list>
       <h1 matSubheader [innerHtml]="'Navigation'"></h1>
       <a mat-list-item routerLink="/"> Home </a>
@@ -7,7 +8,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-toolbar color="primary">
-    <button mat-icon-button (click)="sidenav.opened = true">
+    <button mat-icon-button (click)="openSidenav()">
       <mat-icon svgIcon="navigation:ic_menu_24px" matTooltip="exit"></mat-icon>
     </button>
     <span class="toolbar-spacer"></span>

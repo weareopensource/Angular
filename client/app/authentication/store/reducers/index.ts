@@ -1,4 +1,4 @@
-import * as fromRoot from 'app/store/reducer';
+import * as fromRoot from 'app/store';
 import * as fromStatus from './status';
 import * as fromLoginPage from './login-page';
 

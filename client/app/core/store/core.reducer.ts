@@ -1,7 +1,7 @@
 import * as CoreActions from './core.actions';
 import * as  fromCore from './core.state';
 
-function layout(state = fromCore.initialState, action: CoreActions.Actions): fromCore.State {
+export function reducer(state = fromCore.initialState, action: CoreActions.Actions): fromCore.State {
   switch (action.type) {
     case CoreActions.CLOSE_SIDENAV:
       return {
@@ -15,8 +15,4 @@ function layout(state = fromCore.initialState, action: CoreActions.Actions): fro
       return state;
   }
 }
-
-export const reducer = {
-  layout
-};
   
