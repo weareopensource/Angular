@@ -1,5 +1,5 @@
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { AuthenticationComponent, LoginComponent, RegisterComponent } from './components';
+import { AuthenticationComponent, LoginComponent, RegisterComponent, LoginSnackComponent } from './components';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,6 +17,7 @@ import {
   MatInputModule,
   MatTabsModule,
   MatRadioModule,
+  MatSnackBarModule
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
@@ -34,7 +35,8 @@ const MATERIAL_MODULES = [
   MatCardModule,
   MatInputModule,
   MatTabsModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
@@ -45,6 +47,7 @@ const MATERIAL_MODULES = [
     ReactiveFormsModule,
   ],
   declarations: COMPONENTS,
+  entryComponents: [LoginSnackComponent],
   exports: COMPONENTS,
 })
 export class AuthenticationModule {

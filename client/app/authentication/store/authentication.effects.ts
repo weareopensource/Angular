@@ -19,7 +19,8 @@ import { AuthenticationApi } from '../services/authentication.api';
 import * as fromAuth from './authentication.actions';
 import * as fromRouter from 'app/store/router';
 // import { Database } from '@ngrx/db';
-declare var browser: (any);
+import { MatSnackBar } from '@angular/material';
+import { LoginSnackComponent } from '../components'
 
 @Injectable()
 export class AuthenticationEffects {
@@ -54,6 +55,9 @@ export class AuthenticationEffects {
   @Effect()
   loginSuccess$ = this.actions$
     .ofType(fromAuth.LOGIN_SUCCESS)
+    .do(() => this.snackBar.openFromComponent(LoginSnackComponent, {
+      duration: 500,
+    ))
     .mapTo(new fromRouter.Go({path: ['/', 'test2']}));
 
   constructor(
@@ -61,5 +65,6 @@ export class AuthenticationEffects {
     private authenticationService: AuthenticationApi,
     private router: Router,
     // private db: Database
+    private snackBar: MatSnackBar
   ) {}
 }

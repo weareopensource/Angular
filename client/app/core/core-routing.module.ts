@@ -12,9 +12,9 @@ const coreRoutes: Routes = [{
   children: [{
     path: 'test2',
     data: {
-      expectedRoles: ['admin', 'prothesist']
+      expectedRoles: ['admin']
     },
-//    canActivate:  [ RoleGuard ],
+    canActivate:  [ RoleGuard ],
     loadChildren: 'app/test2/test2.module#RootTest2Module',
   }, {
     path: '**',
@@ -26,6 +26,6 @@ const coreRoutes: Routes = [{
   imports: [
     RouterModule.forRoot(coreRoutes)
   ],
-//  providers: [ GuardService ]
+  providers: [ RoleGuard ]
 })
 export class CoreRoutingModule { }
