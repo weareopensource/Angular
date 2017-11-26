@@ -20,7 +20,7 @@ import * as fromAuth from './authentication.actions';
 import * as fromRouter from 'app/store/router';
 // import { Database } from '@ngrx/db';
 import { MatSnackBar } from '@angular/material';
-import { LoginSnackComponent } from '../components'
+import { LoginSnackComponent } from '../components/login-snack';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -57,7 +57,7 @@ export class AuthenticationEffects {
     .ofType(fromAuth.LOGIN_SUCCESS)
     .do(() => this.snackBar.openFromComponent(LoginSnackComponent, {
       duration: 500,
-    ))
+    }))
     .mapTo(new fromRouter.Go({path: ['/', 'test2']}));
 
   constructor(

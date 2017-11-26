@@ -25,7 +25,8 @@ import { RouterModule } from '@angular/router';
 const COMPONENTS = [
   AuthenticationComponent,
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
+  LoginSnackComponent
 ];
 
 const MATERIAL_MODULES = [
