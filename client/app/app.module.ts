@@ -20,9 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 
-import { reducer, metaReducers } from './store';
+import { reducer, metaReducers } from './store/app';
 
 import { AppComponent } from './core/components';
+import { CustomSerializer, RouterEffects } from 'app/store/router';
 
 @NgModule({
   imports: [
@@ -32,13 +33,16 @@ import { AppComponent } from './core/components';
     HttpClientModule,
     StoreModule.forRoot(reducer, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([RouterEffects]),
     StoreRouterConnectingModule,
     // DBModule.provideDB(schema),
     AppRoutingModule,
 
     AuthenticationModule.forRoot(),
     CoreModule.forRoot()
+  ],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
   bootstrap: [ AppComponent ]
 })

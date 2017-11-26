@@ -10,14 +10,14 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/mergeMap';
 import { defer } from 'rxjs/observable/defer';
 import { toPayload } from '@ngrx/effects';
-
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/observable/from';
-import { AuthenticationApi } from '../services';
-import * as action from './authentication.actions';
+import { AuthenticationApi } from '../services/authentication.api';
+import * as fromAuth from './authentication.actions';
+import * as fromRouter from 'app/store/router';
 // import { Database } from '@ngrx/db';
 declare var browser: (any);
 
@@ -31,36 +31,30 @@ export class AuthenticationEffects {
 */
   @Effect()
   login$ = this.actions$
-    .ofType(action.LOGIN)
+    .ofType(fromAuth.LOGIN)
     .map(toPayload)
     .exhaustMap(auth => this.authenticationService.login(auth))
-    .catch(error => of(new action.LoginFailure(error)))
+    .catch(error => of(new fromAuth.LoginFailure(error)))
     .do((payload: any) => sessionStorage.setItem('user', JSON.stringify(payload.user)))
     .do((payload: any) => sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn))
 //    .mergeMap((payload: any) => this.db
 //      .executeWrite('auth', 'add', [ payload ])
-      .map((payload) => new action.LoginSuccess({ user: payload.user }));
+      .map((payload) => new fromAuth.LoginSuccess({ user: payload.user }));
 //    );
 
   @Effect()
   logout$ = this.actions$
-    .ofType(action.LOGOUT)
+    .ofType(fromAuth.LOGOUT)
     .do(() => sessionStorage.removeItem('user'))
     .do(() => sessionStorage.removeItem('tokenExpiresIn'))
 //    .mergeMap(() => this.db.query('auth', (user) => user).first())
 //    .mergeMap((user) => this.db.executeWrite('auth', 'delete', [ user.id ]))
-    .mapTo(new action.LoginRedirect())
-    .catch(error => of(new action.LogoutFailure(error)));
+    .mapTo(new fromRouter.Go({path: ['/', 'auth']}))
 
-  @Effect({ dispatch: false })
+  @Effect()
   loginSuccess$ = this.actions$
-    .ofType(action.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/', 'commands']));
-
-  @Effect({ dispatch: false })
-  loginRedirect$ = this.actions$
-    .ofType(action.LOGIN_REDIRECT)
-    .do(() => this.router.navigate(['/', 'auth']));
+    .ofType(fromAuth.LOGIN_SUCCESS)
+    .mapTo(new fromRouter.Go({path: ['/', 'test2']}));
 
   constructor(
     private actions$: Actions,

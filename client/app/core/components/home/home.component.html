@@ -1,4 +1,3 @@
-test {{ sidenavOpened$ | async | json }}
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" [opened]="sidenavOpened$ | async" (closedStart)="closeSidenav()">
     <mat-nav-list>

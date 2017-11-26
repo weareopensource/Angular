@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": {
+      "protocol": "https:",
+      "host": "localhost",
+      "port": 3000
+    },
+    "secure": false
+  }
+}

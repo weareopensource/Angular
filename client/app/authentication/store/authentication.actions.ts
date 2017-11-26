@@ -5,16 +5,14 @@ export const LOGIN = '[Auth] Login';
 export const LOGOUT = '[Auth] Logout';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
-export const LOGOUT_FAILURE = '[Auth] Logout Failure';
-export const LOGIN_REDIRECT = '[Auth] Login Redirect';
+export const LOAD_USER = '[Auth] Load User';
 
 export type Actions =
 | Login
 | LoginSuccess
 | LoginFailure
-| LoginRedirect
 | Logout
-| LogoutFailure
+| LoadUser
 ;
 
 export class Login implements Action {
@@ -32,15 +30,12 @@ export class LoginFailure implements Action {
   constructor(public payload: any) {}
 }
 
-export class LoginRedirect implements Action {
-  readonly type = LOGIN_REDIRECT;
-}
-
 export class Logout implements Action {
   readonly type = LOGOUT;
 }
 
-export class LogoutFailure implements Action {
-  readonly type = LOGOUT_FAILURE;
-  constructor(public payload: any) {}
+export class LoadUser implements Action {
+  readonly type = LOAD_USER;
+  constructor(public payload: { user: User }) {}
 }
+

@@ -4,7 +4,6 @@ import { _throw } from 'rxjs/observable/throw';
 import { User, Authenticate } from '../models';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable()
 export class AuthenticationApi {
 
@@ -40,7 +39,4 @@ export class AuthenticationApi {
     return localStorage.setItem('token', token);
   }
 */
-
-
-
 }

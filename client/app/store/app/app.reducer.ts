@@ -12,7 +12,7 @@ import { routerReducer } from '@ngrx/router-store';
 import { State } from './app.state';
 
 export const reducer: ActionReducerMap<State> = {
-  routerReducer: routerReducer,
+  router: routerReducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {

@@ -5,6 +5,7 @@ export { State };
 
 export function reducer(state = initialState, action: AuthAction.Actions): State {
   switch (action.type) {
+    case AuthAction.LOAD_USER:
     case AuthAction.LOGIN_SUCCESS: {
       return {
         ...state,

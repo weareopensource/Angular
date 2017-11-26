@@ -1,24 +1,24 @@
-import * as AuthAction from '../../authentication.actions';
+import * as FromAuth from '../../authentication.actions';
 import { initialState, State } from './login-page.state';
 export { State };
 
-export function reducer(state = initialState, action: AuthAction.Actions): State {
+export function reducer(state = initialState, action: FromAuth.Actions): State {
   switch (action.type) {
-    case AuthAction.LOGIN: {
+    case FromAuth.LOGIN: {
       return {
         ...state,
         error: null,
         pending: true,
       };
     }
-    case AuthAction.LOGIN_SUCCESS: {
+    case FromAuth.LOGIN_SUCCESS: {
       return {
         ...state,
         error: null,
         pending: false,
       };
     }
-    case AuthAction.LOGIN_FAILURE: {
+    case FromAuth.LOGIN_FAILURE: {
       return {
         ...state,
         error: action.payload,

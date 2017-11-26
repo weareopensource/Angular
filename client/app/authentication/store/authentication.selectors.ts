@@ -1,5 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AuthenticationState } from './reducers';
+import { AuthenticationState } from './authentication.state';
 import * as fromStatus from './reducers/status';
 import * as fromLoginPage from './reducers/login-page';
 

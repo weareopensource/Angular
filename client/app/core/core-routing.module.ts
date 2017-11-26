@@ -1,30 +1,25 @@
 import { HomeComponent, NotFoundComponent } from './components';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard, RoleGuard } from 'app/authentication/services';
+import { AuthenticationGuard } from 'app/authentication/services';
+import { RoleGuard } from './services';
+import { TestComponent } from 'app/test2/components';
 
 const coreRoutes: Routes = [{
   path: '',
   component: HomeComponent,
-//  canActivate:  [ AuthenticationGuard ],
-//  children: [{
-//    path: 'admin',
-//    data: {
-//      expectedRoles: ['admin']
-//    },
+  canActivate:  [ AuthenticationGuard ],
+  children: [{
+    path: 'test2',
+    data: {
+      expectedRoles: ['admin', 'prothesist']
+    },
 //    canActivate:  [ RoleGuard ],
-//    loadChildren: 'app/admin/admin.module#AdminModule',
-//  }, {
-//    path: '',
-//    data: {
-//      expectedRoles: ['admin', 'prothesist']
-//    },
-//    canActivate:  [ RoleGuard ],
-//    loadChildren: 'app/commands/commands.module#CommandsModule',
-//  }]
-}, {
-  path: '**',
-  component: NotFoundComponent,
+    loadChildren: 'app/test2/test2.module#RootTest2Module',
+  }, {
+    path: '**',
+    component: NotFoundComponent,
+  }]
 }];
 
 @NgModule({

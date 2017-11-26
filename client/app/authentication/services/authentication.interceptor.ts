@@ -10,8 +10,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as action from '../store/authentication.actions';
-import * as fromAuth from '../store/reducers';
+import * as fromAuth from '../store';
 import 'rxjs/add/observable/empty';
 
 @Injectable()
@@ -21,7 +20,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (parseInt(sessionStorage.getItem('tokenExpiresIn'), 10) < Date.now()) {
-      this.store.dispatch(new action.Logout());
+      this.store.dispatch(new fromAuth.Logout());
       return Observable.empty();
     }
 
@@ -38,7 +37,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       console.log(error);
       if (error instanceof HttpErrorResponse) {
         if (error.status === 403) {
-          this.store.dispatch(new action.Logout());
+          this.store.dispatch(new fromAuth.Logout());
         }
         return Observable.throw(error);
       }

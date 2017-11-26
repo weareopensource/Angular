@@ -1,7 +1,7 @@
 import { Component, HostBinding, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import * as fromAuthentication from 'app/authentication/store';
 import * as fromCore from '../../store';
-import * as fromRoot from 'app/store';
+import * as fromRoot from 'app/store/app';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
