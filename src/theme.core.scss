@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@import './palette';
+
+$m2-primary: mat-palette($mat-m2-primary);
+//$m2-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+//$m2-warn:    mat-palette($mat-red);
+
+$m2-light-theme: mat-light-theme($m2-primary, $m2-primary, mat-palette($mat-red));
+$m2-dark-theme: mat-dark-theme($m2-primary, $m2-primary, mat-palette($mat-red));
