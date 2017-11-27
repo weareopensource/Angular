@@ -32,7 +32,7 @@ export class AuthenticationEffects {
     .exhaustMap(auth => this.authenticationService
       .login(auth)
       .catch(error => {
-        this.store.dispatch(new fromAuth.LoginFailure(error));
+        this.store.dispatch(new fromAuth.LoginFailure('Email or Password Invalid'));
         return Observable.empty();
       }))
     .do((payload: any) => {
@@ -44,9 +44,14 @@ export class AuthenticationEffects {
   @Effect()
   logout$ = this.actions$
     .ofType(fromAuth.LOGOUT)
-    .do(() => {
+    .map(toPayload)
+    .do((message) => {
       sessionStorage.removeItem('user');
       sessionStorage.removeItem('tokenExpiresIn');
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: message || 'Logout'
+      })
     })
     .mapTo(new fromRouter.Go({path: ['/', 'auth']}))
 

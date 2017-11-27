@@ -32,6 +32,7 @@ export class LoginFailure implements Action {
 
 export class Logout implements Action {
   readonly type = LOGOUT;
+  constructor(public payload?: any) {}
 }
 
 export class LoadUser implements Action {

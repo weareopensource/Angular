@@ -26,16 +26,17 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
     if (parseInt(sessionStorage.getItem('tokenExpiresIn'), 10) < Date.now()) {
-      this.store.dispatch(new fromAuth.Logout());
-      return Observable.throw('Token expired');
+      this.store.dispatch(new fromAuth.Logout('Token Expired'));
+      return Observable.empty();
     }
     return next
     .handle(request)
     .catch(error => {
       if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
-        this.store.dispatch(new fromAuth.Logout());
+        this.store.dispatch(new fromAuth.Logout('Unauthorized Operation'));
+        return Observable.empty();
       }
-      return Observable.throw('Email or Password Invalid');
+      return Observable.throw(error);              
     });
   }
 }
