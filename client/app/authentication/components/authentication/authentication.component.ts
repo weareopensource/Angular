@@ -9,14 +9,11 @@ import { Authenticate } from '../../models';
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss']
 })
-export class AuthenticationComponent implements OnInit {
+export class AuthenticationComponent {
   pending$ = this.store.select(fromAuth.getLoginPagePending);
   error$ = this.store.select(fromAuth.getLoginPageError);
 
-  constructor(private store: Store<fromAuth.State>) {}
-
-  ngOnInit() {
-  }
+  constructor(private store: Store<fromAuth.State>) { }
 
   onSubmit($event: Authenticate) {
     this.store.dispatch(new fromAuth.Login($event));

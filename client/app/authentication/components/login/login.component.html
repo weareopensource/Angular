@@ -8,4 +8,8 @@
   </mat-form-field>
   <br>
   <button type="submit" [disabled]="!form.valid" mat-raised-button>Login</button>
+  <br>
+  <p *ngIf="errorMessage" class="loginError">
+    {{ errorMessage }}
+  </p>
 </form>

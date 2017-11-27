@@ -56,12 +56,12 @@ export class AuthenticationModule {
     return {
       ngModule: RootAuthenticationModule,
       providers: [
-        AuthenticationApi,/*
+        AuthenticationApi,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationInterceptor,
           multi: true
-        }*/
+        }
       ],
     };
   }

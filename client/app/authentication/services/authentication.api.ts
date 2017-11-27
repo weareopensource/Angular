@@ -12,15 +12,8 @@ export class AuthenticationApi {
   constructor(private http: HttpClient) { }
 
   login({ email, password }: Authenticate) {
-    if (email !== 'a@a.com') {
-      return _throw('Invalid username or password');
-    }
     return this.http
     .post(`${this.baseUrl}/auth/login`, { email, password }, { withCredentials: true });
-  }
-
-  logout() {
-    return of(true);
   }
 
 /*
@@ -28,15 +21,6 @@ export class AuthenticationApi {
     return this.http
     .post(`${this.baseUrl}/auth/register`, { name, email, password }, { responseType: 'text' });
 //      .do(token => this.setAuthorizationHeader(token));
-  }
-
-  getAuthorizationHeader() {
-    // return window.setCookie('token');
-    return '5';
-  }
-
-  setAuthorizationHeader(token) {
-    return localStorage.setItem('token', token);
   }
 */
 }
