@@ -1,4 +1,4 @@
-@mixin mat-sidenav-theme($theme) {
+@mixin mean2-sidenav-theme($theme) {
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
@@ -13,21 +13,21 @@
     $drawer-container-background-color: map_get($mat-grey, 50) !default;
     $drawer-push-background-color: mat-color($background, dialog) !default;
   
-    .mat-drawer-container {
+    .mean2-drawer-container {
       background-color: $drawer-container-background-color;
       color: invert(mat-color($foreground, text));
     }
   
-    .mat-drawer {
+    .mean2-drawer {
       background-color: $drawer-background-color;
       color: mat-color($foreground, text);
   
-      &.mat-drawer-push {
+      &.mean2-drawer-push {
         background-color: $drawer-push-background-color;
       }
     }
   
-    .mat-drawer-backdrop.mat-drawer-shown {
+    .mean2-drawer-backdrop.mean2-drawer-shown {
       background-color: $drawer-backdrop-color;
     }
   }

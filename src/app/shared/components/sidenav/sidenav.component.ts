@@ -4,27 +4,27 @@ import {
   ContentChildren, forwardRef, Inject, Input,
   ViewEncapsulation
 } from '@angular/core';
-import { MatDrawer, MatDrawerContainer, MatDrawerContent } from './drawer.component';
+import { Mean2Drawer, Mean2DrawerContainer, Mean2DrawerContent } from './drawer.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion';
 
 
 @Component({
   moduleId: module.id,
-  selector: 'mat-sidenav-content',
+  selector: 'mean2-sidenav-content',
   template: '<ng-content></ng-content>',
   host: {
-    'class': 'mat-drawer-content mat-sidenav-content',
+    'class': 'mean2-drawer-content mean2-sidenav-content',
     '[style.margin-left.px]': '_margin',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatSidenavContent extends MatDrawerContent {
+export class Mean2SidenavContent extends Mean2DrawerContent {
   constructor(
       changeDetectorRef: ChangeDetectorRef,
-      @Inject(forwardRef(() => MatSidenavContainer)) container: MatSidenavContainer) {
+      @Inject(forwardRef(() => Mean2SidenavContainer)) container: Mean2SidenavContainer) {
     super(changeDetectorRef, container);
   }
 }
@@ -32,8 +32,8 @@ export class MatSidenavContent extends MatDrawerContent {
 
 @Component({
   moduleId: module.id,
-  selector: 'mat-sidenav',
-  exportAs: 'MatSidenav',
+  selector: 'mean2-sidenav',
+  exportAs: 'Mean2Sidenav',
   template: '<ng-content></ng-content>',
   animations: [
     trigger('transform', [
@@ -49,7 +49,7 @@ export class MatSidenavContent extends MatDrawerContent {
     ])
   ],
   host: {
-    'class': 'mat-drawer mat-sidenav',
+    'class': 'mean2-drawer mean2-sidenav',
     'tabIndex': '-1',
     '[@transform]': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
@@ -57,10 +57,10 @@ export class MatSidenavContent extends MatDrawerContent {
     '(keydown)': 'handleKeydown($event)',
     // must prevent the browser from aligning text based on value
     '[attr.align]': 'null',
-    '[class.mat-drawer-end]': 'false',
-    '[class.mat-drawer-start]': 'true',
-    '[class.mat-drawer-side]': 'true',
-    '[class.mat-sidenav-fixed]': 'fixedInViewport',
+    '[class.mean2-drawer-end]': 'false',
+    '[class.mean2-drawer-start]': 'true',
+    '[class.mean2-drawer-side]': 'true',
+    '[class.mean2-sidenav-fixed]': 'fixedInViewport',
     '[style.top.px]': 'fixedInViewport ? fixedTopGap : null',
     '[style.bottom.px]': 'fixedInViewport ? fixedBottomGap : null',
   },
@@ -68,7 +68,7 @@ export class MatSidenavContent extends MatDrawerContent {
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatSidenav extends MatDrawer {
+export class Mean2Sidenav extends Mean2Drawer {
   /** Whether the sidenav is fixed in the viewport. */
   @Input()
   get fixedInViewport(): boolean { return this._fixedInViewport; }
@@ -97,21 +97,21 @@ export class MatSidenav extends MatDrawer {
 
 @Component({
   moduleId: module.id,
-  selector: 'mat-sidenav-container',
-  exportAs: 'MatSidenavContainer',
+  selector: 'mean2-sidenav-container',
+  exportAs: 'Mean2SidenavContainer',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./drawer.css'],
   host: {
-    'class': 'mat-drawer-container mat-sidenav-container',
+    'class': 'mean2-drawer-container mean2-sidenav-container',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatSidenavContainer extends MatDrawerContainer {
-  @ContentChild(MatSidenav)
+export class Mean2SidenavContainer extends Mean2DrawerContainer {
+  @ContentChild(Mean2Sidenav)
   _drawer;
 
-  @ContentChild(MatSidenavContent)
+  @ContentChild(Mean2SidenavContent)
   _content;
 }

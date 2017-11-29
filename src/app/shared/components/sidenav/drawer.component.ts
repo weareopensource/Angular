@@ -33,8 +33,8 @@ import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 
 
-/** Throws an exception when two MatDrawer are matching the same position. */
-export function throwMatDuplicatedDrawerError(position: string) {
+/** Throws an exception when two Mean2Drawer are matching the same position. */
+export function throwMean2DuplicatedDrawerError(position: string) {
   throw Error(`A drawer was already declared for 'position="${position}"'`);
 }
 
@@ -43,30 +43,30 @@ export function throwMatDuplicatedDrawerError(position: string) {
  * Drawer toggle promise result.
  * @deprecated
  */
-export class MatDrawerToggleResult {
+export class Mean2DrawerToggleResult {
   constructor(public type: 'open' | 'close', public animationFinished: boolean) {}
 }
 
 
 @Component({
   moduleId: module.id,
-  selector: 'mat-drawer-content',
+  selector: 'mean2-drawer-content',
   template: '<ng-content></ng-content>',
   host: {
-    'class': 'mat-drawer-content',
+    'class': 'mean2-drawer-content',
     '[style.margin-left.px]': '_margin',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatDrawerContent implements AfterContentInit {
+export class Mean2DrawerContent implements AfterContentInit {
 
   _margin: number;
 
   constructor(
       private _changeDetectorRef: ChangeDetectorRef,
-      @Inject(forwardRef(() => MatDrawerContainer)) private _container: MatDrawerContainer) {
+      @Inject(forwardRef(() => Mean2DrawerContainer)) private _container: Mean2DrawerContainer) {
   }
 
   ngAfterContentInit() {
@@ -80,8 +80,8 @@ export class MatDrawerContent implements AfterContentInit {
 
 @Component({
   moduleId: module.id,
-  selector: 'mat-drawer',
-  exportAs: 'MatDrawer',
+  selector: 'mean2-drawer',
+  exportAs: 'Mean2Drawer',
   template: '<ng-content></ng-content>',
   animations: [
     trigger('transform', [
@@ -97,23 +97,23 @@ export class MatDrawerContent implements AfterContentInit {
     ])
   ],
   host: {
-    'class': 'mat-drawer',
+    'class': 'mean2-drawer',
     '[@transform]': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
     '(@transform.done)': '_onAnimationEnd($event)',
     '(keydown)': 'handleKeydown($event)',
     // must prevent the browser from aligning text based on value
     '[attr.align]': 'null',
-    '[class.mat-drawer-end]': 'false',
-    '[class.mat-drawer-start]': 'true',
-    '[class.mat-drawer-side]': 'true',
+    '[class.mean2-drawer-end]': 'false',
+    '[class.mean2-drawer-start]': 'true',
+    '[class.mean2-drawer-side]': 'true',
     'tabIndex': '-1',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatDrawer implements AfterContentInit {
+export class Mean2Drawer implements AfterContentInit {
   private _elementFocusedBeforeDrawerWasOpened: HTMLElement | null = null;
 
   /** Whether the drawer is initialized. Used for disabling the initial animation. */
@@ -252,7 +252,7 @@ export class MatDrawer implements AfterContentInit {
     // It should be removed next time we do breaking changes in the drawer.
     return new Promise<any>(resolve => {
       this.openedChange.pipe(take(1)).subscribe(open => {
-        resolve(new MatDrawerToggleResult(open ? 'open' : 'close', true));
+        resolve(new Mean2DrawerToggleResult(open ? 'open' : 'close', true));
       });
     });
   }
@@ -303,28 +303,28 @@ export class MatDrawer implements AfterContentInit {
 
 
 /**
- * <mat-drawer-container> component.
+ * <mean2-drawer-container> component.
  *
- * This is the parent component to one or two <mat-drawer>s that validates the state internally
+ * This is the parent component to one or two <mean2-drawer>s that validates the state internally
  * and coordinates the backdrop and content styling.
  */
 @Component({
   moduleId: module.id,
-  selector: 'mat-drawer-container',
-  exportAs: 'MatDrawerContainer',
+  selector: 'mean2-drawer-container',
+  exportAs: 'Mean2DrawerContainer',
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.css'],
   host: {
-    'class': 'mat-drawer-container',
+    'class': 'mean2-drawer-container',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class MatDrawerContainer implements AfterContentInit, OnDestroy {
-  @ContentChild(MatDrawer) _drawer: MatDrawer;
+export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
+  @ContentChild(Mean2Drawer) _drawer: Mean2Drawer;
 
-  @ContentChild(MatDrawerContent) _content: MatDrawerContent;
+  @ContentChild(Mean2DrawerContent) _content: Mean2DrawerContent;
 
   /** Emits when the component is destroyed. */
   private _destroyed = new Subject<void>();
@@ -371,7 +371,7 @@ export class MatDrawerContainer implements AfterContentInit, OnDestroy {
       // Set the transition class on the container so that the animations occur. This should not
       // be set initially because animations should only be triggered via a change in state.
       if (event.toState !== 'open-instant') {
-        this._element.nativeElement.classList.add('mat-drawer-transition');
+        this._element.nativeElement.classList.add('mean2-drawer-transition');
       }
 
       this._updateContentMargins();
@@ -383,12 +383,12 @@ export class MatDrawerContainer implements AfterContentInit, OnDestroy {
       this._setContainerClass(this._drawer.opened));
   }
 
-  /** Toggles the 'mat-drawer-opened' class on the main 'mat-drawer-container' element. */
+  /** Toggles the 'mean2-drawer-opened' class on the main 'mean2-drawer-container' element. */
   private _setContainerClass(isAdd: boolean): void {
     if (isAdd) {
-      this._element.nativeElement.classList.add('mat-drawer-opened');
+      this._element.nativeElement.classList.add('mean2-drawer-opened');
     } else {
-      this._element.nativeElement.classList.remove('mat-drawer-opened');
+      this._element.nativeElement.classList.remove('mean2-drawer-opened');
     }
   }
 

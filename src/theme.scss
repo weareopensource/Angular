@@ -7,5 +7,5 @@
 @import './src/app/shared/components/sidenav/sidenav-theme';
 
 
-@include mat-sidenav-theme($m2-dark-theme);
+@include mean2-sidenav-theme($m2-dark-theme);
 @include mat-list-theme($m2-dark-theme);

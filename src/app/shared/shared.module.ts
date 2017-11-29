@@ -1,4 +1,4 @@
-import { MatSidenav, MatDrawerContainer, MatDrawer, MatSidenavContainer, MatDrawerContent, MatSidenavContent } from './components';
+import { Mean2Sidenav, Mean2DrawerContainer, Mean2Drawer, Mean2SidenavContainer, Mean2DrawerContent, Mean2SidenavContent } from './components';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,12 +12,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
-  MatDrawerContainer,
-  MatDrawer,
-  MatDrawerContent,
-  MatSidenavContainer,
-  MatSidenav,
-  MatSidenavContent
+  Mean2DrawerContainer,
+  Mean2Drawer,
+  Mean2DrawerContent,
+  Mean2SidenavContainer,
+  Mean2Sidenav,
+  Mean2SidenavContent
 ];
 
 const MATERIAL_MODULES = [
