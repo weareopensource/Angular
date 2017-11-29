@@ -15,7 +15,8 @@
          { "glob": "svg-sprite-action.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
          { "glob": "svg-sprite-navigation.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
          { "glob": "svg-sprite-av.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-image.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" }
+         { "glob": "svg-sprite-image.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
+         { "glob": "svg-sprite-content.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" }
         ],
       "index": "index.html",
       "main": "main.ts",

@@ -45,7 +45,7 @@ export class AppComponent {
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private store: Store<fromRoot.State>) {
-    ['file', 'editor', 'action', 'navigation', 'av', 'image']
+    ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
     .forEach(iconSet =>
       mdIconRegistry.addSvgIconSetInNamespace(iconSet, sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`
     )));
