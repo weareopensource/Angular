@@ -1,0 +1,43 @@
+<mean2-sidenav-container>
+  <mean2-sidenav mode="side" [opened]="isSidenavOpened$ | async">
+    <img src="/assets/logo-romeanet-light-small.png" width="36px" style="color:black;">
+    <mat-nav-list>
+      <mat-list-item routerLink="/">
+        <mat-icon mat-list-icon svgIcon="action:ic_home_24px"></mat-icon>            
+        <h4 mat-line> Home </h4>
+      </mat-list-item>
+      <mat-list-item routerLink="/test2">
+        <mat-icon mat-list-icon svgIcon="action:ic_pan_tool_24px"></mat-icon>            
+        <h4 mat-line> Test2 </h4>
+      </mat-list-item>
+    </mat-nav-list>
+    <div *ngIf="isSidenavOpened$ | async; then sidenavOpen else sidenavClose"></div>
+    <ng-template #sidenavOpen>            
+      <button class="menu-trigger" mat-icon-button (click)="closeSidenav()">
+          <mat-icon svgIcon="navigation:ic_chevron_left_24px" matTooltip="close"></mat-icon>
+      </button>
+    </ng-template>
+    <ng-template #sidenavClose>            
+      <button class="menu-trigger" mat-icon-button (click)="openSidenav()">
+        <mat-icon svgIcon="navigation:ic_chevron_right_24px" matTooltip="open"></mat-icon>
+      </button>
+    </ng-template>
+  </mean2-sidenav>
+  <mean2-sidenav-content #content >
+    <mat-toolbar>
+      <span class="toolbar-spacer"></span>
+      <div *ngIf="isLoggedIn$ | async; then logoutButton else loginButton"></div>
+      <ng-template #logoutButton>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon svgIcon="action:ic_power_settings_new_24px" matTooltip="exit"></mat-icon>
+        </button>
+      </ng-template>
+      <ng-template #loginButton>
+        <button mat-icon-button (click)="login()">
+          <mat-icon svgIcon="action:ic_exit_to_app_24px" matTooltip="login"></mat-icon>
+        </button>
+      </ng-template>
+    </mat-toolbar>
+      <router-outlet></router-outlet>
+  </mean2-sidenav-content>
+</mean2-sidenav-container>
