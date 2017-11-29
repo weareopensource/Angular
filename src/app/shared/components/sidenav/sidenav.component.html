@@ -1,0 +1,5 @@
+<ng-content select="mat-sidenav"></ng-content>
+<ng-content select="mat-sidenav-content"></ng-content>
+<mat-sidenav-content *ngIf="!_content" cdkScrollable>
+  <ng-content></ng-content>
+</mat-sidenav-content>
