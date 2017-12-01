@@ -1,4 +1,3 @@
-import { AuthenticationComponent } from '../components/authentication/authentication.component';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import "rxjs/add/observable/zip";
@@ -6,10 +5,11 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as AuthenticationActions from '../store/authentication.actions';
-import * as AuthenticationSelectors from '../store/authentication.selectors';
-import { AuthenticationState } from '../store/authentication.interfaces';
-import { AppStore } from 'app/services';
+import { AuthenticationComponent } from 'app/authentication/components/authentication/authentication.component';
+import * as AuthenticationActions from 'app/authentication/store/authentication.actions';
+import * as AuthenticationSelectors from 'app/authentication/store/authentication.selectors';
+import { AuthenticationState } from 'app/authentication/store/authentication.interfaces';
+import { AppStore } from './app.store';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {

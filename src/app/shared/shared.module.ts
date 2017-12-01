@@ -10,6 +10,13 @@ import {
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import {
+  AppStore,
+  AuthenticationGuard,
+  AuthenticationStore,
+  CoreStore
+} from './services';
+
 
 const COMPONENTS = [
   Mean2DrawerContainer,
@@ -27,6 +34,13 @@ const MATERIAL_MODULES = [
   MatTooltipModule
 ];
 
+const PROVIDERS = [
+  AppStore,
+  AuthenticationGuard,
+  AuthenticationStore,
+  CoreStore
+];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,8 +48,15 @@ const MATERIAL_MODULES = [
     FlexLayoutModule,
     ReactiveFormsModule
   ],
-  declarations: [ ...COMPONENTS ],
-  exports: [ ...COMPONENTS ],
+  declarations: COMPONENTS,
+  exports: COMPONENTS,
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot() {
+    return {
+      ngModule: SharedModule,
+      providers: PROVIDERS
+    };
+  }
+}
 

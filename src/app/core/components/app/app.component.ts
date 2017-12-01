@@ -13,9 +13,9 @@ import {
   transition
 } from '@angular/animations';
 import { startWith } from 'rxjs/operators/startWith';
-import { AuthenticationStore } from 'app/authentication/services';
 import { AppState } from 'app/store';
-import { AppStore } from 'app/services';
+import { AuthenticationStore } from 'app/shared/services';
+import { AppStore } from 'app/shared/services';
 
 @Component({
   selector: 'app-root',

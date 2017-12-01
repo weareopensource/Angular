@@ -22,7 +22,6 @@ import { coreReducer } from './store/core.reducer'
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
-import { CoreStore } from './services';
 
  export const COMPONENTS = [
   AppComponent,
@@ -71,7 +70,6 @@ export class CoreModule {
     CoreModule,
     CoreRoutingModule,
     StoreModule.forFeature('core', coreReducer)
-  ],
-  providers: [ CoreStore ]
+  ]
 })
 export class RootCoreModule { }

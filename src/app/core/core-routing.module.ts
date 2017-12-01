@@ -1,8 +1,7 @@
 import { HomeComponent, NotFoundComponent } from './components';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from 'app/authentication/services';
-import { RoleGuard } from './services';
+import { CoreGuard } from './services';
 
 const coreRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,18 +11,10 @@ const coreRoutes: Routes = [
   { path: '**', redirectTo: 'not-found' }
 ];
 
-
-
-
-
-
-
-
-
 @NgModule({
   imports: [
     RouterModule.forRoot(coreRoutes)
   ],
-  providers: [ RoleGuard ]
+  providers: [ CoreGuard ]
 })
 export class CoreRoutingModule { }

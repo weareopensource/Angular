@@ -5,11 +5,11 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { difference } from 'lodash';
-import { AuthenticationStore } from 'app/authentication/services';
-import { AppStore } from 'app/services';
+import { AuthenticationStore } from 'app/shared/services';
+import { AppStore } from 'app/shared/services';
 
 @Injectable()
-export class RoleGuard implements CanActivate {
+export class CoreGuard implements CanActivate {
   constructor(
     private store: Store<any>,
     private router: Router,

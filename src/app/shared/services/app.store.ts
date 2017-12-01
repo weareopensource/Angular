@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as AppActions from '../store/app.actions'
-import * as AppSelectors from '../store/app.selectors'
+import * as AppActions from 'app/store/app.actions'
+import * as AppSelectors from 'app/store/app.selectors'
 import { NavigationExtras } from '@angular/router';
 
 @Injectable()

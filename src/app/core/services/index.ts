@@ -1,2 +1,1 @@
-export * from './role.guard';
-export * from './core.store';
+export * from './core.guard';

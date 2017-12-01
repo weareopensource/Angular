@@ -20,7 +20,7 @@ import * as AuthenticationActions from './authentication.actions';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../components/login-snack';
 import { Store } from '@ngrx/store';
-import { AppStore } from 'app/services';
+import { AppStore } from 'app/shared/services';
 
 @Injectable()
 export class AuthenticationEffects {

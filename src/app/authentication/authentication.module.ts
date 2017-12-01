@@ -4,7 +4,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationApi, AuthenticationInterceptor, AuthenticationGuard, AuthenticationStore } from './services';
+import { AuthenticationApi, AuthenticationInterceptor } from './services';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffects } from './store/authentication.effects';
@@ -57,7 +57,6 @@ export class AuthenticationModule {
       ngModule: RootAuthenticationModule,
       providers: [
         AuthenticationApi,
-        AuthenticationStore,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationInterceptor,
