@@ -1,7 +1,8 @@
 import * as CoreActions from './core.actions';
-import * as  fromCore from './core.state';
+import { coreInitialState } from './core.init';
+import { CoreState } from './core.interfaces';
 
-export function reducer(state = fromCore.initialState, action: CoreActions.Actions): fromCore.State {
+export function coreReducer(state = coreInitialState, action: CoreActions.Actions): CoreState {
   switch (action.type) {
     case CoreActions.CLOSE_SIDENAV:
       return {

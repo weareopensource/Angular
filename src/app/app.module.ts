@@ -8,22 +8,18 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 // import { DBModule } from '@ngrx/db';
 // import { schema } from './auth/store/db';
-
 import {
   StoreRouterConnectingModule,
   RouterStateSerializer,
 } from '@ngrx/router-store';
-
 import { environment } from 'environments/environment';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
-
-import { reducer, metaReducers } from './store/app';
-
+import { appReducer, metaReducers, CustomSerializer, RouterEffects } from './store';
 import { AppComponent } from './core/components';
-import { CustomSerializer, RouterEffects } from 'app/store/router';
 
 @NgModule({
   imports: [
@@ -31,7 +27,7 @@ import { CustomSerializer, RouterEffects } from 'app/store/router';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot(reducer, { metaReducers }),
+    StoreModule.forRoot(appReducer, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([RouterEffects]),
     StoreRouterConnectingModule,

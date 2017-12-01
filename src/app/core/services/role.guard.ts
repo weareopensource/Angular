@@ -4,17 +4,20 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromAuth from 'app/authentication/store';
-import * as fromRouter from 'app/store/router';
+import * as fromRouter from 'app/store';
 import { difference } from 'lodash';
+import { AuthenticationStore } from 'app/authentication/services';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
-  constructor(private store: Store<fromAuth.State>, private router: Router) { }
+  constructor(
+    private store: Store<any>,
+    private router: Router,
+    private authenticationStore: AuthenticationStore) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {
     return this.store
-      .select(fromAuth.getUser)
+      .select(this.authenticationStore.getUser)
       .map(user => {
         const expectedRoles = route.data.expectedRoles;
         if (difference(user.roles, expectedRoles).length === expectedRoles.length) {

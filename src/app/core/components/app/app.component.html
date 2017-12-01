@@ -1,6 +1,6 @@
 <mean2-sidenav-container>
   <mean2-sidenav mode="side" [opened]="isSidenavOpened$ | async">
-    <img src="/assets/logo-romeanet-light-small.png" width="36px" style="color:black;">
+    <img src="/assets/rominet-logo.svg" width="36px" style="color:black;">
     <mat-nav-list>
       <mat-list-item routerLink="/">
         <mat-icon mat-list-icon svgIcon="action:ic_home_24px"></mat-icon>            
@@ -25,6 +25,7 @@
   </mean2-sidenav>
   <mean2-sidenav-content #content >
     <mat-toolbar>
+      <h1>Mean 2 Demo</h1>  
       <span class="toolbar-spacer"></span>
       <div *ngIf="isLoggedIn$ | async; then logoutButton else loginButton"></div>
       <ng-template #logoutButton>

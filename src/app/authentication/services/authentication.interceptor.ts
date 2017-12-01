@@ -13,13 +13,14 @@ import { Router } from '@angular/router';
 import * as fromAuth from '../store';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/throw';
+import { AuthenticationState } from '../store';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
 
   private urlFilters = ['/api'];
 
-  constructor(private store: Store<fromAuth.State>) {}
+  constructor(private store: Store<AuthenticationState>) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (request.url.match(/\assets\//)) {

@@ -17,7 +17,7 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/observable/from';
 import { AuthenticationApi } from '../services/authentication.api';
 import * as fromAuth from './authentication.actions';
-import * as fromRouter from 'app/store/router';
+import * as fromRouter from 'app/store';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../components/login-snack';
 import { Store } from '@ngrx/store';
@@ -29,7 +29,7 @@ export class AuthenticationEffects {
   login$ = this.actions$
     .ofType(fromAuth.LOGIN)
     .map(toPayload)
-    .exhaustMap(auth => this.authenticationService
+    .exhaustMap(auth => this.authenticationApi
       .login(auth)
       .catch(error => {
         this.store.dispatch(new fromAuth.LoginFailure('Email or Password Invalid'));
@@ -50,7 +50,9 @@ export class AuthenticationEffects {
       sessionStorage.removeItem('tokenExpiresIn');
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
-        data: message || 'Logout'
+        data: message || 'Logout',
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
       })
     })
     .mapTo(new fromRouter.Go({path: ['/', 'auth']}))
@@ -79,7 +81,7 @@ export class AuthenticationEffects {
 
   constructor(
     private actions$: Actions,
-    private authenticationService: AuthenticationApi,
+    private authenticationApi: AuthenticationApi,
     private router: Router,
     private snackBar: MatSnackBar,
     private store: Store<any>

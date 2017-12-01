@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromCore from './core.state';
+import { CoreState } from './core.interfaces';
 
-export const getCoreState = createFeatureSelector<fromCore.State>('core');
+export const getCoreState = createFeatureSelector<CoreState>('core');
 
 export const getShowSidenav = createSelector(
   getCoreState,
-  (state: fromCore.State) => state.showSidenav
+  (state: CoreState) => state.showSidenav
 );

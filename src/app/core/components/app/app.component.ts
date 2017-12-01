@@ -2,10 +2,9 @@ import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@an
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Store } from '@ngrx/store';
-import * as fromRoot from 'app/store/app';
-import * as fromCore from 'app/core/store';
-import * as fromAuth from 'app/authentication/store';
-import * as fromRouter from 'app/store/router';
+import * as Selectors from '../../store';
+import * as Actions from '../../store';
+import * as fromRouter from 'app/store';
 import { Observable } from 'rxjs/Observable';
 import {
   trigger,
@@ -15,6 +14,8 @@ import {
   transition
 } from '@angular/animations';
 import { startWith } from 'rxjs/operators/startWith';
+import { AuthenticationStore } from 'app/authentication/services';
+import { AppState } from 'app/store';
 
 @Component({
   selector: 'app-root',
@@ -38,13 +39,15 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  private isSidenavOpened$ = this.store.select(fromCore.getShowSidenav);  
-  public isLoggedIn$ = this.store.select(fromAuth.getLoggedIn);
+  private isSidenavOpened$ = this.store.select(Selectors.getShowSidenav);  
+  public isLoggedIn$ = this.store.select(this.authenticationStore.getLoggedIn);
 
   constructor(
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private store: Store<fromRoot.State>) {
+    private store: Store<AppState>,
+    private authenticationStore: AuthenticationStore,
+  ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
     .forEach(iconSet =>
       mdIconRegistry.addSvgIconSetInNamespace(iconSet, sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`
@@ -53,19 +56,19 @@ export class AppComponent {
   }
 
   public openSidenav() {
-    this.store.dispatch(new fromCore.OpenSidenav());
+    this.store.dispatch(new Actions.OpenSidenav());
   }
 
   public closeSidenav() {
-    this.store.dispatch(new fromCore.CloseSidenav());
+    this.store.dispatch(new Actions.CloseSidenav());
   }
 
   public logout() {
-    this.store.dispatch(new fromAuth.Logout());
+    this.store.dispatch(this.authenticationStore.logout());
   }
 
   public login() {
-    this.store.dispatch(new fromRouter.Go({ path: ['/', 'auth'] }));
+    this.store.dispatch(new fromRouter.Go({path: ['/', 'auth']}));
   }
 
 }

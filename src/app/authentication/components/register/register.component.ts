@@ -33,9 +33,13 @@ export class RegisterComponent implements OnInit {
   }
 
   get emailErrorMessage() {
-    return this.form.controls.email.hasError('required') ? 'You must enter a value' :
-      this.form.controls.email.hasError('email') ? 'Not a valid email' :
-        '';
+    let errorMessage = '';
+    if (this.form.controls.email.hasError('required')) {
+      errorMessage = 'You must enter a value';
+    } else if (this.form.controls.email.hasError('email')) {
+      errorMessage = 'Not a valid email';
+    }
+    return errorMessage;
   }
 
   ngOnInit() {

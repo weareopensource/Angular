@@ -18,9 +18,11 @@ import {
   MatListModule
  } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './store/core.reducer'
+import { coreReducer } from './store/core.reducer'
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthenticationModule } from 'app/authentication/authentication.module';
+import { CoreStore } from './services';
 
  export const COMPONENTS = [
   AppComponent,
@@ -50,6 +52,7 @@ const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
     FlexLayoutModule,
     CoreRoutingModule,
+    AuthenticationModule,
     SharedModule,
     
   ],
@@ -67,7 +70,8 @@ export class CoreModule {
   imports: [
     CoreModule,
     CoreRoutingModule,
-    StoreModule.forFeature('core', reducer)
+    StoreModule.forFeature('core', coreReducer)
   ],
+  providers: [ CoreStore ]
 })
 export class RootCoreModule { }
