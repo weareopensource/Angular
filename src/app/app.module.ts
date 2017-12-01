@@ -20,6 +20,7 @@ import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { appReducer, metaReducers, CustomSerializer, RouterEffects } from './store';
 import { AppComponent } from './core/components';
+import { AppStore } from './services';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { AppComponent } from './core/components';
     CoreModule.forRoot()
   ],
   providers: [
+    AppStore,
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
   bootstrap: [ AppComponent ]

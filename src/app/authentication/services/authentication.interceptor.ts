@@ -10,7 +10,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as fromAuth from '../store';
+import * as AuthenticationActions from '../store/authentication.actions';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/throw';
 import { AuthenticationState } from '../store';
@@ -27,14 +27,14 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
     if (parseInt(sessionStorage.getItem('tokenExpiresIn'), 10) < Date.now()) {
-      this.store.dispatch(new fromAuth.Logout('Token Expired'));
+      this.store.dispatch(new AuthenticationActions.Logout('Token Expired'));
       return Observable.empty();
     }
     return next
     .handle(request)
     .catch(error => {
       if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
-        this.store.dispatch(new fromAuth.Logout('Unauthorized Operation'));
+        this.store.dispatch(new AuthenticationActions.Logout('Unauthorized Operation'));
         return Observable.empty();
       }
       return Observable.throw(error);              

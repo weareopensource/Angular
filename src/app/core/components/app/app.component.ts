@@ -2,9 +2,8 @@ import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@an
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Store } from '@ngrx/store';
-import * as Selectors from '../../store';
-import * as Actions from '../../store';
-import * as fromRouter from 'app/store';
+import * as CoreSelectors from '../../store';
+import * as CoreActions from '../../store';
 import { Observable } from 'rxjs/Observable';
 import {
   trigger,
@@ -16,6 +15,7 @@ import {
 import { startWith } from 'rxjs/operators/startWith';
 import { AuthenticationStore } from 'app/authentication/services';
 import { AppState } from 'app/store';
+import { AppStore } from 'app/services';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +39,7 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  private isSidenavOpened$ = this.store.select(Selectors.getShowSidenav);  
+  private isSidenavOpened$ = this.store.select(CoreSelectors.getShowSidenav);  
   public isLoggedIn$ = this.store.select(this.authenticationStore.getLoggedIn);
 
   constructor(
@@ -47,6 +47,7 @@ export class AppComponent {
     private sanitizer: DomSanitizer,
     private store: Store<AppState>,
     private authenticationStore: AuthenticationStore,
+    private appStore: AppStore,
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
     .forEach(iconSet =>
@@ -56,11 +57,11 @@ export class AppComponent {
   }
 
   public openSidenav() {
-    this.store.dispatch(new Actions.OpenSidenav());
+    this.store.dispatch(new CoreActions.OpenSidenav());
   }
 
   public closeSidenav() {
-    this.store.dispatch(new Actions.CloseSidenav());
+    this.store.dispatch(new CoreActions.CloseSidenav());
   }
 
   public logout() {
@@ -68,7 +69,7 @@ export class AppComponent {
   }
 
   public login() {
-    this.store.dispatch(new fromRouter.Go({path: ['/', 'auth']}));
+    this.store.dispatch(this.appStore.go({path: ['/', 'auth']}));
   }
 
 }

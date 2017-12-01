@@ -16,34 +16,34 @@ import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/observable/from';
 import { AuthenticationApi } from '../services/authentication.api';
-import * as fromAuth from './authentication.actions';
-import * as fromRouter from 'app/store';
+import * as AuthenticationActions from './authentication.actions';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../components/login-snack';
 import { Store } from '@ngrx/store';
+import { AppStore } from 'app/services';
 
 @Injectable()
 export class AuthenticationEffects {
 
   @Effect()
   login$ = this.actions$
-    .ofType(fromAuth.LOGIN)
+    .ofType(AuthenticationActions.LOGIN)
     .map(toPayload)
     .exhaustMap(auth => this.authenticationApi
       .login(auth)
       .catch(error => {
-        this.store.dispatch(new fromAuth.LoginFailure('Email or Password Invalid'));
+        this.store.dispatch(new AuthenticationActions.LoginFailure('Email or Password Invalid'));
         return Observable.empty();
       }))
     .do((payload: any) => {
       sessionStorage.setItem('user', JSON.stringify(payload.user));
       sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
     })
-    .map((payload) => new fromAuth.LoginSuccess({ user: payload.user }))
+    .map((payload) => new AuthenticationActions.LoginSuccess({ user: payload.user }))
 
   @Effect()
   logout$ = this.actions$
-    .ofType(fromAuth.LOGOUT)
+    .ofType(AuthenticationActions.LOGOUT)
     .map(toPayload)
     .do((message) => {
       sessionStorage.removeItem('user');
@@ -55,22 +55,22 @@ export class AuthenticationEffects {
         verticalPosition: 'top'
       })
     })
-    .mapTo(new fromRouter.Go({path: ['/', 'auth']}))
+    .mapTo(this.appStore.go({path: ['/', 'auth']}))
 
   @Effect()
   loginSuccess$ = this.actions$
-    .ofType(fromAuth.LOGIN_SUCCESS)
+    .ofType(AuthenticationActions.LOGIN_SUCCESS)
     .do(() => this.snackBar.openFromComponent(LoginSnackComponent, {
       duration: 1000,
       data: 'Login Success',
       horizontalPosition: 'right',
       verticalPosition: 'top'
     }))
-    .mapTo(new fromRouter.Go({path: ['/', 'test2']}));
+    .mapTo(this.appStore.go({path: ['/', 'test2']}));
 
     @Effect({ dispatch: false })
     loginFailure$ = this.actions$
-      .ofType(fromAuth.LOGIN_FAILURE)
+      .ofType(AuthenticationActions.LOGIN_FAILURE)
       .map(toPayload)
       .do((message) => this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -84,6 +84,7 @@ export class AuthenticationEffects {
     private authenticationApi: AuthenticationApi,
     private router: Router,
     private snackBar: MatSnackBar,
-    private store: Store<any>
+    private store: Store<any>,
+    private appStore: AppStore
   ) {}
 }
