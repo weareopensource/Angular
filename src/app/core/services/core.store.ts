@@ -7,7 +7,7 @@ import { NavigationExtras } from '@angular/router';
 @Injectable()
 export class CoreStore {
 
-  constructor(private appStore: any) {}
+  constructor() {}
 
   public getShowSidenav = CoreSelectors.getShowSidenav;
 
