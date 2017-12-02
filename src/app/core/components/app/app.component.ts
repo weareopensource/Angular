@@ -2,8 +2,7 @@ import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@an
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Store } from '@ngrx/store';
-import * as CoreSelectors from '../../store';
-import * as CoreActions from '../../store';
+import * as CoreActions from 'app/shared/store/core/core.actions';
 import { Observable } from 'rxjs/Observable';
 import {
   trigger,
@@ -13,9 +12,10 @@ import {
   transition
 } from '@angular/animations';
 import { startWith } from 'rxjs/operators/startWith';
-import { AppState } from 'app/store';
-import { AuthenticationStore } from 'app/shared/services';
-import { AppStore } from 'app/shared/services';
+import { AppState } from 'app/shared/store/app';
+import { Router } from '@angular/router';
+import { CoreSelectors } from 'app/shared/services/core';
+import { AuthenticationSelectors } from 'app/shared/services/authentication';
 
 @Component({
   selector: 'app-root',
@@ -39,15 +39,17 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  private isSidenavOpened$ = this.store.select(CoreSelectors.getShowSidenav);  
-  public isLoggedIn$ = this.store.select(this.authenticationStore.getLoggedIn);
+  private isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);  
+  public isLoggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn);
 
   constructor(
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private store: Store<AppState>,
-    private authenticationStore: AuthenticationStore,
-    private appStore: AppStore,
+    private router: Router,
+    private authenticationSelectors: AuthenticationSelectors,
+    private coreSelectors: CoreSelectors,
+    
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
     .forEach(iconSet =>
@@ -64,12 +66,8 @@ export class AppComponent {
     this.store.dispatch(new CoreActions.CloseSidenav());
   }
 
-  public logout() {
-    this.store.dispatch(this.authenticationStore.logout());
-  }
-
   public login() {
-    this.store.dispatch(this.appStore.go({path: ['/', 'auth']}));
+    this.router.navigate(['/', 'auth']);
   }
 
 }

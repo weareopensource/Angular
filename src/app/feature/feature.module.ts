@@ -1,6 +1,5 @@
 import { FeatureRoutingModule } from './feature-routing.module';
 import { FeatureComponent } from './components';
-import {  } from './components';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';

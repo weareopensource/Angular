@@ -29,7 +29,7 @@
       <span class="toolbar-spacer"></span>
       <div *ngIf="isLoggedIn$ | async; then logoutButton else loginButton"></div>
       <ng-template #logoutButton>
-        <button mat-icon-button (click)="logout()">
+        <button mat-icon-button Logout>
           <mat-icon svgIcon="action:ic_power_settings_new_24px" matTooltip="exit"></mat-icon>
         </button>
       </ng-template>

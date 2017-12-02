@@ -1,5 +1,4 @@
-import { AppState } from 'app/store';
-import { User } from '../models';
+import { User } from 'app/authentication/models';
 
 export interface StatusState {
   loggedIn: boolean;

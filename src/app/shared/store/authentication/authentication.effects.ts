@@ -15,12 +15,11 @@ import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/observable/from';
-import { AuthenticationApi } from '../services/authentication.api';
+import { AuthenticationApi } from 'app/authentication/services';
 import * as AuthenticationActions from './authentication.actions';
 import { MatSnackBar } from '@angular/material';
-import { LoginSnackComponent } from '../components/login-snack';
+import { LoginSnackComponent } from 'app/authentication/components/login-snack';
 import { Store } from '@ngrx/store';
-import { AppStore } from 'app/shared/services';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -41,7 +40,7 @@ export class AuthenticationEffects {
     })
     .map((payload) => new AuthenticationActions.LoginSuccess({ user: payload.user }))
 
-  @Effect()
+  @Effect({ dispatch: false })
   logout$ = this.actions$
     .ofType(AuthenticationActions.LOGOUT)
     .map(toPayload)
@@ -53,9 +52,9 @@ export class AuthenticationEffects {
         data: message || 'Logout',
         horizontalPosition: 'right',
         verticalPosition: 'top'
-      })
+      });
+      this.router.navigate(['/', 'auth']);
     })
-    .mapTo(this.appStore.go({path: ['/', 'auth']}))
 
   @Effect()
   loginSuccess$ = this.actions$
@@ -66,7 +65,7 @@ export class AuthenticationEffects {
       horizontalPosition: 'right',
       verticalPosition: 'top'
     }))
-    .mapTo(this.appStore.go({path: ['/', 'test2']}));
+    .mapTo(this.router.navigate(['/', 'test2']));
 
     @Effect({ dispatch: false })
     loginFailure$ = this.actions$
@@ -84,7 +83,5 @@ export class AuthenticationEffects {
     private authenticationApi: AuthenticationApi,
     private router: Router,
     private snackBar: MatSnackBar,
-    private store: Store<any>,
-    private appStore: AppStore
-  ) {}
+    private store: Store<any>) { }
 }

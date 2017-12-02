@@ -5,23 +5,27 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { AuthenticationComponent } from 'app/authentication/components/authentication/authentication.component';
-import * as AuthenticationActions from 'app/authentication/store/authentication.actions';
-import * as AuthenticationSelectors from 'app/authentication/store/authentication.selectors';
-import { AuthenticationState } from 'app/authentication/store/authentication.interfaces';
-import { AppStore } from './app.store';
+import { AuthenticationComponent } from 'app/authentication/components/authentication';
+import * as AuthenticationActions from 'app/shared/store/authentication/authentication.actions';
+import { AuthenticationSelectors } from './authentication.selectors';
+import { AuthenticationState } from 'app/shared/store/authentication';
+import { AppSelectors } from 'app/shared/services/app';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-  constructor(private store: Store<AuthenticationState>, private router: Router, private appStore: AppStore) { }
+  constructor(
+    private store: Store<AuthenticationState>,
+    private router: Router,
+    private appSelectors: AppSelectors,
+    private authenticationSelectors: AuthenticationSelectors) { }
 
   canActivate(): Observable<boolean> | boolean {
-    const currentUrl$ = this.store.select(this.appStore.getCurrentUrl).first();
-    const loggedIn$ = this.store.select(AuthenticationSelectors.getLoggedIn).first();
+    const currentUrl$ = this.store.select(this.appSelectors.getCurrentUrl).first();
+    const loggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn).first();
     return Observable.zip(currentUrl$, loggedIn$, (currentUrl, loggedIn) => {
       if (loggedIn) {
         if (currentUrl === '/auth') {
-          this.store.dispatch(this.appStore.go({ path: ['/', 'home'] }));
+          this.router.navigate(['/', 'home']);
         }
         return true;
       } else {
@@ -31,7 +35,7 @@ export class AuthenticationGuard implements CanActivate {
           if (tokenExpiresIn < Date.now()) {
             this.store.dispatch(new AuthenticationActions.LoadUser({ user }));
             if (currentUrl === '/auth') {
-              this.store.dispatch(this.appStore.go({ path: ['/', 'home'] }));
+              this.router.navigate(['/', 'home']);
             }
             return true;
           } else {
@@ -42,7 +46,7 @@ export class AuthenticationGuard implements CanActivate {
           if (currentUrl === '/auth') {
             return true;
           }
-          this.store.dispatch(this.appStore.go({ path: ['/', 'auth'] }));
+          this.router.navigate(['/', 'auth']);
           return false;
         }
       }

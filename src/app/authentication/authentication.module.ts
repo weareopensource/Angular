@@ -7,8 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationApi, AuthenticationInterceptor } from './services';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthenticationEffects } from './store/authentication.effects';
-import { authenticationReducers } from './store';
+import { authenticationReducers, AuthenticationEffects } from 'app/shared/store/authentication';
 import {
   MatButtonModule,
   MatIconModule,
@@ -21,12 +20,17 @@ import {
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { LogoutDirective } from './directives';
 
 const COMPONENTS = [
   AuthenticationComponent,
   LoginComponent,
   RegisterComponent,
   LoginSnackComponent
+];
+
+const DIRECTIVES = [
+  LogoutDirective
 ];
 
 const MATERIAL_MODULES = [
@@ -47,9 +51,9 @@ const MATERIAL_MODULES = [
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
-  declarations: COMPONENTS,
+  declarations: [ ...COMPONENTS, ...DIRECTIVES ],
   entryComponents: [LoginSnackComponent],
-  exports: COMPONENTS,
+  exports: [ ...COMPONENTS, ...DIRECTIVES ],
 })
 export class AuthenticationModule {
   static forRoot(): ModuleWithProviders {
@@ -70,9 +74,7 @@ export class AuthenticationModule {
 @NgModule({
   imports: [
     AuthenticationModule,
-    AuthenticationRoutingModule,
-    StoreModule.forFeature('authentication', authenticationReducers),
-    EffectsModule.forFeature([ AuthenticationEffects ]),
+    AuthenticationRoutingModule
   ],
 })
 export class RootAuthenticationModule {}

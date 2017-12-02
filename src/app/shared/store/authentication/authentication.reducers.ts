@@ -1,5 +1,5 @@
 import * as AuthenticationAction from './authentication.actions';
-import { User } from '../models';
+import { User } from 'app/authentication/models';
 import { StatusState, LoginPageState } from './authentication.interfaces';
 import { initialStatusState, initialLoginPageState } from './authentication.init';
 

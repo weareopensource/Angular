@@ -17,8 +17,6 @@ import {
   MatInputModule,
   MatListModule
  } from '@angular/material';
-import { StoreModule } from '@ngrx/store';
-import { coreReducer } from './store/core.reducer'
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
@@ -52,8 +50,7 @@ const MATERIAL_MODULES = [
     FlexLayoutModule,
     CoreRoutingModule,
     AuthenticationModule,
-    SharedModule,
-    
+    SharedModule
   ],
   declarations: COMPONENTS
 })
@@ -68,8 +65,7 @@ export class CoreModule {
 @NgModule({
   imports: [
     CoreModule,
-    CoreRoutingModule,
-    StoreModule.forFeature('core', coreReducer)
+    CoreRoutingModule
   ]
 })
 export class RootCoreModule { }

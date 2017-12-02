@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import * as AuthenticationActions from '../../store/authentication.actions'
-import * as AuthenticationSelectors from '../../store/authentication.selectors'
-import { AuthenticationState } from '../../store/authentication.interfaces';
+import * as AuthenticationActions from 'app/shared/store/authentication/authentication.actions';
+import { AuthenticationSelectors } from 'app/shared/services/authentication';
+import { AuthenticationState } from 'app/shared/store/authentication';
 import { Store } from '@ngrx/store';
 import { Authenticate } from '../../models';
 
@@ -12,10 +12,10 @@ import { Authenticate } from '../../models';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent {
-  pending$ = this.store.select(AuthenticationSelectors.getLoginPagePending);
-  error$ = this.store.select(AuthenticationSelectors.getLoginPageError);
+  public pending$ = this.store.select(this.authenticatoinSelectors.getLoginPagePending);
+  public error$ = this.store.select(this.authenticatoinSelectors.getLoginPageError);
 
-  constructor(private store: Store<AuthenticationState>) { }
+  constructor(private store: Store<AuthenticationState>, private authenticatoinSelectors: AuthenticationSelectors) { }
 
   onSubmit($event: Authenticate) {
     this.store.dispatch(new AuthenticationActions.Login($event));

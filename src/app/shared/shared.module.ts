@@ -11,11 +11,16 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import {
-  AppStore,
+  AppSelectors,
   AuthenticationGuard,
-  AuthenticationStore,
-  CoreStore
+  AuthenticationSelectors,
+  CoreSelectors
 } from './services';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationEffects, authenticationReducers } from './store/authentication';
+import { coreReducer } from './store/core';
 
 
 const COMPONENTS = [
@@ -35,10 +40,10 @@ const MATERIAL_MODULES = [
 ];
 
 const PROVIDERS = [
-  AppStore,
+  AppSelectors,
   AuthenticationGuard,
-  AuthenticationStore,
-  CoreStore
+  AuthenticationSelectors,
+  CoreSelectors
 ];
 
 @NgModule({
@@ -54,9 +59,18 @@ const PROVIDERS = [
 export class SharedModule {
   static forRoot() {
     return {
-      ngModule: SharedModule,
+      ngModule: RootSharedModule,
       providers: PROVIDERS
     };
   }
 }
 
+@NgModule({
+  imports: [
+    SharedModule,
+    StoreModule.forFeature('authentication', authenticationReducers),
+    EffectsModule.forFeature([ AuthenticationEffects ]),        
+    StoreModule.forFeature('core', coreReducer),
+  ]
+})
+export class RootSharedModule { }
