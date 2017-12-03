@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CoreState } from 'app/shared/store/core';
+import { CoreState } from '../store';
 
 @Injectable()
 export class CoreSelectors {

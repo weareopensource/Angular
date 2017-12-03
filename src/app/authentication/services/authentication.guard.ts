@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { AuthenticationComponent } from 'app/authentication/components/authentication';
-import * as AuthenticationActions from 'app/shared/store/authentication/authentication.actions';
+import { AuthenticationComponent } from '../components/authentication';
+import * as AuthenticationActions from '../store/authentication.actions';
+import { AuthenticationState } from '../store';
 import { AuthenticationSelectors } from './authentication.selectors';
-import { AuthenticationState } from 'app/shared/store/authentication';
-import { AppSelectors } from 'app/shared/services/app';
+import { AppSelectors } from 'app/store';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {

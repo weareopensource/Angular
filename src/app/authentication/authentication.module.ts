@@ -4,10 +4,10 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationApi, AuthenticationInterceptor } from './services';
+import { AuthenticationApi, AuthenticationInterceptor, AuthenticationGuard, AuthenticationSelectors } from './services';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { authenticationReducers, AuthenticationEffects } from 'app/shared/store/authentication';
+import { authenticationReducers, AuthenticationEffects } from './store';
 import {
   MatButtonModule,
   MatIconModule,
@@ -61,6 +61,8 @@ export class AuthenticationModule {
       ngModule: RootAuthenticationModule,
       providers: [
         AuthenticationApi,
+        AuthenticationGuard,
+        AuthenticationSelectors,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationInterceptor,
@@ -74,7 +76,9 @@ export class AuthenticationModule {
 @NgModule({
   imports: [
     AuthenticationModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    StoreModule.forFeature('authentication', authenticationReducers),
+    EffectsModule.forFeature([ AuthenticationEffects ])
   ],
 })
 export class RootAuthenticationModule {}

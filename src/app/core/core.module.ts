@@ -20,6 +20,9 @@ import {
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
+import { StoreModule } from '@ngrx/store';
+import { coreReducer } from './store';
+import { CoreSelectors } from './services';
 
  export const COMPONENTS = [
   AppComponent,
@@ -52,12 +55,14 @@ const MATERIAL_MODULES = [
     AuthenticationModule,
     SharedModule
   ],
-  declarations: COMPONENTS
+  declarations: COMPONENTS,
+  exports: COMPONENTS,
 })
 export class CoreModule {
   static forRoot() {
     return {
-      ngModule: RootCoreModule
+      ngModule: RootCoreModule,
+      providers: [ CoreSelectors ]
     };
   }
 }
@@ -65,7 +70,8 @@ export class CoreModule {
 @NgModule({
   imports: [
     CoreModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    StoreModule.forFeature('core', coreReducer)
   ]
 })
 export class RootCoreModule { }

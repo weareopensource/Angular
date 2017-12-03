@@ -12,10 +12,9 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { environment } from 'environments/environment';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { appReducer, metaReducers, CustomSerializer } from 'app/shared/store/app';
+import { appReducer, metaReducers, CustomSerializer, AppSelectors } from 'app/store';
 import { AppComponent } from './core/components';
 import { SharedModule } from 'app/shared/shared.module';
 
@@ -30,14 +29,14 @@ import { SharedModule } from 'app/shared/shared.module';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule,
     // DBModule.provideDB(schema),
-    AppRoutingModule,
 
-    SharedModule.forRoot(),
     AuthenticationModule.forRoot(),
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
+    SharedModule
   ],
   providers: [
-    { provide: RouterStateSerializer, useClass: CustomSerializer }
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    AppSelectors
   ],
   bootstrap: [ AppComponent ]
 })

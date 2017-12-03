@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/observable/from';
-import { AuthenticationApi } from 'app/authentication/services';
+import { AuthenticationApi } from '../services/authentication.api';
 import * as AuthenticationActions from './authentication.actions';
 import { MatSnackBar } from '@angular/material';
-import { LoginSnackComponent } from 'app/authentication/components/login-snack';
+import { LoginSnackComponent } from '../components/login-snack';
 import { Store } from '@ngrx/store';
 
 @Injectable()

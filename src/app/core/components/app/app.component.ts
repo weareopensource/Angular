@@ -2,7 +2,7 @@ import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@an
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Store } from '@ngrx/store';
-import * as CoreActions from 'app/shared/store/core/core.actions';
+import * as CoreActions from '../../store/core.actions';
 import { Observable } from 'rxjs/Observable';
 import {
   trigger,
@@ -12,10 +12,10 @@ import {
   transition
 } from '@angular/animations';
 import { startWith } from 'rxjs/operators/startWith';
-import { AppState } from 'app/shared/store/app';
+import { AppState } from 'app/store';
 import { Router } from '@angular/router';
-import { CoreSelectors } from 'app/shared/services/core';
-import { AuthenticationSelectors } from 'app/shared/services/authentication';
+import { CoreSelectors } from '../../services';
+import { AuthenticationSelectors } from 'app/authentication/services';
 
 @Component({
   selector: 'app-root',

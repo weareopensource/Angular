@@ -5,7 +5,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { difference } from 'lodash';
-import { AuthenticationSelectors } from 'app/shared/services/authentication';
+import { AuthenticationSelectors } from 'app/authentication/services';
 
 @Injectable()
 export class CoreGuard implements CanActivate {

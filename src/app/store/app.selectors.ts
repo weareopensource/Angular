@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RouterStateUrl } from '../../store/app';
+import { RouterStateUrl } from './app.interfaces';
 import { RouterReducerState } from '@ngrx/router-store';
 
 @Injectable()

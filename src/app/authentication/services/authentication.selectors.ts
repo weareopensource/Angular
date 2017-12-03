@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { StatusState, LoginPageState, AuthenticationState } from '../../store/authentication';
+import { StatusState, LoginPageState, AuthenticationState } from '../store';
 
 @Injectable()
 export class AuthenticationSelectors {

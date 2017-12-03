@@ -10,10 +10,10 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as AuthenticationActions from 'app/shared/store/authentication/authentication.actions';
+import * as AuthenticationActions from '../store/authentication.actions';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/throw';
-import { AuthenticationState } from 'app/shared/store/authentication';
+import { AuthenticationState } from '../store';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {

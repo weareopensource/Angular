@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import * as AuthenticationActions from 'app/shared/store/authentication/authentication.actions';
-import { AuthenticationSelectors } from 'app/shared/services/authentication';
-import { AuthenticationState } from 'app/shared/store/authentication';
+import * as AuthenticationActions from '../../store/authentication.actions';
+import { AuthenticationState } from '../../store';
+import { AuthenticationSelectors } from '../../services';
 import { Store } from '@ngrx/store';
 import { Authenticate } from '../../models';
 
