@@ -56,16 +56,18 @@ export class AuthenticationEffects {
       this.router.navigate(['/', 'auth']);
     })
 
-  @Effect()
+  @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(AuthenticationActions.LOGIN_SUCCESS)
-    .do(() => this.snackBar.openFromComponent(LoginSnackComponent, {
-      duration: 1000,
-      data: 'Login Success',
-      horizontalPosition: 'right',
-      verticalPosition: 'top'
-    }))
-    .mapTo(this.router.navigate(['/', 'test2']));
+    .do(() => {
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: 'Login Success',
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      });
+      this.router.navigate(['/', 'test2']);
+    })
 
     @Effect({ dispatch: false })
     loginFailure$ = this.actions$
