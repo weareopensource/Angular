@@ -17,7 +17,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { appReducer, metaReducers, CustomSerializer, AppSelectors } from 'app/store';
 import { AppComponent } from './core/components';
 import { SharedModule } from 'app/shared/shared.module';
-import { featureConfiguration } from 'app/feature/feature.configuration';
+import { featureConfiguration } from 'app/feature/configuration';
 
 @NgModule({
   imports: [

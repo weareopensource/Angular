@@ -18,6 +18,7 @@ export class FeatureGuard implements CanActivate {
     return this.store
       .select(this.authenticationSelectors.getUser)
       .map(user => {
+        console.log(route.data)
         const expectedRoles = route.data.expectedRoles;
         if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
           this.router.navigate(['/', 'auth']);

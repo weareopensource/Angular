@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FeatureRoutingModule } from './feature-routing.module';
+import { featureConfiguration } from './configuration';
 
 const COMPONENTS = [
   FeatureComponent
@@ -21,7 +22,7 @@ export class FeatureModule { }
 @NgModule({
   imports: [
     FeatureModule,
-    FeatureRoutingModule
+    FeatureRoutingModule//.withRoles(featureConfiguration.feature.roles)
   ],
   providers: []
 })

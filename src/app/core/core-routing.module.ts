@@ -6,7 +6,11 @@ import { FeatureComponent } from '../feature/components';
 import { AuthenticationGuard } from '../authentication/services';
 
 const coreRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   {
     path: 'home',
     canActivate: [ AuthenticationGuard ],
@@ -19,7 +23,13 @@ const coreRoutes: Routes = [
     loadChildren: '../feature/feature.module#RootFeatureModule'
   },
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
-  { path: '**', component: NotFoundComponent, data: { title: 'Not-Found'} }
+  {
+    path: '**',
+    component: NotFoundComponent,
+    data: {
+      title: 'Not-Found'
+    }
+  }
 ];
 
 @NgModule({
