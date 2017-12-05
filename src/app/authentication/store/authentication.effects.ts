@@ -38,7 +38,7 @@ export class AuthenticationEffects {
       sessionStorage.setItem('user', JSON.stringify(payload.user));
       sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
     })
-    .map((payload) => new AuthenticationActions.LoginSuccess({ user: payload.user }))
+    .map((payload) => new AuthenticationActions.LoginSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
 
   @Effect({ dispatch: false })
   logout$ = this.actions$

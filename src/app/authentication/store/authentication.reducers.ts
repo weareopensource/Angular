@@ -11,6 +11,7 @@ export function statusReducer(state = initialStatusState, action: Authentication
         ...state,
         loggedIn: true,
         user: action.payload.user,
+        tokenExpiresIn: action.payload.tokenExpiresIn
       };
     }
     case AuthenticationAction.LOGOUT: {

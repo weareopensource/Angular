@@ -2,13 +2,9 @@
   <mean2-sidenav mode="side" [opened]="isSidenavOpened$ | async">
     <img src="/assets/rominet-logo.svg" width="36px" style="color:black;">
     <mat-nav-list>
-      <mat-list-item routerLink="/">
-        <mat-icon mat-list-icon svgIcon="action:ic_home_24px"></mat-icon>            
-        <h4 mat-line> Home </h4>
-      </mat-list-item>
-      <mat-list-item routerLink="/test2">
-        <mat-icon mat-list-icon svgIcon="action:ic_pan_tool_24px"></mat-icon>            
-        <h4 mat-line> Test2 </h4>
+      <mat-list-item *ngFor="let item of menuItems$ | async" routerLink="{{item.link}}">
+        <mat-icon mat-list-icon svgIcon="{{item.icon}}"></mat-icon>            
+        <h4 mat-line> {{item.name}} </h4>
       </mat-list-item>
     </mat-nav-list>
     <div *ngIf="isSidenavOpened$ | async; then sidenavOpen else sidenavClose"></div>
@@ -34,7 +30,7 @@
         </button>
       </ng-template>
       <ng-template #loginButton>
-        <button mat-icon-button (click)="login()">
+        <button mat-icon-button routerLink="/auth">
           <mat-icon svgIcon="action:ic_exit_to_app_24px" matTooltip="login"></mat-icon>
         </button>
       </ng-template>

@@ -12,10 +12,10 @@ import { Authenticate } from '../../models';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent {
-  public pending$ = this.store.select(this.authenticatoinSelectors.getLoginPagePending);
-  public error$ = this.store.select(this.authenticatoinSelectors.getLoginPageError);
+  public pending$ = this.store.select(this.authenticationSelectors.getLoginPagePending);
+  public error$ = this.store.select(this.authenticationSelectors.getLoginPageError);
 
-  constructor(private store: Store<AuthenticationState>, private authenticatoinSelectors: AuthenticationSelectors) { }
+  constructor(private store: Store<AuthenticationState>, private authenticationSelectors: AuthenticationSelectors) { }
 
   onSubmit($event: Authenticate) {
     this.store.dispatch(new AuthenticationActions.Login($event));

@@ -8,7 +8,7 @@ import { environment } from 'environments/environment';
 // import { storeFreeze } from 'ngrx-store-freeze';
 import { AppState } from './app.interfaces';
 
-export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
+function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return function(state: AppState, action: any): AppState {
     console.log('state', state);
     console.log('action', action);

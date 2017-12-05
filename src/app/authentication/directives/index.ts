@@ -1,1 +1,1 @@
-export * from './logout';
+export * from './logout.directive';

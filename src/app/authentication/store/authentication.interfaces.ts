@@ -3,6 +3,7 @@ import { User } from 'app/authentication/models';
 export interface StatusState {
   loggedIn: boolean;
   user: User | null;
+  tokenExpiresIn: number | null;
 }
 
 export interface LoginPageState {

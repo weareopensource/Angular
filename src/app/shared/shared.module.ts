@@ -15,7 +15,6 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-
 const COMPONENTS = [
   Mean2DrawerContainer,
   Mean2Drawer,
@@ -33,9 +32,9 @@ const MATERIAL_MODULES = [
 @NgModule({
   imports: [
     CommonModule,
-    ...MATERIAL_MODULES
+    ...MATERIAL_MODULES,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
-export class SharedModule {}
+export class SharedModule { }

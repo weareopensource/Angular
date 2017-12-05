@@ -2,13 +2,15 @@ import { HomeComponent, NotFoundComponent } from './components';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuard } from './services';
+import { FeatureComponent } from '../feature/components';
+import { AuthenticationGuard } from '../authentication/services';
 
 const coreRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'not-found', component: NotFoundComponent, data: { title: 'Not-Found'} },
+  { path: 'home', canActivate: [ AuthenticationGuard ], component: HomeComponent },
+  { path: 'feature', canActivate: [ AuthenticationGuard ], canLoad: [ AuthenticationGuard ], loadChildren: 'app/feature/feature.module#RootFeatureModule' },
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
-  { path: '**', redirectTo: 'not-found' }
+  { path: '**', component: NotFoundComponent, data: { title: 'Not-Found'} }
 ];
 
 @NgModule({

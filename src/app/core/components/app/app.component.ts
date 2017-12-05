@@ -16,6 +16,7 @@ import { AppState } from 'app/store';
 import { Router } from '@angular/router';
 import { CoreSelectors } from '../../services';
 import { AuthenticationSelectors } from 'app/authentication/services';
+import { values } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,8 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  private isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);  
+  public isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);
+  public menuItems$ = this.store.select(this.coreSelectors.getMenuItems).map(menuItems => values(menuItems));
   public isLoggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn);
 
   constructor(
@@ -64,10 +66,6 @@ export class AppComponent {
 
   public closeSidenav() {
     this.store.dispatch(new CoreActions.CloseSidenav());
-  }
-
-  public login() {
-    this.router.navigate(['/', 'auth']);
   }
 
 }

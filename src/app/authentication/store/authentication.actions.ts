@@ -22,7 +22,7 @@ export class Login implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-  constructor(public payload: { user: User }) {}
+  constructor(public payload: { user: User, tokenExpiresIn: number }) {}
 }
 
 export class LoginFailure implements Action {
@@ -37,6 +37,6 @@ export class Logout implements Action {
 
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
-  constructor(public payload: { user: User }) {}
+  constructor(public payload: { user: User, tokenExpiresIn: number }) {}
 }
 

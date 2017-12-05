@@ -8,4 +8,5 @@ export const initialLoginPageState: LoginPageState = {
 export const initialStatusState: StatusState = {
   loggedIn: false,
   user: null,
+  tokenExpiresIn: null
 };

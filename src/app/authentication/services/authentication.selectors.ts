@@ -7,16 +7,18 @@ export class AuthenticationSelectors {
 
   public getLoggedIn;
   public getUser;
+  public getTokenExpiresIn;
   public getLoginPageError;
   public getLoginPagePending;
 
   constructor() {
     const selectAuthenticationState = createFeatureSelector<AuthenticationState>('authentication');
-    const selectAuthStatusState = createSelector(selectAuthenticationState, (state: AuthenticationState) => state.status);
+    const selectAuthenticationStatusState = createSelector(selectAuthenticationState, (state: AuthenticationState) => state.status);
     const selectLoginPageState = createSelector(selectAuthenticationState, (state: AuthenticationState) => state.loginPage);
     
-    this.getLoggedIn = createSelector(selectAuthStatusState, (state: StatusState) => state.loggedIn);
-    this.getUser = createSelector(selectAuthStatusState, (state: StatusState) => state.user);
+    this.getLoggedIn = createSelector(selectAuthenticationStatusState, (state: StatusState) => state.loggedIn);
+    this.getUser = createSelector(selectAuthenticationStatusState, (state: StatusState) => state.user);
+    this.getTokenExpiresIn = createSelector(selectAuthenticationStatusState, (state: StatusState) => state.tokenExpiresIn);
     this.getLoginPageError = createSelector(selectLoginPageState, (state: LoginPageState) => state.error);
     this.getLoginPagePending = createSelector(selectLoginPageState, (state: LoginPageState) => state.pending);
   }

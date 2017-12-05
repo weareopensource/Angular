@@ -1,5 +1,5 @@
 import { HttpModule } from '@angular/http';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AppComponent, HomeComponent, NotFoundComponent } from './components';
@@ -20,11 +20,15 @@ import {
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
-import { StoreModule } from '@ngrx/store';
-import { coreReducer } from './store';
-import { CoreSelectors } from './services';
+import { Store, StoreModule } from '@ngrx/store';
+import { coreReducers } from './store';
+import { MenuItem } from './models';
+import { APP_INITIALIZER } from '@angular/core';
+import { CoreInitialisation, CoreSelectors } from './services';
 
- export const COMPONENTS = [
+const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
+
+export const COMPONENTS = [
   AppComponent,
   HomeComponent,
   NotFoundComponent
@@ -43,6 +47,10 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatListModule
  ];
+ 
+function initialisationFactory(coreConfiguration, configuration) {
+  return () => coreConfiguration.addMenuItem(configuration) ;
+}
 
 @NgModule({
   imports: [
@@ -59,10 +67,15 @@ const MATERIAL_MODULES = [
   exports: COMPONENTS,
 })
 export class CoreModule {
-  static forRoot() {
+  static forRoot(configuration: MenuItem[]) {
     return {
       ngModule: RootCoreModule,
-      providers: [ CoreSelectors ]
+      providers: [
+        CoreInitialisation,
+        CoreSelectors,
+        { provide: CORE_CONFIGURATION, useValue: configuration },        
+        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [CoreInitialisation, CORE_CONFIGURATION], multi: true }
+      ]
     };
   }
 }
@@ -71,7 +84,7 @@ export class CoreModule {
   imports: [
     CoreModule,
     CoreRoutingModule,
-    StoreModule.forFeature('core', coreReducer)
+    StoreModule.forFeature('core', coreReducers)
   ]
 })
 export class RootCoreModule { }
