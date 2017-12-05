@@ -3,7 +3,7 @@ import {
   MetaReducer,
   StoreModule} from '@ngrx/store';
 import { environment } from 'environments/environment';
-// import { storeFreeze } from 'ngrx-store-freeze';
+import { storeFreeze } from 'ngrx-store-freeze';
 import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStoreModule } from './router-store.module';
@@ -23,7 +23,7 @@ function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
 }
   
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
-  ? [logger, /*storeFreeze*/]
+  ? [logger, storeFreeze]
   : [];
 
 @NgModule({

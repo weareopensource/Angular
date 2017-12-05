@@ -1,9 +1,19 @@
 import * as AuthenticationAction from './authentication.actions';
 import { User } from '../models';
-import { StatusState, LoginPageState } from './authentication.interfaces';
-import { initialStatusState, initialLoginPageState } from './authentication.init';
+import { StatusState, LoginPageState, AuthenticationState } from './authentication.interfaces';
 
-export function statusReducer(state = initialStatusState, action: AuthenticationAction.Actions): StatusState {
+const initialStatusState: StatusState = {
+  loggedIn: false,
+  user: null,
+  tokenExpiresIn: null
+};
+
+const initialLoginPageState: LoginPageState = {
+  error: null,
+  pending: false,
+};
+
+function statusReducer(state = initialStatusState, action: AuthenticationAction.Actions): StatusState {
   switch (action.type) {
     case AuthenticationAction.LOAD_USER:
     case AuthenticationAction.LOGIN_SUCCESS: {
@@ -23,7 +33,7 @@ export function statusReducer(state = initialStatusState, action: Authentication
   }
 }
   
-export function loginPageReducer(state = initialLoginPageState, action: AuthenticationAction.Actions): LoginPageState {
+function loginPageReducer(state = initialLoginPageState, action: AuthenticationAction.Actions): LoginPageState {
   switch (action.type) {
     case AuthenticationAction.LOGIN: {
       return {
