@@ -20,11 +20,9 @@ export class FeatureModule { }
 // For lazy loading only
 @NgModule({
   imports: [
-    CommonModule,
+    FeatureModule,
     FeatureRoutingModule
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS,
   providers: []
 })
 export class RootFeatureModule { }

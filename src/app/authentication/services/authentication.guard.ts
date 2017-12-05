@@ -22,12 +22,10 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     const currentUrl = route.url[0].path;
-    console.log('canActivate')
     return this.hasPermission(currentUrl);
   }
 
   canLoad(route: Route): Observable<boolean>|Promise<boolean>|boolean {
-    console.log('canLoad')
     const currentUrl = route.path;
     return this.hasPermission(currentUrl);
   }
