@@ -10,7 +10,9 @@ function initialisationFactory(coreConfiguration, configuration) {
 }
 
 @NgModule({
-  imports: [ StoreModule.forFeature('core', coreReducers) ]
+  imports: [
+    StoreModule.forFeature('core', coreReducers)
+  ]
 })
 export class CoreStoreModule {
   public static configure(configuration: MenuItem[]) {
