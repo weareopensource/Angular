@@ -9,15 +9,15 @@ import { Observable } from 'rxjs/Observable';
 import { AuthenticationComponent } from '../components/authentication';
 import * as AuthenticationActions from '../store/authentication.actions';
 import { AuthenticationState } from '../store';
-import { AuthenticationSelectors } from './authentication.selectors';
-import { AppSelectors } from 'app/store';
+import { AuthenticationSelectors } from '../store';
+import { RouterSelectors } from 'app/router-store.module';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate, CanLoad {
   constructor(
     private store: Store<AuthenticationState>,
     private router: Router,
-    private appSelectors: AppSelectors,
+    private appSelectors: RouterSelectors,
     private authenticationSelectors: AuthenticationSelectors) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {

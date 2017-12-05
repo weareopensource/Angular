@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import * as AuthenticationActions from '../../store/authentication.actions';
 import { AuthenticationState } from '../../store';
-import { AuthenticationSelectors } from '../../services';
+import { AuthenticationSelectors } from '../../store';
 import { Store } from '@ngrx/store';
 import { Authenticate } from '../../models';
 

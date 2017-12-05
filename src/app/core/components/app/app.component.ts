@@ -12,10 +12,10 @@ import {
   transition
 } from '@angular/animations';
 import { startWith } from 'rxjs/operators/startWith';
-import { AppState } from 'app/store';
+import { CoreState } from '../../store';
 import { Router } from '@angular/router';
-import { CoreSelectors } from '../../services';
-import { AuthenticationSelectors } from 'app/authentication/services';
+import { CoreSelectors } from '../../store';
+import { AuthenticationSelectors } from 'app/authentication/store';
 import { values } from 'lodash';
 
 @Component({
@@ -47,7 +47,7 @@ export class AppComponent {
   constructor(
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private store: Store<AppState>,
+    private store: Store<CoreState>,
     private router: Router,
     private authenticationSelectors: AuthenticationSelectors,
     private coreSelectors: CoreSelectors,

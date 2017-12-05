@@ -4,7 +4,7 @@ import { CoreState } from "../store";
 import { Store } from "@ngrx/store";
 
 @Injectable()
-export class CoreInitialisation {
+export class CoreInitialization {
   constructor(private store: Store<CoreState>) { }
   
   public addMenuItem(configuration) {

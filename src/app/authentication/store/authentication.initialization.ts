@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as AuthenticationActions from '../store/authentication.actions';
-import { AuthenticationState } from '../store';
+import * as AuthenticationActions from './authentication.actions';
+import { AuthenticationState } from './authentication.interfaces';
 
 @Injectable()
-export class AuthenticationInitialisation  {
+export class AuthenticationInitialization  {
   constructor(private store: Store<AuthenticationState>) { }
 
   loadUser() {
-    const tokenExpiresIn = parseInt(sessionStorage.getItem('tokenExpiresIn'), 10);
+    const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (tokenExpiresIn) {
       if (tokenExpiresIn < Date.now()) {

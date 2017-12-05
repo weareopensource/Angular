@@ -24,9 +24,6 @@ import { Store, StoreModule } from '@ngrx/store';
 import { coreReducers } from './store';
 import { MenuItem } from './models';
 import { APP_INITIALIZER } from '@angular/core';
-import { CoreInitialisation, CoreSelectors } from './services';
-
-const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
 
 export const COMPONENTS = [
   AppComponent,
@@ -47,10 +44,6 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatListModule
  ];
- 
-function initialisationFactory(coreConfiguration, configuration) {
-  return () => coreConfiguration.addMenuItem(configuration) ;
-}
 
 @NgModule({
   imports: [
@@ -67,24 +60,17 @@ function initialisationFactory(coreConfiguration, configuration) {
   exports: COMPONENTS,
 })
 export class CoreModule {
-  static forRoot(configuration: MenuItem[]) {
+  public static forRoot() {
     return {
       ngModule: RootCoreModule,
-      providers: [
-        CoreInitialisation,
-        CoreSelectors,
-        { provide: CORE_CONFIGURATION, useValue: configuration },        
-        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [CoreInitialisation, CORE_CONFIGURATION], multi: true }
-      ]
-    };
+    }
   }
 }
 
 @NgModule({
   imports: [
     CoreModule,
-    CoreRoutingModule,
-    StoreModule.forFeature('core', coreReducers)
+    CoreRoutingModule
   ]
 })
 export class RootCoreModule { }

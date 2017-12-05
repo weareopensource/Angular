@@ -14,10 +14,9 @@ import { environment } from 'environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { appReducer, metaReducers, CustomSerializer, AppSelectors } from 'app/store';
 import { AppComponent } from './core/components';
 import { SharedModule } from 'app/shared/shared.module';
-import { featureConfiguration } from 'app/feature/configuration';
+import { AppStoreModule } from './app-store.module';
 
 @NgModule({
   imports: [
@@ -25,20 +24,12 @@ import { featureConfiguration } from 'app/feature/configuration';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot(appReducer, { metaReducers }),
-    EffectsModule.forRoot([]),    
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule,
     // DBModule.provideDB(schema),
     SharedModule,
+    AppStoreModule,
     AuthenticationModule.forRoot(),
-    CoreModule.forRoot([
-      featureConfiguration.core,
-    ]),
-  ],
-  providers: [
-    { provide: RouterStateSerializer, useClass: CustomSerializer },
-    AppSelectors
+    CoreModule.forRoot(),
   ],
   bootstrap: [ AppComponent ]
 })

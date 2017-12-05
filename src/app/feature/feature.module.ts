@@ -18,7 +18,6 @@ const COMPONENTS = [
 })
 export class FeatureModule { }
 
-// For lazy loading only
 @NgModule({
   imports: [
     FeatureModule,
