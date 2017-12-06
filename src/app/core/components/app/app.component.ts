@@ -70,9 +70,8 @@ export class AppComponent {
     this.menuItems$ = Observable.combineLatest(
       menuItems$,
       user$,
-      (menuItems, user) => values(menuItems).filter(menuItem => isEmpty(difference(user.roles, menuItem.roles))))
-    .filter(menuItems => !isEmpty(menuItems))
-    .do(console.log);
+      (menuItems, user) => values(menuItems).filter(menuItem => user && !isEmpty(difference(menuItem.roles, user.roles))))
+    .filter(menuItems => !isEmpty(menuItems));
   }
 
   public openSidenav() {

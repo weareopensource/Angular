@@ -8,6 +8,6 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./feature.component.scss']
 })
 export class FeatureComponent {
-  public greeting$ = this.store.select(this.featureSelectors.getGreeting)
+  public greetings$ = this.store.select(this.featureSelectors.getGreetings)
   constructor(private store: Store<FeatureState>, private featureSelectors: FeatureSelectors) {}
 }

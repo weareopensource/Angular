@@ -4,14 +4,20 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FeatureRoutingModule } from './feature-routing.module';
 import { featureConfiguration } from './configuration';
+import { MatCardModule } from '@angular/material';
 
 const COMPONENTS = [
   FeatureComponent
 ];
 
+const MATERIAL_MODULES = [
+  MatCardModule
+];
+
 @NgModule({
   imports: [
     CommonModule,
+    ...MATERIAL_MODULES
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

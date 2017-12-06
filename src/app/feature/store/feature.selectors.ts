@@ -4,12 +4,12 @@ import { FeatureState } from './feature.interfaces';
 
 @Injectable()
 export class FeatureSelectors {
-  public getGreeting;
+  public getGreetings;
   constructor() {
     const getFeatureState = createFeatureSelector<FeatureState>('feature');
-    this.getGreeting = createSelector(
+    this.getGreetings = createSelector(
       getFeatureState,
-      (state: FeatureState) => state.greeting
+      (state: FeatureState) => state.greetings
     );
   }
 }

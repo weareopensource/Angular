@@ -2,7 +2,7 @@ import { NgModule, APP_INITIALIZER, InjectionToken } from '@angular/core';
 import { FeatureInitialization, FeatureSelectors, featureReducer } from './store';
 import { StoreModule } from '@ngrx/store';
 
-const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
+const FEATURE_CONFIGURATION = new InjectionToken('FEATURE_CONFIGURATION');
 
 function initialisationFactory(coreInitialization, configuration) {
   return () => coreInitialization.initGreetings(configuration.greetings) ;
@@ -10,7 +10,7 @@ function initialisationFactory(coreInitialization, configuration) {
 
 @NgModule({
   imports: [
-    StoreModule.forFeature('core', featureReducer)
+    StoreModule.forFeature('feature', featureReducer)
   ]
 })
 export class FeatureStoreModule {
@@ -20,8 +20,8 @@ export class FeatureStoreModule {
       providers: [
         FeatureInitialization,
         FeatureSelectors,
-        { provide: CORE_CONFIGURATION, useValue: configuration },        
-        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [FeatureInitialization, CORE_CONFIGURATION], multi: true }    
+        { provide: FEATURE_CONFIGURATION, useValue: configuration },        
+        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [FeatureInitialization, FEATURE_CONFIGURATION], multi: true }    
       ]
     };
   }

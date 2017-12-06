@@ -15,6 +15,6 @@ export const featureConfiguration: FeatureConfiguration = {
   },
   self: {
     roles: ['user', 'admin'],
-    greetings: 'Hello from feature' 
+    greetings: 'Hello from feature !!!!!!!' 
   }
 };
