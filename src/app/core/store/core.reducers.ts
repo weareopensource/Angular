@@ -1,36 +1,20 @@
 import * as CoreActions from './core.actions';
 import { CoreState, CoreShowSidenavState, CoreMenuItemsState } from './core.interfaces';
+import { keyBy } from 'lodash';
 
-const initialCoreMenuItemsState: CoreMenuItemsState = {
-  'home': {
-    link: '/home',
-    name: 'Home',
-    icon: 'action:ic_home_24px',
-    roles:['user', 'admin']
-  },
-  'test': {
-    link: '/test',
-    name: 'Test',
-    icon: 'action:ic_pan_tool_24px',
-    roles:['user', 'admin']
-  }
-}
-
-function coreMenuItemsReducer(state = initialCoreMenuItemsState, action: CoreActions.Actions): CoreMenuItemsState {
+function coreMenuItemsReducer(state: CoreMenuItemsState = {}, action: CoreActions.Actions): CoreMenuItemsState {
   switch (action.type) {
-    case CoreActions.ADD_MENU_ITEM:
+    case CoreActions.ADD_MENU_ITEMS:
       return {
         ...state,
-        [action.payload.name.toLowerCase()]: action.payload
+        ...keyBy(action.payload, 'order')
       };
     default:
       return state;
   }
-} 
+}
 
-const initialShowSidenavState: CoreShowSidenavState = false;
-
-function coreShowSidenavReducer(state = initialShowSidenavState, action: CoreActions.Actions): CoreShowSidenavState
+function coreShowSidenavReducer(state: CoreShowSidenavState = false, action: CoreActions.Actions): CoreShowSidenavState
  {
   switch (action.type) {
     case CoreActions.CLOSE_SIDENAV:

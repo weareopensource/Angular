@@ -1,16 +1,19 @@
+import { NgModule } from '@angular/core';
 import {
   ActionReducer,
   MetaReducer,
   StoreModule} from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';  
 import { environment } from 'environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStoreModule } from './router-store.module';
 import { AuthenticationStoreModule } from './authentication/authentication-store.module';
 import { CoreStoreModule } from './core/core-store.module';
+
 import { featureConfiguration } from 'app/feature/configuration';
-import { EffectsModule } from '@ngrx/effects';
+import { coreConfiguration } from 'app/core/configuration';
+import { FeatureStoreModule } from 'app/feature/feature-store.module';
 
 export interface AppState {}
 
@@ -33,7 +36,11 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RouterStoreModule,
     AuthenticationStoreModule,
-    CoreStoreModule.configure([featureConfiguration.core])
+    CoreStoreModule.configure([
+      featureConfiguration.core,
+    ...coreConfiguration.self
+    ]),
+    FeatureStoreModule.configure(featureConfiguration.self)
     // DBModule.provideDB(schema),
   ]
 })

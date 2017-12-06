@@ -4,6 +4,8 @@ import { MatIconRegistry } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as CoreActions from '../../store/core.actions';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/operator/combineLatest';
+import 'rxjs/add/operator/filter';
 import {
   trigger,
   state,
@@ -16,7 +18,8 @@ import { CoreState } from '../../store';
 import { Router } from '@angular/router';
 import { CoreSelectors } from '../../store';
 import { AuthenticationSelectors } from 'app/authentication/store';
-import { values } from 'lodash';
+import { values, difference, isEmpty } from 'lodash';
+import { MenuItem } from '../../models';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +44,8 @@ export class AppComponent {
   }
 
   public isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);
-  public menuItems$ = this.store.select(this.coreSelectors.getMenuItems).map(menuItems => values(menuItems));
+
+  public menuItems$: Observable<MenuItem[]>;
   public isLoggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn);
 
   constructor(
@@ -60,6 +64,17 @@ export class AppComponent {
     mdIconRegistry.addSvgIcon('file-image', sanitizer.bypassSecurityTrustResourceUrl(`assets/file.svg`));
   }
 
+  ngOnInit() {
+    const menuItems$ = this.store.select(this.coreSelectors.getMenuItems);
+    const user$ = this.store.select(this.authenticationSelectors.getUser);
+    this.menuItems$ = Observable.combineLatest(
+      menuItems$,
+      user$,
+      (menuItems, user) => values(menuItems).filter(menuItem => isEmpty(difference(user.roles, menuItem.roles))))
+    .filter(menuItems => !isEmpty(menuItems))
+    .do(console.log);
+  }
+
   public openSidenav() {
     this.store.dispatch(new CoreActions.OpenSidenav());
   }
@@ -67,5 +82,4 @@ export class AppComponent {
   public closeSidenav() {
     this.store.dispatch(new CoreActions.CloseSidenav());
   }
-
 }

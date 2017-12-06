@@ -7,7 +7,7 @@ import { Store } from "@ngrx/store";
 export class CoreInitialization {
   constructor(private store: Store<CoreState>) { }
   
-  public addMenuItem(configuration) {
-    configuration.forEach(configuration => this.store.dispatch(new CoreActions.AddMenuItem(configuration)));
+  public addMenuItems(configuration) {
+    this.store.dispatch(new CoreActions.AddMenuItems(configuration));
   }
 }

@@ -7,12 +7,14 @@ export interface FeatureConfiguration {
 
 export const featureConfiguration: FeatureConfiguration = {
   core: {
+    order: 3,
     link: '/feature',
     name: 'Feature',
     icon: 'content:ic_add_24px',
     roles: ['user', 'admin'],
   },
   self: {
-    roles: ['user', 'admin'],  
+    roles: ['user', 'admin'],
+    greetings: 'Hello from feature' 
   }
 };
