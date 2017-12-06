@@ -1,11 +1,11 @@
 import { Injectable, Inject } from "@angular/core";
-import * as CoreActions from "../store/feature.actions";
-import { FeatureState } from "../store";
+import * as CoreActions from "../store/article.actions";
+import { ArticleState } from "../store";
 import { Store } from "@ngrx/store";
 
 @Injectable()
-export class FeatureInitialization {
-  constructor(private store: Store<FeatureState>) { }
+export class ArticleInitialization {
+  constructor(private store: Store<ArticleState>) { }
   
   public initGreetings(configuration) {
     this.store.dispatch(new CoreActions.InitGreetings(configuration));

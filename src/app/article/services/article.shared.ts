@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class FeatureShared {
+export class ArticleShared {
   log(message) {
     console.log(message);
   }

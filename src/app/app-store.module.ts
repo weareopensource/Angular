@@ -11,9 +11,9 @@ import { RouterStoreModule } from './router-store.module';
 import { AuthenticationStoreModule } from './authentication/authentication-store.module';
 import { CoreStoreModule } from './core/core-store.module';
 
-import { featureConfiguration } from 'app/feature/configuration';
+import { articleConfiguration } from 'app/article/configuration';
 import { coreConfiguration } from 'app/core/configuration';
-import { FeatureStoreModule } from 'app/feature/feature-store.module';
+import { ArticleStoreModule } from 'app/article/article-store.module';
 
 export interface AppState {}
 
@@ -37,10 +37,10 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production
     RouterStoreModule,
     AuthenticationStoreModule,
     CoreStoreModule.configure([
-      featureConfiguration.core,
+      articleConfiguration.core,
     ...coreConfiguration.self
     ]),
-    FeatureStoreModule.configure(featureConfiguration.self)
+    ArticleStoreModule.configure(articleConfiguration.self)
     // DBModule.provideDB(schema),
   ]
 })

@@ -1,13 +1,13 @@
-import { FeatureComponent } from './components';
+import { ArticleComponent } from './components';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FeatureRoutingModule } from './feature-routing.module';
-import { featureConfiguration } from './configuration';
+import { ArticleRoutingModule } from './article-routing.module';
+import { articleConfiguration } from './configuration';
 import { MatCardModule } from '@angular/material';
 
 const COMPONENTS = [
-  FeatureComponent
+  ArticleComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -22,13 +22,13 @@ const MATERIAL_MODULES = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
-export class FeatureModule { }
+export class ArticleModule { }
 
 @NgModule({
   imports: [
-    FeatureModule,
-    FeatureRoutingModule//.withRoles(featureConfiguration.feature.roles)
+    ArticleModule,
+    ArticleRoutingModule//.withRoles(articleConfiguration.article.roles)
   ],
   providers: []
 })
-export class RootFeatureModule { }
+export class RootArticleModule { }

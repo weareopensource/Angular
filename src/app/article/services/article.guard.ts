@@ -8,7 +8,7 @@ import { difference } from 'lodash';
 import { AuthenticationSelectors } from 'app/authentication/store';
 
 @Injectable()
-export class FeatureGuard implements CanActivate {
+export class ArticleGuard implements CanActivate {
   constructor(
     private store: Store<any>,
     private router: Router,

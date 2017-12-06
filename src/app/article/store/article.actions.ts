@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-export const INIT_GREETINGS = '[Feature] Init Greeting';
+export const INIT_GREETINGS = '[Article] Init Greeting';
 
 export class InitGreetings implements Action {
   readonly type = INIT_GREETINGS;
