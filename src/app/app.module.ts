@@ -26,7 +26,7 @@ import { AppStoreModule } from './app-store.module';
     HttpClientModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // DBModule.provideDB(schema),
-    SharedModule,
+    SharedModule.forRoot(),
     AppStoreModule,
     AuthenticationModule.forRoot(),
     CoreModule.forRoot(),

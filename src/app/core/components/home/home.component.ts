@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FeatureShared } from 'app/feature/services';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  constructor(private featureShared: FeatureShared) {
+    featureShared.log(`let's do some usefull stuff`);
+  }
 }

@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FeatureShared } from 'app/feature/services';
 
 const COMPONENTS = [
   Mean2DrawerContainer,
@@ -37,4 +38,13 @@ const MATERIAL_MODULES = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
-export class SharedModule { }
+export class SharedModule {
+  public static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        FeatureShared
+      ]
+    }
+  }
+}
