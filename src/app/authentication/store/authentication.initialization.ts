@@ -14,8 +14,7 @@ export class AuthenticationInitialization  {
       if (tokenExpiresIn < Date.now()) {
         this.store.dispatch(new AuthenticationActions.LoadUser({ user, tokenExpiresIn }));
       } else {
-        sessionStorage.removeItem('tokenExpiresIn');
-        sessionStorage.removeItem('user');
+        this.store.dispatch(new AuthenticationActions.Logout());        
       }
     }
   }

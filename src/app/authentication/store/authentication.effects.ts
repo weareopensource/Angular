@@ -45,8 +45,8 @@ export class AuthenticationEffects {
     .ofType(AuthenticationActions.LOGOUT)
     .map(toPayload)
     .do((message) => {
+      sessionStorage.removeItem('tokenExpiresIn');      
       sessionStorage.removeItem('user');
-      sessionStorage.removeItem('tokenExpiresIn');
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
         data: message || 'Logout',
