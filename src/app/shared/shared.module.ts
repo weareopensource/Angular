@@ -1,3 +1,8 @@
+import { UploadImagesComponent, ListImagesComponent, AudioComponent } from './components';
+import { DropFilesDirective } from './directives';
+import { UploadImagesService, FileDatabase, FileDataSource } from './services';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxGalleryModule } from 'ngx-gallery';
 import {
   Mean2Sidenav,
   Mean2DrawerContainer,
@@ -9,12 +14,18 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatIconModule,
-  MatTooltipModule } from '@angular/material';
-import { RouterModule } from '@angular/router';
+  MatTooltipModule,
+  MatButtonModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatDialogModule,
+  MatCardModule
+} from '@angular/material';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { ArticleShared } from 'app/article/services';
+import { CommandSelectors } from 'app/command/store';
+import { CommandApi } from 'app/command/services';
+
 
 const COMPONENTS = [
   Mean2DrawerContainer,
@@ -22,29 +33,46 @@ const COMPONENTS = [
   Mean2DrawerContent,
   Mean2SidenavContainer,
   Mean2Sidenav,
-  Mean2SidenavContent
+  Mean2SidenavContent,
+  UploadImagesComponent,
+  ListImagesComponent,
+  AudioComponent
+];
+
+const DIRECTIVES = [ DropFilesDirective ];
+
+const PROVIDERS = [
+  UploadImagesService,
+  FileDatabase,
+  FileDataSource
 ];
 
 const MATERIAL_MODULES = [
   MatIconModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatButtonModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatDialogModule,
+  MatCardModule
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     ...MATERIAL_MODULES,
+    FlexLayoutModule,
+    NgxGalleryModule
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS,
+  declarations: [ ...COMPONENTS, ...DIRECTIVES ],
+  exports: [ ...COMPONENTS, ...DIRECTIVES ],
 })
 export class SharedModule {
-  public static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [
-        ArticleShared
-      ]
+      providers: PROVIDERS
     }
   }
 }

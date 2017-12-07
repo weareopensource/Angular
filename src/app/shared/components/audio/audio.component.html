@@ -1,0 +1,26 @@
+<audio #audio controls>
+  <source #source type="audio/webm">
+</audio>
+<div *ngIf="state === 'stoped'">
+  <a #download mat-icon-button download="audio.webm">
+    <mat-icon svgIcon="file:ic_file_download_24px" matTooltip="save"></mat-icon>
+  </a>
+  <a #delete mat-icon-button download="audio.webm">
+    <mat-icon svgIcon="action:ic_delete_24px" matTooltip="delete"></mat-icon>
+  </a>
+</div>
+<br>
+<div *ngIf="state !== 'stoped'">
+  <button mat-icon-button (click)="start()" *ngIf="state === 'ready'">
+    <mat-icon svgIcon="av:ic_mic_24px" matTooltip="start recording"></mat-icon>
+  </button>
+  <button mat-icon-button (click)="pause()" *ngIf="state === 'recording'">
+    <mat-icon svgIcon="av:ic_pause_24px" matTooltip="pause recording"></mat-icon>
+  </button>
+  <button mat-icon-button (click)="resume()" *ngIf="state === 'paused'">
+    <mat-icon svgIcon="av:ic_mic_24px" matTooltip="resume recording"></mat-icon>
+  </button>
+  <button mat-icon-button (click)="stop()" [disabled]="state !== 'recording'" *ngIf="state === 'ready' || state === 'recording' || state === 'paused'">
+    <mat-icon svgIcon="av:ic_stop_24px" matTooltip="stop recording"></mat-icon>
+  </button>
+</div>

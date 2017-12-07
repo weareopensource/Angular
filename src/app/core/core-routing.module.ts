@@ -2,7 +2,6 @@ import { HomeComponent, NotFoundComponent } from './components';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuard } from './services';
-import { ArticleComponent } from '../article/components';
 import { AuthenticationGuard } from '../authentication/services';
 
 const coreRoutes: Routes = [
@@ -17,10 +16,10 @@ const coreRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'article',
+    path: 'command',
     canActivate: [ AuthenticationGuard ],
     canLoad: [ AuthenticationGuard ],
-    loadChildren: '../article/article.module#RootArticleModule'
+    loadChildren: '../command/command.module#RootCommandModule'
   },
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
   {

@@ -1,0 +1,13 @@
+
+<h3 [innerHtml]="'Selectionnez vos fichiers'"></h3>
+<div dropFiles
+  [ngClass]="{'file-over': isDropZoneOver}"
+  (fileOver)="fileOverDropZone($event)"
+  (fileDrop)="onFileDrop($event)"
+  [files]="files"
+  class="well drop-zone">
+  <h4 [innerHtml]="'Déposez vos fichiers ici'"></h4>
+  <mat-icon svgIcon="action:ic_note_add_24px"></mat-icon>
+</div>
+
+<app-list-images style="height: 300px; overflow: scroll"></app-list-images>

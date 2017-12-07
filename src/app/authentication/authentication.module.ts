@@ -2,7 +2,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent, LoginComponent, RegisterComponent, LoginSnackComponent } from './components';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationApi, AuthenticationInterceptor, AuthenticationGuard } from './services';
 import {
@@ -46,6 +46,7 @@ const MATERIAL_MODULES = [
     CommonModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
+    HttpClientModule,
     ReactiveFormsModule,
   ],
   declarations: [ ...COMPONENTS, ...DIRECTIVES ],

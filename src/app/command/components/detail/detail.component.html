@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>
+    <mat-icon svgIcon="navigation:ic_cancel_24px" matTooltip="close" (click)="close()"></mat-icon>
+  </mat-card-title>
+
+  <mat-tab-group class="demo-tab-group">
+    <mat-tab label="Vue">
+      <div class="tab-content">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <div contenteditable fxFlex="30">
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </div>
+          <div fxFlex="70">
+            <!--img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"-->
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery><br>
+            <mat-icon svgIcon="file:ic_attachment_24px"></mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Edition">
+      <div class="tab-content">
+        <app-edit></app-edit>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
