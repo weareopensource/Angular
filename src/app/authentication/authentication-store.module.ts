@@ -2,7 +2,6 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {
   AuthenticationSelectors,
   AuthenticationEffects,
-  AuthenticationActions,
   AuthenticationInitialization,
   authenticationReducers
  } from './store';
@@ -23,7 +22,6 @@ function initialisationFactory(authenticationInitialisation) {
   entryComponents: [LoginSnackComponent],  
   providers: [
     AuthenticationSelectors,
-    AuthenticationActions,
     AuthenticationInitialization,
     { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [AuthenticationInitialization], multi: true }        
     

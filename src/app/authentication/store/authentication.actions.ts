@@ -1,21 +1,11 @@
 import { Action } from '@ngrx/store';
 import { User, Authenticate } from '../models';
-import { Injectable } from '@angular/core';
 
 export const LOGIN = '[Auth] Login';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
 export const LOGOUT = '[Auth] Logout';
 export const LOAD_USER = '[Auth] Load User';
-
-@Injectable()
-export class AuthenticationActions {
-  public Login = LOGIN;
-  public LoginSuccess = LOGIN_SUCCESS;
-  public LoginFailure = LOGIN_FAILURE;
-  public Logout = LOGOUT;
-  public LoadUser = LOAD_USER;
-}
 
 export type Actions =
 | Login
