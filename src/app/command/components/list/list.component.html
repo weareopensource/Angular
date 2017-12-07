@@ -24,7 +24,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <mat-paginator #paginator
-    [length]="database.data.length"
+    [length]="dataLength$ | async"
     [pageIndex]="0"
     [pageSize]="25"
     [pageSizeOptions]="[5, 10, 25, 100]">

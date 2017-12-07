@@ -3,7 +3,6 @@ import {
   CommandsListComponent,
   CommandDeleteDialog,
   CommandEditComponent } from './components';
-import { CommandDatabase } from './services';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -68,7 +67,6 @@ export class CommandModule {}
   imports: [
     CommandModule,
     CommandRoutingModule
-  ],
-  providers: [ CommandDatabase ]
+  ]
 })
 export class RootCommandModule { }

@@ -1,6 +1,5 @@
 import { CommandDetailComponent } from '../detail';
 import { CommandDeleteDialog } from '../delete';
-import { CommandDatabase } from '../../services';
 import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -15,8 +14,10 @@ import { MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from 'app/shared/animations';
-import { CommandDatasource } from '../../services';
-
+import { CommandDatasource } from '../../models';
+import { Store } from '@ngrx/store';
+import { CommandSelectors, CommandState } from '../../store';
+import { values } from 'lodash';
 /**
  * @title Table with filtering
  */
@@ -27,9 +28,11 @@ import { CommandDatasource } from '../../services';
   animations: [ routerTransition ]
 })
 export class CommandsListComponent implements OnInit {
-  displayedColumns = ['id', 'title', 'action'];
-  dataSource: CommandDatasource | null;
-
+  public displayedColumns = ['id', 'title', 'action'];
+  public dataSource: CommandDatasource | null;
+  public database$ = this.store.select(this.commandSelectors.getHandledCommands);
+  public dataLength$ = this.database$.map(commands => commands.length);
+  
   @ViewChild('filter') filter: ElementRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,17 +41,18 @@ export class CommandsListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-    private database: CommandDatabase ) { }
+    private store: Store<CommandState>,
+    private commandSelectors: CommandSelectors) { }
 
   ngOnInit() {
-    console.log("DATABAAAAAAASE", this.database.data)
-    this.dataSource = new CommandDatasource(this.database, this.sort, this.paginator);
-
+    this.dataSource = new CommandDatasource(this.database$, this.sort, this.paginator);
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
       .debounceTime(150)
       .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSource) { return; }
+      .subscribe(() => {        
+        if (!this.dataSource) {
+          return;
+        }
         this.dataSource.filter = this.filter.nativeElement.value;
       });
   }
