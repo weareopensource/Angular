@@ -34,6 +34,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     }
 
     return this.tokenExpiresIn$
+    .first()
     .switchMap(tokenExpiresIn => {
       if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
         this.store.dispatch(new AuthenticationActions.Logout('Token Expired'));
