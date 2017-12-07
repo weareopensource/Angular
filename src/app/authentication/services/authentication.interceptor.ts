@@ -33,8 +33,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
-    return Observable.of()
-    .withLatestFrom(this.tokenExpiresIn$)
+    return this.tokenExpiresIn$
     .switchMap(tokenExpiresIn => {
       if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
         this.store.dispatch(new AuthenticationActions.Logout('Token Expired'));
