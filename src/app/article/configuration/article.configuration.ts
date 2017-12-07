@@ -15,6 +15,6 @@ export const articleConfiguration: ArticleConfiguration = {
   },
   self: {
     roles: ['user', 'admin'],
-    greetings: 'Hello from article !!!!!!!' 
+    greetings: 'Hello from article' 
   }
 };
