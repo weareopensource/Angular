@@ -1,11 +1,11 @@
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { difference } from 'lodash';
 import { AuthenticationSelectors } from 'app/authentication/store';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
+import { take } from 'rxjs/operators/take';
+import { difference } from 'lodash';
 
 @Injectable()
 export class CoreGuard implements CanActivate {
@@ -15,16 +15,19 @@ export class CoreGuard implements CanActivate {
     private authenticationSelectors: AuthenticationSelectors) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {
-    return this.store
-      .select(this.authenticationSelectors.getUser)
-      .map(user => {
-        const expectedRoles = route.data.expectedRoles;
-        if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
-          this.router.navigate(['/', 'auth']);
-          return false;
-        }
-        return true;
-      })
-      .take(1);
+    return this.store.select(this.authenticationSelectors.getUser)
+      .pipe(
+        map(user => this.hasExpectedRoles(user, route)),
+        take(1)
+      );
+  }
+
+  hasExpectedRoles(user, route) {
+    const expectedRoles = route.data.expectedRoles;
+    if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
+      this.router.navigate(['/', 'auth']);
+      return false;
+    }
+    return true;
   }
 }

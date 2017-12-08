@@ -1,11 +1,9 @@
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/map';
-import "rxjs/add/observable/zip";
-import "rxjs/add/observable/combineLatest";
+import { combineLatest } from "rxjs/observable/combineLatest";
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanLoad, Route } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { first } from 'rxjs/operators/first';
 import { AuthenticationComponent } from '../components/authentication';
 import * as AuthenticationActions from '../store/authentication.actions';
 import { AuthenticationState } from '../store';
@@ -31,7 +29,7 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
   }
 
   hasPermission(path: string) {
-    return Observable.combineLatest(
+    return combineLatest(
       this.store.select(this.authenticationSelectors.getLoggedIn),
       this.store.select(this.authenticationSelectors.getTokenExpiresIn),
       (loggedIn, tokenExpiresIn) => {
@@ -59,7 +57,6 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
             return false;
           }
         }
-      })
-    .first();
+      }).pipe(first());
   }
 }

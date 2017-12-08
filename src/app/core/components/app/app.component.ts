@@ -1,11 +1,7 @@
 import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { Store } from '@ngrx/store';
-import * as CoreActions from '../../store/core.actions';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/operator/combineLatest';
-import 'rxjs/add/operator/filter';
+import { Router } from '@angular/router';
 import {
   trigger,
   state,
@@ -13,12 +9,15 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { combineLatest } from 'rxjs/operators/combineLatest';
 import { startWith } from 'rxjs/operators/startWith';
+import { values, difference, isEmpty } from 'lodash';
+import * as CoreActions from '../../store/core.actions';
 import { CoreState } from '../../store';
-import { Router } from '@angular/router';
 import { CoreSelectors } from '../../store';
 import { AuthenticationSelectors } from 'app/authentication/store';
-import { values, difference, isEmpty } from 'lodash';
 import { MenuItem } from '../../models';
 
 @Component({
@@ -43,9 +42,8 @@ export class AppComponent {
     event.preventDefault();
   }
 
+  public menuItems$;
   public isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);
-
-  public menuItems$: Observable<MenuItem[]>;
   public isLoggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn);
 
   constructor(
@@ -65,13 +63,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    const menuItems$ = this.store.select(this.coreSelectors.getMenuItems);
+    const items$ = this.store.select(this.coreSelectors.getMenuItems);
     const user$ = this.store.select(this.authenticationSelectors.getUser);
-    this.menuItems$ = Observable.combineLatest(
-      menuItems$,
+    this.menuItems$ = combineLatest(
+      items$,
       user$,
-      (menuItems, user) => values(menuItems).filter(menuItem => user && !isEmpty(difference(menuItem.roles, user.roles))))
-    .filter(menuItems => !isEmpty(menuItems));
+      (items, user) => values(items)
+        .filter(item => user && !isEmpty(difference(item.roles, user.roles)))
+        .filter(items => !isEmpty(items))
+    );
   }
 
   public openSidenav() {

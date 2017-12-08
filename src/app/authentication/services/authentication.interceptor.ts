@@ -7,14 +7,13 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { empty } from 'rxjs/observable/empty';
+import { _throw } from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators/catchError';
 import * as AuthenticationActions from '../store/authentication.actions';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/withLatestFrom';
 import { AuthenticationState, AuthenticationSelectors } from '../store';
 import { isEmpty } from 'lodash';
 
@@ -38,17 +37,18 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     .switchMap(tokenExpiresIn => {
       if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
         this.store.dispatch(new AuthenticationActions.Logout('Token Expired'));
-        return Observable.empty();
+        return empty();
       }
       return next
-      .handle(request)
-      .catch(error => {
-        if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
-          this.store.dispatch(new AuthenticationActions.Logout('Unauthorized Operation'));
-          return Observable.empty();
-        }
-        return Observable.throw(error);              
-      });
+      .handle(request).pipe(
+        catchError(error => {
+          if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
+            this.store.dispatch(new AuthenticationActions.Logout('Unauthorized Operation'));
+            return empty();
+          }
+          return _throw(error);            
+        })
+      )
     });
   }
 }
