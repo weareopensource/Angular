@@ -1,6 +1,8 @@
 import { NgModule, APP_INITIALIZER, InjectionToken } from '@angular/core';
-import { CoreInitialization, CoreSelectors, coreReducers } from './store';
-import { MenuItem } from './models';
+import { CoreInitializationService } from './store/core.initialization.service';
+import { CoreSelectorsService } from './store/core.selectors.service';
+import { coreReducers } from './store/core.reducers';
+import { MenuItem } from './models/menu.item';
 import { StoreModule } from '@ngrx/store';
 
 const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
@@ -19,10 +21,10 @@ export class CoreStoreModule {
     return {
       ngModule: CoreStoreModule,
       providers: [
-        CoreInitialization,
-        CoreSelectors,
+        CoreInitializationService,
+        CoreSelectorsService,
         { provide: CORE_CONFIGURATION, useValue: configuration },        
-        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [CoreInitialization, CORE_CONFIGURATION], multi: true }    
+        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [CoreInitializationService, CORE_CONFIGURATION], multi: true }    
       ]
     };
   }

@@ -2,7 +2,9 @@ import { HttpModule } from '@angular/http';
 import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AppComponent, HomeComponent, NotFoundComponent } from './components';
+import { AppComponent } from './components/app/app.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CoreRoutingModule } from './core-routing.module';
 import {
   MatButtonModule,
@@ -19,10 +21,10 @@ import {
  } from '@angular/material';
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthenticationModule } from 'app/authentication/authentication.module';
+import { AuthenticationModule } from 'app/authentication';
 import { Store, StoreModule } from '@ngrx/store';
-import { coreReducers } from './store';
-import { MenuItem } from './models';
+import { coreReducers } from './store/core.reducers';
+import { MenuItem } from './models/menu.item';
 import { APP_INITIALIZER } from '@angular/core';
 
 export const COMPONENTS = [

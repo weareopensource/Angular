@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './components';
-import { AuthenticationGuard } from './services';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { AuthenticationGuardService } from './services/authentication.guard.service';
 
 const authRoutes: Routes = [{
   path: 'auth',
   component: AuthenticationComponent,
-  canActivate: [ AuthenticationGuard ]
+  canActivate: [ AuthenticationGuardService ]
 }];
 
 @NgModule({
@@ -14,7 +14,7 @@ const authRoutes: Routes = [{
     RouterModule.forChild(authRoutes)
   ],
   providers: [
-    AuthenticationGuard,
+    AuthenticationGuardService,
   ]
 })
 export class AuthenticationRoutingModule {}

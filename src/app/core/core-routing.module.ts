@@ -1,8 +1,9 @@
-import { HomeComponent, NotFoundComponent } from './components';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoreGuard } from './services';
-import { AuthenticationGuard } from '../authentication/services';
+import { CoreGuardService } from './services/core.guard.service';
+import { AuthenticationGuardService } from 'app/authentication';
 
 const coreRoutes: Routes = [
   {
@@ -12,13 +13,13 @@ const coreRoutes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [ AuthenticationGuard ],
+    canActivate: [ AuthenticationGuardService ],
     component: HomeComponent
   },
   {
     path: 'command',
-    canActivate: [ AuthenticationGuard ],
-    canLoad: [ AuthenticationGuard ],
+    canActivate: [ AuthenticationGuardService ],
+    canLoad: [ AuthenticationGuardService ],
     loadChildren: '../command/command.module#RootCommandModule'
   },
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
@@ -35,6 +36,6 @@ const coreRoutes: Routes = [
   imports: [
     RouterModule.forRoot(coreRoutes)
   ],
-  providers: [ CoreGuard ]
+  providers: [ CoreGuardService ]
 })
 export class CoreRoutingModule { }

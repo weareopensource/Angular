@@ -12,7 +12,7 @@ import { AuthenticationStoreModule } from './authentication/authentication-store
 import { CoreStoreModule } from './core/core-store.module';
 
 import { commandConfiguration } from 'app/command/configuration';
-import { coreConfiguration } from 'app/core/configuration';
+import { coreConfiguration } from 'app/core';
 import { CommandStoreModule } from 'app/command/command-store.module';
 
 export interface AppState {}

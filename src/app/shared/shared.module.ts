@@ -26,7 +26,6 @@ import {
 import { CommandSelectors } from 'app/command/store';
 import { CommandApi } from 'app/command/services';
 
-
 const COMPONENTS = [
   Mean2DrawerContainer,
   Mean2Drawer,

@@ -64,6 +64,9 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {},
+    "schematics": {
+      "collection": "@nrwl/schematics"
+    }
   }
 }

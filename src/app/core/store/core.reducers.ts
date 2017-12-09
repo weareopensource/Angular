@@ -1,4 +1,5 @@
 import * as CoreActions from './core.actions';
+import { AuthenticationActions } from 'app/authentication';
 import { CoreState, CoreShowSidenavState, CoreMenuItemsState } from './core.interfaces';
 import { keyBy } from 'lodash';
 
@@ -14,9 +15,10 @@ function coreMenuItemsReducer(state: CoreMenuItemsState = {}, action: CoreAction
   }
 }
 
-function coreShowSidenavReducer(state: CoreShowSidenavState = false, action: CoreActions.Actions): CoreShowSidenavState
+function coreShowSidenavReducer(state: CoreShowSidenavState = false, action: CoreActions.Actions | AuthenticationActions.Actions): CoreShowSidenavState
  {
   switch (action.type) {
+    case AuthenticationActions.LOGOUT:
     case CoreActions.CLOSE_SIDENAV:
       return false;
     case CoreActions.OPEN_SIDENAV:
