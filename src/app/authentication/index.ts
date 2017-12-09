@@ -5,3 +5,5 @@ export { AuthenticationGuardService } from './services/authentication.guard.serv
 export { LogoutDirective } from './directives/logout/logout.directive';
 export { LoginSnackComponent } from './components/login-snack/login-snack.component';
 export { AuthenticationModule } from './authentication.module';
+import * as AuthenticationActions from './store/authentication.actions';
+export { AuthenticationActions };

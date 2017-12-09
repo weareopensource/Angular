@@ -71,6 +71,7 @@ export class AppComponent {
       map(([items, user]) => values(items)
         .filter(item => user && !isEmpty(difference(item.roles, user.roles)))
         .filter(items => !isEmpty(items))
+      )
     );
   }
 
