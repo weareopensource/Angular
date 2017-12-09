@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArticleShared } from 'app/article/services';
+import { ArticleSharedService } from 'app/article';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,7 @@ import { ArticleShared } from 'app/article/services';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private articleShared: ArticleShared) {
-    articleShared.log(`let's do some usefull stuff`);
+  constructor(private articleSharedService: ArticleSharedService) {
+    articleSharedService.log(`let's do some usefull stuff`);
   }
 }

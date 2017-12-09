@@ -3,7 +3,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { StatusState, LoginPageState, AuthenticationState } from './authentication.interfaces';
 
 @Injectable()
-export class AuthenticationSelectors {
+export class AuthenticationSelectorsService {
 
   public getLoggedIn;
   public getUser;

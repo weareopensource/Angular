@@ -3,7 +3,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CoreState } from './core.interfaces';
 
 @Injectable()
-export class CoreSelectors {
+export class CoreSelectorsService {
   public getShowSidenav;
   public getMenuItems;
   constructor() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ArticleSelectors, ArticleState } from '../../store';
+import { ArticleSelectors } from '../../store/article.selectors';
+import { ArticleState } from '../../store/article.interfaces';
 import { Store } from '@ngrx/store';
 
 @Component({

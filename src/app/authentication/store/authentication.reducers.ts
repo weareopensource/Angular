@@ -1,5 +1,5 @@
 import * as AuthenticationAction from './authentication.actions';
-import { User } from '../models';
+import { User } from '../models/user.model';
 import { StatusState, LoginPageState, AuthenticationState } from './authentication.interfaces';
 
 const initialStatusState: StatusState = {

@@ -1,7 +1,7 @@
 import { Directive, HostListener } from '@angular/core';
-import * as AuthenticationActions from '../store/authentication.actions';
+import * as AuthenticationActions from '../../store/authentication.actions';
 import { Store } from '@ngrx/store';
-import { AuthenticationState } from '../store';
+import { AuthenticationState } from '../../store/authentication.interfaces';
 
 @Directive({
   selector: '[Logout]',

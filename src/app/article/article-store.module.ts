@@ -1,6 +1,8 @@
 import { NgModule, APP_INITIALIZER, InjectionToken } from '@angular/core';
-import { ArticleInitialization, ArticleSelectors, articleReducer } from './store';
 import { StoreModule } from '@ngrx/store';
+import { ArticleInitialization } from './store/article.initialization';
+import { ArticleSelectors } from './store/article.selectors';
+import { articleReducer } from './store/article.reducer';
 
 const ARTICLE_CONFIGURATION = new InjectionToken('ARTICLE_CONFIGURATION');
 

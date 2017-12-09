@@ -1,11 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { of } from 'rxjs/observable/of';
 import { _throw } from 'rxjs/observable/throw';
-import { User, Authenticate } from '../models';
+import { User, Authenticate } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class AuthenticationApi {
+export class AuthenticationApiService {
 
   private baseUrl = '/api';
 

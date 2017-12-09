@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ArticleShared } from 'app/article/services';
+import { ArticleSharedService } from 'app/article';
 
 const COMPONENTS = [
   Mean2DrawerContainer,
@@ -43,7 +43,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ArticleShared
+        ArticleSharedService
       ]
     }
   }

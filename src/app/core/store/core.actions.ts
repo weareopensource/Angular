@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { MenuItem } from '../models';
+import { MenuItem } from '../models/menu.item';
 
 export const OPEN_SIDENAV = '[Core] Open Sidenav';
 export const CLOSE_SIDENAV = '[Core] Close Sidenav';

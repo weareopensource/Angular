@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
-import { LoginSnackComponent } from '../components/login-snack';
-import { AuthenticationApi } from '../services/authentication.api';
+import { LoginSnackComponent } from '../components/login-snack/login-snack.component';
+import { AuthenticationApiService } from '../services/authentication.api.service';
 import * as AuthenticationActions from './authentication.actions';
 
 import { Observable } from 'rxjs/Observable';
@@ -18,13 +18,13 @@ import { empty } from 'rxjs/observable/empty';
 
 
 @Injectable()
-export class AuthenticationEffects {
+export class AuthenticationEffectsService {
 
   @Effect()
   login$ = this.actions$
     .ofType(AuthenticationActions.LOGIN).pipe(
       map(toPayload),
-      exhaustMap(auth => this.authenticationApi.login(auth)
+      exhaustMap(auth => this.authenticationApiService.login(auth)
         .pipe(
           catchError(error => {
           this.store.dispatch(new AuthenticationActions.LoginFailure('Email or Password Invalid'));
@@ -82,7 +82,7 @@ export class AuthenticationEffects {
 
   constructor(
     private actions$: Actions,
-    private authenticationApi: AuthenticationApi,
+    private authenticationApiService: AuthenticationApiService,
     private router: Router,
     private snackBar: MatSnackBar,
     private store: Store<any>) { }

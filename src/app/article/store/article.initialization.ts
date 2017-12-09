@@ -1,6 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import * as CoreActions from "../store/article.actions";
-import { ArticleState } from "../store";
+import { ArticleState } from "./article.interfaces";
 import { Store } from "@ngrx/store";
 
 @Injectable()

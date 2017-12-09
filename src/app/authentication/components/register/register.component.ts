@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { AuthenticationApi } from '../../services';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -24,8 +23,7 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder,
-    private authenticationApi: AuthenticationApi) {
+    private formBuilder: FormBuilder) {
   }
 
   get visibility() {

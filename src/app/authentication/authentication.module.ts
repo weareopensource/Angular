@@ -1,10 +1,14 @@
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { AuthenticationComponent, LoginComponent, RegisterComponent, LoginSnackComponent } from './components';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginSnackComponent } from './components/login-snack/login-snack.component';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationApi, AuthenticationInterceptor, AuthenticationGuard } from './services';
+import { AuthenticationApiService } from './services/authentication.api.service';
+import { AuthenticationGuardService } from './services/authentication.guard.service';
 import {
   MatButtonModule,
   MatIconModule,
@@ -17,7 +21,8 @@ import {
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { LogoutDirective } from './directives';
+import { LogoutDirective } from './directives/logout/logout.directive';
+import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 
 const COMPONENTS = [
   AuthenticationComponent,
@@ -57,11 +62,11 @@ export class AuthenticationModule {
     return {
       ngModule: RootAuthenticationModule,
       providers: [
-        AuthenticationApi,
-        AuthenticationGuard,
+        AuthenticationApiService,
+        AuthenticationGuardService,
         {
           provide: HTTP_INTERCEPTORS,
-          useClass: AuthenticationInterceptor,
+          useClass: AuthenticationInterceptorService,
           multi: true
         },
       ],

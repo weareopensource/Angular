@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticleGuard } from './services';
-import { ArticleComponent } from './components/article';
-import { articleConfiguration } from './configuration';
+import { ArticleGuardService } from './services/article.guard.service';
+import { ArticleComponent } from './components/article/article.component';
+import { articleConfiguration } from './configuration/article.configuration';
 import { isEmpty } from 'lodash';
 
 const articleRoutes: Routes = [{
   path: '',
   component: ArticleComponent,
-  canActivate: [ ArticleGuard ]
+  canActivate: [ ArticleGuardService ]
 }];
 
 if (!isEmpty(articleConfiguration.self.roles)) {
@@ -16,7 +16,7 @@ if (!isEmpty(articleConfiguration.self.roles)) {
     data: {
       expectedRoles: articleConfiguration.self.roles
     },
-    canActivate: [ ArticleGuard ]
+    canActivate: [ ArticleGuardService ]
   });
 }
 
@@ -24,6 +24,6 @@ if (!isEmpty(articleConfiguration.self.roles)) {
   imports: [
     RouterModule.forChild(articleRoutes)
   ],
-  providers: [ ArticleGuard ]
+  providers: [ ArticleGuardService ]
 })
 export class ArticleRoutingModule {}

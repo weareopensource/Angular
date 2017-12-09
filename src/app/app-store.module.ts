@@ -11,9 +11,8 @@ import { RouterStoreModule } from './router-store.module';
 import { AuthenticationStoreModule } from './authentication/authentication-store.module';
 import { CoreStoreModule } from './core/core-store.module';
 
-import { articleConfiguration } from 'app/article/configuration';
-import { coreConfiguration } from 'app/core/configuration';
-import { ArticleStoreModule } from 'app/article/article-store.module';
+import { articleConfiguration, ArticleStoreModule } from 'app/article';
+import { coreConfiguration } from 'app/core';
 
 export interface AppState {}
 

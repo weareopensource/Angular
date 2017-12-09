@@ -14,17 +14,18 @@ import { empty } from 'rxjs/observable/empty';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators/catchError';
 import * as AuthenticationActions from '../store/authentication.actions';
-import { AuthenticationState, AuthenticationSelectors } from '../store';
+import { AuthenticationState } from '../store/authentication.interfaces';
+import { AuthenticationSelectorsService } from '../store/authentication.selectors.service';
 import { isEmpty } from 'lodash';
 
 @Injectable()
-export class AuthenticationInterceptor implements HttpInterceptor {
+export class AuthenticationInterceptorService implements HttpInterceptor {
 
   private urlFilters = ['/api'];
   private tokenExpiresIn$;
 
-  constructor(private store: Store<AuthenticationState>, private authenticationSelectors: AuthenticationSelectors) {
-    this.tokenExpiresIn$ = this.store.select(this.authenticationSelectors.getTokenExpiresIn)
+  constructor(private store: Store<AuthenticationState>, private authenticationSelectorsService: AuthenticationSelectorsService) {
+    this.tokenExpiresIn$ = this.store.select(this.authenticationSelectorsService.getTokenExpiresIn)
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {

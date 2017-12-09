@@ -15,10 +15,11 @@ import { combineLatest } from 'rxjs/operators/combineLatest';
 import { startWith } from 'rxjs/operators/startWith';
 import { values, difference, isEmpty } from 'lodash';
 import * as CoreActions from '../../store/core.actions';
-import { CoreState } from '../../store';
-import { CoreSelectors } from '../../store';
-import { AuthenticationSelectors } from 'app/authentication/store';
-import { MenuItem } from '../../models';
+import { CoreState } from '../../store/core.interfaces';
+import { CoreSelectorsService } from '../../store/core.selectors.service';
+import { AuthenticationSelectorsService } from 'app/authentication';
+import { MenuItem } from '../../models/menu.item';
+import { map } from 'rxjs/operators/map';
 
 @Component({
   selector: 'app-root',
@@ -43,16 +44,16 @@ export class AppComponent {
   }
 
   public menuItems$;
-  public isSidenavOpened$ = this.store.select(this.coreSelectors.getShowSidenav);
-  public isLoggedIn$ = this.store.select(this.authenticationSelectors.getLoggedIn);
+  public isSidenavOpened$ = this.store.select(this.coreSelectorsService.getShowSidenav);
+  public isLoggedIn$ = this.store.select(this.authenticationSelectorsService.getLoggedIn);
 
   constructor(
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private store: Store<CoreState>,
     private router: Router,
-    private authenticationSelectors: AuthenticationSelectors,
-    private coreSelectors: CoreSelectors,
+    private authenticationSelectorsService: AuthenticationSelectorsService,
+    private coreSelectorsService: CoreSelectorsService,
     
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
@@ -63,12 +64,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    const items$ = this.store.select(this.coreSelectors.getMenuItems);
-    const user$ = this.store.select(this.authenticationSelectors.getUser);
-    this.menuItems$ = combineLatest(
-      items$,
-      user$,
-      (items, user) => values(items)
+    const items$ = this.store.select(this.coreSelectorsService.getMenuItems);
+    const user$ = this.store.select(this.authenticationSelectorsService.getUser);
+    this.menuItems$ = items$.pipe(
+      combineLatest(user$),
+      map(([items, user]) => values(items)
         .filter(item => user && !isEmpty(difference(item.roles, user.roles)))
         .filter(items => !isEmpty(items))
     );
