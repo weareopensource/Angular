@@ -1,4 +1,4 @@
-import { MenuItem } from 'app/core/models';
+import { MenuItem } from 'app/core';
 
 export interface CommandConfiguration {
   core: MenuItem[],

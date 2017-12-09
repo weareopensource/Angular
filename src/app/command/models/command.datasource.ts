@@ -1,11 +1,14 @@
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { MatSort, MatPaginator } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import { Command } from '../models';
+import { Observable } from 'rxjs/observable';
+import { combineLatest } from "rxjs/operators/combineLatest";
+import { merge } from "rxjs/operators/merge";
+import { startWith } from "rxjs/operators/startWith";
+import { map } from "rxjs/operators/map";
+import { Command } from './command.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-store.module';
-import { CommandSelectors } from '../store';
 import 'rxjs/add/operator/combineLatest';
 
 export class CommandDatasource extends DataSource<any> {
@@ -19,21 +22,19 @@ export class CommandDatasource extends DataSource<any> {
     super();
   }
 
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<any> {
+  connect(): Observable<Command[]> {
     const displayDataChanges = [
-      this._filterChange,
-      this._sort.sortChange,
-      this._paginator.page
+      this._sort.sortChange.pipe(startWith({})),
+      this._filterChange.pipe(startWith('')),
+      this._paginator.page.pipe(startWith({}))
     ];
-    return Observable.combineLatest(
-      this._database,      
-      Observable.merge(...displayDataChanges),
-      (data, e) => {
-        return data.filter(this.filterCommand)
+    return this._database.pipe(
+      combineLatest(...displayDataChanges, (data: any) => data
+        .filter(this.filterCommand)
         .sort(this.sortCommand)
-        .splice(this.startIndex, this._paginator.pageSize);
-      });
+        .splice(this.startIndex, this._paginator.pageSize)
+      )
+    );
   }
 
   filterCommand = (command: Command) => {

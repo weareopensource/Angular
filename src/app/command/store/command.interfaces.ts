@@ -1,4 +1,4 @@
-import { Command } from "../models";
+import { Command } from "../models/command.model";
 
 export interface CommandState {
   handled: HandledState;

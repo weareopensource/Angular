@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CommandDetailComponent } from './components/detail/detail.component';
 import { CommandsListComponent } from './components/list/list.component';
-import { AuthenticationGuard } from 'app/authentication/services';
-import { commandConfiguration } from './configuration';
+import { AuthenticationGuardService } from 'app/authentication';
+import { commandConfiguration } from './configuration/command.configuration';
 import { isEmpty } from 'lodash';
 
 const commandsRoutes: Routes = [{

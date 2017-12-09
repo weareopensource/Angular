@@ -1,5 +1,5 @@
-import { CommandDetailComponent } from '../detail';
-import { CommandDeleteDialog } from '../delete';
+import { CommandDetailComponent } from '../detail/detail.component';
+import { CommandDeleteDialog } from '../delete/delete.dialog';
 import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -14,9 +14,10 @@ import { MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from 'app/shared/animations';
-import { CommandDatasource } from '../../models';
+import { CommandDatasource } from '../../models/command.datasource';
 import { Store } from '@ngrx/store';
-import { CommandSelectors, CommandState } from '../../store';
+import { CommandSelectorsService } from '../../store/command.selectors.service';
+import { CommandState } from '../../store/command.interfaces';
 import { values } from 'lodash';
 /**
  * @title Table with filtering
@@ -30,7 +31,7 @@ import { values } from 'lodash';
 export class CommandsListComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'action'];
   public dataSource: CommandDatasource | null;
-  public database$ = this.store.select(this.commandSelectors.getHandledCommands);
+  public database$ = this.store.select(this.commandSelectorsService.getHandledCommands);
   public dataLength$ = this.database$.map(commands => commands.length);
   
   @ViewChild('filter') filter: ElementRef;
@@ -42,7 +43,7 @@ export class CommandsListComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private store: Store<CommandState>,
-    private commandSelectors: CommandSelectors) { }
+    private commandSelectorsService: CommandSelectorsService) { }
 
   ngOnInit() {
     this.dataSource = new CommandDatasource(this.database$, this.sort, this.paginator);

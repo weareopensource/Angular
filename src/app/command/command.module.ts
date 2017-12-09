@@ -1,8 +1,7 @@
-import {
-  CommandDetailComponent,
-  CommandsListComponent,
-  CommandDeleteDialog,
-  CommandEditComponent } from './components';
+import { CommandDetailComponent } from './components/detail/detail.component';
+import { CommandsListComponent } from './components/list/list.component';
+import { CommandDeleteDialog } from './components/delete/delete.dialog';
+import { CommandEditComponent } from './components/detail/edit/edit.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

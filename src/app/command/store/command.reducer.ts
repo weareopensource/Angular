@@ -1,8 +1,8 @@
 import * as CommandActions from './command.actions';
-import { Command } from '../models';
+import { Command } from '../models/command.model';
 import { CommandState, HandledState } from './command.interfaces';
 import { keyBy } from 'lodash';
-import * as AuthenticationActions from 'app/authentication/store/authentication.actions';
+import { AuthenticationActions } from 'app/authentication';
 
 export function handledReducer(state: HandledState = {}, action: CommandActions.Actions | AuthenticationActions.Actions): HandledState {
   switch (action.type) {

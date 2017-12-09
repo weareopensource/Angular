@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Command } from '../models';
+import { Command } from '../models/command.model';
 
 export const SHOW = '[Commands] Show';
 export const LOAD = '[Commands] Load';

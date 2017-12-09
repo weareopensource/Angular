@@ -11,9 +11,9 @@ import { RouterStoreModule } from './router-store.module';
 import { AuthenticationStoreModule } from './authentication/authentication-store.module';
 import { CoreStoreModule } from './core/core-store.module';
 
-import { commandConfiguration } from 'app/command/configuration';
+import { commandConfiguration } from 'app/command';
 import { coreConfiguration } from 'app/core';
-import { CommandStoreModule } from 'app/command/command-store.module';
+import { CommandStoreModule } from 'app/command';
 
 export interface AppState {}
 
