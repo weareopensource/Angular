@@ -4,7 +4,7 @@ import * as AuthenticationActions from './authentication.actions';
 import { AuthenticationState } from './authentication.interfaces';
 
 @Injectable()
-export class AuthenticationInitialization  {
+export class AuthenticationInitializationService  {
   constructor(private store: Store<AuthenticationState>) { }
 
   loadUser() {

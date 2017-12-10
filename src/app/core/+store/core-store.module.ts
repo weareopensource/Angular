@@ -17,7 +17,7 @@ function initialisationFactory(coreInitialization, configuration) {
   ]
 })
 export class CoreStoreModule {
-  public static configure(configuration: MenuItem[]) {
+  public static forRoot(configuration: MenuItem[]) {
     return {
       ngModule: CoreStoreModule,
       providers: [

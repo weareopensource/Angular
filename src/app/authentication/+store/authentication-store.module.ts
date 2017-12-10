@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AuthenticationSelectorsService } from './store/authentication.selectors.service';
 import { AuthenticationEffectsService } from './store/authentication.effects.service';
-import { AuthenticationInitialization } from './store/authentication.initialization';
+import { AuthenticationInitializationService } from './store/authentication.initialization.service';
 import { authenticationReducers } from './store/authentication.reducers';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,7 +20,7 @@ function initialisationFactory(authenticationInitialisation) {
   providers: [
     AuthenticationSelectorsService,
     AuthenticationInitialization,
-    { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [AuthenticationInitialization], multi: true }        
+    { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [AuthenticationInitializationService], multi: true }        
     
   ]
 })
