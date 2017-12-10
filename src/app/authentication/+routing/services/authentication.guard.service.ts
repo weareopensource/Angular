@@ -9,7 +9,8 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { combineLatest, take} from "rxjs/operators";
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/take';
 import { AuthenticationState, getLoggedIn, getTokenExpiresIn, fromAuthentication } from 'app/authentication/+store';
 
 @Injectable()
@@ -29,7 +30,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
   }
 
   hasPermission(path: string) {
-    return combineLatest(
+    return Observable.combineLatest(
       this.store.select(getLoggedIn),
       this.store.select(getTokenExpiresIn),
       (loggedIn, tokenExpiresIn) => {
@@ -57,6 +58,6 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
             return false;
           }
         }
-      }).pipe(take(1));
+      }).take(1);
   }
 }

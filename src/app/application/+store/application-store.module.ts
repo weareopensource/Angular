@@ -8,11 +8,11 @@ import { environment } from 'environments/environment';
 import { applicationReducer, metaReducers } from './reducers/application.reducer';
 import { RouterEffects } from './effects/router.effects';
 
-import { AuthenticationStoreModule } from 'app/authentication/+store';
+import { AuthenticationStoreModule } from 'app/authentication/+store/authentication-store.module';
 import { coreConfiguration } from 'app/core';
-import { CoreStoreModule } from 'app/core/+store';
+import { CoreStoreModule } from 'app/core/+store/core-store.module';
 import { articleConfiguration } from 'app/article';
-import { ArticleStoreModule } from 'app/article/+store';
+import { ArticleStoreModule } from 'app/article/+store/article-store.module';
 
 @NgModule({
   imports: [

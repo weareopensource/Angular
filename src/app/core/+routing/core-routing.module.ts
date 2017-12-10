@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
 import { AuthenticationGuardService } from 'app/authentication/+routing';
+import { AuthenticationComponent } from 'app/authentication/components/authentication/authentication.component';
 
 const coreRoutes: Routes = [{
   path: '',
@@ -13,25 +14,28 @@ const coreRoutes: Routes = [{
 }, {
   path: '',
   component: LayoutComponent,
-  children: [ {
+  children: [{
     path: 'home',
     canActivate: [ AuthenticationGuardService ],
     component: HomeComponent
   }, {
+    path: 'auth',
+    canActivate: [ AuthenticationGuardService ],
+    component: AuthenticationComponent
+  }, {
     path: 'article',
     canActivate: [ AuthenticationGuardService ],
     canLoad: [ AuthenticationGuardService ],
-    loadChildren: '../article/article.module#RootArticleModule'
-  }]
-},
-//  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
-  {
+    loadChildren: '../../article/article.module#RootArticleModule'
+  }, {
     path: '**',
     component: NotFoundComponent,
     data: {
       title: 'Not-Found'
     }
-  }
+  }]
+}
+//  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
 ];
 
 @NgModule({

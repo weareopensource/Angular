@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material';
-import { ArticleRoutingModule } from 'app/article/+routing';
+import { ArticleRoutingModule } from 'app/article/+routing/article-routing.module';
 import { ArticleComponent } from './components/article/article.component';
 import { articleConfiguration } from './article.configuration';
 

@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApplicationComponent } from './components/application/application.component';
 import { ApplicationStoreModule } from './+store';
 
-import { CoreModule } from 'app/core';
-import { AuthenticationModule } from 'app/authentication';
+import { CoreModule } from 'app/core/core.module';
+import { AuthenticationModule } from 'app/authentication/authentication.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 

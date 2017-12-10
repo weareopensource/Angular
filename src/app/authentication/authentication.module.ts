@@ -1,4 +1,4 @@
-import { AuthenticationRoutingModule } from 'app/authentication/+routing';
+import { AuthenticationRoutingModule } from 'app/authentication/+routing/authentication-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';

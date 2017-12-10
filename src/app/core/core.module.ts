@@ -20,8 +20,8 @@ import {
  } from '@angular/material';
 import { SharedModule } from 'app/shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthenticationModule } from 'app/authentication';
-import { CoreRoutingModule } from 'app/core/+routing';
+import { AuthenticationModule } from 'app/authentication/authentication.module';
+import { CoreRoutingModule } from 'app/core/+routing/core-routing.module';
 import { Store, StoreModule } from '@ngrx/store';
 
 export const COMPONENTS = [
