@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as AuthenticationActions from './authentication.actions';
-import { AuthenticationState } from './authentication.interfaces';
+import * as fromAutentication from '../actions/authentication.actions';
+import { AuthenticationState } from '../states/authentication.state';
 
 @Injectable()
 export class AuthenticationInitializationService  {
@@ -12,9 +12,9 @@ export class AuthenticationInitializationService  {
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (tokenExpiresIn) {
       if (tokenExpiresIn < Date.now()) {
-        this.store.dispatch(new AuthenticationActions.LoadUser({ user, tokenExpiresIn }));
+        this.store.dispatch(new fromAutentication.LoadUser({ user, tokenExpiresIn }));
       } else {
-        this.store.dispatch(new AuthenticationActions.Logout());        
+        this.store.dispatch(new fromAutentication.Logout());        
       }
     }
   }

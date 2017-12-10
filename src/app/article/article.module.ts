@@ -1,10 +1,10 @@
-import { ArticleComponent } from './components/article/article.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ArticleRoutingModule } from './article-routing.module';
-import { articleConfiguration } from './configuration/article.configuration';
 import { MatCardModule } from '@angular/material';
+import { ArticleRoutingModule } from 'app/article/+routing';
+import { ArticleComponent } from './components/article/article.component';
+import { articleConfiguration } from './article.configuration';
 
 const COMPONENTS = [
   ArticleComponent
@@ -28,7 +28,6 @@ export class ArticleModule { }
   imports: [
     ArticleModule,
     ArticleRoutingModule//.withRoles(articleConfiguration.article.roles)
-  ],
-  providers: []
+  ]
 })
 export class RootArticleModule { }

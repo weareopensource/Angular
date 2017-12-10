@@ -1,5 +1,5 @@
-import * as ArticleActions from './article.actions';
-import { ArticleState } from './article.interfaces';
+import * as ArticleActions from '../actions/article.actions';
+import { ArticleState } from '../states/article.state';
 
 const initialArticleState: ArticleState = { greetings: '' }
 

@@ -13,9 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators/catchError';
-import * as AuthenticationActions from '../store/authentication.actions';
-import { AuthenticationState } from '../store/authentication.interfaces';
-import { AuthenticationSelectorsService } from '../store/authentication.selectors.service';
+import { fromAuthentication, getTokenExpiresIn, AuthenticationState } from 'app/authentication/+store';
 import { isEmpty } from 'lodash';
 
 @Injectable()
@@ -24,8 +22,8 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
   private urlFilters = ['/api'];
   private tokenExpiresIn$;
 
-  constructor(private store: Store<AuthenticationState>, private authenticationSelectorsService: AuthenticationSelectorsService) {
-    this.tokenExpiresIn$ = this.store.select(this.authenticationSelectorsService.getTokenExpiresIn)
+  constructor(private store: Store<AuthenticationState>) {
+    this.tokenExpiresIn$ = this.store.select(getTokenExpiresIn)
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -37,14 +35,14 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
     .first()
     .switchMap(tokenExpiresIn => {
       if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
-        this.store.dispatch(new AuthenticationActions.Logout('Token Expired'));
+        this.store.dispatch(new fromAuthentication.Logout('Token Expired'));
         return empty();
       }
       return next
       .handle(request).pipe(
         catchError(error => {
           if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
-            this.store.dispatch(new AuthenticationActions.Logout('Unauthorized Operation'));
+            this.store.dispatch(new fromAuthentication.Logout('Unauthorized Operation'));
             return empty();
           }
           return _throw(error);            

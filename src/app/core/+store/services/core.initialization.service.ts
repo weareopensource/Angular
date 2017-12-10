@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@angular/core";
-import * as CoreActions from "../store/core.actions";
-import { CoreState } from "../store/core.interfaces";
 import { Store } from "@ngrx/store";
+import * as CoreActions from "../actions/core.actions";
+import { CoreState } from "../states/core.state";
 
 @Injectable()
 export class CoreInitializationService {

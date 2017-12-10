@@ -1,10 +1,10 @@
 import { Injectable, Inject } from "@angular/core";
-import * as CoreActions from "../store/article.actions";
-import { ArticleState } from "./article.interfaces";
+import * as CoreActions from "../actions/article.actions";
+import { ArticleState } from "../states/article.state";
 import { Store } from "@ngrx/store";
 
 @Injectable()
-export class ArticleInitialization {
+export class ArticleInitializationService {
   constructor(private store: Store<ArticleState>) { }
   
   public initGreetings(configuration) {

@@ -1,7 +1,6 @@
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Params,
 } from '@angular/router';
 import { createFeatureSelector, ActionReducerMap, MetaReducer, ActionReducer } from '@ngrx/store';
 import {
@@ -11,16 +10,8 @@ import {
 } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from 'environments/environment';
-  
-export interface RouterStateUrl {
-  url: string;
-  params: Params;
-  queryParams: Params;  
-}
-  
-export interface ApplicationState {
-  router: RouterReducerState<RouterStateUrl>;
-}
+import { ApplicationState } from '../states/application.state';
+import { RouterStateUrl } from '../states/router.state';
 
 export const applicationReducer: ActionReducerMap<ApplicationState> = {
   router: routerReducer,

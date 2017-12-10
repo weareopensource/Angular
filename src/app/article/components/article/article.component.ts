@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ArticleSelectors } from '../../store/article.selectors';
-import { ArticleState } from '../../store/article.interfaces';
 import { Store } from '@ngrx/store';
+import { ArticleState, getGreetings } from 'app/article/+store';
 
 @Component({
   selector: 'app-article',
@@ -9,6 +8,6 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent {
-  public greetings$ = this.store.select(this.articleSelectors.getGreetings)
-  constructor(private store: Store<ArticleState>, private articleSelectors: ArticleSelectors) {}
+  public greetings$ = this.store.select(getGreetings)
+  constructor(private store: Store<ArticleState>) {}
 }

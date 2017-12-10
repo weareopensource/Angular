@@ -5,17 +5,16 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { difference } from 'lodash';
-import { AuthenticationSelectorsService } from 'app/authentication';
+import { getUser } from 'app/authentication/+store';
 
 @Injectable()
 export class ArticleGuardService implements CanActivate {
   constructor(
     private store: Store<any>,
-    private router: Router,
-    private authenticationSelectorsService: AuthenticationSelectorsService) { }
+    private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean>{
-    return this.store.select(this.authenticationSelectorsService.getUser)
+    return this.store.select(getUser)
       .pipe(
         map(user => {
           const expectedRoles = route.data.expectedRoles;

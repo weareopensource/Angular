@@ -1,13 +1,12 @@
 import { NgModule, APP_INITIALIZER, InjectionToken } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { ArticleInitialization } from './store/article.initialization';
-import { ArticleSelectors } from './store/article.selectors';
-import { articleReducer } from './store/article.reducer';
+import { ArticleInitializationService } from './services/article.initialization.service';
+import { articleReducer } from './reducers/article.reducer';
 
 const ARTICLE_CONFIGURATION = new InjectionToken('ARTICLE_CONFIGURATION');
 
-function initialisationFactory(coreInitialization, configuration) {
-  return () => coreInitialization.initGreetings(configuration.greetings) ;
+function initialisationFactory(articleInitializationService, configuration) {
+  return () => articleInitializationService.initGreetings(configuration.greetings) ;
 }
 
 @NgModule({
@@ -16,16 +15,19 @@ function initialisationFactory(coreInitialization, configuration) {
   ]
 })
 export class ArticleStoreModule {
-  public static configure(configuration: string) {
+  public static forRoot(configuration: string) {
     return {
       ngModule: ArticleStoreModule,
       providers: [
-        ArticleInitialization,
-        ArticleSelectors,
-        { provide: ARTICLE_CONFIGURATION, useValue: configuration },        
-        { provide: APP_INITIALIZER, useFactory: initialisationFactory, deps: [ArticleInitialization, ARTICLE_CONFIGURATION], multi: true }    
+        ArticleInitializationService, {
+          provide: ARTICLE_CONFIGURATION, useValue: configuration
+        }, {
+          provide: APP_INITIALIZER,
+          useFactory: initialisationFactory,
+          deps: [ ArticleInitializationService, ARTICLE_CONFIGURATION ],
+          multi: true
+        }
       ]
     };
   }
-
 }

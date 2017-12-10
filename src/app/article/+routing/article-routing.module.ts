@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticleGuardService } from './services/article.guard.service';
-import { ArticleComponent } from './components/article/article.component';
-import { articleConfiguration } from './configuration/article.configuration';
+import { ArticleComponent, articleConfiguration } from 'app/article';
 import { isEmpty } from 'lodash';
 
 const articleRoutes: Routes = [{

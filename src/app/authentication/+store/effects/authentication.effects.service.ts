@@ -5,7 +5,7 @@ import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../components/login-snack/login-snack.component';
 import { AuthenticationApiService } from '../services/authentication.api.service';
-import * as AuthenticationActions from './authentication.actions';
+import * as fromAuthentication from '../actions/authentication.actions';
 
 import { Observable } from 'rxjs/Observable';
 import { defer } from 'rxjs/observable/defer';
@@ -22,24 +22,24 @@ export class AuthenticationEffectsService {
 
   @Effect()
   login$ = this.actions$
-    .ofType(AuthenticationActions.LOGIN).pipe(
+    .ofType(fromAuthentication.LOGIN).pipe(
       map(toPayload),
       exhaustMap(auth => this.authenticationApiService.login(auth)
         .pipe(
           catchError(error => {
-          this.store.dispatch(new AuthenticationActions.LoginFailure('Email or Password Invalid'));
+          this.store.dispatch(new fromAuthentication.LoginFailure('Email or Password Invalid'));
           return empty();
         }))),
       tap((payload: any) => {
         sessionStorage.setItem('user', JSON.stringify(payload.user));
         sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
       }),
-      map((payload) => new AuthenticationActions.LoginSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
+      map((payload) => new fromAuthentication.LoginSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
     );
 
   @Effect({ dispatch: false })
   logout$ = this.actions$
-    .ofType(AuthenticationActions.LOGOUT).pipe(
+    .ofType(fromAuthentication.LOGOUT).pipe(
       map(toPayload),
       tap((message) => {
         sessionStorage.removeItem('tokenExpiresIn');      
@@ -56,7 +56,7 @@ export class AuthenticationEffectsService {
 
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
-    .ofType(AuthenticationActions.LOGIN_SUCCESS).pipe(
+    .ofType(fromAuthentication.LOGIN_SUCCESS).pipe(
       tap(() => {
         this.snackBar.openFromComponent(LoginSnackComponent, {
           duration: 1000,
@@ -70,7 +70,7 @@ export class AuthenticationEffectsService {
 
   @Effect({ dispatch: false })
   loginFailure$ = this.actions$
-    .ofType(AuthenticationActions.LOGIN_FAILURE).pipe(
+    .ofType(fromAuthentication.LOGIN_FAILURE).pipe(
       map(toPayload),
       tap((message) => this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
