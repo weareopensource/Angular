@@ -6,9 +6,15 @@ import { AuthenticationGuardService } from './services/authentication.guard.serv
 @NgModule({
   imports: [
     HttpClientModule,
-  ],
-  providers: [
-    AuthenticationGuardService,
   ]
 })
-export class AuthenticationRoutingModule {}
+export class AuthenticationRoutingModule {
+  public static forRoot() {
+    return {
+      ngModule: AuthenticationRoutingModule,
+      providers: [
+        AuthenticationGuardService
+      ]
+    }
+  }
+}

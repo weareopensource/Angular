@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ApplicationComponent } from './components/application/application.component';
-import { ApplicationStoreModule } from './+store';
+import { ApplicationRoutingModule } from 'app/application/+routing/application-routing.module';
+import { ApplicationStoreModule } from 'app/application/+store/application-store.module';
 
 import { CoreModule } from 'app/core/core.module';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     BrowserAnimationsModule,
     // DBModule.provideDB(schema),
+    ApplicationRoutingModule,
     ApplicationStoreModule,    
     SharedModule.forRoot(),
     AuthenticationModule.forRoot(),

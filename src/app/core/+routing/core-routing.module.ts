@@ -14,14 +14,14 @@ const coreRoutes: Routes = [{
 }, {
   path: '',
   component: LayoutComponent,
-  children: [{
-    path: 'home',
-    canActivate: [ AuthenticationGuardService ],
-    component: HomeComponent
-  }, {
+  children: [ {
     path: 'auth',
     canActivate: [ AuthenticationGuardService ],
     component: AuthenticationComponent
+  }, {
+    path: 'home',
+    canActivate: [ AuthenticationGuardService ],
+    component: HomeComponent
   }, {
     path: 'article',
     canActivate: [ AuthenticationGuardService ],
