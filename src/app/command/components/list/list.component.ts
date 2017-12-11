@@ -18,6 +18,7 @@ import { CommandDatasource } from '../../models/command.datasource';
 import { Store } from '@ngrx/store';
 import { CommandState, getHandledCommands } from 'app/command/+store';
 import { values } from 'lodash';
+import { fromApplication } from 'app/application/+store';
 
 @Component({
   selector: 'app-commands-list',
@@ -69,7 +70,7 @@ export class CommandsListComponent implements OnInit {
 //      console.log('The dialog was closed');
 //    });
 
-    this.router.navigate(['/', 'command', id]);
+    this.store.dispatch(new fromApplication.Go({ path: ['/', 'command', id] }))
   }
 
   getState(outlet) {

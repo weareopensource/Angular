@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CommandDetailComponent } from 'app/command/components/detail/detail.component';
 import { CommandsListComponent } from 'app/command/components/list/list.component';
-import { AuthenticationGuardService } from 'app/authentication/+routing';
+import { AuthenticationGuardService } from 'app/authentication';
 import { commandConfiguration } from 'app/command/command.configuration';
 import { isEmpty } from 'lodash';
 

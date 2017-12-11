@@ -18,8 +18,8 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { LogoutDirective } from './directives/logout/logout.directive';
-import { AuthenticationRoutingModule } from 'app/authentication/+routing/authentication-routing.module';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
+import { AuthenticationGuardService } from './services/authentication.guard.service';
 
 const COMPONENTS = [
   AuthenticationComponent,
@@ -45,7 +45,6 @@ const MATERIAL_MODULES = [
 @NgModule({
   imports: [
     CommonModule,
-    AuthenticationRoutingModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -56,8 +55,9 @@ const MATERIAL_MODULES = [
 export class AuthenticationModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootAuthenticationModule,
-      providers: [{
+      ngModule: AuthenticationModule,
+      providers: [
+        AuthenticationGuardService, {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthenticationInterceptorService,
         multi: true
@@ -65,12 +65,3 @@ export class AuthenticationModule {
     }
   }
 }
-
-@NgModule({
-  imports: [
-    AuthenticationModule,
-    AuthenticationRoutingModule
-  ],
-  exports: DIRECTIVES
-})  
-export class RootAuthenticationModule { }

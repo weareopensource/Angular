@@ -10,34 +10,6 @@ import { AuthenticationModule } from 'app/authentication/authentication.module';
 import { CoreModule } from 'app/core/core.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
-import {
-  MatButtonModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
-  MatDialogModule,
-  MatIconModule,
-  MatCardModule,
-  MatInputModule,
-  MatListModule
- } from '@angular/material';
-
-
-const MATERIAL_MODULES = [
-  MatButtonModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
-  MatDialogModule,
-  MatIconModule,
-  MatCardModule,
-  MatInputModule,
-  MatListModule
- ];
 
 @NgModule({
   declarations: [ ApplicationComponent ],
@@ -47,8 +19,6 @@ const MATERIAL_MODULES = [
     RouterModule,
     BrowserAnimationsModule,
     // DBModule.provideDB(schema),
-    SharedModule,
-    ...MATERIAL_MODULES,
     ApplicationStoreModule,    
     SharedModule.forRoot(),
     AuthenticationModule.forRoot(),

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { difference } from 'lodash';
 import { getUser } from 'app/authentication/+store';
+import { fromApplication } from 'app/application/+store';
 
 @Injectable()
 export class ArticleGuardService implements CanActivate {
@@ -19,7 +20,7 @@ export class ArticleGuardService implements CanActivate {
         map(user => {
           const expectedRoles = route.data.expectedRoles;
           if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
-            this.router.navigate(['/', 'auth']);
+            this.store.dispatch(new fromApplication.Go({ path:['/', 'auth'] }));
             return false;
           }
           return true;

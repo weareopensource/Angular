@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { take } from 'rxjs/operators/take';
 import { difference } from 'lodash';
+import { fromApplication } from 'app/application/+store';
 
 @Injectable()
 export class CoreGuardService implements CanActivate {
@@ -24,7 +25,7 @@ export class CoreGuardService implements CanActivate {
   hasExpectedRoles(user, route) {
     const expectedRoles = route.data.expectedRoles;
     if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
-      this.router.navigate(['/', 'auth']);
+      this.store.dispatch(new fromApplication.Go({ path: ['/', 'auth'] }));
       return false;
     }
     return true;

@@ -2,6 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Inject, Component, OnInit, HostBinding } from '@angular/core';
 import { NgxGalleryOptions } from 'ngx-gallery';
 import { NgxGalleryImage } from 'ngx-gallery';
+import { ApplicationState, fromApplication } from 'app/application/+store';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-command-detail',
@@ -10,7 +12,7 @@ import { NgxGalleryImage } from 'ngx-gallery';
   })
   export class CommandDetailComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private route: ActivatedRoute, private store: Store<ApplicationState>) { }
 
     public galleryOptions: NgxGalleryOptions[];
     public galleryImages: NgxGalleryImage[];
@@ -45,6 +47,7 @@ import { NgxGalleryImage } from 'ngx-gallery';
     }
 
     close() {
-      this.router.navigate(['..'], {relativeTo: this.route});
+      this.store.dispatch(new fromApplication.Back());
+      //this.router.navigate(['..'], {relativeTo: this.route});
     }
   }

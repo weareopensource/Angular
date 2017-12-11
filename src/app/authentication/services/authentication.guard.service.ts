@@ -12,12 +12,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/take';
 import { AuthenticationState, getLoggedIn, getTokenExpiresIn, fromAuthentication } from 'app/authentication/+store';
+import { fromApplication } from 'app/application/+store/index';
 
 @Injectable()
 export class AuthenticationGuardService implements CanActivate, CanLoad {
-  constructor(
-    private store: Store<AuthenticationState>,
-    private router: Router) { }
+  constructor(private store: Store<AuthenticationState>) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     const currentUrl = route.url[0].path;
@@ -36,14 +35,14 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
       (loggedIn, tokenExpiresIn) => {
         if (loggedIn) {
           if (path === 'auth') {
-            this.router.navigate(['/', 'home']);
+            this.store.dispatch(new fromApplication.Go({ path: ['/', 'home'] }));
           }
           return true;
         } else {
           if (tokenExpiresIn) {
             if (tokenExpiresIn < Date.now()) {
               if (path === 'auth') {
-                this.router.navigate(['/', 'home']);
+                this.store.dispatch(new fromApplication.Go({ path: ['/', 'home'] }));
               }
               return true;
             } else {
@@ -54,7 +53,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
             if (path === 'auth') {
               return true;
             }
-            this.router.navigate(['/', 'auth']);
+            this.store.dispatch(new fromApplication.Go({ path: ['/', 'auth'] }));
             return false;
           }
         }
