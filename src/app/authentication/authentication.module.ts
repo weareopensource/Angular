@@ -18,6 +18,7 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { LogoutDirective } from './directives/logout/logout.directive';
+import { AuthenticationRoutingModule } from 'app/authentication/+routing/authentication-routing.module';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 
 const COMPONENTS = [
@@ -44,22 +45,32 @@ const MATERIAL_MODULES = [
 @NgModule({
   imports: [
     CommonModule,
+    AuthenticationRoutingModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
   declarations: [ ...COMPONENTS, ...DIRECTIVES ],
-  exports: [ ...COMPONENTS, ...DIRECTIVES ],
+  exports: DIRECTIVES
 })
 export class AuthenticationModule {
-  static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: AuthenticationModule,
+      ngModule: RootAuthenticationModule,
       providers: [{
         provide: HTTP_INTERCEPTORS,
         useClass: AuthenticationInterceptorService,
         multi: true
-      }],
-    };
+      }]
+    }
   }
 }
+
+@NgModule({
+  imports: [
+    AuthenticationModule,
+    AuthenticationRoutingModule
+  ],
+  exports: DIRECTIVES
+})  
+export class RootAuthenticationModule { }

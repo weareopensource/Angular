@@ -1,65 +1,32 @@
-import { HttpModule } from '@angular/http';
-import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import {
-  MatButtonModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
-  MatDialogModule,
-  MatIconModule,
-  MatCardModule,
-  MatInputModule,
-  MatListModule
- } from '@angular/material';
-import { SharedModule } from 'app/shared/shared.module';
+import { MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthenticationModule } from 'app/authentication/authentication.module';
 import { CoreRoutingModule } from 'app/core/+routing/core-routing.module';
 import { Store, StoreModule } from '@ngrx/store';
 
 export const COMPONENTS = [
-  LayoutComponent,
   HomeComponent,
   NotFoundComponent
 ];
 
-const MATERIAL_MODULES = [
-  MatButtonModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
-  MatDialogModule,
-  MatIconModule,
-  MatCardModule,
-  MatInputModule,
-  MatListModule
- ];
+const MATERIAL_MODULES = [ MatCardModule ];
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule,
     RouterModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
-    CoreRoutingModule,
-    AuthenticationModule,
-    SharedModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
 export class CoreModule {
-  public static forRoot() {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootCoreModule,
     }
