@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {
   fromAuthentication,
@@ -12,7 +12,8 @@ import { Authenticate } from '../../models/user.model';
 @Component({
   selector: 'app-auth',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  styleUrls: ['./authentication.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthenticationComponent {
   public pending$ = this.store.select(getLoginPagePending);

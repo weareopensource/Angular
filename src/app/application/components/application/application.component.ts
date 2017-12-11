@@ -1,4 +1,4 @@
-import { Component, HostListener, HostBinding } from '@angular/core';
+import { Component, HostListener, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
@@ -6,6 +6,7 @@ import { MatIconRegistry } from '@angular/material';
   selector: 'application-root',
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ApplicationComponent {

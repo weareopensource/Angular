@@ -1,6 +1,6 @@
 import { CommandDetailComponent } from '../detail/detail.component';
 import { CommandDeleteDialog } from '../delete/delete.dialog';
-import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable } from '@angular/core';
+import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -24,7 +24,8 @@ import { fromApplication } from 'app/application/+store';
   selector: 'app-commands-list',
   styleUrls: ['./list.component.scss'],
   templateUrl: './list.component.html',
-  animations: [ routerTransition ]
+  animations: [ routerTransition ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommandsListComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'action'];

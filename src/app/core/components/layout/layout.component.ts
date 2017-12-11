@@ -1,4 +1,4 @@
-import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@angular/core';
+import { Component, HostListener, HostBinding, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ import { map } from 'rxjs/operators/map';
   selector: 'layout-root',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
