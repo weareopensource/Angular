@@ -1,9 +1,8 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Inject, Component, OnInit, HostBinding } from '@angular/core';
-import { NgxGalleryOptions } from 'ngx-gallery';
-import { NgxGalleryImage } from 'ngx-gallery';
-import { ApplicationState, fromApplication } from 'app/application/+store';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
+import { ApplicationState, fromApplication } from 'app/application/+store';
 
 @Component({
     selector: 'app-command-detail',

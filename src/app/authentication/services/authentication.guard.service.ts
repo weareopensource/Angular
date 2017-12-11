@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/take';
 import { AuthenticationState, getLoggedIn, getTokenExpiresIn, fromAuthentication } from 'app/authentication/+store';
-import { fromApplication } from 'app/application/+store/index';
+import { fromApplication } from 'app/application/+store';
 
 @Injectable()
 export class AuthenticationGuardService implements CanActivate, CanLoad {
