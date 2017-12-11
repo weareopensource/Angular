@@ -17,7 +17,7 @@
   "scripts": {
     "check": "npm-check",
     "reinstall": "rimraf node_modules/ && npm cache clean && npm install",
-    "start": "ng serve --proxy proxy.json --ssl 1 --ssl-key certs/key.pem --ssl-cert certs/cert.pem",
+    "start": "ng serve --proxy proxy.json",
     "build:prod": "ng build --prod",
     "server": "http-server ./dist",
     "start:prod": "run-s build:prod server",

@@ -21,7 +21,11 @@ export class AuthenticationComponent {
 
   constructor(private store: Store<AuthenticationState>) { }
 
-  onSubmit($event: Authenticate) {
+  onLogin($event: Authenticate) {
     this.store.dispatch(new fromAuthentication.Login($event));
+  }
+
+  onRegister($event: any) {
+    this.store.dispatch(new fromAuthentication.Register($event));
   }
 }

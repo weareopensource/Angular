@@ -82,6 +82,49 @@ export class AuthenticationEffectsService {
       }))
     );
 
+    @Effect()
+    register$ = this.actions$
+      .ofType(fromAuthentication.REGISTER).pipe(
+        map(toPayload),
+        exhaustMap(auth => this.authenticationApiService.register(auth)
+          .pipe(
+            catchError(error => {
+            this.store.dispatch(new fromAuthentication.RegisterFailure('Register Error'));
+            return empty();
+          }))),
+        tap((payload: any) => {
+          sessionStorage.setItem('user', JSON.stringify(payload.user));
+          sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
+        }),
+        map((payload) => new fromAuthentication.RegisterSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
+      );
+  
+    @Effect()
+    registerSuccess$ = this.actions$
+      .ofType(fromAuthentication.REGISTER_SUCCESS).pipe(
+        map(() => {
+          this.snackBar.openFromComponent(LoginSnackComponent, {
+            duration: 1000,
+            data: 'Register Success',
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          });
+        }),
+        mapTo(new fromApplication.Go({ path: ['/', 'test'] }))
+      );
+  
+    @Effect({ dispatch: false })
+    registerFailure$ = this.actions$
+      .ofType(fromAuthentication.REGISTER_FAILURE).pipe(
+        map(toPayload),
+        tap((message) => this.snackBar.openFromComponent(LoginSnackComponent, {
+          duration: 1000,
+          data: message,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        }))
+      );
+
   constructor(
     private actions$: Actions,
     private authenticationApiService: AuthenticationApiService,

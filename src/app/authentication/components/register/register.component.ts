@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Authenticate } from '../../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,9 @@ export class RegisterComponent implements OnInit {
     ]),
     password: this.formBuilder.control('')
   });
+
+  @Output()
+  public submitted = new EventEmitter<Authenticate>();
 
   constructor(
     private formBuilder: FormBuilder) {
@@ -44,8 +48,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const { name, email, password } = this.form.value;
-  //  this.authService.register(name, email, password)
-  //  .subscribe(console.log);
+    this.submitted.emit(this.form.value);
   }
 
 }
