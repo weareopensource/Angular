@@ -11,12 +11,12 @@ import { fromApplication } from 'app/application/+store';
 import { Observable } from 'rxjs/Observable';
 import { defer } from 'rxjs/observable/defer';
 import { map } from 'rxjs/operators/map';
+import { mapTo } from 'rxjs/operators/mapTo';
 import { tap } from 'rxjs/operators/tap';
 import { exhaustMap } from 'rxjs/operators/exhaustMap';
 import { catchError } from 'rxjs/operators/catchError';
 import { of } from 'rxjs/observable/of';
 import { empty } from 'rxjs/observable/empty';
-import { mapTo } from 'rxjs/operators/mapTo';
 
 
 @Injectable()
@@ -39,7 +39,7 @@ export class AuthenticationEffectsService {
       map((payload) => new fromAuthentication.LoginSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
     );
 
-  @Effect({ dispatch: false })
+  @Effect()
   logout$ = this.actions$
     .ofType(fromAuthentication.LOGOUT).pipe(
       map(toPayload),
@@ -56,10 +56,10 @@ export class AuthenticationEffectsService {
       mapTo(new fromApplication.Go({ path: ['/', 'auth'] }))
     );
 
-  @Effect({ dispatch: false })
+  @Effect()
   loginSuccess$ = this.actions$
     .ofType(fromAuthentication.LOGIN_SUCCESS).pipe(
-      tap(() => {
+      map(() => {
         this.snackBar.openFromComponent(LoginSnackComponent, {
           duration: 1000,
           data: 'Login Success',
@@ -67,7 +67,7 @@ export class AuthenticationEffectsService {
           verticalPosition: 'top'
         });
       }),
-      mapTo(new fromApplication.Go({ path: ['/', 'auth'] }))
+      mapTo(new fromApplication.Go({ path: ['/', 'test'] }))
     );
 
   @Effect({ dispatch: false })
