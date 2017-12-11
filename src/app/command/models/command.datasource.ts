@@ -8,7 +8,6 @@ import { startWith } from "rxjs/operators/startWith";
 import { map } from "rxjs/operators/map";
 import { Command } from './command.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app-store.module';
 import 'rxjs/add/operator/combineLatest';
 
 export class CommandDatasource extends DataSource<any> {

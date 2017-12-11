@@ -16,12 +16,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from 'app/shared/animations';
 import { CommandDatasource } from '../../models/command.datasource';
 import { Store } from '@ngrx/store';
-import { CommandSelectorsService } from '../../store/command.selectors.service';
-import { CommandState } from '../../store/command.interfaces';
+import { CommandState, getHandledCommands } from 'app/command/+store';
 import { values } from 'lodash';
-/**
- * @title Table with filtering
- */
+
 @Component({
   selector: 'app-commands-list',
   styleUrls: ['./list.component.scss'],
@@ -31,7 +28,7 @@ import { values } from 'lodash';
 export class CommandsListComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'action'];
   public dataSource: CommandDatasource | null;
-  public database$ = this.store.select(this.commandSelectorsService.getHandledCommands);
+  public database$ = this.store.select(getHandledCommands);
   public dataLength$ = this.database$.map(commands => commands.length);
   
   @ViewChild('filter') filter: ElementRef;
@@ -42,8 +39,7 @@ export class CommandsListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-    private store: Store<CommandState>,
-    private commandSelectorsService: CommandSelectorsService) { }
+    private store: Store<CommandState>) { }
 
   ngOnInit() {
     this.dataSource = new CommandDatasource(this.database$, this.sort, this.paginator);

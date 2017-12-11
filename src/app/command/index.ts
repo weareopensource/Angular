@@ -1,3 +1,2 @@
-export { commandConfiguration } from './configuration/command.configuration';
-export { CommandRoutingModule } from './command-routing.module';
-export { CommandStoreModule } from './command-store.module';
+export { commandConfiguration } from './command.configuration';
+export { Command } from './models/command.model';
