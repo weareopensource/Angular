@@ -13,6 +13,8 @@ import { coreConfiguration } from 'app/core';
 import { CoreStoreModule } from 'app/core/+store/core-store.module';
 import { CommandStoreModule } from 'app/command/+store/command-store.module';
 import { commandConfiguration } from 'app/command';
+import { ArticleStoreModule } from 'app/article/+store/article-store.module';
+import { articleConfiguration } from 'app/article';
 
 @NgModule({
   imports: [
@@ -22,9 +24,11 @@ import { commandConfiguration } from 'app/command';
     AuthenticationStoreModule.forRoot(),
     CoreStoreModule.forRoot([
       ...coreConfiguration.self,
-      ...commandConfiguration.core
+      ...commandConfiguration.core,
+      ...articleConfiguration.core
     ]),
     CommandStoreModule.forRoot(),
+    ArticleStoreModule.forRoot(articleConfiguration.self),
     // DBModule.provideDB(schema),
   ]
 })

@@ -20,6 +20,11 @@ const coreRoutes: Routes = [{
     canLoad: [ AuthenticationGuardService ],
     loadChildren: '../../command/command.module#RootCommandModule'
   }, {
+    path: 'article',
+    canActivate: [ AuthenticationGuardService ],
+    canLoad: [ AuthenticationGuardService ],
+    loadChildren: '../../article/article.module#RootArticleModule'
+  }, {
     path: '**',
     component: NotFoundComponent,
     data: {

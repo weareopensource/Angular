@@ -7,7 +7,7 @@ export interface CommandConfiguration {
 
 export const commandConfiguration: CommandConfiguration = {
   core: [{
-    order: 3,
+    order: 4,
     link: '/command',
     name: 'Command',
     icon: 'action:ic_chrome_reader_mode_24px',
