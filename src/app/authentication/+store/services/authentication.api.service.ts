@@ -13,13 +13,12 @@ export class AuthenticationApiService {
 
   login({ email, password }: Authenticate) {
     return this.http
-    .post(`${this.baseUrl}/auth/signin`, { email, password }, { withCredentials: true });
+    .post(`${this.baseUrl}/auth/signin`, { usernameOrEmail: email, password }, { withCredentials: true });
   }
 
   register(registration: any) {
-    const { name, email, password } = registration;
     return this.http
-    .post(`${this.baseUrl}/auth/signup`, { name, email, password }, { responseType: 'text' });
+    .post(`${this.baseUrl}/auth/signup`, registration);
 //      .do(token => this.setAuthorizationHeader(token));
   }
 }

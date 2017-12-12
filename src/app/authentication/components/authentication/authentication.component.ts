@@ -21,11 +21,11 @@ export class AuthenticationComponent {
 
   constructor(private store: Store<AuthenticationState>) { }
 
-  onLogin($event: Authenticate) {
-    this.store.dispatch(new fromAuthentication.Login($event));
+  onLogin(authenticate: Authenticate) {
+    this.store.dispatch(new fromAuthentication.Login(authenticate));
   }
 
-  onRegister($event: any) {
-    this.store.dispatch(new fromAuthentication.Register($event));
+  onRegister(registration: any) {
+    this.store.dispatch(new fromAuthentication.Register(registration));
   }
 }

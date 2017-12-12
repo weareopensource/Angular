@@ -86,17 +86,19 @@ export class AuthenticationEffectsService {
     register$ = this.actions$
       .ofType(fromAuthentication.REGISTER).pipe(
         map(toPayload),
-        exhaustMap(auth => this.authenticationApiService.register(auth)
+        exhaustMap(auth => this.authenticationApiService.register({ ...auth, username: auth.email })
           .pipe(
             catchError(error => {
-            this.store.dispatch(new fromAuthentication.RegisterFailure('Register Error'));
-            return empty();
-          }))),
+              this.store.dispatch(new fromAuthentication.RegisterFailure('Register Error'));
+              return empty();
+            })
+          )
+        ),
         tap((payload: any) => {
           sessionStorage.setItem('user', JSON.stringify(payload.user));
           sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
         }),
-        map((payload) => new fromAuthentication.RegisterSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
+        map((payload) => new fromAuthentication.RegisterSuccess({ ...payload }))
       );
   
     @Effect()

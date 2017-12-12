@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    const { name, email, password } = this.form.value;
+    const { firstName, lastName, email, password } = this.form.value;
     this.submitted.emit(this.form.value);
   }
 

@@ -10,6 +10,7 @@ const initialStatusState: StatusState = {
 export function statusReducer(state = initialStatusState, action: fromAuthentication.Actions): StatusState {
   switch (action.type) {  
     case fromAuthentication.LOAD_USER:
+    case fromAuthentication.REGISTER_SUCCESS:
     case fromAuthentication.LOGIN_SUCCESS: {
       return {
         ...state,
