@@ -1,6 +1,6 @@
-# Mean-2 App
+# MEANie
 [![Build Status](https://travis-ci.org/weareopensource/meanjs-2.svg?branch=master)](https://travis-ci.org/weareopensource/meanjs-2)
-## Angular 2/TypeScript/ Angular CLI Starter 
+## Angular 5 / material / ngRx Starter 
 ## Presentation 
 This is a project started with angular 5+ , [angular material](https://github.com/angular/material2), [angular-cli](https://github.com/angular/angular-cli) / [Nx](https://github.com/nrwl/nx) and [ngRx](https://github.com/ngrx) to tie it all together.
 ![demo-stack](https://user-images.githubusercontent.com/3341461/27798612-359c59b0-6012-11e7-9efd-b999e2119515.gif)
