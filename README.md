@@ -1,4 +1,4 @@
-# MEANie
+# Mean-2 App
 [![Build Status](https://travis-ci.org/weareopensource/meanjs-2.svg?branch=master)](https://travis-ci.org/weareopensource/meanjs-2)
 ## Angular 5 / material / ngRx Starter 
 ## Presentation 
