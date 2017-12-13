@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 
 const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
 
-function initialisationFactory(coreInitialization, configuration) {
+export function initialisationFactory(coreInitialization, configuration) {
   return () => coreInitialization.addMenuItems(configuration) ;
 }
 

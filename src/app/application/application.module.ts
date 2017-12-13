@@ -10,6 +10,7 @@ import { ApplicationStoreModule } from 'app/application/+store/application-store
 import { CoreModule } from 'app/core/core.module';
 import { AuthenticationModule } from 'app/authentication/authentication.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { NxModule } from '@nrwl/nx';
 
 @NgModule({
   declarations: [ ApplicationComponent ],
@@ -19,6 +20,7 @@ import { SharedModule } from 'app/shared/shared.module';
     RouterModule,
     BrowserAnimationsModule,
     // DBModule.provideDB(schema),
+    NxModule.forRoot(),
     ApplicationStoreModule,    
     SharedModule.forRoot(),
     AuthenticationModule.forRoot(),

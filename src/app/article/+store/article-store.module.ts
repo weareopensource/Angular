@@ -5,7 +5,7 @@ import { articleReducer } from './reducers/article.reducer';
 
 const ARTICLE_CONFIGURATION = new InjectionToken('ARTICLE_CONFIGURATION');
 
-function initialisationFactory(articleInitializationService, configuration) {
+export function initialisationFactory(articleInitializationService, configuration) {
   return () => articleInitializationService.initGreetings(configuration.greetings) ;
 }
 

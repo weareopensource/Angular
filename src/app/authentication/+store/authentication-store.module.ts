@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginSnackComponent } from './components/login-snack/login-snack.component';
 
-function initialisationFactory(authenticationInitialisation) {
+export function initialisationFactory(authenticationInitialisation) {
   return () => authenticationInitialisation.loadUser();
 }
 

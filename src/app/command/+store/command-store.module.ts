@@ -6,7 +6,7 @@ import { commandReducer } from './reducers/command.reducer';
 import { CommandEffectsService } from './effects/command.effects.service';
 import { CommandApiService } from './services/command.api.service';
 
-function initialisationFactory(commandInitialization) {
+export function initialisationFactory(commandInitialization) {
   return () => commandInitialization.loadCommands() ;
 }
 

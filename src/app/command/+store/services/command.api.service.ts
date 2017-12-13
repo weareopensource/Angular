@@ -9,5 +9,5 @@ export class CommandApiService {
   constructor(private http: HttpClient) { }
   handle(id) { return this.http.post(`/${this.baseUrl}/commands`, { id }); }
 
-  getHandled() { return this.http.get(`https://localhost:4200/${this.baseUrl}/commands`); }
+  getHandled() { return this.http.get(`${this.baseUrl}/commands`); }
 }
