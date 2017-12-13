@@ -5,13 +5,13 @@ export const environment = {
         host: 'localhost',
         port: '3010',
         endpoints: {
-          base: '/api',
-          signup: '/auth/signup',
-          signin: '/auth/signin',
-          articles : '/articles',
-          users : '/users',
-          profile : '/users/me',
-          password: '/users/password'
+          base: 'api',
+          signup: 'auth/signup',
+          signin: 'auth/signin',
+          articles : 'articles',
+          users : 'users',
+          profile : 'users/me',
+          password: 'users/password'
         }
     }
 };
