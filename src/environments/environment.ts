@@ -7,7 +7,7 @@ export const environment = {
     production: false,
     backend: {
         protocol: 'http',
-        host: '127.0.0.1',
+        host: 'localhost',
         port: '3000',
         endpoints: {
             base: 'api',
