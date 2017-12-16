@@ -3,12 +3,17 @@ import { of } from 'rxjs/observable/of';
 import { _throw } from 'rxjs/observable/throw';
 import { User, Authenticate } from '@labdat/data-models';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../apps/storytelling/src/environments/environment'
 
 @Injectable()
 export class AuthenticationApiService {
-  private baseUrl = '/api';
 
-  constructor(private http: HttpClient) {}
+  private baseUrl: string;
+
+  constructor(private http: HttpClient) {
+    const { protocol, host, port, endpoints } = environment.backend;
+    this.baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
+  }
 
   login({ email, password }: Authenticate) {
     return this.http.post(

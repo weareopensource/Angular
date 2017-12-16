@@ -4,22 +4,22 @@
 // The users-list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-    production: false,
-    backend: {
-        protocol: 'http',
-        host: '127.0.0.1',
-        port: '3000',
-        endpoints: {
-            base: 'api',
-            signup: 'auth/signup',
-            signin: 'auth/signin',
-            users : 'users',
-            slides: 'slides',
-            slidesFix: 'slidesFix',
-            images: 'images',
-            imagesServer : 'imagesServer',
-            search : 'search/slides',
-            banner : 'banner'
-        }
+  production: false,
+  backend: {
+    protocol: 'http',
+    host: 'localhost',
+    port: '3000',
+    endpoints: {
+      basePath: 'api',
+      signup: 'auth/signup',
+      signin: 'auth/signin',
+      users : 'users',
+      slides: 'slides',
+      slidesFix: 'slidesFix',
+      images: 'images',
+      imagesServer : 'imagesServer',
+      search : 'search/slides',
+      banner : 'banner'
     }
+  }
 };

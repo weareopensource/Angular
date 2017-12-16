@@ -1,12 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core'
 //import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
+import { map, filter } from 'rxjs/operators';
 import { Slides } from '../../../models/slides';
 import { SlidesService, ImagesService } from '../../../services';
 import { MatDialog } from '@angular/material';
 import { DeleteDialogComponent} from './delete-dialog/delete-dialog.component';
 //import { NotifBarService } from 'app/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { getUser, getLoggedIn, AuthenticationState } from '@labdat/authentication-state'
+import { Store } from '@ngrx/store';
+import { isEmpty } from 'lodash';
 
 @Component({
     selector: 'app-slides-card',
@@ -39,8 +43,11 @@ export class SlidesCardComponent implements OnInit {
 //    @select(['session', 'token']) loggedIn$: Observable<string>;
 //    @select(['session', 'user', 'username']) username$: Observable<Object>;
 
-    public loggedIn$ = Observable.of(true);
-    public username$ = Observable.of('test');
+    public loggedIn$ = this.store.select(getLoggedIn);
+    public userName$ = this.store.select(getUser).pipe(
+      filter(user => !isEmpty(user)),
+      map(user => user.firstName)
+    );
 
 
     private banner:string; // banner picture of the slides card
@@ -48,7 +55,8 @@ export class SlidesCardComponent implements OnInit {
     constructor(
         private slidesService: SlidesService,
         private imagesService: ImagesService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private store: Store<AuthenticationState>
 //        private notifBarService: NotifBarService
     ) {
           this.banner=""

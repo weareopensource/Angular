@@ -5,8 +5,12 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../environments/environment';
+import { environment } from '../../../../apps/storytelling/src/environments/environment';
 import { Slides } from '../models/index';
+import { getUser, AuthenticationState } from '@labdat/authentication-state';
+import { Store } from '@ngrx/store';
+import { isEmpty } from 'lodash';
+import { filter } from 'rxjs/operators';
 //import { select } from '@angular-redux/store';
 //import { IUser } from '../../core/store/session';
 @Injectable()
@@ -18,25 +22,17 @@ export class SlidesService {
     private progressObserver;
     private progress;
 //    @select(['session', 'user']) user$: Observable<IUser>;
-    public user$ = Observable.of({
-        username: 'test',
-        firstName: 'test',
-        lastName: 'test',
-        roles: ['admin', 'user'],
-        email: ['a@a.com']
-    });
-    constructor(private http: Http) {
+    public user$ = this.store.select(getUser).pipe(filter(user => !isEmpty(user)));
+
+    constructor(private http: Http, private store: Store<AuthenticationState>) {
         this.progress$ = Observable.create(observer => {
             this.progressObserver = observer;
         }).share();
-        this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-        if (environment.backend.port) {
-            this._baseUrl += `:${environment.backend.port}`;
-        };
-        this._baseUrl += `/${environment.backend.endpoints.base}/`
+        const { protocol, host, port, endpoints } = environment.backend;
+        this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
         this.user$.subscribe(user => {
             this.user = {
-                username: user.username,
+                username: user.firstName + user.lastName,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 roles: user.roles,
@@ -62,20 +58,20 @@ export class SlidesService {
         params.set('pageIndex', pageIndex);
         params.set('pageSize', pageSize);
 
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.search}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.search}`;
         return this.http.get(backendURL, { search: params }).map((response: Response) => response.json()).take(1);
     }
     getSlides(id): Observable<any> {
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.slides}/${id}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.slides}/${id}`;
         return this.http.get(backendURL).map((response: Response) => response.json());
     }
 
     updateSlide(slide, id): Observable<any> {
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.slides}/${id}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.slides}/${id}`;
         return this.http.put(backendURL, slide).map((response: Response) => response.json());
     }
     deleteSlides(id): Observable<any> {
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.slides}/${id}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.slides}/${id}`;
         return this.http.delete(backendURL).map((response: Response) => response.json());
     }
     getSlideToSearch(textToSearch, pageIndex, pageSize): Observable<any> {
@@ -87,7 +83,7 @@ export class SlidesService {
         params.set('pageIndex', pageIndex);
         params.set('pageSize', pageSize);
         params.set('order', textToSearch.order);
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.search}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.search}`;
         return this.http.get(backendURL, { params: params }).map((response: Response) => response.json());
     }
 

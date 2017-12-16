@@ -23,7 +23,7 @@
         { "glob": "svg-sprite-hardware.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
         { "glob": "*", "input": "../../../libs/core/assets/", "output": "assets/" },
         { "glob": "*", "input": "../../../libs/slides/assets/", "output": "assets/" },
-        { "glob": "*", "input": "../../../libs/slides/charts/", "output": "assets/" }
+        { "glob": "**", "input": "../../../libs/slides/charts/", "output": "assets/" }
       ],
       "index": "index.html",
       "main": "main.ts",

@@ -11,7 +11,7 @@
           <mat-icon *ngIf="slides&&!slides.slidesSetting.favorite" mat-ripple matRippleCentered="true" matRippleUnbounded="true">favorite_border</mat-icon>
           <mat-icon *ngIf="slides&&slides.slidesSetting.favorite" mat-ripple matRippleCentered="true" matRippleUnbounded="true">favorite</mat-icon>
         </a>
-        <div *ngIf="slides && (loggedIn$|async) && ((username$|async) === slides.slidesSetting.author)&&editable" class="btn-group">
+        <div *ngIf="slides && (loggedIn$|async) && ((userName$|async) === slides.slidesSetting.author)&&editable" class="btn-group">
           <a class="option-btn" (click)="togglePublish($event); false" [class.published]="slides&&slides.slidesSetting.public" [class.unpublished]="slides&&!slides.slidesSetting.public" [matTooltip]="(slides&&slides.slidesSetting.public) ? 'Unpublish' : 'Publish'">
             <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true">publish</mat-icon>
           </a>

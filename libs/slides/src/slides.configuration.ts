@@ -9,7 +9,6 @@ export const slidesConfiguration: SlidesConfiguration = {
     order: 4,
     link: '/slides',
     name: 'Slides',
-    icon: 'hardware:ic_desktop_mac_24px',
-    roles: ['user', 'admin']
+    icon: 'hardware:ic_desktop_mac_24px'
   }]
 };

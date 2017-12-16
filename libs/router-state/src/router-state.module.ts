@@ -8,23 +8,25 @@ import { routerReducer } from '@ngrx/router-store';
 import { CustomSerializer } from './services/custom-serializer.service';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 
-@NgModule({
-  imports: [
-    StoreModule.forFeature('router', routerReducer),
-    EffectsModule.forRoot([RouterEffects]),
-    StoreRouterConnectingModule,
-  ]
-})
+@NgModule()
 export class RouterStateModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RouterStateModule,
+      ngModule: RootRouterStateModule,
       providers: [
         { provide: RouterStateSerializer, useClass: CustomSerializer }
       ]
     }
   }
 }
-  
+
+@NgModule({
+  imports: [
+    StoreModule.forFeature('router', routerReducer),
+    EffectsModule.forFeature([RouterEffects]),
+    StoreRouterConnectingModule,
+  ]
+})
+class RootRouterStateModule {}
 
 

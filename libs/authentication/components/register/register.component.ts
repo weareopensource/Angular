@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
 
   public hide = true;
   public form = this.formBuilder.group({
-    gender: this.formBuilder.control(''),
+//    gender: this.formBuilder.control(''),
     firstName: this.formBuilder.control(''),
     lastName: this.formBuilder.control(''),
     email: this.formBuilder.control('', [

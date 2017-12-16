@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="stretch stretch">
-  <mat-radio-group name="gender" formControlName="gender" required>
+  <!--mat-radio-group name="gender" formControlName="gender" required>
     <mat-radio-button name="gender" value="Female">
       Mrs.
     </mat-radio-button>
@@ -7,7 +7,7 @@
       Mr.
     </mat-radio-button>
   </mat-radio-group>
-  <br>
+  <br-->
   <mat-form-field>
     <input matInput placeholder="First Name" formControlName="firstName" required>
     <mat-error *ngIf="form.controls['email'].invalid">You must enter a value</mat-error>    
