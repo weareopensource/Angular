@@ -1,0 +1,30 @@
+@import './theme.core';
+
+@include mat-core();
+@include angular-material-theme($m2-light-theme);
+
+@import '../../../libs/shared/src/components/sidenav/sidenav-theme';
+@include mean2-sidenav-theme($m2-dark-theme);
+
+@include mat-list-theme($m2-dark-theme);
+
+@import '../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-card-theme';
+@include slide-card-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-editor/charts-builder/charts-builder-theme';
+@include charts-builder-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-editor/slide-editor-theme';
+@include slide-editor-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-editor-form/slides-editor/slides-editor-theme';
+@include slides-editor-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-editor-form/slides-editor/slides-setting/slides-setting-theme';
+@include slides-setting-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-list/slides-card/slides-card-theme';
+@include slides-card-theme($m2-light-theme);
+
+@import '../../../libs/slides/src/components/slides-view/slides-view-theme';
+@include slides-view-theme($m2-light-theme);

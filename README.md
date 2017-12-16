@@ -1,65 +1,44 @@
-# Mean-2 App
+# Labdat
 
-[![Build Status](https://travis-ci.org/weareopensource/meanjs-2.svg?branch=master)](https://travis-ci.org/weareopensource/meanjs-2)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1 using [Nrwl Nx](https://nrwl.io/nx).
 
-## Angular 2/TypeScript/ Angular CLI Starter 
+## Nrwl Extensions for Angular (Nx)
 
-## Presentation 
-This is a project started with angular 4+ , Typescript, [angular-cli](https://github.com/angular/angular-cli) and [RxJS](http://reactivex.io/) to tie it all together.
+<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
 
-![demo-stack](https://user-images.githubusercontent.com/3341461/27798612-359c59b0-6012-11e7-9efd-b999e2119515.gif)
+Nx is an open source toolkit for enterprise Angular applications.
 
+Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
 
-## Prerequisites
+## Quick Start & Documentation
 
-Make sure you have installed all of the following prerequisites on your development machine:
+[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
 
-* Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
-* Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
-* Angular-cli  - You're going to use the Angular cli to manage your front-end build. Make sure you've installed npm / yarn first, then install angular cli globally using npm:
+## Generate your first application
 
-```bash
-$ npm install -g @angular/cli
-```
+Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
 
-or
+## Development server
 
-```bash
-$ yarn global add @angular/cli
-```
+Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Installation
+## Code scaffolding
 
-```bash
-$ npm install
-```
-or 
-```bash
-$ yarn install
-```
+Run `ng generate component component-name --app=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Running Your Application
+## Build
 
-   ### Development
-   * Run `npm run start:dev` or `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-
-   ### Production
-   * Run `npm start` to build your client app and start a web server on `http://localhost:3000/`
-
+Run `ng build --app=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 
-Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+## Further help
 
-## Contributing
-We welcome pull requests from the community!
-
-## License
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,0 +1,38 @@
+<a class="card-container" *ngIf="(loggedIn$|async)||(slides&&slides.slidesSetting.public)" [routerLink]="['/slides/slidesPresentation', slides._id]">
+  <mat-card  [@flyInOut]="'in'"  class="prez-list-card" >
+    <h2 class="slides-title">{{slides?slides.slidesSetting.title:""}}</h2>
+    <div class="mat-card-image" style="background-image:url('assets/logo_full_banner.png');">
+      <div class="banner-container" *ngIf="slides&&slides.slidesSetting.banner">
+        <img class="banner" [src]="banner">
+      </div>
+      <div class="banner-mask"><i class="fa fa-play-circle-o fa-5x" aria-hidden="true"></i></div>
+      <div class="options">
+        <a class="option-btn" *ngIf="loggedIn$|async" (click)="toggleFavorite($event); false" [class.favorite]="slides&&slides.slidesSetting.favorite" [class.unfavorite]="slides&&!slides.slidesSetting.favorite" [matTooltip]="(slides&&slides.slidesSetting.favorite) ? 'Remove from favorite' : 'Add to favorite'">
+          <mat-icon *ngIf="slides&&!slides.slidesSetting.favorite" mat-ripple matRippleCentered="true" matRippleUnbounded="true">favorite_border</mat-icon>
+          <mat-icon *ngIf="slides&&slides.slidesSetting.favorite" mat-ripple matRippleCentered="true" matRippleUnbounded="true">favorite</mat-icon>
+        </a>
+        <div *ngIf="slides && (loggedIn$|async) && ((username$|async) === slides.slidesSetting.author)&&editable" class="btn-group">
+          <a class="option-btn" (click)="togglePublish($event); false" [class.published]="slides&&slides.slidesSetting.public" [class.unpublished]="slides&&!slides.slidesSetting.public" [matTooltip]="(slides&&slides.slidesSetting.public) ? 'Unpublish' : 'Publish'">
+            <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true">publish</mat-icon>
+          </a>
+          <a class="option-btn" (click)="deleteSlides($event, slides._id); false" matTooltip="Delete">
+            <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true">delete</mat-icon>
+          </a>
+          <a class="option-btn" (click)="false" [routerLink]="['display', slides._id]" matTooltip="Edit">
+            <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true">edit</mat-icon>
+          </a>
+          <a class="option-btn" (click)="duplicateSlides($event,slides); false" matTooltip="Copy">
+            <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true">content_copy</mat-icon>
+          </a>
+        </div>
+      </div>
+      <mat-chip-list class="tip-list" *ngIf="slides">
+        <mat-chip class="tip" *ngFor="let tag of slides.slidesSetting.tags">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <mat-card-content class="card-content">
+      <p class="description" *ngIf="slides">{{slides.slidesSetting.description}}</p>
+      <p class="author" *ngIf="slides">{{slides.slidesSetting.author}}</p>
+    </mat-card-content>
+  </mat-card>
+</a>

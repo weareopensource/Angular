@@ -1,0 +1,15 @@
+.filter-container {
+  padding-left: 20px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    mat-checkbox{
+      margin-right: 10px;
+    }
+    mat-checkbox :last-child{
+      margin-right: 0px;
+    }
+  .sorted-by{
+    float: right;
+  }
+}

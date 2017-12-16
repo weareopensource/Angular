@@ -15,9 +15,10 @@
 .c9/
 *.launch
 .settings/
+*.sublime-workspace
 
 # IDE - VSCode
-.vscode/
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -26,7 +27,7 @@
 # misc
 /.sass-cache
 /connect.lock
-/coverage/*
+/coverage
 /libpeerconnection.log
 npm-debug.log
 testem.log
@@ -36,85 +37,6 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
-
-# OS
-# ===========
+# System Files
 .DS_Store
-ehthumbs.db
-Icon?
 Thumbs.db
-
-# Node and related ecosystem
-# ==========================
-.nodemonignore
-.sass-cache/
-node_modules/
-public/lib/
-app/tests/coverage/
-.bower-*/
-.idea/
-coverage/
-.coveralls.yml
-
-# MEAN.js app and assets
-# ======================
-server/public/dist/
-server/uploads
-server/modules/users/client/img/profile/uploads
-server/config/env/local.js
-server/config/env/local-*.js
-server/*.pem
-
-# Compiled less and sass files
-# ============================
-server/modules/*/client/scss/*.css
-server/modules/*/client/less/*.css
-
-# Ignoring MEAN.JS's gh-pages branch for documenation
-server/_site/
-
-# General
-# =======
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-*.tmp
-*.bak
-*.swp
-logs/
-build/
-
-# Sublime editor
-# ==============
-.sublime-project
-*.sublime-project
-*.sublime-workspace
-
-# Eclipse project files
-# =====================
-.project
-.settings/
-.*.md.html
-.metadata
-*~.nib
-local.properties
-
-# IntelliJ
-# ========
-*.iml
-
-# Cloud9 IDE
-# =========
-.c9/
-data/
-mongod
-
-# Visual Studio
-# =========
-*.suo
-*.ntvs*
-*.njsproj
-*.sln

@@ -1,41 +1,87 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "waosAngular"
+    "name": "labdat",
+    "npmScope": "labdat",
+    "latestMigration": "20171213-update-tsconfig-spec-to-exclude-e2e"
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "name": "storytelling",
+      "root": "apps/storytelling/src",
+      "outDir": "dist/apps/storytelling",
       "assets": [
         "assets",
         "favicon.ico",
-         { "glob": "svg-sprite-file.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-editor.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-action.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-navigation.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-av.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-image.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" },
-         { "glob": "svg-sprite-content.svg", "input": "../node_modules/material-design-icons/sprites/svg-sprite/", "output": "./assets/" }
-        ],
+        { "glob": "svg-sprite-file.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-editor.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-action.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-navigation.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-av.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-image.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-content.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" },
+        { "glob": "svg-sprite-hardware.svg", "input": "../../../node_modules/material-design-icons/sprites/svg-sprite/", "output": "assets/" }
+      ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
-      "test": "test.ts",
+      "test": "../../../test.js",
       "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "styles.scss",
         "theme.scss"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts",
-        "demo": "environments/environment.demo.ts"
+        "prod": "environments/environment.prod.ts"
       }
+    },
+    {
+      "name": "authentication",
+      "root": "libs/authentication/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "authentication-state",
+      "root": "libs/authentication-state/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "core",
+      "root": "libs/core/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "core-state",
+      "root": "libs/core-state/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "router-state",
+      "root": "libs/router-state/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "shared",
+      "root": "libs/shared/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "slides",
+      "root": "libs/slides/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ],
   "e2e": {
@@ -45,15 +91,15 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
+      "project": "./tsconfig.spec.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json",
+      "project": "apps/storytelling/src/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json",
+      "project": "apps/storytelling/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     }
   ],
@@ -63,10 +109,18 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
-    "component": {},
     "schematics": {
-      "collection": "@nrwl/schematics"
-    }
+      "collection": "@nrwl/schematics",
+      "postGenerate": "npm run format",
+      "newProject": [
+        "app",
+        "lib"
+      ]
+    },
+    "styleExt": "css",
+    "component": {}
+  },
+  "warnings": {
+    "typescriptMismatch": false
   }
 }
