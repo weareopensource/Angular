@@ -2,7 +2,7 @@ import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, Input, V
 import { Observable } from "rxjs/Observable";
 import { Slide } from "../../../../models";
 import { PageConfig, HALF_HALF_LAYOUT } from "../../pageConfig";
-import { Chart } from '@labdat/charts/chart.class';
+import { Chart } from '@labdat/charts';
 import { ChartsService } from "../../../../services";
 
 @Component({

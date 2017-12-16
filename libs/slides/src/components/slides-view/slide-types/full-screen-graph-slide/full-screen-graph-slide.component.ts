@@ -2,7 +2,7 @@ import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, Input, V
 import { Observable } from "rxjs/Observable";
 import { Slide } from "../../../../models";
 import { PageConfig, FULL_LAYOUT } from "../../pageConfig";
-import { Chart } from "@labdat/charts/chart.class";
+import { Chart } from "@labdat/charts";
 import { ChartsService } from "../../../../services/charts.service";
 @Component({
     selector: 'app-full-screen-graph-slide',

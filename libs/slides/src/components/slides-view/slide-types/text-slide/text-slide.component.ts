@@ -3,7 +3,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import { Observable } from "rxjs/Observable";
 import { Slide } from "../../../../models";
 import { PageConfig, FULL_LAYOUT } from "../../pageConfig";
-import { Chart } from "@labdat/charts/chart.class";
+import { Chart } from "@labdat/charts";
 
 @Component({
     selector: 'app-text-slide',

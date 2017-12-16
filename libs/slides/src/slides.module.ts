@@ -67,14 +67,13 @@ import {
     ForceDirectedGraphComponent,
     LineChartComponent,
     DendogramComponent,
-    PieChartComponent
- } from '@labdat/charts';
-import { HierarchicalEdgeBundlingComponent } from '@labdat/charts/hierarchical-edge-bundling/hierarchical-edge-bundling.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
-import {
+    PieChartComponent,
+    HierarchicalEdgeBundlingComponent,
     BubbleChartComponent,
     WordCloudComponent,
-    AreaChartComponent } from '@labdat/charts';
+    AreaChartComponent
+ } from '@labdat/charts';
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 import { ImageUploadComponent } from './components/slides-editor-form/slides-editor/slide-card/slide-editor/image-upload/image-upload.component';
 
