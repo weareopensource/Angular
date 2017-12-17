@@ -1,14 +1,14 @@
 <form fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-around">
   <mat-form-field *ngIf="kind === 'advanced'" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="60">
     <mat-placeholder>
-      <mat-icon>search</mat-icon>
+      <mat-icon svgIcon="action:ic_search_24px"></mat-icon>
     </mat-placeholder>
     <input matInput [(ngModel)]="textToSearch" name="textToSearch" (ngModelChange)="onChange(textToSearch)">
   </mat-form-field>
 
   <mat-form-field *ngIf="kind !== 'advanced'" fxFlex="100">
     <mat-placeholder>
-      <mat-icon>search</mat-icon>
+      <mat-icon svgIcon="action:ic_search_24px"></mat-icon>
     </mat-placeholder>
     <input matInput [(ngModel)]="textToSearch" name="textToSearch" (ngModelChange)="onChange(textToSearch)">
   </mat-form-field>

@@ -3,40 +3,12 @@
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
 
-  mat-form-field {
-    padding: 0 10px;
-  }
-
-  .tag {
-    padding: 0 10px;
-
-    .tag-group {
-      display: inline-block;
-      mat-chip:first-child {
-        margin-left: 20px;
-      }
-      mat-chip:last-child {
-        margin-right: 10px;
-      }
-      .close-tag {
-        cursor: pointer;
-        &:hover {
-          color: white;
-        }
-      }
-
-      mat-form-field {
-        padding: 0;
-      }
-    }
-  }
   .published {
     color: mat-color($accent);
   }
 
   .unpublished {
     color: mat-color($primary);
-    opacity: 0.5;
   }
   .published-icon{
     margin-top: 90%;

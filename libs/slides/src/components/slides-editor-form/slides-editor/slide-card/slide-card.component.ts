@@ -7,6 +7,7 @@ import { SlideEditorComponent } from './slide-editor/slide-editor.component';
 @Component({
     selector: 'app-slide-card',
     templateUrl: './slide-card.component.html',
+    styleUrls: ['./slide-card.component.scss'],
     animations: [
         trigger('flyInOut', [
             state('in', style({transform: 'translateX(0)'})),

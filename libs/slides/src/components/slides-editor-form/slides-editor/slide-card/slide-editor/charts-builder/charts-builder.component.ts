@@ -33,6 +33,7 @@ const defaultOptions = {
 @Component({
     selector: 'app-charts-builder',
     templateUrl: './charts-builder.component.html',
+    styleUrls: ['./charts-builder.component.html']
 })
 export class ChartsBuilderComponent implements OnInit, DoCheck {
     @Input() inputData: any[];

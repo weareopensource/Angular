@@ -16,7 +16,7 @@
       </mat-form-field>
     </div>
     <a class="option-btn" (click)="publicStatusChange($event); false" [class.published]="slidesSetting.public" [class.unpublished]="!slidesSetting.public" [matTooltip]="(slidesSetting.public) ? 'Unpublish' : 'Publish'">
-      <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true" class="published-icon">publish</mat-icon>
+      <mat-icon mat-ripple matRippleCentered="true" matRippleUnbounded="true" class="published-icon" svgIcon="editor:ic_publish_24px"></mat-icon>
     </a>
   </div>
 

@@ -1,4 +1,4 @@
-import { Component, HostListener, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener, HostBinding } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
@@ -6,7 +6,6 @@ import { MatIconRegistry } from '@angular/material';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class AppComponent {
@@ -30,7 +29,7 @@ export class AppComponent {
     private mdIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
-    ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content']
+    ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content', 'hardware']
     .forEach(iconSet =>
       mdIconRegistry.addSvgIconSetInNamespace(iconSet, sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`
     )));

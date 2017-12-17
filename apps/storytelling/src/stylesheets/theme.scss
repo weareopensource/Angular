@@ -1,14 +1,10 @@
-@import '~@angular/material/_theming.scss';
-@include mat-core();
-$primary: mat-palette($mat-blue-grey, 800);
-$accent: mat-palette($mat-cyan, 600);
-$warn: mat-palette($mat-red, 600);
-$theme: mat-light-theme($primary, $accent, $warn);
+@import './theme.core';
 
-@include angular-material-theme($theme);
+@include mat-core();
+@include angular-material-theme($storytelling-light-theme);
 
 .error {
-  color: mat-color($warn);
+  color: mat-color($storytelling-warn);
 }
 
 // Define a mixin that accepts a theme and outputs the color styles for the component.
@@ -35,8 +31,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 }
 
-
-
 @mixin Nav-theme($theme) {
   // Extract whichever individual palettes you need from the theme.
   $primary: map-get($theme, primary);
@@ -45,3 +39,29 @@ $theme: mat-light-theme($primary, $accent, $warn);
   background-color: mat-color($primary);
   border-color: mat-color($accent, A400);
 }
+
+@import '../../../../libs/shared/src/components/sidenav/sidenav-theme';
+@include mean2-sidenav-theme($storytelling-dark-theme);
+
+@include mat-list-theme($storytelling-dark-theme);
+
+@import '../../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-card-theme';
+@include slide-card-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-editor/charts-builder/charts-builder-theme';
+@include charts-builder-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-editor-form/slides-editor/slide-card/slide-editor/slide-editor-theme';
+@include slide-editor-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-editor-form/slides-editor/slides-editor-theme';
+@include slides-editor-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-editor-form/slides-editor/slides-setting/slides-setting-theme';
+@include slides-setting-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-list/slides-card/slides-card-theme';
+@include slides-card-theme($storytelling-light-theme);
+
+@import '../../../../libs/slides/src/components/slides-view/slides-view-theme';
+@include slides-view-theme($storytelling-light-theme);

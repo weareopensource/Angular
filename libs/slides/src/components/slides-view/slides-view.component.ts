@@ -21,6 +21,7 @@ import * as screenfull from 'screenfull';
 @Component({
     selector: 'app-slides-view',
     templateUrl: './slides-view.component.html',
+    styleUrls: ['./slides-view.component.scss'],
     animations: [slideTransition()],
     providers: [WindowResizeService, SlidesService]
 })

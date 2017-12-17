@@ -20,8 +20,8 @@
                 [pageSize]="pageSize"
                 (page)="nextPage($event)">
   </mat-paginator>
-  <button class="buttonBottom" *ngIf="loggedIn$|async" [routerLink]="['createSlides']"  mat-fab><mat-icon>add</mat-icon> </button>
-  <button class="buttonBottom" *ngIf="!(loggedIn$|async)" [routerLink]="['/user/login']" [queryParams]="{returnUrl: '/slides/createSlides'}"  mat-fab><mat-icon>add</mat-icon> </button>
+  <button class="buttonBottom" *ngIf="loggedIn$|async" [routerLink]="['createSlides']"  mat-fab><mat-icon svgIcon="content:ic_add_24px"></mat-icon></button>
+  <button class="buttonBottom" *ngIf="!(loggedIn$|async)" [routerLink]="['/user/login']" [queryParams]="{returnUrl: '/slides/createSlides'}"  mat-fab><mat-icon svgIcon="content:ic_add_24px"></mat-icon></button>
 
 </div>
 

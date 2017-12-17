@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+$storytelling-primary: mat-palette($mat-blue-grey, 800);
+$storytelling-accent: mat-palette($mat-cyan, 600);
+$storytelling-warn: mat-palette($mat-red, 600);
+$storytelling-light-theme: mat-light-theme($storytelling-primary, $storytelling-accent, $storytelling-warn);
+$storytelling-dark-theme: mat-dark-theme($storytelling-primary, $storytelling-accent, $storytelling-warn);
+
+
+//$m2-primary: mat-palette($mat-m2-primary);
+//$m2-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+//$m2-warn:    mat-palette($mat-red);
+
+//$m2-light-theme: mat-light-theme($m2-primary, $m2-primary, mat-palette($mat-red));
+//$m2-dark-theme: mat-dark-theme($m2-primary, $m2-primary, mat-palette($mat-red));

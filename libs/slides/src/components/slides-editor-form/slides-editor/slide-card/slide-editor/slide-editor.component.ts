@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray  } from '@angular/forms';
 import {ValidService} from '../../../../../services/valid.service';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../../../../../apps/storytelling/src/environments/environment';
 import * as slideOption from './slideOption';
 import { MatDialogRef } from '@angular/material';
 
@@ -9,6 +9,7 @@ import { Slide } from '../../../../../models/slide';
 @Component({
   selector: 'app-slide-editor',
   templateUrl: './slide-editor.component.html',
+  styleUrls: ['./slide-editor.component.scss']
 })
 export class SlideEditorComponent implements OnInit, OnChanges {
 
@@ -35,17 +36,16 @@ export class SlideEditorComponent implements OnInit, OnChanges {
 
     this.isChartBuilderValid = true;
     // set server path
-    let baseURL = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port) {
-      baseURL += `:${environment.backend.port}`;
-    };
+    const { protocol, host, port, endpoints } = environment.backend;
+    const baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
+
     this.editorOptions = {
       heightMin: 200,
       heightMax: 400,
       charCounterMax: 3000,
       toolbarSticky: false,
-      imageUploadURL: `${baseURL}${environment.backend.endpoints.imagesServer}`,
-      imageManagerLoadURL: `${baseURL}${environment.backend.endpoints.imagesServer}`
+      imageUploadURL: `${baseUrl}/${endpoints.imagesServer}`,
+      imageManagerLoadURL: `${baseUrl}/${endpoints.imagesServer}`
     };
 
   }

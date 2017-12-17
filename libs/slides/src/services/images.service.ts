@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../environments/environment';
+import { environment } from '../../../../apps/storytelling/src/environments/environment';
 @Injectable()
 export class ImagesService {
     private _baseUrl: string;
@@ -13,19 +13,17 @@ export class ImagesService {
         this.progress$ = Observable.create(observer => {
             this.progressObserver = observer;
         }).share();
-        this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-        if (environment.backend.port) {
-            this._baseUrl += `:${environment.backend.port}`;
-        };
+        const { protocol, host, port, endpoints } = environment.backend;
+        this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
     }
 
     getImage(id): Observable<any> {
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.images}/${id}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.images}/${id}`;
         return this.http.get(backendURL).map((response: Response) => response.json());
     }
     uploadImage(img) {
         return Observable.create(observer => {
-            const backendURL = `${this._baseUrl}${environment.backend.endpoints.images}`
+            const backendURL = `${this._baseUrl}/${environment.backend.endpoints.images}`
             let xhr: XMLHttpRequest = new XMLHttpRequest();
             let formData: any = new FormData();
             formData.append('file', img);

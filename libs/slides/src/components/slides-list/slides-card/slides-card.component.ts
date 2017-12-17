@@ -11,10 +11,12 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { getUser, getLoggedIn, AuthenticationState } from '@labdat/authentication-state'
 import { Store } from '@ngrx/store';
 import { isEmpty } from 'lodash';
+import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
     selector: 'app-slides-card',
     templateUrl: './slides-card.component.html',
+    styleUrls: ['./slides-card.component.scss'],
     animations: [
         trigger('flyInOut', [
             state('in', style({transform: 'translateX(0)'})),
@@ -43,11 +45,12 @@ export class SlidesCardComponent implements OnInit {
 //    @select(['session', 'token']) loggedIn$: Observable<string>;
 //    @select(['session', 'user', 'username']) username$: Observable<Object>;
 
-    public loggedIn$ = this.store.select(getLoggedIn);
-    public userName$ = this.store.select(getUser).pipe(
-      filter(user => !isEmpty(user)),
-      map(user => user.firstName)
-    );
+    public loggedIn$:Observable<boolean> = this.store.select(getLoggedIn);
+    public userName$ = this.store.select(getUser)
+      .pipe(
+        filter(user => !isEmpty(user)),
+        map(user => user.firstName + user.lastName)
+      );
 
 
     private banner:string; // banner picture of the slides card
@@ -125,5 +128,17 @@ export class SlidesCardComponent implements OnInit {
             error => {
 //                this.notifBarService.showNotif("Opps! fail to copy the slides. error :" + error);
             });
+    }
+
+    public showOptions(): Observable<boolean> {
+        return combineLatest(
+            this.loggedIn$,
+            this.userName$,
+            (loggedIn, userName) =>
+              loggedIn
+              && this.editable
+              && this.slides
+              && this.slides.slidesSetting.author === userName
+        )
     }
 }

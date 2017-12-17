@@ -5,6 +5,7 @@ import { ValidService } from '../../../../services/valid.service';
 @Component({
     selector: 'app-slides-setting',
     templateUrl: './slides-setting.component.html',
+    styleUrls: ['./slides-setting.component.html'],
     providers: []
 })
 export class SlidesSettingComponent implements OnInit, OnChanges {

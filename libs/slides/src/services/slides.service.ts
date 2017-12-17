@@ -11,8 +11,7 @@ import { getUser, AuthenticationState } from '@labdat/authentication-state';
 import { Store } from '@ngrx/store';
 import { isEmpty } from 'lodash';
 import { filter } from 'rxjs/operators';
-//import { select } from '@angular-redux/store';
-//import { IUser } from '../../core/store/session';
+
 @Injectable()
 export class SlidesService {
     private _baseUrl: string;
@@ -42,13 +41,13 @@ export class SlidesService {
 
     }
     me(): Observable<any> {
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.users}/me`;
         return this.http.get(backendURL).map((response: Response) => response.json());
     }
 
     submitSlides(slides: Slides): Observable<any> {
         slides.slidesSetting.author = this.user.username;
-        const backendURL = `${this._baseUrl}${environment.backend.endpoints.slides}`;
+        const backendURL = `${this._baseUrl}/${environment.backend.endpoints.slides}`;
         return this.http.post(backendURL, slides).map((response: Response) => response.json());
     }
     getSlidesList(pageIndex, pageSize): Observable<any> {

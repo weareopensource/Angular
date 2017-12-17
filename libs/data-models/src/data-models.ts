@@ -6,7 +6,7 @@ export interface Authenticate {
 export interface User {
   firstName: string;
   lastName: string;
-  userName?: string;
+  username?: string;
   email: string;
   roles: string[];
 }
