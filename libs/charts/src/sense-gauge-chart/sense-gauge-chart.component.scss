@@ -1,0 +1,34 @@
+:host /deep/{
+    width: 100%;
+      
+    .d3-chart {
+      width: 200px;
+      height: 125px;
+    }
+
+    .chart-first {
+        fill: #FB3033;
+    }
+    .chart-second {
+        fill: #F2BA3A;
+    }
+    .chart-third {
+        fill: #9FBD35;
+    }
+
+    .needle, .needle-center {
+        fill: #000000;
+    }
+
+    .bad {
+        margin-bottom: 30px;
+        color: #FB3033;
+        font-size: 20px;
+    }
+
+    .good {
+        margin-bottom: 30px;
+        color: #7F972A;
+        font-size: 20px;
+    }
+  }

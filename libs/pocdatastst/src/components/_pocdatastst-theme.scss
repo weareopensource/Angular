@@ -1,0 +1,14 @@
+@mixin pocdatastst-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .panel-body {
+    ul li {
+      &.error{
+        background-color: mat-color($warn);
+        color: mat-color($primary,50);
+      }
+    }
+  }
+}

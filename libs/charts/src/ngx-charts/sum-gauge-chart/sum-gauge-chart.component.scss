@@ -1,0 +1,18 @@
+
+:host /deep/ {
+    width: 100%;
+    
+    .d3-chart {
+      width: 100%;
+      height: 250px;
+    }
+
+    /* We want hiding the central text only (bug with valueFormatting option, this function will modify ALL labels (with tooltips) not only central label */
+    ngx-charts-gauge g text{
+     visibility: hidden;
+    }
+
+    ngx-charts-gauge g g text{
+      visibility: visible;
+     }
+}

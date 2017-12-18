@@ -33,6 +33,7 @@
     "@nrwl/nx": "0.5.2",
     "@swimlane/ngx-charts": "^7.0.1",
     "angular-font-awesome": "^3.0.3",
+    "angular2-collapsible": "0.0.44",
     "angular2-froala-wysiwyg": "^2.6.0",
     "babyparse": "^0.4.6",
     "core-js": "^2.4.1",

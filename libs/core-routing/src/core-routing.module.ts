@@ -27,12 +27,12 @@ const coreRoutes: Routes = [
         component: AuthenticationComponent,
         canActivate: [AuthenticationGuardService]
       },
-//      {
-//        path: 'slides',
-//        canActivate: [AuthenticationGuardService],
-//        canLoad: [AuthenticationGuardService],
-//        loadChildren: '../../slides/src/slides.module#SlidesModule'
-//      },
+      {
+        path: 'pocdatastst',
+        canActivate: [AuthenticationGuardService],
+        canLoad: [AuthenticationGuardService],
+        loadChildren: '../../pocdatastst/src/pocdatastst.module#PocdataststModule'
+      },
       {
         path: '**',
         component: NotFoundComponent,

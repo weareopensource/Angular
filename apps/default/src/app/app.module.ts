@@ -18,6 +18,8 @@ import { metaReducers } from './+state/app.reducer';
 import { coreConfiguration } from '@labdat/core';
 import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/router-state';
+import { pocdataststConfiguration } from '@labdat/pocdatastst';
+
 
 @NgModule({
   imports: [
@@ -41,6 +43,7 @@ import { RouterStateModule } from '@labdat/router-state';
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([
       ...coreConfiguration.self,
+      ...pocdataststConfiguration.core
     ])
   ],
   declarations: [AppComponent],
