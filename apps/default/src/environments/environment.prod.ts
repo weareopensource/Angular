@@ -15,9 +15,7 @@ production: true,
       images: '/api/images',
       imagesServer : '/api/imagesServer',
       search : '/api/search/slides',
-      banner : '/api/banner',
-      pocdatastst : '/api/pocdatastst',
-      apislist : '/api/apislist'
+      banner : '/api/banner'
     }
   }
 };

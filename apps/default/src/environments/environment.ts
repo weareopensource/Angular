@@ -19,9 +19,7 @@ export const environment = {
       images: 'images',
       imagesServer : 'imagesServer',
       search : 'search/slides',
-      banner : 'banner',
-      pocdatastst : '/api/pocdatastst',
-      apislist : '/api/apislist'
+      banner : 'banner'
     }
   }
 };

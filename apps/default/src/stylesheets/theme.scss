@@ -7,7 +7,3 @@
 @include mean2-sidenav-theme($default-dark-theme);
 
 @include mat-list-theme($default-dark-theme);
-
-@import '../../../../libs/pocdatastst/src/components/pocdatastst-theme';
-@include pocdatastst-theme($default-light-theme);
-

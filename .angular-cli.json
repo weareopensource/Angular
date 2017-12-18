@@ -78,8 +78,8 @@
       "appRoot": ""
     },
     {
-      "name": "pocdatastst",
-      "root": "libs/pocdatastst/src",
+      "name": "slides",
+      "root": "libs/slides/src",
       "test": "../../../test.js",
       "appRoot": ""
     }
