@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="stretch stretch">
+  <!--mat-radio-group name="gender" formControlName="gender" required>
+    <mat-radio-button name="gender" value="Female">
+      Mrs.
+    </mat-radio-button>
+    <mat-radio-button name="gender" value="Male">
+      Mr.
+    </mat-radio-button>
+  </mat-radio-group>
+  <br-->
+  <mat-form-field>
+    <input matInput placeholder="First Name" formControlName="firstName" required>
+    <mat-error *ngIf="form.controls['email'].invalid">You must enter a value</mat-error>    
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last Name" formControlName="lastName" required>
+    <mat-error *ngIf="form.controls['email'].invalid">You must enter a value</mat-error>    
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" required>
+    <mat-error *ngIf="form.controls['email'].invalid">{{emailErrorMessage}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+    <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
+    <mat-error *ngIf="form.controls['password'].invalid">You must enter a value</mat-error>    
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" required>
+  </mat-form-field>
+  <br>
+  <button type="submit" [disabled]="!form.valid" mat-raised-button>Register</button>
+</form>
