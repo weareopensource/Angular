@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material';
 import { SharedModule } from '@labdat/shared';
-import { AuthenticationModule } from '@labdat/authentication/authentication.module';
+import { AuthenticationModule } from '@labdat/authentication';
 import { CoreModule } from '@labdat/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
