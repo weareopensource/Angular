@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.tab-content {
+  display: block;
+  width: 740px;
+  height: 530px;
+}
+
+[contenteditable] {
+  outline: none;
+}

@@ -1,0 +1,36 @@
+<mat-card class="container">
+  <div class="header">
+    <mat-form-field floatPlaceholder="never">
+      <input matInput #filter placeholder="Filtre de articlees">
+    </mat-form-field>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'ID'"></mat-header-cell>
+      <mat-cell *matCellDef="let row" [innerHtml]="row.id"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Titre'"></mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.title"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef [innerHtml]="'Action'"></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-icon svgIcon="action:ic_visibility_24px" (click)="edit(row.id)"></mat-icon>
+        <mat-icon svgIcon="action:ic_delete_24px" (click)="delete()"></mat-icon>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+    [length]="dataLength$ | async"
+    [pageIndex]="0"
+    [pageSize]="25"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</mat-card>
+
+<div class="detail" [@routerTransition]="getState(o)">
+    <router-outlet #o="outlet"></router-outlet>
+</div>
