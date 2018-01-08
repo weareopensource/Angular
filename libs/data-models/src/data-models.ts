@@ -18,3 +18,18 @@ export interface MenuItem {
   icon: string;
   roles?: string[];
 }
+
+export interface Task {
+  readonly id: number;
+  readonly title: string;
+  readonly description: string;
+  readonly createdDate: Date;
+  readonly updatedDate: Date;
+  readonly userIds: number[];
+  readonly comments: Comment[];
+}
+
+export interface Comment {
+  id: number;
+  body: string;
+}

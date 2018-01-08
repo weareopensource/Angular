@@ -78,8 +78,8 @@
       "appRoot": ""
     },
     {
-      "name": "slides",
-      "root": "libs/slides/src",
+      "name": "task",
+      "root": "libs/task/src",
       "test": "../../../test.js",
       "appRoot": ""
     }

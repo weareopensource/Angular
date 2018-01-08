@@ -18,8 +18,8 @@ import { metaReducers } from './+state/app.reducer';
 import { coreConfiguration } from '@labdat/core';
 import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/router-state';
-import { ArticleStateModule } from '@labdat/article-state';
-import { articleConfiguration } from '@labdat/article';
+import { TaskStateModule } from '@labdat/task-state';
+import { taskConfiguration } from '@labdat/task';
 
 @NgModule({
   imports: [
@@ -43,8 +43,9 @@ import { articleConfiguration } from '@labdat/article';
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([
       ...coreConfiguration.self,
+      ...taskConfiguration.core
     ]),
-    ArticleStateModule.forRoot()
+    TaskStateModule.forRoot()
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

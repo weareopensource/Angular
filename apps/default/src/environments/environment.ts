@@ -14,12 +14,7 @@ export const environment = {
       signup: 'auth/signup',
       signin: 'auth/signin',
       users : 'users',
-      slides: 'slides',
-      slidesFix: 'slidesFix',
-      images: 'images',
-      imagesServer : 'imagesServer',
-      search : 'search/slides',
-      banner : 'banner'
+      articles: 'articles'
     }
   }
 };

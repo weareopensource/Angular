@@ -11,16 +11,21 @@ import { values, difference, isEmpty } from 'lodash';
 import { fromCore, CoreState, getShowSidenav, getMenuItems } from '@labdat/core-state';
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
+import { routesAnimation } from '@labdat/animations';
 
 @Component({
   selector: 'layout-root',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  animations: [ routesAnimation ]
 })
 export class LayoutComponent {
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
+
+@ViewChild('outlet')
+public outlet
 
   constructor(private store: Store<CoreState>, private router: Router) {}
 
@@ -43,5 +48,9 @@ export class LayoutComponent {
 
   public closeSidenav() {
     this.store.dispatch(new fromCore.CloseSidenav());
+  }
+
+  onClick() {
+    console.log(this.outlet.activatedRouteData)
   }
 }

@@ -6,7 +6,7 @@
   },
   "include": [
     "**/*.ts",
-    "../../../libs/article"
+    "../../../libs/task"
     /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
   ],
   "exclude": [

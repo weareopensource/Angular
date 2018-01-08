@@ -20,18 +20,24 @@ const coreRoutes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        data: {
+          page: 'home'
+        }
       },
       {
         path: 'auth',
         component: AuthenticationComponent,
-        canActivate: [AuthenticationGuardService]
+        canActivate: [AuthenticationGuardService],
+        data: {
+          page: 'authentication'
+        }
       },
       {
-        path: 'articles',
+        path: 'tasks',
         canActivate: [AuthenticationGuardService],
         canLoad: [AuthenticationGuardService],
-        loadChildren: '../../article/src/acticle.module#RootArticleModule'
+        loadChildren: '../../task/src/task.module#RootTaskModule'
       },
       {
         path: '**',

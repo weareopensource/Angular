@@ -40,7 +40,14 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, SharedModule, AuthenticationModule, ...MATERIAL_MODULES, FlexLayoutModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SharedModule,
+    AuthenticationModule,
+    ...MATERIAL_MODULES,
+    FlexLayoutModule
+  ],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })
