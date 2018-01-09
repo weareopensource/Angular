@@ -13,7 +13,7 @@ export const taskInitialState: TaskState = taskAdapter.getInitialState({
 export function taskReducer(state: TaskState = taskInitialState, action: fromTask.Actions | fromAuthentication.Actions): TaskState {
   switch (action.type) {
     case fromTask.LOAD: {
-      return { ...state, loading: true });
+      return { ...state, loading: true };
     }
     case fromTask.LOAD_SUCCESS: {
       return taskAdapter.addAll(action.payload.tasks, { ...state, loading: false, loaded: true });
