@@ -6,18 +6,17 @@ import { fromAuthentication } from '@labdat/authentication-state';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { ActionReducerMap } from '@ngrx/store';
 
-export const taskInitialState: TaskState = taskAdapter.getInitialState();
+export const taskInitialState: TaskState = taskAdapter.getInitialState({
+  loading: false,
+  loaded: false
+});
 export function taskReducer(state: TaskState = taskInitialState, action: fromTask.Actions | fromAuthentication.Actions): TaskState {
   switch (action.type) {
-    case fromTask.LOAD_SUCCESS: {
-/*
-      return {
-        ...state,
-        ...action.payload
-      };
+    case fromTask.LOAD: {
+      return { ...state, loading: true });
     }
-*/
-      return taskAdapter.addAll(action.payload.tasks, state);
+    case fromTask.LOAD_SUCCESS: {
+      return taskAdapter.addAll(action.payload.tasks, { ...state, loading: false, loaded: true });
     }
 
     case fromAuthentication.LOGOUT: {

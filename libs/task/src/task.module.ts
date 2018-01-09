@@ -3,7 +3,6 @@ import { TaskDetailComponent } from './components/detail/detail.component';
 import { TasksListComponent } from './components/list/list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { TaskRoutingModule } from '@labdat/task-routing';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,7 +19,6 @@ import {
   MatListModule
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SharedModule } from '@labdat/shared';
 import { ModuleWithProviders } from '@angular/core';
 
 const COMPONENTS = [
@@ -49,8 +47,6 @@ const MATERIAL_MODULES = [
     HttpClientModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
-    RouterModule,
-    SharedModule
   ],
   entryComponents: [
     TaskDeleteDialog

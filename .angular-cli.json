@@ -72,14 +72,20 @@
       "appRoot": ""
     },
     {
-      "name": "shared",
-      "root": "libs/shared/src",
+      "name": "sidenav",
+      "root": "libs/sidenav/src",
       "test": "../../../test.js",
       "appRoot": ""
     },
     {
       "name": "task",
       "root": "libs/task/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "animations",
+      "root": "libs/animations/src",
       "test": "../../../test.js",
       "appRoot": ""
     }

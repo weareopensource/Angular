@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material';
-import { SharedModule } from '@labdat/shared';
+import { SidenavModule } from '@labdat/sidenav';
 import { AuthenticationModule } from '@labdat/authentication';
 import { CoreModule } from '@labdat/core';
 import { StoreModule } from '@ngrx/store';
@@ -20,6 +20,8 @@ import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/router-state';
 import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
+import { TaskRoutingModule } from '@labdat/task-routing';
+
 
 @NgModule({
   imports: [
@@ -35,9 +37,10 @@ import { taskConfiguration } from '@labdat/task';
     RouterModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
-    SharedModule.forRoot(),
+    SidenavModule.forRoot(),
     AuthenticationModule.forRoot(),
     CoreModule.forRoot(),
+    TaskRoutingModule.forRoot(),
 
     RouterStateModule.forRoot(),
     AuthenticationStateModule.forRoot(),

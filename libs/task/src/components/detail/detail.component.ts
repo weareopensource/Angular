@@ -4,6 +4,7 @@ import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
 import { selectCurrentTask } from '@labdat/task-state';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
 
 @Component({
     selector: 'app-task-detail',
@@ -14,10 +15,10 @@ import { Observable } from 'rxjs/Observable';
 
     public comments$: Observable<any[]>;
 
-    constructor(private route: ActivatedRoute, private store: Store<any>) { }
+    constructor(private store: Store<any>) { }
 
     ngOnInit(): void {
-      this.comments$ = this.store.select(selectCurrentTask).map(task => task.comments)
+      this.comments$ = this.store.select(selectCurrentTask).pipe(map(task => task.comments));
     }
 
     close() {

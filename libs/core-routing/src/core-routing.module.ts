@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
 import { AuthenticationGuardService } from '@labdat/authentication';
 import { AuthenticationComponent } from '@labdat/authentication';
+import { TaskGuardService } from '@labdat/task-routing';
 
 const coreRoutes: Routes = [
   {
@@ -17,6 +18,7 @@ const coreRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [ TaskGuardService ],
     children: [
       {
         path: 'home',

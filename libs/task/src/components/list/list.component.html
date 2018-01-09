@@ -1,7 +1,7 @@
 <mat-card>
   <div class="header">
     <mat-form-field floatPlaceholder="never">
-      <input matInput #filter placeholder="Filtre de taskes">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
     </mat-form-field>
   </div>
   <mat-table [dataSource]="dataSource" matSort>
@@ -27,10 +27,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <mat-paginator #paginator
-    [length]="dataLength$ | async"
-    [pageIndex]="0"
-    [pageSize]="25"
-    [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </mat-card>

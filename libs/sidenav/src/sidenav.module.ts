@@ -48,10 +48,10 @@ const MATERIAL_MODULES = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
-export class SharedModule {
+export class SidenavModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SharedModule,
+      ngModule: SidenavModule,
     }
   }
 }

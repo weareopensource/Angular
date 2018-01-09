@@ -1,4 +1,10 @@
-import { Component, HostListener, HostBinding, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  HostBinding,
+  ViewChild,
+  ElementRef,
+  AnimationTransitionEvent } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Router } from '@angular/router';
@@ -20,12 +26,12 @@ import { routesAnimation } from '@labdat/animations';
   animations: [ routesAnimation ]
 })
 export class LayoutComponent {
+
+  @ViewChild('outlet')
+  public outlet
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
-
-@ViewChild('outlet')
-public outlet
 
   constructor(private store: Store<CoreState>, private router: Router) {}
 
@@ -48,9 +54,5 @@ public outlet
 
   public closeSidenav() {
     this.store.dispatch(new fromCore.CloseSidenav());
-  }
-
-  onClick() {
-    console.log(this.outlet.activatedRouteData)
   }
 }

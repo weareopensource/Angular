@@ -1,23 +1,28 @@
 import { TaskDetailComponent } from '../detail/detail.component';
 import { TaskDeleteDialog } from '../delete/delete.dialog';
-import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable } from '@angular/core';
+import { Component, ElementRef, ViewChild, Inject, OnInit, HostBinding, AfterViewInit, Injectable, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+import { startWith } from 'rxjs/operators/startWith';
+import { merge } from 'rxjs/operators/merge';
+import { map } from 'rxjs/operators/map';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routesAnimation } from '@labdat/animations';
-import { TaskDatasource } from '../../models/task.datasource';
 import { TaskState, selectAllTasks } from '@labdat/task-state';
 import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
+import { Task } from '@labdat/data-models';
+import { tap } from 'rxjs/operators/tap';
+import 'rxjs/add/operator/do';
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * @title Table with filtering
@@ -29,32 +34,38 @@ import { Store } from '@ngrx/store';
   animations: [ routesAnimation ]
 })
 export class TasksListComponent implements OnInit {
-  public displayedColumns = ['id', 'title', 'action'];
-  public dataSource: TaskDatasource | null;
-  public database$ = this.store.select(selectAllTasks);
-  public dataLength$ = this.database$.map(tasks => tasks.length);
 
-  @ViewChild('filter') filter: ElementRef;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort)
+  sort: MatSort;
+
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
+
+  public displayedColumns = ['id', 'title', 'action'];
+  public dataSource: MatTableDataSource<Task>;
+
+  private subscriptions: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     public dialog: MatDialog,
-    private store: Store<TaskState>) { }
+    private store: Store<TaskState>
+  ) { }
 
   ngOnInit() {
-    this.dataSource = new TaskDatasource(this.database$, this.sort, this.paginator);
-    Observable.fromEvent(this.filter.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSource) {
-          return;
-        }
-        this.dataSource.filter = this.filter.nativeElement.value;
-      });
+    this.dataSource = new MatTableDataSource();
+    this.subscriptions = this.store.select(selectAllTasks).do(console.log)
+    .subscribe(tasks => this.dataSource.data = tasks);
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   delete(): void {
@@ -79,4 +90,8 @@ export class TasksListComponent implements OnInit {
     return outlet.activatedRouteData.state;
   }
 
+  ngOnDestroy() {
+    console.log('not now');
+    this.subscriptions.unsubscribe();
+  }
 }

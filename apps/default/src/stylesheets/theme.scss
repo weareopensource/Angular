@@ -3,7 +3,7 @@
 @include mat-core();
 @include angular-material-theme($default-light-theme);
 
-@import '../../../../libs/shared/src/components/sidenav/sidenav-theme';
+@import '../../../../libs/sidenav/src/components/sidenav/sidenav-theme';
 @include mean2-sidenav-theme($default-dark-theme);
 
 @include mat-list-theme($default-dark-theme);

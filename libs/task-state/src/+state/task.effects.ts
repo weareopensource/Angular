@@ -12,9 +12,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/observable/from';
 import { TaskApiService } from '../services/task.api.service';
-import * as TaskActions from './task.actions';
+import * as fromTasks from './task.actions';
 //import { Database } from '@ngrx/db';
 import { keyBy } from 'lodash';
 import { fromAuthentication } from '@labdat/authentication-state';
@@ -26,52 +25,52 @@ export class TaskEffects {
   loginSuccess$ = this.actions$
     .ofType(fromAuthentication.LOGIN_SUCCESS)
     .pipe(
-      mapTo(new TaskActions.Load())
+      mapTo(new fromTasks.Load())
     )
 
   @Effect()
   load$ = this.actions$
-    .ofType(TaskActions.LOAD)
+    .ofType(fromTasks.LOAD)
     .pipe(
       switchMap(() => this.taskApiService.loadTasks()),
-      map((response: any) => new TaskActions.LoadSuccess({tasks: response})),
-      catchError(error => of(new TaskActions.LoadFailure(error)))
+      map((response: any) => new fromTasks.LoadSuccess({tasks: response})),
+      catchError(error => of(new fromTasks.LoadFailure(error)))
     )
 
   @Effect()
   add$ = this.actions$
-    .ofType(TaskActions.ADD)
+    .ofType(fromTasks.ADD)
     .pipe(
       map(toPayload),
       switchMap((payload) => this.taskApiService.addTask(payload.task)),
-      map((response: any) => new TaskActions.AddSuccess({task: response.task})),
-      catchError(error => of(new TaskActions.AddFailure(error)))
+      map((response: any) => new fromTasks.AddSuccess({task: response.task})),
+      catchError(error => of(new fromTasks.AddFailure(error)))
     )
 ;
 
   @Effect()
   update$ = this.actions$
-    .ofType(TaskActions.UPDATE)
+    .ofType(fromTasks.UPDATE)
     .pipe(
       map(toPayload),
       switchMap((payload) => this.taskApiService.updateTask(payload.task)),
-      map((response: any) => new TaskActions.UpdateSuccess({ task: { id: response.id, changes: {...response} }})),
-      catchError(error => of(new TaskActions.UpdateFailure(error)))
+      map((response: any) => new fromTasks.UpdateSuccess({ task: { id: response.id, changes: {...response} }})),
+      catchError(error => of(new fromTasks.UpdateFailure(error)))
     )
 
   @Effect()
   delete$ = this.actions$
-    .ofType(TaskActions.DELETE)
+    .ofType(fromTasks.DELETE)
     .pipe(
       map(toPayload),
       switchMap((payload) => this.taskApiService.deleteTask(payload.taskId)),
-      map((response: any) => new TaskActions.DeleteSuccess({taskId: response.id})),
-      catchError(error => of(new TaskActions.DeleteFailure(error)))
+      map((response: any) => new fromTasks.DeleteSuccess({taskId: response.id})),
+      catchError(error => of(new fromTasks.DeleteFailure(error)))
     )
 
     @Effect({dispatch: false})
     saveDescription$ = this.actions$
-      .ofType(TaskActions.SAVE_DESCRIPTION)
+      .ofType(fromTasks.SAVE_DESCRIPTION)
       .pipe(
         map(toPayload),
         tap((payload) => sessionStorage.setItem(`task${payload.taskId}Desciption`, payload.text))
@@ -80,10 +79,10 @@ export class TaskEffects {
 /*
   @Effect()
   handle$ = this.actions$
-    .ofType(TaskActions.HANDLE)
+    .ofType(fromTasks.HANDLE)
     .map(toPayload)
     .switchMap(id => this.taskApiService.handle(id))
-    .catch(error => of(new TaskActions.HandleFailure(error)));
+    .catch(error => of(new fromTasks.HandleFailure(error)));
 */
   constructor(
     private actions$: Actions,

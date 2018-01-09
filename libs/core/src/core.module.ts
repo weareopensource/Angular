@@ -21,7 +21,7 @@ import {
   MatInputModule,
   MatListModule
 } from '@angular/material';
-import { SharedModule } from '@labdat/shared';
+import { SidenavModule } from '@labdat/sidenav';
 
 export const COMPONENTS = [LayoutComponent, HomeComponent, NotFoundComponent];
 
@@ -43,7 +43,7 @@ const MATERIAL_MODULES = [
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule,
+    SidenavModule,
     AuthenticationModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule

@@ -25,3 +25,7 @@ export const selectCurrentTask = createSelector(
     : { comments: [] } as Task
   }
 );
+
+export const selectTaskLoading = createSelector(selectTaskState, (state: TaskState) => state.loading);
+export const selectTaskLoaded = createSelector(selectTaskState, (state: TaskState) => state.loaded);
+
