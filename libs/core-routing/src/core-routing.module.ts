@@ -18,7 +18,6 @@ const coreRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [ TaskGuardService ],
     children: [
       {
         path: 'home',
@@ -30,15 +29,15 @@ const coreRoutes: Routes = [
       {
         path: 'auth',
         component: AuthenticationComponent,
-        canActivate: [AuthenticationGuardService],
+        canActivate: [ AuthenticationGuardService ],
         data: {
           page: 'authentication'
         }
       },
       {
         path: 'tasks',
-        canActivate: [AuthenticationGuardService],
-        canLoad: [AuthenticationGuardService],
+        canActivate: [ AuthenticationGuardService, TaskGuardService ],
+        canLoad: [ AuthenticationGuardService ],
         loadChildren: '../../task/src/task.module#RootTaskModule'
       },
       {

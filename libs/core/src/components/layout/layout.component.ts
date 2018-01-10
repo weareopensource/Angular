@@ -18,6 +18,7 @@ import { fromCore, CoreState, getShowSidenav, getMenuItems } from '@labdat/core-
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
+import { selectTaskLoading } from '@labdat/task-state';
 
 @Component({
   selector: 'layout-root',
@@ -29,11 +30,12 @@ export class LayoutComponent {
 
   @ViewChild('outlet')
   public outlet
+
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
 
-  constructor(private store: Store<CoreState>, private router: Router) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
     const items$ = this.store.select(getMenuItems);

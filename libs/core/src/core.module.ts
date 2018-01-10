@@ -19,7 +19,8 @@ import {
   MatIconModule,
   MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+//  MatProgressBarModule
 } from '@angular/material';
 import { SidenavModule } from '@labdat/sidenav';
 
@@ -36,7 +37,8 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+//  MatProgressBarModule
 ];
 
 @NgModule({

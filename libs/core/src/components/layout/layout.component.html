@@ -35,6 +35,7 @@
         </button>
       </ng-template>
     </mat-toolbar>
+    <!--mat-progress-bar *ngIf="$ | async"></mat-progress-bar-->
     <div class="main" [@routesAnimation]="outlet.activatedRouteData['page']">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>

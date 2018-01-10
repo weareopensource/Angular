@@ -26,7 +26,7 @@ export class AppComponent {
 
   constructor(
     private mdIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content', 'hardware']
     .forEach(iconSet =>

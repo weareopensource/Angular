@@ -22,7 +22,6 @@ import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
 import { TaskRoutingModule } from '@labdat/task-routing';
 
-
 @NgModule({
   imports: [
     NxModule.forRoot(),

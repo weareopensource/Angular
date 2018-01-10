@@ -39,7 +39,7 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatTabsModule,
   MatRadioModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 ];
 
 @NgModule({
