@@ -3,6 +3,10 @@
     <mat-form-field floatPlaceholder="never">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
     </mat-form-field>
+
+    <button mat-icon-button (click)="add()">
+      <mat-icon svgIcon="action:ic_note_add_24px"></mat-icon>
+    </button>
   </div>
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">

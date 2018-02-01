@@ -18,6 +18,7 @@ import { metaReducers } from './+state/app.reducer';
 import { coreConfiguration } from '@labdat/core';
 import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/router-state';
+import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
 import { TaskRoutingModule } from '@labdat/task-routing';
@@ -47,6 +48,7 @@ import { TaskRoutingModule } from '@labdat/task-routing';
       ...coreConfiguration.self,
       ...taskConfiguration.core
     ]),
+    ConnectFormStateModule,
     TaskStateModule.forRoot()
   ],
   declarations: [AppComponent],

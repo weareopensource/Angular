@@ -86,6 +86,10 @@ export class TasksListComponent implements OnInit {
     this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
   }
 
+  add(): void {
+    this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] }))
+  }
+
   getState(outlet) {
     return outlet.activatedRouteData.state;
   }

@@ -1,6 +1,9 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TaskDeleteDialog } from './components/delete/delete.dialog';
 import { TaskDetailComponent } from './components/detail/detail.component';
 import { TasksListComponent } from './components/list/list.component';
+import { TasksAddComponent } from './components/add/add.component';
+import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives'
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskRoutingModule } from '@labdat/task-routing';
@@ -24,7 +27,9 @@ import { ModuleWithProviders } from '@angular/core';
 const COMPONENTS = [
   TasksListComponent,
   TaskDetailComponent,
-  TaskDeleteDialog
+  TaskDeleteDialog,
+  TasksAddComponent,
+  ConnectFormDirective
 ];
 
 const MATERIAL_MODULES = [
@@ -46,6 +51,8 @@ const MATERIAL_MODULES = [
     CommonModule,
     HttpClientModule,
     ...MATERIAL_MODULES,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
   ],
   entryComponents: [

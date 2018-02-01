@@ -53,4 +53,33 @@ export const routesAnimation = trigger('routesAnimation', [
       )
     ])
   ]),
+  transition('list => add', [
+    group([
+      query(
+        ':enter', [
+          style({ left: '100%' }),
+          animate('0.5s ease-in-out', style({ left: '0' }))
+        ]),
+      query(
+        ':leave', [
+          animate('0.5s ease-in-out', style({ left: '-100%' }))
+        ]
+      )
+    ])
+  ]),
+  transition('add => list', [
+    group([
+      query(
+        ':enter', [
+          style({ left: '-100%' }),
+          animate('0.5s ease-in-out', style({ left: '0' }))
+        ]
+      ),
+      query(
+        ':leave', [
+          animate('0.5s ease-in-out', style({ left: '100%' }))
+        ]
+      )
+    ])
+  ])
 ]);
