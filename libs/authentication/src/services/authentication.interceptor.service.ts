@@ -31,7 +31,8 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (request.url.match(/(?!\api\/)/)) {
-      return next.handle(request);
+      const nextRequest = request.clone({ withCredentials: true })
+      return next.handle(nextRequest);
     }
 
     return this.tokenExpiresIn$
@@ -48,7 +49,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
             this.store.dispatch(new fromAuthentication.Logout('Unauthorized Operation'));
             return empty();
           }
-          return _throw(error);            
+          return _throw(error);
         })
       )
     });
