@@ -14,6 +14,8 @@ import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import { TaskApiService } from '../services/task.api.service';
 import * as fromTasks from './task.actions';
+import * as fromConnecForm from '@labdat/connect-form-state/src/+state/actions/connect-form-state.actions';
+
 //import { Database } from '@ngrx/db';
 import { keyBy } from 'lodash';
 import { fromAuthentication } from '@labdat/authentication-state';
@@ -43,8 +45,8 @@ export class TaskEffects {
     .pipe(
       map(toPayload),
       switchMap((payload) => this.taskApiService.addTask(payload.task)),
-      map((response: any) => new fromTasks.AddSuccess({task: response.task})),
-      catchError(error => of(new fromTasks.AddFailure(error)))
+      map((response: any) => new fromConnecForm.SubmitFormSuccess({ path: 'addTaskForm'})),
+      catchError(error => of(new fromConnecForm.SubmitFormError({ path: 'addTaskForm', error: error })))
     )
 ;
 
