@@ -22,11 +22,13 @@ import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
 import { TaskRoutingModule } from '@labdat/task-routing';
+import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
   imports: [
     NxModule.forRoot(),
 //    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    FormlyModule.forRoot(),
     BrowserModule,
     RouterModule,
     BrowserAnimationsModule,

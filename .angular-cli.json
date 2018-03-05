@@ -42,6 +42,12 @@
       }
     },
     {
+      "name": "environments",
+      "root": "libs/environments/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "authentication",
       "root": "libs/authentication/src",
       "test": "../../../test.js",

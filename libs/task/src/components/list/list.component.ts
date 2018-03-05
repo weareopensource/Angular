@@ -23,6 +23,7 @@ import { Task } from '@labdat/data-models';
 import { tap } from 'rxjs/operators/tap';
 import 'rxjs/add/operator/do';
 import { Subscription } from 'rxjs/Subscription';
+import { TaskEditComponent } from '../edit/edit.component';
 
 /**
  * @title Table with filtering
@@ -74,15 +75,19 @@ export class TasksListComponent implements OnInit {
   }
 
   edit(id): void {
-//    const dialogRef = this.dialog.open(TaskDetailComponent, {
-//      width: '700px',
-//      data: { }
-//    });
+    const dialogRef = this.dialog.open(TaskEditComponent, {
+      width: '700px',
+      data: { }
+    });
 
-//    dialogRef.afterClosed().subscribe(result => {
-//      console.log('The dialog was closed');
-//    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
 
+//    this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
+  }
+
+  view(id): void {
     this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
   }
 

@@ -20,8 +20,11 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef [innerHtml]="'Action'"></mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="edit(row.id)">
+        <button mat-icon-button (click)="view(row.id)">
           <mat-icon svgIcon="action:ic_visibility_24px"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="edit(row.id)">
+          <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
         </button>
         <button mat-icon-button (click)="delete(row.id)">
           <mat-icon svgIcon="action:ic_delete_24px"></mat-icon>
