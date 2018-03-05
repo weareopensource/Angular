@@ -32,8 +32,7 @@ Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.pr
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Contributing
-We welcome pull requests from the community!
-Simple as
+We welcome pull requests from the community! Want to contribute ? It's simple as
   * Forking the repository
   * Making a PR
 
