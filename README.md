@@ -24,7 +24,7 @@ $ npm i
    ### Production
    * Run `npm run start:prod` to build your client app and start a web server on `http://localhost:4200/`
 
-<--
+<!--
 ## Running unit tests
 Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
@@ -32,6 +32,7 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 -->
+
 ## Contributing
 We welcome pull requests from the community! Want to contribute ? It's simple as
   * Forking the repository
