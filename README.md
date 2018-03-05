@@ -3,6 +3,7 @@
 ## Angular 5 / material / ngRx Starter 
 ## Presentation 
 This project is part of MEANie stack but can be ran as a standalone application. It's build upon angular 5+ , [angular material](https://github.com/angular/material2), [angular-cli](https://github.com/angular/angular-cli) / [Nx](https://github.com/nrwl/nx) and [ngRx](https://github.com/ngrx).
+<br><br><br>
 ![demo-stack](https://raw.githubusercontent.com/weareopensource/Angular/assets/screenshot.png)
 
 ## Prerequisites
