@@ -12,8 +12,7 @@ Several libraries are providing a store solution for angular, but [ngrx](https:/
 Angular material is a UI librairy that implements the [material design specifications](https://material.io/). It provides clean and well designed graphical components that are natively build with angular, and a customable global theme that custom components can benefit from.
 
 # nx
-nx library oriented developement. As far as the modularity is concerned, an monolithic application can be modular ! thing as a 
-Nx is more related to the external 
+TODO
 
 # Angular modules
 What makes a framework powerfull is its hability to decompose a program onto serveral pieces of code that can be exported and imported. And this notion of modularity is a must for large applications.
