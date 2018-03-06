@@ -12,15 +12,15 @@ Several libraries are providing a store solution for angular, but [ngrx](https:/
 Angular material is a UI librairy that implements the [material design specifications](https://material.io/). It provides clean and well designed graphical components that are natively build with angular, and a customable global theme that custom components can benefit from.
 
 # nx
-nx library oriented developement. As far as the modularity is concerned, an monolithic application can be modular ! thing as a 
-Nx is more related to the external 
+nx is build on top of the angular-cli. It proposes a new scaffolding to make the developpement library oriented, by redefining the cli schematics and adds additional generators mainly to handle store modules. Almost all the code base resides onto library that are essentialy modules, even if they are not intended to be shared.
+On the other hand, it provides some internal libraries to handle properly API race conditions. It introduces itself as toolkit helper to create and build enterprise-grade Angular application.
 
 # Angular modules
 What makes a framework powerfull is its hability to decompose a program onto serveral pieces of code that can be exported and imported. And this notion of modularity is a must for large applications.
 The module system of Angular bundles the building blocks of Angular (said directives, components, pipes and services) for a specific purpose or feature.
 
 The kick starter has to manage several things:
-* An authentication mechanism,
+* An authentication mechanism
 * A Main layout
 * A Task Entity 
 
@@ -29,6 +29,6 @@ For the sack of clarity and best practice, the kick starter war designed as modu
 Generaly speaking, we recommand developpers to have 3 modules by feature.
 * One main module that provides directives, components, containers, pipes, ie all pieces that are related to the view itself
 * One store module to expose and handle the data state handled by the feature
-* One last module to manage routing if required.
+* One last module to manage routing, if required
 
 # Authentication
