@@ -9,4 +9,4 @@ Event-driven acrhitecture is an old concept for those comming from a sever progr
 Several libraries are providing a store solution for angular, but [ngrx](https://github.com/ngrx/platform) is by far the one that is the closest to Angular. It's build upon rxjs that is a fondamental peace of Angular.
 
 # Angular Material
-Angular material is a UI librairy that implements the [material design specifications](https://material.io/). It provides clean and well design graphical components that are natively build with angular, and a customable global theme that custom components can benefit from.
+Angular material is a UI librairy that implements the [material design specifications](https://material.io/). It provides clean and well designed graphical components that are natively build with angular, and a customable global theme that custom components can benefit from.
