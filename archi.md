@@ -23,7 +23,7 @@ An authentication mechanism,
 A Main layout
 A Task Entity 
 
-For the sack of clarity and best practice, the kick starter war designed as modular as possible, and for each of those feature, (at least one) module is required.
+For the sack of clarity and best practice, the kick starter war designed as modular as possible, and for each of those feature, at least one module is required.
 
 Generaly speaking, we recommand developpers to have 3 modules by feature.
 One main module that provides directives, components, containers, pipes, all pieces that are related to the view itself
