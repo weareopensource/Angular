@@ -1,6 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
-import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '@labdat/data-models';
 

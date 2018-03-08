@@ -26,7 +26,7 @@ export class TaskEffects {
   load$ = this._actions$
     .ofType(fromTasks.LOAD)
     .pipe(
-      switchMap(() => this.taskApiService.loadTasks()),
+      switchMap(() => this._taskApiService.loadTasks()),
       map((response: any) => new fromTasks.LoadSuccess({tasks: response})),
       catchError(error => of(new fromTasks.LoadFailure(error)))
     );
@@ -37,7 +37,7 @@ export class TaskEffects {
     .pipe(
       map(toPayload),
       switchMap((payload) => this._taskApiService.addTask(payload.task)),
-      map((response: any) => new fromConnecForm.SubmitFormSuccess({ path: 'addTaskForm'})),
+      map(() => new fromConnecForm.SubmitFormSuccess({ path: 'addTaskForm'})),
       catchError(error => of(new fromConnecForm.SubmitFormError({ path: 'addTaskForm', error: error })))
     );
 

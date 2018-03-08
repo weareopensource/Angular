@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Authenticate } from '@labdat/data-models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@labdat/environments';

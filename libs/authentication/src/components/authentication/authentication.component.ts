@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   fromAuthentication,
   AuthenticationState,

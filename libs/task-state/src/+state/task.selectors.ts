@@ -1,6 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { TaskState, taskAdapter } from './task.interfaces';
-import * as fromTask from './task.actions';
 import { isEmpty } from 'lodash';
 import { Task } from '@labdat/data-models';
 

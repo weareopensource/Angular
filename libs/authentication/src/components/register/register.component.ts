@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Authenticate } from '../../models/user.model';
 
 @Component({
@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    const { firstName, lastName, email, password } = this.form.value;
     this.submitted.emit(this.form.value);
   }
 

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
   CanLoad,
   Route
 } from '@angular/router';
@@ -23,7 +21,7 @@ import { fromRouter } from '@labdat/router-state';
 export class AuthenticationGuardService implements CanActivate, CanLoad {
   constructor(private store: Store<AuthenticationState>) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {
     const currentUrl = route.url[0].path;
     return this.hasPermission(currentUrl);
   }

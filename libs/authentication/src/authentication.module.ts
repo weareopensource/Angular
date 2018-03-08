@@ -16,7 +16,6 @@ import {
   MatSnackBarModule
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
 import { LogoutDirective } from './directives/logout/logout.directive';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 import { AuthenticationGuardService } from './services/authentication.guard.service';

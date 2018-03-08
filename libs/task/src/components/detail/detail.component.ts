@@ -1,5 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Inject, Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
 import { selectCurrentTask } from '@labdat/task-state';

@@ -1,14 +1,5 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Inject, Component, OnInit, HostBinding } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { fromRouter } from '@labdat/router-state';
-import { Store } from '@ngrx/store';
-import { selectCurrentTask, fromTask} from '@labdat/task-state';
-import { Task } from '@labdat/data-models';
-import { ConnectFormStateSelectors } from '@labdat/connect-form-state/src/+state/selectors/connect-form-state.selectors';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -47,7 +38,7 @@ import { MatDialogRef } from '@angular/material/dialog';
       this.dialogRef.close();
     }
     // Function called when form is submitted
-    onSubmit(task: Task) {
+    onSubmit() {
       this.dialogRef.close(this.taskModel);
       // this.store.dispatch(new fromTask.Add({ task }));
     }

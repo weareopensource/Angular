@@ -1,7 +1,6 @@
 import { Authenticate } from './../../models/user.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',

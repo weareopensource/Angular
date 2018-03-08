@@ -1,10 +1,6 @@
 import * as fromTask from './task.actions';
-import { Task } from '@labdat/data-models';
 import { TaskState, taskAdapter } from './task.interfaces';
-import { keyBy } from 'lodash';
 import { fromAuthentication } from '@labdat/authentication-state';
-import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { ActionReducerMap } from '@ngrx/store';
 
 export const taskInitialState: TaskState = taskAdapter.getInitialState({
   loading: false,

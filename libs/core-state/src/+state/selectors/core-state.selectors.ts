@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CoreState } from '../states/core-state.state';
 

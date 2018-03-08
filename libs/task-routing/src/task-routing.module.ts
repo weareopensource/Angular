@@ -2,9 +2,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TaskDetailComponent, TasksListComponent, TasksAddComponent } from '@labdat/task/components';
-import { AuthenticationGuardService } from '@labdat/authentication';
-import { taskConfiguration } from './task.configuration';
-import { isEmpty } from 'lodash';
 import { TaskGuardService } from './services/task.guard.service';
 
 const tasksRoutes: Routes = [{

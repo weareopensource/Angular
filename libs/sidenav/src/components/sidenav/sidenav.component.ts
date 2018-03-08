@@ -1,7 +1,11 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  Component, ContentChild,
-  ContentChildren, forwardRef, Inject, Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  forwardRef,
+  Inject,
+  Input,
   ViewEncapsulation
 } from '@angular/core';
 import { Mean2Drawer, Mean2DrawerContainer, Mean2DrawerContent } from './drawer.component';

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
@@ -7,15 +6,11 @@ import { LoginSnackComponent } from '../../components/login-snack/login-snack.co
 import { AuthenticationApiService } from '../../services/authentication.api.service';
 import * as fromAuthentication from '../actions/authentication-state.actions';
 import { fromRouter } from '@labdat/router-state';
-
-import { Observable } from 'rxjs/Observable';
-import { defer } from 'rxjs/observable/defer';
 import { map } from 'rxjs/operators/map';
 import { mapTo } from 'rxjs/operators/mapTo';
 import { tap } from 'rxjs/operators/tap';
 import { exhaustMap } from 'rxjs/operators/exhaustMap';
 import { catchError } from 'rxjs/operators/catchError';
-import { of } from 'rxjs/observable/of';
 import { empty } from 'rxjs/observable/empty';
 
 @Injectable()
@@ -26,6 +21,7 @@ export class AuthenticationEffectsService {
     exhaustMap(auth =>
       this.authenticationApiService.login(auth).pipe(
         catchError(error => {
+          console.log(error);
           this.store.dispatch(new fromAuthentication.LoginFailure('Email or Password Invalid'));
           return empty();
         })
@@ -84,8 +80,13 @@ export class AuthenticationEffectsService {
   register$ = this.actions$.ofType(fromAuthentication.REGISTER).pipe(
     map(toPayload),
     exhaustMap(auth =>
-      this.authenticationApiService.register({ ...auth, username: auth.firstName + auth.lastName, roles: ['user', 'admin'] }).pipe(
+      this.authenticationApiService.register({
+        ...auth,
+        username: auth.firstName + auth.lastName,
+        roles: ['user', 'admin']
+      }).pipe(
         catchError(error => {
+          console.log(error);
           this.store.dispatch(new fromAuthentication.RegisterFailure('Register Error'));
           return empty();
         })
@@ -127,7 +128,6 @@ export class AuthenticationEffectsService {
   constructor(
     private actions$: Actions,
     private authenticationApiService: AuthenticationApiService,
-    private router: Router,
     private snackBar: MatSnackBar,
     private store: Store<any>
   ) {}

@@ -1,11 +1,12 @@
 import {
   Component,
   ViewChild,
-  OnInit} from '@angular/core';
+  OnInit
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { values, difference, isEmpty } from 'lodash';
-import { fromCore, CoreState, getShowSidenav, getMenuItems } from '@labdat/core-state';
+import { fromCore, getShowSidenav, getMenuItems } from '@labdat/core-state';
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';

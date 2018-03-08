@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { filter } from 'rxjs/operators/filter';
@@ -10,7 +10,7 @@ import { selectTaskLoaded } from '@labdat/task-state';
 export class TaskGuardService implements CanActivate {
   constructor(private store: Store<any>) {}
 
-  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {
+  canActivate(): Observable<boolean> | boolean {
     return this.store.select(selectTaskLoaded).pipe(filter(loaded => loaded),take(1));
   }
 }

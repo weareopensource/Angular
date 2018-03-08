@@ -1,36 +1,29 @@
-import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
-import {FocusMonitor, FocusOrigin} from '@angular/cdk/a11y';
-import {Directionality} from '@angular/cdk/bidi';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {ESCAPE} from '@angular/cdk/keycodes';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ESCAPE } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChild,
-  ContentChildren,
   ElementRef,
   EventEmitter,
   forwardRef,
   Inject,
   Input,
-  NgZone,
   OnDestroy,
   Optional,
   Output,
-  QueryList,
   ViewEncapsulation,
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
-import {merge} from 'rxjs/observable/merge';
-import {filter} from 'rxjs/operators/filter';
-import {take} from 'rxjs/operators/take';
-import {startWith} from 'rxjs/operators/startWith';
-import {takeUntil} from 'rxjs/operators/takeUntil';
-import {map} from 'rxjs/operators/map';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import { DOCUMENT } from '@angular/common';
+import { filter } from 'rxjs/operators/filter';
+import { take } from 'rxjs/operators/take';
+import { map } from 'rxjs/operators/map';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 
 /** Throws an exception when two Mean2Drawer are matching the same position. */
@@ -333,8 +326,10 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
 
   _contentMargin = new Subject<number>();
 
-  constructor(@Optional() private _dir: Directionality, private _element: ElementRef,
-              private _ngZone: NgZone, private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(
+    private _element: ElementRef,
+    private _changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngAfterContentInit() {
     this._watchDrawerToggle();
