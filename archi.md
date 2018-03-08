@@ -3,7 +3,7 @@
 # Introduction
 From an architecture perspective, the Angular kick starter relies on a store based architecture, as known as the Flux architecture, provided by ngrx that enforces reactive functional programming for treating the dataflow. The rendering mecanism of Angular follows the unidirectional dataflow, witch is actually a prerequisite to Flux.
 The goal of this architecture is to provide a fix complexity scalable solution for managing shared datas between components. It's based under the hood on the legacy eventEmitter pattern, slightly modified.
-Event-driven acrhitecture is familiar concept for sever side programming developpers. It's even implemented deep into the DOM through the window global bus event, making event delegation mecanisme a solution close to the store pattern. The Flux architecture generalize that idea for sharing and managing global datas through a whole application.
+Event-driven acrhitecture is familiar concept for sever side programmers. It's even implemented deep into the DOM through the window global bus event, making event delegation mecanisme a solution close to the store pattern. The Flux architecture generalize that idea for sharing and managing global datas through a whole application.
 
 # ngrx
 Several libraries are providing a store solution for Angular, but [ngrx](https://github.com/ngrx/platform) is by far the one that is the closest to it. It's build upon rxjs that is a fondamental peace of Angular.
@@ -36,5 +36,11 @@ The routing module depends to the view module witch depends to the store module.
 
 ## Lazyloading
 The routing module should be lazyloaded by the core routing module.
+Ps: Sometimes, we need the store module of a feature to be loaded at the bootstrap of the application (even if its related module was not yet lazyloaded). In that case, we simply load it synchronously from the app module.
 
-We follow ourself those recommandations for build our starter. Sometimes, we need the store module of a feature to be loaded at the bootstrap of the application (even if its related module was not yet lazyloaded). In that case, we simply load it synchronously from the app module.
+We follow ourself those recommandations for build our starter. For instance, the kick starter has to manage several features:
+* The authentication mechanism
+* A main layout for the application
+* A Task Entity 
+
+For each of those feature, we need to define 3 modules (at least 2). You can find them on the libs directory.
