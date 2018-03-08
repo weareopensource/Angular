@@ -1,8 +1,8 @@
 import { MenuItem } from '@labdat/data-models';
 
 export interface TaskConfiguration {
-  core: MenuItem[],
-  self: any
+  core: MenuItem[];
+  self: any;
 }
 
 export const taskConfiguration: TaskConfiguration = {

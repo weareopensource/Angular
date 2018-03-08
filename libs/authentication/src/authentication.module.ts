@@ -62,6 +62,6 @@ export class AuthenticationModule {
         useClass: AuthenticationInterceptorService,
         multi: true
       }]
-    }
+    };
   }
 }

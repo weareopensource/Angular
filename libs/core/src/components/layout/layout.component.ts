@@ -1,24 +1,14 @@
 import {
   Component,
-  HostListener,
-  HostBinding,
   ViewChild,
-  ElementRef,
-  AnimationTransitionEvent } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
-import { Router } from '@angular/router';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+  OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { combineLatest } from 'rxjs/operators/combineLatest';
-import { startWith } from 'rxjs/operators/startWith';
 import { values, difference, isEmpty } from 'lodash';
 import { fromCore, CoreState, getShowSidenav, getMenuItems } from '@labdat/core-state';
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
-import { selectTaskLoading } from '@labdat/task-state';
 
 @Component({
   selector: 'layout-root',
@@ -26,10 +16,10 @@ import { selectTaskLoading } from '@labdat/task-state';
   styleUrls: ['./layout.component.scss'],
   animations: [ routesAnimation ]
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
 
   @ViewChild('outlet')
-  public outlet
+  public outlet;
 
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
@@ -45,7 +35,7 @@ export class LayoutComponent {
       map(([items, user]) =>
         values(items)
           .filter(item => isEmpty(item.roles) || (user && !isEmpty(difference(item.roles, user.roles))))
-          .filter(items => !isEmpty(items))
+          .filter(item => !isEmpty(item))
       )
     );
   }

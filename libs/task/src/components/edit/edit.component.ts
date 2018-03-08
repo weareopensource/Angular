@@ -9,7 +9,7 @@ import { Task } from '@labdat/data-models';
 import { ConnectFormStateSelectors } from '@labdat/connect-form-state/src/+state/selectors/connect-form-state.selectors';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
-import { FormlyFieldConfig } from '@ngx-formly/core'
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -49,6 +49,6 @@ import { MatDialogRef } from '@angular/material/dialog';
     // Function called when form is submitted
     onSubmit(task: Task) {
       this.dialogRef.close(this.taskModel);
-      //this.store.dispatch(new fromTask.Add({ task }));
+      // this.store.dispatch(new fromTask.Add({ task }));
     }
   }

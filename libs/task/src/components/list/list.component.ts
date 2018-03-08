@@ -88,11 +88,11 @@ export class TasksListComponent implements OnInit {
   }
 
   view(id): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
+    this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }));
   }
 
   add(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] }))
+    this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] }));
   }
 
   getState(outlet) {

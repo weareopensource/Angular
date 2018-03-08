@@ -22,7 +22,7 @@ export const selectCurrentTask = createSelector(
     const taskId = currentUrl.split('/')[2];
     return (!isEmpty(taskEntities[taskId]))
     ? taskEntities[taskId]
-    : { comments: [] } as Task
+    : { comments: [] } as Task;
   }
 );
 

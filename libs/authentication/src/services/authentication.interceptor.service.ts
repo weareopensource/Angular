@@ -1,14 +1,11 @@
 import { Store } from '@ngrx/store';
 import {
-  HttpResponse,
   HttpRequest,
   HttpHandler,
-  HttpEvent,
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { _throw } from 'rxjs/observable/throw';
@@ -17,21 +14,19 @@ import {
   fromAuthentication,
   getTokenExpiresIn,
   AuthenticationState } from '@labdat/authentication-state';
-import { isEmpty } from 'lodash';
 
 @Injectable()
 export class AuthenticationInterceptorService implements HttpInterceptor {
 
-  private urlFilters = ['/api'];
   private tokenExpiresIn$;
 
   constructor(private store: Store<AuthenticationState>) {
-    this.tokenExpiresIn$ = this.store.select(getTokenExpiresIn)
+    this.tokenExpiresIn$ = this.store.select(getTokenExpiresIn);
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (request.url.match(/(?!\api\/)/)) {
-      const nextRequest = request.clone({ withCredentials: true })
+      const nextRequest = request.clone({ withCredentials: true });
       return next.handle(nextRequest);
     }
 
@@ -51,7 +46,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
           }
           return _throw(error);
         })
-      )
+      );
     });
   }
 }

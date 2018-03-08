@@ -12,6 +12,17 @@ export function initialisationFactory(authenticationInitialisation) {
   return () => authenticationInitialisation.loadUser();
 }
 
+@NgModule({
+  declarations: [LoginSnackComponent],
+  imports: [
+    HttpClientModule,
+    StoreModule.forFeature('authentication', authenticationReducers),
+    EffectsModule.forFeature([AuthenticationEffectsService])
+  ],
+  entryComponents: [LoginSnackComponent]
+})
+export class RootAuthenticationStateModule {}
+
 @NgModule({})
 export class AuthenticationStateModule {
   public static forRoot() {
@@ -31,13 +42,4 @@ export class AuthenticationStateModule {
   }
 }
 
-@NgModule({
-  declarations: [LoginSnackComponent],
-  imports: [
-    HttpClientModule,
-    StoreModule.forFeature('authentication', authenticationReducers),
-    EffectsModule.forFeature([AuthenticationEffectsService])
-  ],
-  entryComponents: [LoginSnackComponent]
-})
-export class RootAuthenticationStateModule {}
+

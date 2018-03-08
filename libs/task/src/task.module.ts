@@ -4,7 +4,7 @@ import { TaskDetailComponent } from './components/detail/detail.component';
 import { TasksListComponent } from './components/list/list.component';
 import { TasksAddComponent } from './components/add/add.component';
 import { TaskEditComponent } from './components/edit/edit.component';
-import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives'
+import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskRoutingModule } from '@labdat/task-routing';
@@ -25,7 +25,6 @@ import {
   MatListModule
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ModuleWithProviders } from '@angular/core';
 
 const COMPONENTS = [
   TasksListComponent,

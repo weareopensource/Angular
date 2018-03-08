@@ -38,6 +38,10 @@ if (!isEmpty(taskConfiguration.self.roles)) {
   });
 }
 */
+
+@NgModule()
+export class RootTaskRoutingModule {}
+
 @NgModule({
   imports: [
     RouterModule.forChild(tasksRoutes)
@@ -48,9 +52,7 @@ export class TaskRoutingModule {
     return {
       ngModule: RootTaskRoutingModule,
       providers: [ TaskGuardService ]
-    }
+    };
   }
 }
 
-@NgModule()
-export class RootTaskRoutingModule {}

@@ -25,13 +25,19 @@ export class AppComponent {
   }
 
   constructor(
-    private mdIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
+    private _mdIconRegistry: MatIconRegistry,
+    private _sanitizer: DomSanitizer,
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content', 'hardware']
     .forEach(iconSet =>
-      mdIconRegistry.addSvgIconSetInNamespace(iconSet, sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`
-    )));
-    mdIconRegistry.addSvgIcon('file-image', sanitizer.bypassSecurityTrustResourceUrl(`assets/file.svg`));
+      this._mdIconRegistry.addSvgIconSetInNamespace(
+        iconSet,
+        this._sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`
+      ))
+    );
+    this._mdIconRegistry.addSvgIcon(
+      'file-image',
+      this._sanitizer.bypassSecurityTrustResourceUrl(`assets/file.svg`)
+    );
   }
 }

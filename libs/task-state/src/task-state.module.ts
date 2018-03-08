@@ -10,6 +10,19 @@ export function taskInitialisationFactory(taskInitialization) {
   return () => taskInitialization.loadTasks() ;
 }
 
+@NgModule({
+  imports: [
+    StoreModule.forFeature('task', taskReducer),
+    EffectsModule.forFeature([ TaskEffects ])
+  ],
+  providers: [
+    TaskInitializationService,
+    TaskApiService,
+    { provide: APP_INITIALIZER, useFactory: taskInitialisationFactory, deps: [TaskInitializationService], multi: true }
+  ]
+})
+export class RootTaskStateModule { }
+
 @NgModule({})
 export class TaskStateModule {
   public static forRoot() {
@@ -28,16 +41,3 @@ export class TaskStateModule {
     };
   }
 }
-
-@NgModule({
-  imports: [
-    StoreModule.forFeature('task', taskReducer),
-    EffectsModule.forFeature([ TaskEffects ])
-  ],
-  providers: [
-    TaskInitializationService,
-    TaskApiService,
-    { provide: APP_INITIALIZER, useFactory: taskInitialisationFactory, deps: [TaskInitializationService], multi: true }
-  ]
-})
-export class RootTaskStateModule { }

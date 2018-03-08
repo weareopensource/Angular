@@ -7,7 +7,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from '@labdat/core-routing';
 import { AuthenticationModule } from '@labdat/authentication';
-import { Store, StoreModule } from '@ngrx/store';
 import {
   MatButtonModule,
   MatTooltipModule,

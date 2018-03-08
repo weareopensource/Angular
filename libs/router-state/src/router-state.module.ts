@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store'; 
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './+state/router-state.effects';
 import { routerReducer } from '@ngrx/router-store';
@@ -16,7 +15,7 @@ export class RouterStateModule {
       providers: [
         { provide: RouterStateSerializer, useClass: CustomSerializer }
       ]
-    }
+    };
   }
 }
 

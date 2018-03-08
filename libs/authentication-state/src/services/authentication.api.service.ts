@@ -1,9 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
-import { User, Authenticate } from '@labdat/data-models';
+import { Authenticate } from '@labdat/data-models';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../apps/default/src/environments/environment'
+import { environment } from '@labdat/environments';
 
 @Injectable()
 export class AuthenticationApiService {

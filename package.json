@@ -42,8 +42,8 @@
   "devDependencies": {
     "@angular-devkit/core": "^0.2.0",
     "@angular/cli": "github:nrwl/fix-cli-build#release16",
-    "@angular/compiler-cli": "^5.1.0",
     "@angular/compiler": "5.1.0",
+    "@angular/compiler-cli": "^5.1.0",
     "@angular/language-service": "5.1.0",
     "@ngrx/store-devtools": "^4.1.1",
     "@nrwl/schematics": "0.5.2",
@@ -63,7 +63,7 @@
     "prettier": "1.8.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
-    "tslint": "~5.3.2",
+    "tslint": "^5.3.2",
     "typescript": "2.5.3"
   }
 }

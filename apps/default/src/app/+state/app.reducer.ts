@@ -10,7 +10,7 @@ function logger(reducer: ActionReducer<ApplicationState>): ActionReducer<Applica
     return reducer(state, action);
   };
 }
-  
+
 export const metaReducers: MetaReducer<ApplicationState>[] = !environment.production
   ? [logger, storeFreeze]
   : [];

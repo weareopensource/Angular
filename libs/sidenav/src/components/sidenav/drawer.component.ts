@@ -123,7 +123,7 @@ export class Mean2Drawer implements AfterContentInit {
   @Input()
   get disableClose(): boolean { return this._disableClose; }
   set disableClose(value: boolean) { this._disableClose = coerceBooleanProperty(value); }
-  private _disableClose: boolean = false;
+  private _disableClose = false;
 
   /**
   * Whether the drawer is opened. We overload this because we trigger an event when it
@@ -134,16 +134,20 @@ export class Mean2Drawer implements AfterContentInit {
   set opened(v: boolean) {
     this.toggle(coerceBooleanProperty(v));
   }
-  private _opened: boolean = false;
+  private _opened = false;
+
+  private _expandedWidth = 300;
 
   /** How the sidenav was opened (keypress, mouse click etc.) */
   private _openedVia: FocusOrigin | null;
 
   /** Emits whenever the drawer has started animating. */
-  _animationStarted = new EventEmitter<AnimationEvent>();
+  public _animationStarted = new EventEmitter<AnimationEvent>();
 
   /** Current state of the sidenav animation. */
-  _animationState: 'open-instant' | 'open' | 'close' = 'close';
+  public _animationState: 'open-instant' | 'open' | 'close' = 'close';
+
+  private _collapsedWidth = 70;
 
   /** Event emitted when the drawer open state is changed. */
   @Output() openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -281,6 +285,7 @@ export class Mean2Drawer implements AfterContentInit {
       this.openedChange.emit(false);
     }
   }
+
   @Input()
   get expandedWidth() {
     return this._expandedWidth;
@@ -288,7 +293,6 @@ export class Mean2Drawer implements AfterContentInit {
   set expandedWidth(width) {
     this._expandedWidth = width;
   }
-  private _expandedWidth = 300;
 
   @Input()
   get collapsedWidth() {
@@ -297,8 +301,6 @@ export class Mean2Drawer implements AfterContentInit {
   set collapsedWidth(width) {
     this._collapsedWidth = width;
   }
-  private _collapsedWidth = 70;
-
 }
 
 
@@ -394,7 +396,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
 
   _closeModalDrawer() {
     if (!this._drawer.disableClose) {
-      this._drawer!.close();
+      this._drawer.close();
     }
   }
 
@@ -403,7 +405,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
    * sparingly, because it causes a reflow.
    */
   private _updateContentMargins() {
-    let margin = (this._drawer.opened) ? this._drawer.expandedWidth : this._drawer.collapsedWidth;
+    const margin = (this._drawer.opened) ? this._drawer.expandedWidth : this._drawer.collapsedWidth;
     this._contentMargin.next(margin);
   }
 }

@@ -12,7 +12,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CoreStateModule } from '@labdat/core-state';
 import { AuthenticationStateModule } from '@labdat/authentication-state';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { metaReducers } from './+state/app.reducer';
 import { coreConfiguration } from '@labdat/core';

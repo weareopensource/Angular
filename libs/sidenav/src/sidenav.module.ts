@@ -52,6 +52,6 @@ export class SidenavModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SidenavModule,
-    }
+    };
   }
 }
