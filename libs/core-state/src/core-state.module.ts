@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 
 const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
 
-function initialisationFactory(coreInitialization, configuration) {
+function initialisationFactory (coreInitialization, configuration) {
   return () => coreInitialization.addMenuItems(configuration);
 }
 
@@ -14,7 +14,7 @@ function initialisationFactory(coreInitialization, configuration) {
   imports: [StoreModule.forFeature('core', coreReducers)]
 })
 export class CoreStateModule {
-  public static forRoot(configuration: MenuItem[]) {
+  public static forRoot (configuration: MenuItem[]) {
     return {
       ngModule: CoreStateModule,
       providers: [

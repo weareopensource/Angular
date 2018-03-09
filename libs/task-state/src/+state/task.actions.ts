@@ -48,85 +48,85 @@ export class Load implements Action {
 
 export class LoadSuccess implements Action {
   readonly type = LOAD_SUCCESS;
-  constructor(public payload: { tasks: Task[]}) {}
+  constructor (public payload: { tasks: Task[]}) {}
 }
 
 export class LoadFailure implements Action {
   readonly type = LOAD_FAILURE;
-  constructor(public payload: { error: any }) {}
+  constructor (public payload: { error: any }) {}
 }
 
 export class Handle implements Action {
   readonly type = HANDLE;
-  constructor(public payload: { taskId: Number }) {}
+  constructor (public payload: { taskId: Number }) {}
 }
 
 export class HandleSuccess implements Action {
   readonly type = HANDLE_SUCCESS;
-  constructor(public payload: { task: Task }) {}
+  constructor (public payload: { task: Task }) {}
 }
 
 export class HandleFailure implements Action {
   readonly type = HANDLE_FAILURE;
-  constructor(public payload: { error: any }) {}
+  constructor (public payload: { error: any }) {}
 }
 
 export class Add implements Action {
   readonly type = ADD;
-  constructor(public payload: { task: Task }) {}
+  constructor (public payload: { task: Task }) {}
 }
 
 export class AddSuccess implements Action {
   readonly type = ADD_SUCCESS;
-  constructor(public payload: { task: Task }) {}
+  constructor (public payload: { task: Task }) {}
 }
 
 export class AddFailure implements Action {
   readonly type = ADD_FAILURE;
-  constructor(public payload: { error: any }) {}
+  constructor (public payload: { error: any }) {}
 }
 
 export class Update implements Action {
   readonly type = UPDATE;
-  constructor(public payload: { task: { id: number, changes: any }}) {}
+  constructor (public payload: { task: { id: number, changes: any }}) {}
 }
 
 export class UpdateSuccess implements Action {
   readonly type = UPDATE_SUCCESS;
-  constructor(public payload: { task: { id: number, changes: any }}) {}
+  constructor (public payload: { task: { id: number, changes: any }}) {}
 }
 
 export class AddMediasSuccess implements Action {
   readonly type = ADD_MEDIAS_SUCCESS;
-  constructor(public payload: { task: { id: number, changes: any }}) {}
+  constructor (public payload: { task: { id: number, changes: any }}) {}
 }
 
 export class DeleteMediasSuccess implements Action {
   readonly type = DELETE_MEDIAS_SUCCESS;
-  constructor(public payload: { task: { id: number, changes: any }}) {}
+  constructor (public payload: { task: { id: number, changes: any }}) {}
 }
 
 export class UpdateFailure implements Action {
   readonly type = UPDATE_FAILURE;
-  constructor(public payload: { error: any }) {}
+  constructor (public payload: { error: any }) {}
 }
 
 export class Delete implements Action {
   readonly type = DELETE;
-  constructor(public payload: { taskId: string }) {}
+  constructor (public payload: { taskId: string }) {}
 }
 
 export class DeleteSuccess implements Action {
   readonly type = DELETE_SUCCESS;
-  constructor(public payload: { taskId: string }) {}
+  constructor (public payload: { taskId: string }) {}
 }
 
 export class DeleteFailure implements Action {
   readonly type = DELETE_FAILURE;
-  constructor(public payload: { error: any }) {}
+  constructor (public payload: { error: any }) {}
 }
 
 export class SaveDescription implements Action {
   readonly type = SAVE_DESCRIPTION;
-  constructor(public payload: { taskId: number, text: string}) {}
+  constructor (public payload: { taskId: number, text: string }) {}
 }

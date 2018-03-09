@@ -46,10 +46,10 @@ const MATERIAL_MODULES = [
     FlexLayoutModule,
   ],
   declarations: COMPONENTS,
-  exports: COMPONENTS,
+  exports: COMPONENTS
 })
 export class SidenavModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot (): ModuleWithProviders {
     return {
       ngModule: SidenavModule,
     };

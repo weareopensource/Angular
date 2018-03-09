@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginSnackComponent } from './components/login-snack/login-snack.component';
 
-export function initialisationFactory(authenticationInitialisation) {
+export function initialisationFactory (authenticationInitialisation) {
   return () => authenticationInitialisation.loadUser();
 }
 
@@ -25,7 +25,7 @@ export class RootAuthenticationStateModule {}
 
 @NgModule({})
 export class AuthenticationStateModule {
-  public static forRoot() {
+  public static forRoot () {
     return {
       ngModule: RootAuthenticationStateModule,
       providers: [
@@ -41,5 +41,3 @@ export class AuthenticationStateModule {
     };
   }
 }
-
-

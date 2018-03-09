@@ -9,9 +9,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Mean2Drawer, Mean2DrawerContainer, Mean2DrawerContent } from './drawer.component';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   moduleId: module.id,
@@ -19,20 +18,19 @@ import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion
   template: '<ng-content></ng-content>',
   host: {
     'class': 'mean2-drawer-content mean2-sidenav-content',
-    '[style.margin-left.px]': '_margin',
+    '[style.margin-left.px]': '_margin'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
 export class Mean2SidenavContent extends Mean2DrawerContent {
-  constructor(
-      changeDetectorRef: ChangeDetectorRef,
-      @Inject(forwardRef(() => Mean2SidenavContainer)) container: Mean2SidenavContainer) {
+  constructor (
+    changeDetectorRef: ChangeDetectorRef,
+    @Inject(forwardRef(() => Mean2SidenavContainer)) container: Mean2SidenavContainer) {
     super(changeDetectorRef, container);
   }
 }
-
 
 @Component({
   moduleId: module.id,
@@ -66,17 +64,17 @@ export class Mean2SidenavContent extends Mean2DrawerContent {
     '[class.mean2-drawer-side]': 'true',
     '[class.mean2-sidenav-fixed]': 'fixedInViewport',
     '[style.top.px]': 'fixedInViewport ? fixedTopGap : null',
-    '[style.bottom.px]': 'fixedInViewport ? fixedBottomGap : null',
+    '[style.bottom.px]': 'fixedInViewport ? fixedBottomGap : null'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class Mean2Sidenav extends Mean2Drawer {
   /** Whether the sidenav is fixed in the viewport. */
   @Input()
-  get fixedInViewport(): boolean { return this._fixedInViewport; }
-  set fixedInViewport(value) { this._fixedInViewport = coerceBooleanProperty(value); }
+  get fixedInViewport (): boolean { return this._fixedInViewport; }
+  set fixedInViewport (value) { this._fixedInViewport = coerceBooleanProperty(value); }
   private _fixedInViewport = false;
 
   /**
@@ -84,8 +82,8 @@ export class Mean2Sidenav extends Mean2Drawer {
    * mode.
    */
   @Input()
-  get fixedTopGap(): number { return this._fixedTopGap; }
-  set fixedTopGap(value) { this._fixedTopGap = coerceNumberProperty(value); }
+  get fixedTopGap (): number { return this._fixedTopGap; }
+  set fixedTopGap (value) { this._fixedTopGap = coerceNumberProperty(value); }
   private _fixedTopGap = 0;
 
   /**
@@ -93,11 +91,10 @@ export class Mean2Sidenav extends Mean2Drawer {
    * fixed mode.
    */
   @Input()
-  get fixedBottomGap(): number { return this._fixedBottomGap; }
-  set fixedBottomGap(value) { this._fixedBottomGap = coerceNumberProperty(value); }
+  get fixedBottomGap (): number { return this._fixedBottomGap; }
+  set fixedBottomGap (value) { this._fixedBottomGap = coerceNumberProperty(value); }
   private _fixedBottomGap = 0;
 }
-
 
 @Component({
   moduleId: module.id,
@@ -106,11 +103,11 @@ export class Mean2Sidenav extends Mean2Drawer {
   templateUrl: './sidenav.component.html',
   styleUrls: ['./drawer.css'],
   host: {
-    'class': 'mean2-drawer-container mean2-sidenav-container',
+    'class': 'mean2-drawer-container mean2-sidenav-container'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class Mean2SidenavContainer extends Mean2DrawerContainer {
   @ContentChild(Mean2Sidenav)

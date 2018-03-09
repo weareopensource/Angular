@@ -62,7 +62,7 @@ const MATERIAL_MODULES = [
   ],
   entryComponents: [
     TaskDeleteDialog,
-    TaskEditComponent,
+    TaskEditComponent
   ]
 })
 export class TaskModule {}

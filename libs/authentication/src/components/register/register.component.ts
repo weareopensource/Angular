@@ -11,7 +11,6 @@ export class RegisterComponent implements OnInit {
 
   public hide = true;
   public form = this.formBuilder.group({
-//    gender: this.formBuilder.control(''),
     firstName: this.formBuilder.control(''),
     lastName: this.formBuilder.control(''),
     email: this.formBuilder.control('', [
@@ -24,15 +23,13 @@ export class RegisterComponent implements OnInit {
   @Output()
   public submitted = new EventEmitter<Authenticate>();
 
-  constructor(
-    private formBuilder: FormBuilder) {
-  }
+  constructor (private formBuilder: FormBuilder) { }
 
-  get visibility() {
+  get visibility () {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  get emailErrorMessage() {
+  get emailErrorMessage () {
     let errorMessage = '';
     if (this.form.controls.email.hasError('required')) {
       errorMessage = 'You must enter a value';
@@ -42,11 +39,11 @@ export class RegisterComponent implements OnInit {
     return errorMessage;
   }
 
-  ngOnInit() {
-   this.form.valueChanges.subscribe(() => ({}));
+  ngOnInit () {
+    this.form.valueChanges.subscribe(() => ({}));
   }
 
-  onSubmit() {
+  onSubmit () {
     this.submitted.emit(this.form.value);
   }
 

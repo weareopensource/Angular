@@ -9,7 +9,7 @@ import { tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class RouterEffects {
-  constructor(
+  constructor (
     private actions$: Actions,
     private router: Router,
     private location: Location

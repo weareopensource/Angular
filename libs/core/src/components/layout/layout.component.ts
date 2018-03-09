@@ -26,9 +26,9 @@ export class LayoutComponent implements OnInit {
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
 
-  constructor(private store: Store<any>) {}
+  constructor (private store: Store<any>) {}
 
-  ngOnInit() {
+  ngOnInit () {
     const items$ = this.store.select(getMenuItems);
     const user$ = this.store.select(getUser);
     this.menuItems$ = items$.pipe(
@@ -41,11 +41,11 @@ export class LayoutComponent implements OnInit {
     );
   }
 
-  public openSidenav() {
+  public openSidenav () {
     this.store.dispatch(new fromCore.OpenSidenav());
   }
 
-  public closeSidenav() {
+  public closeSidenav () {
     this.store.dispatch(new fromCore.CloseSidenav());
   }
 }

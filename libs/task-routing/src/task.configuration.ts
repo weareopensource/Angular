@@ -11,9 +11,9 @@ export const taskConfiguration: TaskConfiguration = {
     link: '/task',
     name: 'Task',
     icon: 'action:ic_chrome_reader_mode_24px',
-    roles: ['user', 'admin'],
+    roles: ['user', 'admin']
   }],
   self: {
-    roles: ['user', 'admin'],
+    roles: ['user', 'admin']
   }
 };

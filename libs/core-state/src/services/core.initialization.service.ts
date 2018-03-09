@@ -5,9 +5,9 @@ import { CoreState } from '../+state/states/core-state.state';
 
 @Injectable()
 export class CoreInitializationService {
-  constructor(private store: Store<CoreState>) {}
+  constructor (private store: Store<CoreState>) {}
 
-  public addMenuItems(configuration) {
+  public addMenuItems (configuration) {
     this.store.dispatch(new CoreActions.AddMenuItems(configuration));
   }
 }

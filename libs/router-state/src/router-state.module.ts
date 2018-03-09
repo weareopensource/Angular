@@ -9,7 +9,7 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule()
 export class RouterStateModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot (): ModuleWithProviders {
     return {
       ngModule: RootRouterStateModule,
       providers: [
@@ -23,9 +23,7 @@ export class RouterStateModule {
   imports: [
     StoreModule.forFeature('router', routerReducer),
     EffectsModule.forFeature([RouterEffects]),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule
   ]
 })
 class RootRouterStateModule {}
-
-

@@ -38,7 +38,7 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatTabsModule,
   MatRadioModule,
-  MatSnackBarModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
@@ -46,21 +46,22 @@ const MATERIAL_MODULES = [
     CommonModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [ ...COMPONENTS, ...DIRECTIVES ],
   exports: DIRECTIVES
 })
 export class AuthenticationModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot (): ModuleWithProviders {
     return {
       ngModule: AuthenticationModule,
       providers: [
         AuthenticationGuardService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: AuthenticationInterceptorService,
-        multi: true
-      }]
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthenticationInterceptorService,
+          multi: true
+        }
+      ]
     };
   }
 }

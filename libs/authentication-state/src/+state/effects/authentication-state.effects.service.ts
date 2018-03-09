@@ -125,7 +125,7 @@ export class AuthenticationEffectsService {
     )
   );
 
-  constructor(
+  constructor (
     private actions$: Actions,
     private authenticationApiService: AuthenticationApiService,
     private snackBar: MatSnackBar,

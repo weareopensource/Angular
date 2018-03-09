@@ -1,7 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Task } from '@labdat/data-models';
 
-
 export interface TaskState extends EntityState<Task> {
   loading: boolean;
   loaded: boolean;

@@ -6,9 +6,10 @@ import { AuthenticationState, fromAuthentication } from '@labdat/authentication-
   selector: '[Logout]',
 })
 export class LogoutDirective {
-  constructor(private store: Store<AuthenticationState>) { }
+  constructor (private store: Store<AuthenticationState>) { }
+
   @HostListener('click', ['$event'])
-  onLogout() {
+  public onLogout () {
     this.store.dispatch(new fromAuthentication.Logout());
   }
 }

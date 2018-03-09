@@ -1,5 +1,5 @@
 import { TaskDeleteDialog } from '../delete/delete.dialog';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material';
@@ -21,7 +21,7 @@ import { TaskEditComponent } from '../edit/edit.component';
   templateUrl: './list.component.html',
   animations: [ routesAnimation ]
 })
-export class TasksListComponent implements OnInit {
+export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatSort)
   sort: MatSort;
@@ -34,34 +34,34 @@ export class TasksListComponent implements OnInit {
 
   private subscriptions: Subscription;
 
-  constructor(
+  constructor (
     public dialog: MatDialog,
     private store: Store<TaskState>
   ) { }
 
-  ngOnInit() {
+  ngOnInit () {
     this.dataSource = new MatTableDataSource();
     this.subscriptions = this.store.select(selectAllTasks).do(console.log)
     .subscribe(tasks => this.dataSource.data = tasks);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit () {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
+  applyFilter (filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
-  delete(): void {
+  delete (): void {
     const dialogRef = this.dialog.open(TaskDeleteDialog, { width: '250px' });
     dialogRef.afterClosed().subscribe(() => console.log('The dialog was closed'));
   }
 
-  edit(): void {
+  edit (): void {
     const dialogRef = this.dialog.open(TaskEditComponent, {
       width: '700px',
       data: { }
@@ -74,19 +74,19 @@ export class TasksListComponent implements OnInit {
 //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
   }
 
-  view(id): void {
+  view (id): void {
     this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }));
   }
 
-  add(): void {
+  add (): void {
     this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] }));
   }
 
-  getState(outlet) {
+  getState (outlet) {
     return outlet.activatedRouteData.state;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy () {
     console.log('not now');
     this.subscriptions.unsubscribe();
   }

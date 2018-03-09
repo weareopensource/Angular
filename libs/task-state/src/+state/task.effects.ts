@@ -61,13 +61,13 @@ export class TaskEffects {
       catchError(error => of(new fromTasks.DeleteFailure(error)))
     );
 
-    @Effect({dispatch: false})
-    saveDescription$ = this._actions$
-      .ofType(fromTasks.SAVE_DESCRIPTION)
-      .pipe(
-        map(toPayload),
-        tap((payload) => sessionStorage.setItem(`task${payload.taskId}Desciption`, payload.text))
-      );
+  @Effect({ dispatch: false })
+  saveDescription$ = this._actions$
+    .ofType(fromTasks.SAVE_DESCRIPTION)
+    .pipe(
+      map(toPayload),
+      tap((payload) => sessionStorage.setItem(`task${payload.taskId}Desciption`, payload.text))
+    );
 
 /*
   @Effect()
@@ -77,8 +77,8 @@ export class TaskEffects {
     .switchMap(id => this.taskApiService.handle(id))
     .catch(error => of(new fromTasks.HandleFailure(error)));
 */
-  constructor(
+  constructor (
     private _actions$: Actions,
-    private _taskApiService: TaskApiService,
-  ) {}
+    private _taskApiService: TaskApiService
+  ) { }
 }

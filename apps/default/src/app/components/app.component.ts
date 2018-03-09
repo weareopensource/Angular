@@ -10,23 +10,23 @@ import { MatIconRegistry } from '@angular/material';
 export class AppComponent {
 
   @HostBinding('class.mat-typography')
-  matTypo() {
+  matTypo () {
     return true;
   }
 
   @HostListener('dragover', ['$event'])
-  stoprDragover(event) {
+  stoprDragover (event) {
     event.preventDefault();
   }
 
   @HostListener('drop', ['$event'])
-  stopDrop(event) {
+  stopDrop (event) {
     event.preventDefault();
   }
 
-  constructor(
+  constructor (
     private _mdIconRegistry: MatIconRegistry,
-    private _sanitizer: DomSanitizer,
+    private _sanitizer: DomSanitizer
   ) {
     ['file', 'editor', 'action', 'navigation', 'av', 'image', 'content', 'hardware']
     .forEach(iconSet =>

@@ -20,11 +20,11 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
 
   private tokenExpiresIn$;
 
-  constructor(private store: Store<AuthenticationState>) {
+  constructor (private store: Store<AuthenticationState>) {
     this.tokenExpiresIn$ = this.store.select(getTokenExpiresIn);
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+  intercept (request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (request.url.match(/(?!\api\/)/)) {
       const nextRequest = request.clone({ withCredentials: true });
       return next.handle(nextRequest);

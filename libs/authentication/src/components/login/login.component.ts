@@ -5,12 +5,12 @@ import { Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 
   @Input()
-  set pending(isPending: boolean) {
+  set pending (isPending: boolean) {
     if (isPending) {
       this.form.disable();
     } else {
@@ -30,13 +30,13 @@ export class LoginComponent {
     password: this.formBuilder.control('', [ Validators.required ])
   });
 
-  get visibility() {
+  get visibility () {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor (private formBuilder: FormBuilder) { }
 
-  onSubmit() {
+  onSubmit () {
     this.submitted.emit(this.form.value);
   }
 }

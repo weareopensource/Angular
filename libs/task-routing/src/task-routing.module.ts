@@ -45,11 +45,10 @@ export class RootTaskRoutingModule {}
   ]
 })
 export class TaskRoutingModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot (): ModuleWithProviders {
     return {
       ngModule: RootTaskRoutingModule,
       providers: [ TaskGuardService ]
     };
   }
 }
-

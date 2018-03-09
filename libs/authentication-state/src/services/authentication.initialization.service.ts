@@ -5,9 +5,9 @@ import { AuthenticationState } from '../+state/states/authentication-state.state
 
 @Injectable()
 export class AuthenticationInitializationService {
-  constructor(private store: Store<AuthenticationState>) {}
+  constructor (private store: Store<AuthenticationState>) {}
 
-  loadUser() {
+  loadUser () {
     const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (tokenExpiresIn) {
