@@ -9,7 +9,7 @@ export class LogoutDirective {
   constructor(private store: Store<AuthenticationState>) {}
 
   @HostListener('click', ['$event'])
-  public onLogout() {
+  public onLogout(): void {
     this.store.dispatch(new fromAuthentication.Logout());
   }
 }

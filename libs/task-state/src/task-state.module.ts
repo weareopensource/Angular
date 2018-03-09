@@ -6,7 +6,7 @@ import { taskReducer } from './+state/task.reducer';
 import { TaskEffects } from './+state/task.effects';
 import { TaskApiService } from './services/task.api.service';
 
-export function taskInitialisationFactory(taskInitialization) {
+export function taskInitialisationFactory(taskInitialization): any {
   return () => taskInitialization.loadTasks();
 }
 

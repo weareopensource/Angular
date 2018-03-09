@@ -15,20 +15,20 @@ export class InitForm implements Action {
 
 export class SubmitForm implements Action {
   readonly type = FORM_SUBMIT;
-  constructor(public payload: { path: string }) {}
+  constructor(public payload: { path: string }) { }
 }
 
 export class SubmitFormSuccess implements Action {
   readonly type = FORM_SUBMIT_SUCCESS;
-  constructor(public payload: { path: string }) {}
+  constructor(public payload: { path: string }) { }
 }
 
 export class SubmitFormError implements Action {
   readonly type = FORM_SUBMIT_ERROR;
-  constructor(public payload: { path: string; error: string }) {}
+  constructor(public payload: { path: string; error: string }) { }
 }
 
 export class UpdateForm implements Action {
   readonly type = UPDATE_FORM;
-  constructor(public payload: { path: string; value: any }) {}
+  constructor(public payload: { path: string; value: any }) { }
 }

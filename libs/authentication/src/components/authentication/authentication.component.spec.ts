@@ -10,7 +10,8 @@ describe('AuthComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [AuthComponent]
-      }).compileComponents();
+      })
+      .compileComponents();
     })
   );
 
@@ -21,6 +22,7 @@ describe('AuthComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+    .toBeTruthy();
   });
 });

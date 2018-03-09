@@ -3,7 +3,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material';
 
 @Component({
   selector: 'login-snack',
-  template: '{{data}}'
+  template: '{{ data }}'
 })
 export class LoginSnackComponent {
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Authenticate } from '@labdat/data-models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@labdat/environments';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthenticationApiService {
@@ -12,7 +13,7 @@ export class AuthenticationApiService {
     this.baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
   }
 
-  login({ email, password }: Authenticate) {
+  login({ email, password }: Authenticate): Observable<any> {
     return this.http.post(
       `${this.baseUrl}/auth/signin`,
       { usernameOrEmail: email, password },
@@ -20,7 +21,7 @@ export class AuthenticationApiService {
     );
   }
 
-  register(registration: any) {
+  register(registration: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/auth/signup`, registration);
     //      .do(token => this.setAuthorizationHeader(token));
   }

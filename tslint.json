@@ -3,8 +3,27 @@
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
   ],
-  "extends": ["angular-tslint-rules"],
+  "extends": ["codelyzer", "angular-tslint-rules", "tslint-angular"],
   "rules": {
+
+    "no-implicit-dependencies": false,
+
+    "angular-whitespace": [true, "check-interpolation", "check-semicolon"],
+    "banana-in-box": true,
+    "templates-no-negated-async": true,
+    "use-view-encapsulation": true,
+    "no-attribute-parameter-decorator": true,
+    "no-output-named-after-standard-event": true,
+    "no-output-on-prefix": true,
+    "no-forward-ref": true,
+    "no-unused-css": true,
+    "contextual-life-cycle": true,
+    "trackBy-function": true,
+    "pipe-impure": true,
+    "i18n": [true, "check-id", "check-text"],
+    "template-cyclomatic-complexity": [true, 5],
+    "template-conditional-complexity": [true, 4],
+
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -85,18 +104,8 @@
     ],
     "unified-signatures": true,
     "variable-name": false,
-    "directive-selector": [
-      true,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+    "directive-selector": [true, "attribute", ["dir-prefix1", "dir-prefix2"], "camelCase"],
+    "component-selector": [true, "element", ["cmp-prefix1", "cmp-prefix2"], "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -104,11 +113,8 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true,
+    "component-class-suffix": [true, "Component"],
+    "directive-class-suffix": [true, "Directive"],
 
     "nx-enforce-module-boundaries": [
       true,

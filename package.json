@@ -48,7 +48,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^9.4.7",
     "angular-tslint-rules": "^1.2.1",
-    "codelyzer": "github:mgechev/codelyzer",
+    "codelyzer": "^4.2.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -62,6 +62,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "^5.9.1",
+    "tslint-angular": "^1.1.1",
     "typescript": "^2.6.2"
   }
 }

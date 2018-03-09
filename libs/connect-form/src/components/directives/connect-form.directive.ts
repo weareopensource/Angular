@@ -50,7 +50,10 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
 
     this.formError = this.actions$
       .ofType(fromConnectForm.FORM_SUBMIT_ERROR)
-      .pipe(map(toPayload), filter(payload => payload.path === this.path))
+      .pipe(
+        map(toPayload),
+        filter(payload => payload.path === this.path)
+      )
       .subscribe(payload => this.error.emit(payload.error));
   }
 

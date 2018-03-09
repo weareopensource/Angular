@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Authenticate } from '../../models/user.model';
 
 @Component({
@@ -20,25 +20,26 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  get visibility() {
+  get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  get emailErrorMessage() {
+  get emailErrorMessage(): string {
     let errorMessage = '';
     if (this.form.controls.email.hasError('required')) {
       errorMessage = 'You must enter a value';
     } else if (this.form.controls.email.hasError('email')) {
       errorMessage = 'Not a valid email';
     }
+
     return errorMessage;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form.valueChanges.subscribe(() => ({}));
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted.emit(this.form.value);
   }
 }

@@ -1,6 +1,6 @@
 import { Authenticate } from './../../models/user.model';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +27,13 @@ export class LoginComponent {
     password: this.formBuilder.control('', [Validators.required])
   });
 
-  get visibility() {
+  get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
   constructor(private formBuilder: FormBuilder) {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted.emit(this.form.value);
   }
 }

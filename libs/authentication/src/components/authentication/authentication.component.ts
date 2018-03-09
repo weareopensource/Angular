@@ -1,9 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  fromAuthentication,
   AuthenticationState,
-  getLoginPagePending,
-  getLoginPageError
+  fromAuthentication,
+  getLoginPageError,
+  getLoginPagePending
 } from '@labdat/authentication-state';
 import { Store } from '@ngrx/store';
 import { Authenticate } from '../../models/user.model';
@@ -20,11 +20,11 @@ export class AuthenticationComponent {
 
   constructor(private store: Store<AuthenticationState>) {}
 
-  onLogin(authenticate: Authenticate) {
+  onLogin(authenticate: Authenticate): void {
     this.store.dispatch(new fromAuthentication.Login(authenticate));
   }
 
-  onRegister(registration: any) {
+  onRegister(registration: any): void {
     this.store.dispatch(new fromAuthentication.Register(registration));
   }
 }
