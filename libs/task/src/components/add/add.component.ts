@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
 import { fromTask } from '@labdat/task-state';
@@ -21,43 +21,43 @@ export class TasksAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  close() {
+  close(): void {
     this.store.dispatch(new fromRouter.Back());
   }
 
   // Function iniating the form
-  private _buildForm() {
+  private _buildForm(): FormGroup {
     return this._fb.group({
       title: new FormControl('', Validators.required)
     });
   }
 
   // Function called when form is submitted
-  onSubmit(form: FormGroup) {
+  onSubmit(form: FormGroup): void {
     if (form.valid) {
       let task: Task;
       task = {
-        id: null,
+        id: undefined,
         title: form.get('title').value,
-        description: null,
-        createdDate: null,
-        updatedDate: null,
-        userIds: null,
-        comments: null
+        description: undefined,
+        createdDate: undefined,
+        updatedDate: undefined,
+        userIds: undefined,
+        comments: undefined
       };
       this.success = false;
-      this.store.dispatch(new fromTask.Add({ task: task }));
+      this.store.dispatch(new fromTask.Add({ task }));
     } else {
       return;
     }
   }
 
-  onSuccess() {
+  onSuccess(): void {
     this.success = true;
     this.store.dispatch(new fromTask.Load());
   }
 
-  onError(error) {
+  onError(error): void {
     this.error = error;
   }
 }

@@ -7,7 +7,7 @@ import { CoreState } from '../+state/states/core-state.state';
 export class CoreInitializationService {
   constructor(private store: Store<CoreState>) {}
 
-  public addMenuItems(configuration) {
+  public addMenuItems(configuration): void {
     this.store.dispatch(new CoreActions.AddMenuItems(configuration));
   }
 }

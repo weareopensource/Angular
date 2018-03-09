@@ -8,9 +8,14 @@ import { selectTaskLoaded } from '@labdat/task-state';
 
 @Injectable()
 export class TaskGuardService implements CanActivate {
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<any>) { }
 
   canActivate(): Observable<boolean> | boolean {
-    return this.store.select(selectTaskLoaded).pipe(filter(loaded => loaded), take(1));
+    return this.store
+    .select(selectTaskLoaded)
+    .pipe(
+      filter(loaded => loaded),
+      take(1)
+    );
   }
 }

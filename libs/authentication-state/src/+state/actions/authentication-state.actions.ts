@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User, Authenticate } from '@labdat/data-models';
+import { Authenticate, User } from '@labdat/data-models';
 
 export const LOGIN = '[Auth] Login';
 export const LOGIN_SUCCESS = '[Auth] Login Success';

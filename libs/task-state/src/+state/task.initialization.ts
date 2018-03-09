@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators/filter';
 export class TaskInitializationService {
   constructor(private store: Store<TaskState>) {}
 
-  public loadTasks() {
+  public loadTasks(): void {
     this.store
       .select(getLoggedIn)
       .pipe(first(), filter(isLoggedIn => isLoggedIn))

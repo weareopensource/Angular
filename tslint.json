@@ -1,11 +1,9 @@
 {
-  "extends": [
-    "angular-tslint-rules"
-  ],
   "rulesDirectory": [
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
   ],
+  "extends": ["angular-tslint-rules"],
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,

@@ -8,7 +8,7 @@ export interface User {
   lastName: string;
   username?: string;
   email: string;
-  roles: string[];
+  roles: Array<string>;
 }
 
 export interface MenuItem {
@@ -16,7 +16,7 @@ export interface MenuItem {
   link: string;
   name: string;
   icon: string;
-  roles?: string[];
+  roles?: Array<string>;
 }
 
 export interface Task {
@@ -25,8 +25,8 @@ export interface Task {
   readonly description: string;
   readonly createdDate: Date;
   readonly updatedDate: Date;
-  readonly userIds: number[];
-  readonly comments: Comment[];
+  readonly userIds: Array<number>;
+  readonly comments: Array<Comment>;
 }
 
 export interface Comment {

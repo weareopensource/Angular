@@ -1,4 +1,4 @@
-import { trigger, animate, transition, style, group, query } from '@angular/animations';
+import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
 export const routesAnimation = trigger('routesAnimation', [
   transition('home <=> *', [query(':enter', [style({ opacity: 0 }), animate('.3s', style({ opacity: 1 }))])]),

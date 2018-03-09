@@ -1,4 +1,4 @@
-import { Directive, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Directive, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { Subscription } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
@@ -29,12 +29,12 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
 
   constructor(private formGroupDirective: FormGroupDirective, private actions$: Actions, private store: Store<any>) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const initConnectForm$ = this.store.select(ConnectFormStateSelectors[`${this.path}Selector`]);
 
-    initConnectForm$.take(1).subscribe(val => {
-      this.formGroupDirective.form.patchValue(val);
-    });
+    initConnectForm$
+    .take(1)
+    .subscribe(val => this.formGroupDirective.form.patchValue(val));
 
     this.formChange = this.formGroupDirective.form.valueChanges.pipe(debounceTime(this.debounce)).subscribe(value => {
       this.store.dispatch(new fromConnectForm.UpdateForm({ value, path: this.path }));
@@ -54,7 +54,7 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
       .subscribe(payload => this.error.emit(payload.error));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.formChange.unsubscribe();
     this.formError.unsubscribe();
     this.formSuccess.unsubscribe();

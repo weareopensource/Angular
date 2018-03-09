@@ -12,7 +12,8 @@ describe('AppComponent', () => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule],
         declarations: [AppComponent]
-      }).compileComponents();
+      })
+      .compileComponents();
     })
   );
 
@@ -23,6 +24,7 @@ describe('AppComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+    .toBeTruthy();
   });
 });

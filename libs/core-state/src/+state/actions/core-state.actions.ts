@@ -15,7 +15,7 @@ export class CloseSidenav implements Action {
 
 export class AddMenuItems implements Action {
   readonly type = ADD_MENU_ITEMS;
-  constructor(public payload: MenuItem[]) {}
+  constructor(public payload: Array<MenuItem>) {}
 }
 
 export type Actions = OpenSidenav | CloseSidenav | AddMenuItems;

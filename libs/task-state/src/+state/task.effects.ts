@@ -1,11 +1,10 @@
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators/map';
-import { switchMap } from 'rxjs/operators/switchMap';
 import { catchError } from 'rxjs/operators/catchError';
 import { mapTo } from 'rxjs/operators/mapTo';
 import { tap } from 'rxjs/operators/tap';
-import { toPayload } from '@ngrx/effects';
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { switchMap } from 'rxjs/operators/switchMap';
 import { of } from 'rxjs/observable/of';
 import { TaskApiService } from '../services/task.api.service';
 import * as fromTasks from './task.actions';
@@ -32,7 +31,7 @@ export class TaskEffects {
       map(toPayload),
       switchMap(payload => this._taskApiService.addTask(payload.task)),
       map(() => new fromConnecForm.SubmitFormSuccess({ path: 'addTaskForm' })),
-      catchError(error => of(new fromConnecForm.SubmitFormError({ path: 'addTaskForm', error: error })))
+      catchError(error => of(new fromConnecForm.SubmitFormError({ path: 'addTaskForm', error })))
     );
 
   @Effect()

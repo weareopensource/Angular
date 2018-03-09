@@ -1,4 +1,4 @@
-import { Component, HostListener, HostBinding } from '@angular/core';
+import { Component, HostBinding, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
@@ -8,17 +8,17 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class AppComponent {
   @HostBinding('class.mat-typography')
-  matTypo() {
+  matTypo(): Boolean {
     return true;
   }
 
   @HostListener('dragover', ['$event'])
-  stoprDragover(event) {
+  stoprDragover(event): void {
     event.preventDefault();
   }
 
   @HostListener('drop', ['$event'])
-  stopDrop(event) {
+  stopDrop(event): void {
     event.preventDefault();
   }
 
@@ -29,6 +29,6 @@ export class AppComponent {
         this._sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`)
       )
     );
-    this._mdIconRegistry.addSvgIcon('file-image', this._sanitizer.bypassSecurityTrustResourceUrl(`assets/file.svg`));
+    this._mdIconRegistry.addSvgIcon('file-image', this._sanitizer.bypassSecurityTrustResourceUrl('assets/file.svg'));
   }
 }

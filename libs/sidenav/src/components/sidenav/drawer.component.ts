@@ -26,7 +26,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 /** Throws an exception when two Mean2Drawer are matching the same position. */
-export function throwMean2DuplicatedDrawerError(position: string) {
+export function throwMean2DuplicatedDrawerError(position: string): void {
   throw Error(`A drawer was already declared for 'position="${position}"'`);
 }
 
@@ -59,7 +59,7 @@ export class Mean2DrawerContent implements AfterContentInit {
     private _container: Mean2DrawerContainer
   ) {}
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this._container._contentMargin.subscribe(margin => {
       this._margin = margin;
       this._changeDetectorRef.markForCheck();
@@ -108,7 +108,7 @@ export class Mean2DrawerContent implements AfterContentInit {
   preserveWhitespaces: false
 })
 export class Mean2Drawer implements AfterContentInit {
-  private _elementFocusedBeforeDrawerWasOpened: HTMLElement | null = null;
+  private _elementFocusedBeforeDrawerWasOpened: HTMLElement | null = undefined;
 
   /** Whether the drawer is initialized. Used for disabling the initial animation. */
   private _enableAnimations = false;
@@ -201,7 +201,7 @@ export class Mean2Drawer implements AfterContentInit {
    * If focus is currently inside the drawer, restores it to where it was before the drawer
    * opened.
    */
-  private _restoreFocus() {
+  private _restoreFocus(): void {
     const activeEl = this._doc && this._doc.activeElement;
 
     if (activeEl && this._elementRef.nativeElement.contains(activeEl)) {
@@ -212,11 +212,11 @@ export class Mean2Drawer implements AfterContentInit {
       }
     }
 
-    this._elementFocusedBeforeDrawerWasOpened = null;
-    this._openedVia = null;
+    this._elementFocusedBeforeDrawerWasOpened = undefined;
+    this._openedVia = undefined;
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this._enableAnimations = true;
   }
 
@@ -254,7 +254,9 @@ export class Mean2Drawer implements AfterContentInit {
     // TODO(crisbeto): This promise is here for backwards-compatibility.
     // It should be removed next time we do breaking changes in the drawer.
     return new Promise<any>(resolve => {
-      this.openedChange.pipe(take(1)).subscribe(open => {
+      this.openedChange
+      .pipe(take(1))
+      .subscribe(open => {
         resolve(new Mean2DrawerToggleResult(open ? 'open' : 'close', true));
       });
     });
@@ -264,18 +266,18 @@ export class Mean2Drawer implements AfterContentInit {
    * Handles the keyboard events.
    * @docs-private
    */
-  handleKeydown(event: KeyboardEvent) {
+  handleKeydown(event: KeyboardEvent): void {
     if (event.keyCode === ESCAPE && !this.disableClose) {
       this.close();
       event.stopPropagation();
     }
   }
 
-  _onAnimationStart(event: AnimationEvent) {
+  _onAnimationStart(event: AnimationEvent): void {
     this._animationStarted.emit(event);
   }
 
-  _onAnimationEnd(event: AnimationEvent) {
+  _onAnimationEnd(event: AnimationEvent): void {
     const { fromState, toState } = event;
 
     if (toState.indexOf('open') === 0 && fromState === 'close') {
@@ -286,7 +288,7 @@ export class Mean2Drawer implements AfterContentInit {
   }
 
   @Input()
-  get expandedWidth() {
+  get expandedWidth(): number {
     return this._expandedWidth;
   }
   set expandedWidth(width) {
@@ -294,9 +296,10 @@ export class Mean2Drawer implements AfterContentInit {
   }
 
   @Input()
-  get collapsedWidth() {
+  get collapsedWidth(): number {
     return this._collapsedWidth;
   }
+
   set collapsedWidth(width) {
     this._collapsedWidth = width;
   }
@@ -333,7 +336,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
 
   constructor(private _element: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this._watchDrawerToggle();
     if (this._drawer.open) {
       this._updateContentMargins();
@@ -341,7 +344,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
     this._changeDetectorRef.markForCheck();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._destroyed.next();
     this._destroyed.complete();
   }
@@ -392,7 +395,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
     }
   }
 
-  _closeModalDrawer() {
+  _closeModalDrawer(): void {
     if (!this._drawer.disableClose) {
       this._drawer.close();
     }
@@ -402,7 +405,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
    * Recalculates and updates the inline styles for the content. Note that this should be used
    * sparingly, because it causes a reflow.
    */
-  private _updateContentMargins() {
+  private _updateContentMargins(): void {
     const margin = this._drawer.opened ? this._drawer.expandedWidth : this._drawer.collapsedWidth;
     this._contentMargin.next(margin);
   }

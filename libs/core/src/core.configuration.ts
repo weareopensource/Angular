@@ -1,7 +1,7 @@
 import { MenuItem } from '@labdat/data-models';
 
 interface CoreConfiguration {
-  self: MenuItem[];
+  self: Array<MenuItem>;
 }
 
 export const coreConfiguration: CoreConfiguration = {

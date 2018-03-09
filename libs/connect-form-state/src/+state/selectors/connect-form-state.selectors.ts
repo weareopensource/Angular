@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { forEach } from 'lodash';
 
 import { ConnectFormState } from '../states/connect-form-state.state';
@@ -10,7 +10,7 @@ const getConnectFormState = createFeatureSelector<ConnectFormState>('connectForm
 const tempSelectors = {};
 forEach(connectFormConfiguration.forms, form => {
   Object.assign(tempSelectors, {
-    [form + 'Selector']: createSelector(getConnectFormState, (state: ConnectFormState) => state[form])
+    [`${form}Selector`]: createSelector(getConnectFormState, (state: ConnectFormState) => state[form])
   });
 });
 

@@ -1,24 +1,24 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from '@labdat/core-routing';
 import { AuthenticationModule } from '@labdat/authentication';
 import {
   MatButtonModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
+  MatCardModule,
   MatDialogModule,
   MatIconModule,
-  MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule
   //  MatProgressBarModule
 } from '@angular/material';
 import { SidenavModule } from '@labdat/sidenav';

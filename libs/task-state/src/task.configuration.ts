@@ -1,7 +1,7 @@
 import { MenuItem } from '@labdat/data-models';
 
 export interface TaskConfiguration {
-  core: MenuItem[];
+  core: Array<MenuItem>;
   self: any;
 }
 

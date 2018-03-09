@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { routerReducer, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './+state/router-state.effects';
-import { routerReducer } from '@ngrx/router-store';
 import { CustomSerializer } from './services/custom-serializer.service';
-import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule()
 export class RouterStateModule {

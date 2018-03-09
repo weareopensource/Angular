@@ -1,5 +1,5 @@
+import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './components/app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material';
 import { SidenavModule } from '@labdat/sidenav';
 import { AuthenticationModule } from '@labdat/authentication';
-import { CoreModule, coreConfiguration } from '@labdat/core';
+import { coreConfiguration, CoreModule } from '@labdat/core';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { AppComponent } from './components/app.component';
 import { CoreStateModule } from '@labdat/core-state';
 import { AuthenticationStateModule } from '@labdat/authentication-state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TaskInitializationService } from './+state/task.initialization';
@@ -22,7 +22,7 @@ export class RootTaskStateModule {}
 
 @NgModule({})
 export class TaskStateModule {
-  public static forRoot() {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootTaskStateModule,
       providers: [

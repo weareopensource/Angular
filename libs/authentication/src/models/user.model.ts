@@ -7,5 +7,5 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  roles: string[];
+  roles: Array<string>;
 }

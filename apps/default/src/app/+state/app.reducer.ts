@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 function logger(reducer: ActionReducer<ApplicationState>): ActionReducer<ApplicationState> {
-  return function(state: ApplicationState, action: any): ApplicationState {
+  return (state: ApplicationState, action: any): ApplicationState => {
     console.log('state', state);
     console.log('action', action);
 
@@ -12,4 +12,4 @@ function logger(reducer: ActionReducer<ApplicationState>): ActionReducer<Applica
   };
 }
 
-export const metaReducers: MetaReducer<ApplicationState>[] = !environment.production ? [logger, storeFreeze] : [];
+export const metaReducers: Array<MetaReducer<ApplicationState>> = !environment.production ? [logger, storeFreeze] : [];

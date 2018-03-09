@@ -1,11 +1,11 @@
+import { fromRouter } from '@labdat/router-state';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../../components/login-snack/login-snack.component';
 import { AuthenticationApiService } from '../../services/authentication.api.service';
 import * as fromAuthentication from '../actions/authentication-state.actions';
-import { fromRouter } from '@labdat/router-state';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators/map';
 import { mapTo } from 'rxjs/operators/mapTo';
 import { tap } from 'rxjs/operators/tap';
@@ -16,13 +16,16 @@ import { empty } from 'rxjs/observable/empty';
 @Injectable()
 export class AuthenticationEffectsService {
   @Effect()
-  login$ = this.actions$.ofType(fromAuthentication.LOGIN).pipe(
+  login$ = this.actions$.ofType(fromAuthentication.LOGIN)
+  .pipe(
     map(toPayload),
     exhaustMap(auth =>
-      this.authenticationApiService.login(auth).pipe(
+      this.authenticationApiService.login(auth)
+      .pipe(
         catchError(error => {
           console.log(error);
           this.store.dispatch(new fromAuthentication.LoginFailure('Email or Password Invalid'));
+
           return empty();
         })
       )
@@ -35,7 +38,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect()
-  logout$ = this.actions$.ofType(fromAuthentication.LOGOUT).pipe(
+  logout$ = this.actions$.ofType(fromAuthentication.LOGOUT)
+  .pipe(
     map(toPayload),
     tap(message => {
       sessionStorage.removeItem('tokenExpiresIn');
@@ -51,7 +55,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect()
-  loginSuccess$ = this.actions$.ofType(fromAuthentication.LOGIN_SUCCESS).pipe(
+  loginSuccess$ = this.actions$.ofType(fromAuthentication.LOGIN_SUCCESS)
+  .pipe(
     map(() => {
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -64,7 +69,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect({ dispatch: false })
-  loginFailure$ = this.actions$.ofType(fromAuthentication.LOGIN_FAILURE).pipe(
+  loginFailure$ = this.actions$.ofType(fromAuthentication.LOGIN_FAILURE)
+  .pipe(
     map(toPayload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
@@ -77,7 +83,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect()
-  register$ = this.actions$.ofType(fromAuthentication.REGISTER).pipe(
+  register$ = this.actions$.ofType(fromAuthentication.REGISTER)
+  .pipe(
     map(toPayload),
     exhaustMap(auth =>
       this.authenticationApiService
@@ -90,6 +97,7 @@ export class AuthenticationEffectsService {
           catchError(error => {
             console.log(error);
             this.store.dispatch(new fromAuthentication.RegisterFailure('Register Error'));
+
             return empty();
           })
         )
@@ -102,7 +110,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect()
-  registerSuccess$ = this.actions$.ofType(fromAuthentication.REGISTER_SUCCESS).pipe(
+  registerSuccess$ = this.actions$.ofType(fromAuthentication.REGISTER_SUCCESS)
+  .pipe(
     map(() => {
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -115,7 +124,8 @@ export class AuthenticationEffectsService {
   );
 
   @Effect({ dispatch: false })
-  registerFailure$ = this.actions$.ofType(fromAuthentication.REGISTER_FAILURE).pipe(
+  registerFailure$ = this.actions$.ofType(fromAuthentication.REGISTER_FAILURE)
+  .pipe(
     map(toPayload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {

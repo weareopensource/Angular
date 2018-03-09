@@ -36,11 +36,11 @@ export class TaskEditComponent {
 
   constructor(public dialogRef: MatDialogRef<TaskEditComponent>) {}
 
-  cancel() {
+  cancel(): void {
     this.dialogRef.close();
   }
   // Function called when form is submitted
-  onSubmit() {
+  onSubmit(): void {
     this.dialogRef.close(this.taskModel);
     // this.store.dispatch(new fromTask.Add({ task }));
   }

@@ -8,6 +8,7 @@ describe('productsReducer', () => {
     const state: CoreState = { showSidenav: false };
     const action = new CoreActions.OpenSidenav();
     const actual = coreReducer(state, action);
-    expect(actual).toEqual({ showSidenav: true });
+    expect(actual)
+    .toEqual({ showSidenav: true });
   });
 });

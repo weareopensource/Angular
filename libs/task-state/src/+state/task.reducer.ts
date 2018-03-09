@@ -1,5 +1,5 @@
 import * as fromTask from './task.actions';
-import { TaskState, taskAdapter } from './task.interfaces';
+import { taskAdapter, TaskState } from './task.interfaces';
 import { fromAuthentication } from '@labdat/authentication-state';
 
 export const taskInitialState: TaskState = taskAdapter.getInitialState({
@@ -32,10 +32,6 @@ export function taskReducer(
     }*/
     case fromTask.ADD_SUCCESS: {
       return taskAdapter.addOne(action.payload.task, state);
-    }
-
-    case fromTask.UPDATE_SUCCESS: {
-      return taskAdapter.updateOne(action.payload.task, state);
     }
 
     case fromTask.UPDATE_SUCCESS: {

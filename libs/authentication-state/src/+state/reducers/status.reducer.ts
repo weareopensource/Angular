@@ -3,8 +3,8 @@ import { StatusState } from '../states/status.state';
 
 const initialStatusState: StatusState = {
   loggedIn: false,
-  user: null,
-  tokenExpiresIn: null
+  user: undefined,
+  tokenExpiresIn: undefined
 };
 
 export function statusReducer(state = initialStatusState, action: fromAuthentication.Actions): StatusState {

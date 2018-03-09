@@ -47,7 +47,7 @@ export class Load implements Action {
 
 export class LoadSuccess implements Action {
   readonly type = LOAD_SUCCESS;
-  constructor(public payload: { tasks: Task[] }) {}
+  constructor(public payload: { tasks: Array<Task> }) {}
 }
 
 export class LoadFailure implements Action {

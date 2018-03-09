@@ -1,23 +1,23 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-  Mean2Sidenav,
-  Mean2DrawerContainer,
   Mean2Drawer,
-  Mean2SidenavContainer,
+  Mean2DrawerContainer,
   Mean2DrawerContent,
+  Mean2Sidenav,
+  Mean2SidenavContainer,
   Mean2SidenavContent
 } from './components';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatIconModule,
-  MatTooltipModule,
   MatButtonModule,
-  MatInputModule,
-  MatTableModule,
-  MatPaginatorModule,
+  MatCardModule,
   MatDialogModule,
-  MatCardModule
+  MatIconModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatTableModule,
+  MatTooltipModule
 } from '@angular/material';
 
 const COMPONENTS = [

@@ -10,7 +10,8 @@ describe('HomeComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [HomeComponent]
-      }).compileComponents();
+      })
+      .compileComponents();
     })
   );
 
@@ -21,6 +22,7 @@ describe('HomeComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+    .toBeTruthy();
   });
 });

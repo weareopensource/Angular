@@ -1,10 +1,10 @@
+import { selectAllTasks, TaskState } from '@labdat/task-state';
 import { TaskDeleteDialog } from '../delete/delete.dialog';
-import { Component, ViewChild, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
-import { MatSort } from '@angular/material';
-import { MatPaginator } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { routesAnimation } from '@labdat/animations';
-import { TaskState, selectAllTasks } from '@labdat/task-state';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
 import { Task } from '@labdat/data-models';
@@ -33,7 +33,7 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(public dialog: MatDialog, private store: Store<TaskState>) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
     this.subscriptions = this.store
       .select(selectAllTasks)
@@ -41,20 +41,24 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe(tasks => (this.dataSource.data = tasks));
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(filterValue: string) {
+  applyFilter(filterValue: string): void {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
   delete(): void {
-    const dialogRef = this.dialog.open(TaskDeleteDialog, { width: '250px' });
-    dialogRef.afterClosed().subscribe(() => console.log('The dialog was closed'));
+    const dialogRef = this.dialog
+    .open(TaskDeleteDialog, { width: '250px' });
+
+    dialogRef
+    .afterClosed()
+    .subscribe(() => console.log('The dialog was closed'));
   }
 
   edit(): void {
@@ -63,7 +67,9 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
       data: {}
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef
+    .afterClosed()
+    .subscribe(() => {
       console.log('The dialog was closed');
     });
 
@@ -78,12 +84,11 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] }));
   }
 
-  getState(outlet) {
+  getState(outlet): any {
     return outlet.activatedRouteData.state;
   }
 
-  ngOnDestroy() {
-    console.log('not now');
+  ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 }

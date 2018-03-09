@@ -1,7 +1,7 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
-import { values, difference, isEmpty } from 'lodash';
+import { difference, isEmpty, values } from 'lodash';
 import { fromCore, getShowSidenav, getMenuItems } from '@labdat/core-state';
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
@@ -22,7 +22,7 @@ export class LayoutComponent implements OnInit {
 
   constructor(private store: Store<any>) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const items$ = this.store.select(getMenuItems);
     const user$ = this.store.select(getUser);
     this.menuItems$ = items$.pipe(
@@ -35,11 +35,11 @@ export class LayoutComponent implements OnInit {
     );
   }
 
-  public openSidenav() {
+  public openSidenav(): void {
     this.store.dispatch(new fromCore.OpenSidenav());
   }
 
-  public closeSidenav() {
+  public closeSidenav(): void {
     this.store.dispatch(new fromCore.CloseSidenav());
   }
 }

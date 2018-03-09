@@ -2,7 +2,7 @@ import * as fromAuthentication from '../actions/authentication-state.actions';
 import { LoginPageState } from '../states/login-page.state';
 
 const initialLoginPageState: LoginPageState = {
-  error: null,
+  error: undefined,
   pending: false
 };
 
@@ -11,14 +11,14 @@ export function loginPageReducer(state = initialLoginPageState, action: fromAuth
     case fromAuthentication.LOGIN: {
       return {
         ...state,
-        error: null,
+        error: undefined,
         pending: true
       };
     }
     case fromAuthentication.LOGIN_SUCCESS: {
       return {
         ...state,
-        error: null,
+        error: undefined,
         pending: false
       };
     }

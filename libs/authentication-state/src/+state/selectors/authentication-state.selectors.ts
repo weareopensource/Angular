@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StatusState } from '../states/status.state';
 import { LoginPageState } from '../states/login-page.state';
 import { AuthenticationState } from '../states/authentication-state.state';
