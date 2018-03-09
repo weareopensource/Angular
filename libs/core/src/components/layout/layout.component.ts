@@ -1,8 +1,4 @@
-import {
-  Component,
-  ViewChild,
-  OnInit
-} from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { values, difference, isEmpty } from 'lodash';
@@ -15,20 +11,18 @@ import { routesAnimation } from '@labdat/animations';
   selector: 'layout-root',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
-  animations: [ routesAnimation ]
+  animations: [routesAnimation]
 })
 export class LayoutComponent implements OnInit {
-
-  @ViewChild('outlet')
-  public outlet;
+  @ViewChild('outlet') public outlet;
 
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
 
-  constructor (private store: Store<any>) {}
+  constructor(private store: Store<any>) {}
 
-  ngOnInit () {
+  ngOnInit() {
     const items$ = this.store.select(getMenuItems);
     const user$ = this.store.select(getUser);
     this.menuItems$ = items$.pipe(
@@ -41,11 +35,11 @@ export class LayoutComponent implements OnInit {
     );
   }
 
-  public openSidenav () {
+  public openSidenav() {
     this.store.dispatch(new fromCore.OpenSidenav());
   }
 
-  public closeSidenav () {
+  public closeSidenav() {
     this.store.dispatch(new fromCore.CloseSidenav());
   }
 }

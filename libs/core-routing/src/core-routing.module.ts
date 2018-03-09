@@ -1,8 +1,4 @@
-import {
-  HomeComponent,
-  LayoutComponent,
-  NotFoundComponent
-} from '@labdat/core/core-components';
+import { HomeComponent, LayoutComponent, NotFoundComponent } from '@labdat/core/core-components';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
@@ -30,15 +26,15 @@ const coreRoutes: Routes = [
       {
         path: 'auth',
         component: AuthenticationComponent,
-        canActivate: [ AuthenticationGuardService ],
+        canActivate: [AuthenticationGuardService],
         data: {
           page: 'authentication'
         }
       },
       {
         path: 'tasks',
-        canActivate: [ AuthenticationGuardService, TaskGuardService ],
-        canLoad: [ AuthenticationGuardService ],
+        canActivate: [AuthenticationGuardService, TaskGuardService],
+        canLoad: [AuthenticationGuardService],
         loadChildren: '../../task/src/task.module#RootTaskModule'
       },
       {
@@ -57,4 +53,4 @@ const coreRoutes: Routes = [
   imports: [RouterModule.forRoot(coreRoutes)],
   providers: [CoreGuardService]
 })
-export class CoreRoutingModule { }
+export class CoreRoutingModule {}

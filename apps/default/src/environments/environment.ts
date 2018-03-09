@@ -13,7 +13,7 @@ export const environment = {
       basePath: 'api',
       signup: 'auth/signup',
       signin: 'auth/signin',
-      users : 'users',
+      users: 'users',
       articles: 'articles'
     }
   }

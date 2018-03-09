@@ -6,26 +6,23 @@ import { taskReducer } from './+state/task.reducer';
 import { TaskEffects } from './+state/task.effects';
 import { TaskApiService } from './services/task.api.service';
 
-export function taskInitialisationFactory (taskInitialization) {
-  return () => taskInitialization.loadTasks() ;
+export function taskInitialisationFactory(taskInitialization) {
+  return () => taskInitialization.loadTasks();
 }
 
 @NgModule({
-  imports: [
-    StoreModule.forFeature('task', taskReducer),
-    EffectsModule.forFeature([ TaskEffects ])
-  ],
+  imports: [StoreModule.forFeature('task', taskReducer), EffectsModule.forFeature([TaskEffects])],
   providers: [
     TaskInitializationService,
     TaskApiService,
     { provide: APP_INITIALIZER, useFactory: taskInitialisationFactory, deps: [TaskInitializationService], multi: true }
   ]
 })
-export class RootTaskStateModule { }
+export class RootTaskStateModule {}
 
-@NgModule({ })
+@NgModule({})
 export class TaskStateModule {
-  public static forRoot () {
+  public static forRoot() {
     return {
       ngModule: RootTaskStateModule,
       providers: [

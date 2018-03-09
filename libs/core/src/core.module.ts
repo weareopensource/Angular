@@ -19,7 +19,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatListModule
-//  MatProgressBarModule
+  //  MatProgressBarModule
 } from '@angular/material';
 import { SidenavModule } from '@labdat/sidenav';
 
@@ -37,23 +37,16 @@ const MATERIAL_MODULES = [
   MatCardModule,
   MatInputModule,
   MatListModule
-//  MatProgressBarModule
+  //  MatProgressBarModule
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    SidenavModule,
-    AuthenticationModule,
-    ...MATERIAL_MODULES,
-    FlexLayoutModule
-  ],
+  imports: [CommonModule, RouterModule, SidenavModule, AuthenticationModule, ...MATERIAL_MODULES, FlexLayoutModule],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })
 export class CoreModule {
-  public static forRoot (): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootCoreModule
     };

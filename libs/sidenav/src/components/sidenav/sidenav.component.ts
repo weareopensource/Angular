@@ -17,17 +17,19 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
   selector: 'mean2-sidenav-content',
   template: '<ng-content></ng-content>',
   host: {
-    'class': 'mean2-drawer-content mean2-sidenav-content',
+    class: 'mean2-drawer-content mean2-sidenav-content',
     '[style.margin-left.px]': '_margin'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class Mean2SidenavContent extends Mean2DrawerContent {
-  constructor (
+  constructor(
     changeDetectorRef: ChangeDetectorRef,
-    @Inject(forwardRef(() => Mean2SidenavContainer)) container: Mean2SidenavContainer) {
+    @Inject(forwardRef(() => Mean2SidenavContainer))
+    container: Mean2SidenavContainer
+  ) {
     super(changeDetectorRef, container);
   }
 }
@@ -39,20 +41,25 @@ export class Mean2SidenavContent extends Mean2DrawerContent {
   template: '<ng-content></ng-content>',
   animations: [
     trigger('transform', [
-      state('open, open-instant', style({
-        width: '300px',
-      })),
-      state('close', style({
-        width: '70px',
-      })),
+      state(
+        'open, open-instant',
+        style({
+          width: '300px'
+        })
+      ),
+      state(
+        'close',
+        style({
+          width: '70px'
+        })
+      ),
       transition('close => open-instant', animate('0ms')),
-      transition('close <=> open, open-instant => close',
-        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
+      transition('close <=> open, open-instant => close', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
     ])
   ],
   host: {
-    'class': 'mean2-drawer mean2-sidenav',
-    'tabIndex': '-1',
+    class: 'mean2-drawer mean2-sidenav',
+    tabIndex: '-1',
     '[@transform]': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
     '(@transform.done)': '_onAnimationEnd($event)',
@@ -73,8 +80,12 @@ export class Mean2SidenavContent extends Mean2DrawerContent {
 export class Mean2Sidenav extends Mean2Drawer {
   /** Whether the sidenav is fixed in the viewport. */
   @Input()
-  get fixedInViewport (): boolean { return this._fixedInViewport; }
-  set fixedInViewport (value) { this._fixedInViewport = coerceBooleanProperty(value); }
+  get fixedInViewport(): boolean {
+    return this._fixedInViewport;
+  }
+  set fixedInViewport(value) {
+    this._fixedInViewport = coerceBooleanProperty(value);
+  }
   private _fixedInViewport = false;
 
   /**
@@ -82,8 +93,12 @@ export class Mean2Sidenav extends Mean2Drawer {
    * mode.
    */
   @Input()
-  get fixedTopGap (): number { return this._fixedTopGap; }
-  set fixedTopGap (value) { this._fixedTopGap = coerceNumberProperty(value); }
+  get fixedTopGap(): number {
+    return this._fixedTopGap;
+  }
+  set fixedTopGap(value) {
+    this._fixedTopGap = coerceNumberProperty(value);
+  }
   private _fixedTopGap = 0;
 
   /**
@@ -91,8 +106,12 @@ export class Mean2Sidenav extends Mean2Drawer {
    * fixed mode.
    */
   @Input()
-  get fixedBottomGap (): number { return this._fixedBottomGap; }
-  set fixedBottomGap (value) { this._fixedBottomGap = coerceNumberProperty(value); }
+  get fixedBottomGap(): number {
+    return this._fixedBottomGap;
+  }
+  set fixedBottomGap(value) {
+    this._fixedBottomGap = coerceNumberProperty(value);
+  }
   private _fixedBottomGap = 0;
 }
 
@@ -103,16 +122,14 @@ export class Mean2Sidenav extends Mean2Drawer {
   templateUrl: './sidenav.component.html',
   styleUrls: ['./drawer.css'],
   host: {
-    'class': 'mean2-drawer-container mean2-sidenav-container'
+    class: 'mean2-drawer-container mean2-sidenav-container'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
 })
 export class Mean2SidenavContainer extends Mean2DrawerContainer {
-  @ContentChild(Mean2Sidenav)
-  _drawer;
+  @ContentChild(Mean2Sidenav) _drawer;
 
-  @ContentChild(Mean2SidenavContent)
-  _content;
+  @ContentChild(Mean2SidenavContent) _content;
 }

@@ -7,7 +7,7 @@ export {
   selectCurrentTask,
   selectTaskLoading,
   selectTaskLoaded
- } from './src/+state/task.selectors';
+} from './src/+state/task.selectors';
 export { TaskState } from './src/+state/task.interfaces';
 import * as fromTask from './src/+state/task.actions';
 export { fromTask };

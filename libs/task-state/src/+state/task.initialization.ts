@@ -8,14 +8,12 @@ import { filter } from 'rxjs/operators/filter';
 
 @Injectable()
 export class TaskInitializationService {
-  constructor (private store: Store<TaskState>) { }
+  constructor(private store: Store<TaskState>) {}
 
-  public loadTasks () {
-    this.store.select(getLoggedIn)
-    .pipe(
-      first(),
-      filter(isLoggedIn => isLoggedIn)
-    )
-    .subscribe(() => this.store.dispatch(new fromTask.Load()));
+  public loadTasks() {
+    this.store
+      .select(getLoggedIn)
+      .pipe(first(), filter(isLoggedIn => isLoggedIn))
+      .subscribe(() => this.store.dispatch(new fromTask.Load()));
   }
 }

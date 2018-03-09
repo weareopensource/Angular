@@ -1,4 +1,3 @@
-
 import { Action } from '@ngrx/store';
 import { NavigationExtras } from '@angular/router';
 

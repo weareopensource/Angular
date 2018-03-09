@@ -6,39 +6,41 @@ import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-task-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  styleUrls: ['./edit.component.scss']
 })
 export class TaskEditComponent {
-
-  editTaskForm = new FormGroup({ });
+  editTaskForm = new FormGroup({});
   taskModel = { title: 'test', description: 'description' };
-  taskFields: Array<FormlyFieldConfig> = [{
-    key: 'title',
-    type: 'input',
-    templateOptions: {
-      type: 'text',
-      label: 'Title',
-      placeholder: 'Enter title',
-      required: true,
+  taskFields: Array<FormlyFieldConfig> = [
+    {
+      key: 'title',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'Title',
+        placeholder: 'Enter title',
+        required: true
+      }
+    },
+    {
+      key: 'description',
+      type: 'textarea',
+      templateOptions: {
+        type: 'text',
+        label: 'Description',
+        placeholder: 'Enter description',
+        required: true
+      }
     }
-  }, {
-    key: 'description',
-    type: 'textarea',
-    templateOptions: {
-      type: 'text',
-      label: 'Description',
-      placeholder: 'Enter description',
-      required: true,
-    }
-  }];
+  ];
 
-  constructor (public dialogRef: MatDialogRef<TaskEditComponent>) { }
+  constructor(public dialogRef: MatDialogRef<TaskEditComponent>) {}
 
-  cancel () {
+  cancel() {
     this.dialogRef.close();
   }
   // Function called when form is submitted
-  onSubmit () {
+  onSubmit() {
     this.dialogRef.close(this.taskModel);
     // this.store.dispatch(new fromTask.Add({ task }));
   }

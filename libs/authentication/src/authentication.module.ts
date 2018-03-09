@@ -14,21 +14,15 @@ import {
   MatTabsModule,
   MatRadioModule,
   MatSnackBarModule
- } from '@angular/material';
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LogoutDirective } from './directives/logout/logout.directive';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 import { AuthenticationGuardService } from './services/authentication.guard.service';
 
-const COMPONENTS = [
-  AuthenticationComponent,
-  LoginComponent,
-  RegisterComponent
-];
+const COMPONENTS = [AuthenticationComponent, LoginComponent, RegisterComponent];
 
-const DIRECTIVES = [
-  LogoutDirective
-];
+const DIRECTIVES = [LogoutDirective];
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -42,21 +36,17 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ...MATERIAL_MODULES,
-    FlexLayoutModule,
-    ReactiveFormsModule
-  ],
-  declarations: [ ...COMPONENTS, ...DIRECTIVES ],
+  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule, ReactiveFormsModule],
+  declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: DIRECTIVES
 })
 export class AuthenticationModule {
-  public static forRoot (): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthenticationModule,
       providers: [
-        AuthenticationGuardService, {
+        AuthenticationGuardService,
+        {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationInterceptorService,
           multi: true

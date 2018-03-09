@@ -5,7 +5,8 @@ import {
   Mean2Drawer,
   Mean2SidenavContainer,
   Mean2DrawerContent,
-  Mean2SidenavContent } from './components';
+  Mean2SidenavContent
+} from './components';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -25,7 +26,7 @@ const COMPONENTS = [
   Mean2DrawerContent,
   Mean2SidenavContainer,
   Mean2Sidenav,
-  Mean2SidenavContent,
+  Mean2SidenavContent
 ];
 
 const MATERIAL_MODULES = [
@@ -40,18 +41,14 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ...MATERIAL_MODULES,
-    FlexLayoutModule,
-  ],
+  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })
 export class SidenavModule {
-  static forRoot (): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SidenavModule,
+      ngModule: SidenavModule
     };
   }
 }

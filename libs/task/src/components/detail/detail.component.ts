@@ -11,16 +11,15 @@ import { map } from 'rxjs/operators/map';
   styleUrls: ['./detail.component.scss']
 })
 export class TaskDetailComponent implements OnInit {
-
   public comments$: Observable<any[]>;
 
-  constructor (private store: Store<any>) { }
+  constructor(private store: Store<any>) {}
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.comments$ = this.store.select(selectCurrentTask).pipe(map(task => task.comments));
   }
 
-  close () {
+  close() {
     this.store.dispatch(new fromRouter.Back());
   }
 }

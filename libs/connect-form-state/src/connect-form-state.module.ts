@@ -5,5 +5,4 @@ import { StoreModule } from '@ngrx/store';
 @NgModule({
   imports: [StoreModule.forFeature('connectForm', connectFormReducer)]
 })
-export class ConnectFormStateModule {
-}
+export class ConnectFormStateModule {}

@@ -8,28 +8,23 @@ import { Authenticate } from '../../models/user.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   public hide = true;
   public form = this.formBuilder.group({
     firstName: this.formBuilder.control(''),
     lastName: this.formBuilder.control(''),
-    email: this.formBuilder.control('', [
-      Validators.required,
-      Validators.email
-    ]),
+    email: this.formBuilder.control('', [Validators.required, Validators.email]),
     password: this.formBuilder.control('')
   });
 
-  @Output()
-  public submitted = new EventEmitter<Authenticate>();
+  @Output() public submitted = new EventEmitter<Authenticate>();
 
-  constructor (private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
-  get visibility () {
+  get visibility() {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  get emailErrorMessage () {
+  get emailErrorMessage() {
     let errorMessage = '';
     if (this.form.controls.email.hasError('required')) {
       errorMessage = 'You must enter a value';
@@ -39,12 +34,11 @@ export class RegisterComponent implements OnInit {
     return errorMessage;
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.form.valueChanges.subscribe(() => ({}));
   }
 
-  onSubmit () {
+  onSubmit() {
     this.submitted.emit(this.form.value);
   }
-
 }

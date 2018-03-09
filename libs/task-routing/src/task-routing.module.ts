@@ -4,28 +4,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskDetailComponent, TasksListComponent, TasksAddComponent } from '@labdat/task/components';
 import { TaskGuardService } from './services/task.guard.service';
 
-const tasksRoutes: Routes = [{
-  path: 'list',
-  component: TasksListComponent,
-  data: {
-    page: 'list'
+const tasksRoutes: Routes = [
+  {
+    path: 'list',
+    component: TasksListComponent,
+    data: {
+      page: 'list'
+    }
+  },
+  {
+    path: 'add',
+    component: TasksAddComponent,
+    data: {
+      page: 'add'
+    }
+  },
+  {
+    path: ':id',
+    component: TaskDetailComponent,
+    data: {
+      page: 'detail'
+    }
+  },
+  {
+    path: '**',
+    redirectTo: 'list'
   }
-}, {
-  path: 'add',
-  component: TasksAddComponent,
-  data: {
-    page: 'add'
-  }
-}, {
-  path: ':id',
-  component: TaskDetailComponent,
-  data: {
-    page: 'detail'
-  }
-}, {
-  path: '**',
-  redirectTo: 'list'
-}];
+];
 /*
 if (!isEmpty(taskConfiguration.self.roles)) {
   Object.assign(tasksRoutes[0], {
@@ -40,15 +45,13 @@ if (!isEmpty(taskConfiguration.self.roles)) {
 export class RootTaskRoutingModule {}
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(tasksRoutes)
-  ]
+  imports: [RouterModule.forChild(tasksRoutes)]
 })
 export class TaskRoutingModule {
-  public static forRoot (): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootTaskRoutingModule,
-      providers: [ TaskGuardService ]
+      providers: [TaskGuardService]
     };
   }
 }

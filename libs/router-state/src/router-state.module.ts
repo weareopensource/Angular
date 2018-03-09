@@ -9,12 +9,10 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 @NgModule()
 export class RouterStateModule {
-  public static forRoot (): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootRouterStateModule,
-      providers: [
-        { provide: RouterStateSerializer, useClass: CustomSerializer }
-      ]
+      providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }]
     };
   }
 }

@@ -107,11 +107,11 @@
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "apps/storytelling/src/tsconfig.app.json",
+      "project": "apps/default/src/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "apps/storytelling/e2e/tsconfig.e2e.json",
+      "project": "apps/default/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     }
   ],

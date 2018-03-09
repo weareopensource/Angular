@@ -25,7 +25,7 @@ import { FormlyModule } from '@ngx-formly/core';
 @NgModule({
   imports: [
     NxModule.forRoot(),
-//    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    //    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     FormlyModule.forRoot(),
     BrowserModule,
     RouterModule,
@@ -44,10 +44,7 @@ import { FormlyModule } from '@ngx-formly/core';
 
     RouterStateModule.forRoot(),
     AuthenticationStateModule.forRoot(),
-    CoreStateModule.forRoot([
-      ...coreConfiguration.self,
-      ...taskConfiguration.core
-    ]),
+    CoreStateModule.forRoot([...coreConfiguration.self, ...taskConfiguration.core]),
     ConnectFormStateModule,
     TaskStateModule.forRoot()
   ],

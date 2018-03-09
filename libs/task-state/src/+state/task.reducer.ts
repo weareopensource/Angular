@@ -6,7 +6,10 @@ export const taskInitialState: TaskState = taskAdapter.getInitialState({
   loading: false,
   loaded: false
 });
-export function taskReducer(state: TaskState = taskInitialState, action: fromTask.Actions | fromAuthentication.Actions): TaskState {
+export function taskReducer(
+  state: TaskState = taskInitialState,
+  action: fromTask.Actions | fromAuthentication.Actions
+): TaskState {
   switch (action.type) {
     case fromTask.LOAD: {
       return { ...state, loading: true };
@@ -16,9 +19,9 @@ export function taskReducer(state: TaskState = taskInitialState, action: fromTas
     }
 
     case fromAuthentication.LOGOUT: {
-//      return adapter.removeAll({ ...state, selectedUserId: null });
+      //      return adapter.removeAll({ ...state, selectedUserId: null });
       return taskInitialState;
-    }/*
+    } /*
     case task.HANDLE_SUCCESS: {
       return {
         tasks: {

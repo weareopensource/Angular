@@ -23,7 +23,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatListModule
- } from '@angular/material';
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const COMPONENTS = [
@@ -60,18 +60,12 @@ const MATERIAL_MODULES = [
     FormlyModule,
     FormlyMaterialModule
   ],
-  entryComponents: [
-    TaskDeleteDialog,
-    TaskEditComponent
-  ]
+  entryComponents: [TaskDeleteDialog, TaskEditComponent]
 })
 export class TaskModule {}
 
 @NgModule({
-  imports: [
-    TaskModule,
-    TaskRoutingModule
-  ],
-  providers: [ ]
+  imports: [TaskModule, TaskRoutingModule],
+  providers: []
 })
-export class RootTaskModule { }
+export class RootTaskModule {}

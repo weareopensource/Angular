@@ -8,9 +8,8 @@ import { Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
   @Input()
-  set pending (isPending: boolean) {
+  set pending(isPending: boolean) {
     if (isPending) {
       this.form.disable();
     } else {
@@ -18,25 +17,23 @@ export class LoginComponent {
     }
   }
 
-  @Input()
-  public errorMessage: string | null;
+  @Input() public errorMessage: string | null;
 
-  @Output()
-  public submitted = new EventEmitter<Authenticate>();
+  @Output() public submitted = new EventEmitter<Authenticate>();
 
   public hide = true;
   public form = this.formBuilder.group({
-    email: this.formBuilder.control('', [ Validators.required, Validators.email ]),
-    password: this.formBuilder.control('', [ Validators.required ])
+    email: this.formBuilder.control('', [Validators.required, Validators.email]),
+    password: this.formBuilder.control('', [Validators.required])
   });
 
-  get visibility () {
+  get visibility() {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  constructor (private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
-  onSubmit () {
+  onSubmit() {
     this.submitted.emit(this.form.value);
   }
 }

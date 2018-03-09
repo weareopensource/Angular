@@ -5,15 +5,14 @@ import { environment } from '@labdat/environments';
 
 @Injectable()
 export class AuthenticationApiService {
-
   private baseUrl: string;
 
-  constructor (private http: HttpClient) {
+  constructor(private http: HttpClient) {
     const { protocol, host, port, endpoints } = environment.backend;
     this.baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
   }
 
-  login ({ email, password }: Authenticate) {
+  login({ email, password }: Authenticate) {
     return this.http.post(
       `${this.baseUrl}/auth/signin`,
       { usernameOrEmail: email, password },
@@ -21,7 +20,7 @@ export class AuthenticationApiService {
     );
   }
 
-  register (registration: any) {
+  register(registration: any) {
     return this.http.post(`${this.baseUrl}/auth/signup`, registration);
     //      .do(token => this.setAuthorizationHeader(token));
   }

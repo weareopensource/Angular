@@ -6,11 +6,7 @@ export const FORM_SUBMIT_SUCCESS = '[ConnectForm] Submit Form Success';
 export const FORM_SUBMIT_ERROR = '[ConnectForm] Submit Form Error';
 export const UPDATE_FORM = '[ConnectForm] Update Form';
 
-export type Actions = InitForm
- | SubmitForm
- | SubmitFormSuccess
- | SubmitFormError
- | UpdateForm;
+export type Actions = InitForm | SubmitForm | SubmitFormSuccess | SubmitFormError | UpdateForm;
 
 export class InitForm implements Action {
   readonly type = FORM_INIT;
@@ -29,10 +25,10 @@ export class SubmitFormSuccess implements Action {
 
 export class SubmitFormError implements Action {
   readonly type = FORM_SUBMIT_ERROR;
-  constructor(public payload: { path: string, error: string }) {}
+  constructor(public payload: { path: string; error: string }) {}
 }
 
 export class UpdateForm implements Action {
   readonly type = UPDATE_FORM;
-  constructor(public payload: { path: string, value: any }) {}
+  constructor(public payload: { path: string; value: any }) {}
 }

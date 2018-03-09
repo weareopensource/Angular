@@ -6,31 +6,34 @@ import { forEach } from 'lodash';
 const initialConnectFormState: ConnectFormState = {};
 
 forEach(connectFormConfiguration.forms, form => {
-  Object.assign(initialConnectFormState, {[form]: {}});
+  Object.assign(initialConnectFormState, { [form]: {} });
 });
 
-export function connectFormReducer(state: ConnectFormState = initialConnectFormState, action: fromConnectForm.Actions): ConnectFormState {
+export function connectFormReducer(
+  state: ConnectFormState = initialConnectFormState,
+  action: fromConnectForm.Actions
+): ConnectFormState {
   switch (action.type) {
     case fromConnectForm.FORM_SUBMIT: {
-        return {
-          ...state
-        };
-      }
-      case fromConnectForm.FORM_SUBMIT_SUCCESS: {
-        return {
-          ...state
-        };
-      }
-      case fromConnectForm.FORM_SUBMIT_ERROR: {
-        return {
-          ...state
-        };
+      return {
+        ...state
+      };
+    }
+    case fromConnectForm.FORM_SUBMIT_SUCCESS: {
+      return {
+        ...state
+      };
+    }
+    case fromConnectForm.FORM_SUBMIT_ERROR: {
+      return {
+        ...state
+      };
     }
     case fromConnectForm.UPDATE_FORM: {
       return { ...state, [action.payload.path]: action.payload.value };
-  }
-      default: {
-        return state;
-      }
+    }
+    default: {
+      return state;
+    }
   }
 }

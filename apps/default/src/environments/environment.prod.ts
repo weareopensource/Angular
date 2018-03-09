@@ -1,5 +1,5 @@
 export const environment = {
-production: true,
+  production: true,
   backend: {
     protocol: 'http',
     host: 'localhost',
@@ -8,8 +8,8 @@ production: true,
       basePath: 'api',
       signup: 'auth/signup',
       signin: 'auth/signin',
-      articles : 'articles',
-      users : 'users'
+      articles: 'articles',
+      users: 'users'
     }
   }
 };

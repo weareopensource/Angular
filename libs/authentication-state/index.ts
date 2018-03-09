@@ -6,5 +6,6 @@ export {
   getLoggedIn,
   getTokenExpiresIn,
   getLoginPagePending,
-  getLoginPageError } from './src/+state/selectors/authentication-state.selectors';
+  getLoginPageError
+} from './src/+state/selectors/authentication-state.selectors';
 export { AuthenticationState } from './src/+state/states/authentication-state.state';

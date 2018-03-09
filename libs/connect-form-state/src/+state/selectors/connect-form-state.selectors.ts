@@ -1,4 +1,3 @@
-
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { forEach } from 'lodash';
 
@@ -8,9 +7,11 @@ import { connectFormConfiguration } from '@labdat/connect-form/src/components/di
 const getConnectFormState = createFeatureSelector<ConnectFormState>('connectForm');
 
 // We build the selector of every forms
-const tempSelectors = { };
+const tempSelectors = {};
 forEach(connectFormConfiguration.forms, form => {
-    Object.assign(tempSelectors, {[form + 'Selector']: createSelector(getConnectFormState, (state: ConnectFormState) => state[form])});
+  Object.assign(tempSelectors, {
+    [form + 'Selector']: createSelector(getConnectFormState, (state: ConnectFormState) => state[form])
+  });
 });
 
 export const ConnectFormStateSelectors = tempSelectors;

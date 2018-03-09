@@ -15,25 +15,25 @@ export class TasksAddComponent implements OnInit {
   success = false;
   error: any;
 
-  constructor (private store: Store<any>, private _fb: FormBuilder) {
+  constructor(private store: Store<any>, private _fb: FormBuilder) {
     this.addTaskForm = this._buildForm();
   }
 
-  ngOnInit (): void { }
+  ngOnInit(): void {}
 
-  close () {
+  close() {
     this.store.dispatch(new fromRouter.Back());
   }
 
   // Function iniating the form
-  private _buildForm () {
+  private _buildForm() {
     return this._fb.group({
       title: new FormControl('', Validators.required)
     });
   }
 
   // Function called when form is submitted
-  onSubmit (form: FormGroup) {
+  onSubmit(form: FormGroup) {
     if (form.valid) {
       let task: Task;
       task = {
@@ -52,12 +52,12 @@ export class TasksAddComponent implements OnInit {
     }
   }
 
-  onSuccess () {
+  onSuccess() {
     this.success = true;
     this.store.dispatch(new fromTask.Load());
   }
 
-  onError (error) {
+  onError(error) {
     this.error = error;
   }
 }

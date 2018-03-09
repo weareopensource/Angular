@@ -7,13 +7,9 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./delete.dialog.scss']
 })
 export class TaskDeleteDialog {
+  constructor(public dialogRef: MatDialogRef<TaskDeleteDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  constructor (
-    public dialogRef: MatDialogRef<TaskDeleteDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  onNoClick (): void {
+  onNoClick(): void {
     this.dialogRef.close();
   }
 }

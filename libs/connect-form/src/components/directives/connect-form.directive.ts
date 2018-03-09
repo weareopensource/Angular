@@ -15,48 +15,34 @@ import { ConnectFormStateSelectors } from '@labdat/connect-form-state/src/+state
   selector: '[connectForm]'
 })
 export class ConnectFormDirective implements OnInit, OnDestroy {
+  @Input('connectForm') path: string;
 
-  @Input('connectForm')
-  path: string;
+  @Input() debounce = 300;
 
-  @Input()
-  debounce = 300;
+  @Output() error = new EventEmitter();
 
-  @Output()
-  error = new EventEmitter();
-
-  @Output()
-  success = new EventEmitter();
+  @Output() success = new EventEmitter();
 
   public formChange: Subscription;
   public formSuccess: Subscription;
   public formError: Subscription;
 
-  constructor (
-    private formGroupDirective: FormGroupDirective,
-    private actions$: Actions,
-    private store: Store<any>
-  ) { }
+  constructor(private formGroupDirective: FormGroupDirective, private actions$: Actions, private store: Store<any>) {}
 
-  ngOnInit () {
+  ngOnInit() {
     const initConnectForm$ = this.store.select(ConnectFormStateSelectors[`${this.path}Selector`]);
 
     initConnectForm$.take(1).subscribe(val => {
       this.formGroupDirective.form.patchValue(val);
     });
 
-    this.formChange = this.formGroupDirective.form.valueChanges.pipe(
-      debounceTime(this.debounce)
-    ).subscribe(value => {
+    this.formChange = this.formGroupDirective.form.valueChanges.pipe(debounceTime(this.debounce)).subscribe(value => {
       this.store.dispatch(new fromConnectForm.UpdateForm({ value, path: this.path }));
     });
 
     this.formSuccess = this.actions$
       .ofType(fromConnectForm.FORM_SUBMIT_SUCCESS)
-      .pipe(
-        map(toPayload),
-        filter(payload => payload.path === this.path)
-      )
+      .pipe(map(toPayload), filter(payload => payload.path === this.path))
       .subscribe(() => {
         this.formGroupDirective.form.reset();
         this.success.emit();
@@ -64,14 +50,11 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
 
     this.formError = this.actions$
       .ofType(fromConnectForm.FORM_SUBMIT_ERROR)
-      .pipe(
-        map(toPayload),
-        filter(payload => payload.path === this.path)
-      )
+      .pipe(map(toPayload), filter(payload => payload.path === this.path))
       .subscribe(payload => this.error.emit(payload.error));
   }
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.formChange.unsubscribe();
     this.formError.unsubscribe();
     this.formSuccess.unsubscribe();
