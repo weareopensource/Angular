@@ -10,4 +10,12 @@ export class CoreInitializationService {
   public addMenuItems(configuration): void {
     this.store.dispatch(new CoreActions.AddMenuItems(configuration));
   }
+
+  public setLogo(configuration): void {
+    this.store.dispatch(new CoreActions.SetLogo(configuration));
+  }
+
+  public setTitle(configuration): void {
+    this.store.dispatch(new CoreActions.SetTitle(configuration));  }
+
 }

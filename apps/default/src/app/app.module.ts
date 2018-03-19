@@ -44,7 +44,7 @@ import { FormlyModule } from '@ngx-formly/core';
 
     RouterStateModule.forRoot(),
     AuthenticationStateModule.forRoot(),
-    CoreStateModule.forRoot([...coreConfiguration.self, ...taskConfiguration.core]),
+    CoreStateModule.forRoot([coreConfiguration.self, taskConfiguration.core]),
     ConnectFormStateModule,
     TaskStateModule.forRoot()
   ],
