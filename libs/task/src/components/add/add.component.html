@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>
+    <button mat-icon-button (click)="close()">
+      <mat-icon svgIcon="navigation:ic_arrow_back_24px" matTooltip="close"></mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="addTaskForm" novalidate autocomplete="off" (ngSubmit)="onSubmit(addTaskForm)" connectForm="addTaskForm" (success)="onSuccess()" (error)="onError($event)" #f="ngForm">
+      <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="20px">
+        <div fxLayout="row">
+          <mat-form-field>
+            <input matInput placeholder="Title" name="title" formControlName="title">
+          </mat-form-field>
+          <div *ngIf="f.submitted && addTaskForm.get('title').hasError('required')">
+            <span class="error" i18n>Title is mandatory</span>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div *ngIf="success">Task added !</div>
+          <div *ngIf="error"><span class="error" i18n>Error : {{ error.message }}</span></div>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="!f.valid" i18n>Add it !</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
