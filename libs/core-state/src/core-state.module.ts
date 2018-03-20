@@ -8,10 +8,10 @@ const CORE_CONFIGURATION = new InjectionToken('CORE_CONFIGURATION');
 
 const initialisationFactory = (coreInitialization, configuration) => {
   return () => {
-    const mergedConfiguration = merge(...configuration);
-    coreInitialization.setLogo(mergedConfiguration.logo);
-    coreInitialization.setTitle(mergedConfiguration.title);
-    coreInitialization.addMenuItems(mergedConfiguration.sidenav);
+    const menuItems = configuration.reduce((acc, cur) => acc.concat(cur.sidenav), []);
+    coreInitialization.setLogo(configuration[0].logo);
+    coreInitialization.setTitle(configuration[0].title);
+    coreInitialization.addMenuItems(menuItems);
   };
 };
 
