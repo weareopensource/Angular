@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { difference, isEmpty, values } from 'lodash';
-import { fromCore, getMenuItems, getShowSidenav } from '@labdat/core-state';
+import { fromCore, getLogo, getMenuItems, getShowSidenav, getTitle } from '@labdat/core-state';
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
@@ -18,6 +18,8 @@ export class LayoutComponent implements OnInit {
   @ViewChild('outlet')
   public outlet;
 
+  public logo$ = this.store.select(getLogo);
+  public title$ = this.store.select(getTitle);
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
