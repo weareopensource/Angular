@@ -33,6 +33,46 @@ Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.pr
 Before running the tests make sure you are serving the app via `ng serve`.
 -->
 
+## Developper Guide
+In order to develop some feature modules with respect of the starter structure, for instance, if you wand to add an entry point to the sidenav, you should provide a configuration object to the core-state module that manages the content of sidenav. Your configuration file consists of an object with an entry called `core` witch have the following structure
+```
+export const myFeatureConfiguration: FeatureConfiguration = {
+  ... // myFeature can provide a configuration for different modules
+  core: {  // coreModule configuration
+    sidenav: [{
+      order: number;
+      link: string, // ie the URL path to access the module
+      name: string,  // ie the name appears on the sidenav
+      icon: string; // ie the svg material icon that correspond to your feature. It follows the rule: set:ic___<icon_name>____24px
+    }]
+  }
+  ...
+};
+```
+Your feature can provide multiple entries to the sidenav since the `menuItems` entry is an array.
+Once defined, you have to pass the configuration to the core-state module (ie the core module part that manages the datas or state) when it's initilizing.
+<br>
+app.module.ts:
+```
+  ...
+  CoreStateModule.forRoot([..., myFeatureConfiguration.core]),
+  ...
+```
+<br>
+To modify the logo and the title, directy edit the `self` entry of the coreConfiguration object.
+<br>
+core.configuration.ts:
+```
+export const coreConfiguration: CoreConfiguration = {
+  self: {
+    ...
+    logo: '/assets/rominet-logo.svg',
+    title: 'Angular starter',
+    ...
+  }
+};
+```
+
 ## Contributing
 We welcome pull requests from the community! Want to contribute ? It's simple as
   * Forking the repository
