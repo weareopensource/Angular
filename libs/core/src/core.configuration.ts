@@ -11,7 +11,7 @@ interface CoreConfiguration {
 export const coreConfiguration: CoreConfiguration = {
   self: {
     logo: '/assets/rominet-logo.svg',
-    title: 'test',
+    title: 'Angular Kick Starter',
     sidenav: [{
       order: 1,
       link: '/home',
