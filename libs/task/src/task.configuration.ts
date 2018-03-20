@@ -12,7 +12,7 @@ export interface TaskConfiguration {
 export const taskConfiguration: TaskConfiguration = {
   core: {
     sidenav: [{
-      order: 4,
+      order: 2,
       link: '/tasks',
       name: 'Tasks',
       icon: 'action:ic_chrome_reader_mode_24px',
