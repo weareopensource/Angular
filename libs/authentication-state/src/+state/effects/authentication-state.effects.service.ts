@@ -57,7 +57,7 @@ export class AuthenticationEffectsService {
   @Effect()
   loginSuccess$ = this.actions$.ofType(fromAuthentication.LOGIN_SUCCESS)
   .pipe(
-    map(() => {
+    tap(() => {
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
         data: 'Login Success',
@@ -90,8 +90,7 @@ export class AuthenticationEffectsService {
       this.authenticationApiService
         .register({
           ...auth,
-          username: auth.firstName + auth.lastName,
-          roles: ['user', 'admin']
+          username: auth.firstName + auth.lastName
         })
         .pipe(
           catchError(error => {
@@ -112,7 +111,7 @@ export class AuthenticationEffectsService {
   @Effect()
   registerSuccess$ = this.actions$.ofType(fromAuthentication.REGISTER_SUCCESS)
   .pipe(
-    map(() => {
+    tap(() => {
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
         data: 'Register Success',
