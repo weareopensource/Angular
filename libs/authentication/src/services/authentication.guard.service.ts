@@ -7,9 +7,9 @@ import 'rxjs/add/operator/take';
 import {
   AuthenticationState,
   fromAuthentication,
-  getLoggedIn,
-  getTokenExpiresIn } from '@labdat/authentication-state';
+  getLoggedIn } from '@labdat/authentication-state';
 import { fromRouter } from '@labdat/router-state';
+import { filter } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationGuardService implements CanActivate, CanLoad {
@@ -30,38 +30,48 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
   hasPermission(path: string): boolean | Observable<boolean> | Promise<boolean> {
     return Observable.combineLatest(
       this.store.select(getLoggedIn),
-      this.store.select(getTokenExpiresIn),
-      (loggedIn, tokenExpiresIn) => {
+      loggedIn => {
+        console.log(loggedIn);
+        const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
           if (path === 'auth') {
             this.store.dispatch(new fromRouter.Go({ path: ['/', 'home'] }));
+
+            return false;
           }
 
           return true;
         } else {
           if (tokenExpiresIn) {
-            if (tokenExpiresIn < Date.now()) {
+            if (tokenExpiresIn > Date.now()) {
               if (path === 'auth') {
                 this.store.dispatch(new fromRouter.Go({ path: ['/', 'home'] }));
-              }
 
-              return true;
+                return false;
+              } else {
+                this.store.dispatch(new fromAuthentication.LoadUser());
+                console.log('here');
+
+                return false;
+              }
             } else {
-              this.store.dispatch(new fromAuthentication.Logout());
+              this.store.dispatch(new fromAuthentication.Logout('Token expired'));
 
               return false;
             }
           } else {
             if (path === 'auth') {
               return true;
-            }
-            this.store.dispatch(new fromRouter.Go({ path: ['/', 'auth'] }));
+            } else {
+              this.store.dispatch(new fromRouter.Go({ path: ['/', 'auth'] }));
 
-            return false;
+              return false;
+            }
           }
         }
-      }
-    )
-    .take(1);
+      })
+      .pipe(
+        filter(pass => pass)
+      );
   }
 }

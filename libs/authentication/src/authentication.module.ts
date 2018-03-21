@@ -1,5 +1,6 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +21,7 @@ import { LogoutDirective } from './directives/logout/logout.directive';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 import { AuthenticationGuardService } from './services/authentication.guard.service';
 
-const COMPONENTS = [AuthenticationComponent, LoginComponent, RegisterComponent];
+const COMPONENTS = [AuthenticationComponent, LoginComponent, RegisterComponent, ProfileComponent];
 
 const DIRECTIVES = [LogoutDirective];
 
@@ -32,11 +33,12 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatTabsModule,
   MatRadioModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatInputModule
 ];
 
 @NgModule({
-  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule, ReactiveFormsModule],
+  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule, FormsModule, ReactiveFormsModule],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: DIRECTIVES
 })

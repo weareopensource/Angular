@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
 import { AuthenticationGuardService } from '@labdat/authentication';
-import { AuthenticationComponent } from '@labdat/authentication';
+import { AuthenticationComponent, ProfileComponent } from '@labdat/authentication';
 import { TaskGuardService } from '@labdat/task-routing';
 
 const coreRoutes: Routes = [
@@ -32,9 +32,17 @@ const coreRoutes: Routes = [
         }
       },
       {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthenticationGuardService],
+        data: {
+          page: 'profile'
+        }
+      },
+      {
         path: 'tasks',
         canActivate: [AuthenticationGuardService, TaskGuardService],
-        canLoad: [AuthenticationGuardService],
+//        canLoad: [AuthenticationGuardService],
         loadChildren: '../../task/src/task.module#RootTaskModule'
       },
       {

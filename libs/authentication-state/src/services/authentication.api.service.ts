@@ -25,4 +25,14 @@ export class AuthenticationApiService {
     return this.http.post(`${this.baseUrl}/auth/signup`, registration);
     //      .do(token => this.setAuthorizationHeader(token));
   }
+
+  loadUser(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/users/me`);
+    //      .do(token => this.setAuthorizationHeader(token));
+  }
+
+  updateUser(user): Observable<any> {
+    return this.http.put(`${this.baseUrl}/users`, user);
+    //      .do(token => this.setAuthorizationHeader(token));
+  }
 }
