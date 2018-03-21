@@ -3,8 +3,9 @@ import { CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { filter } from 'rxjs/operators/filter';
-import { take } from 'rxjs/operators/take';
-import { selectTaskLoaded } from '@labdat/task-state';
+import { tap } from 'rxjs/operators/tap';
+import { first } from 'rxjs/operators/first';
+import { selectTaskLoaded, fromTask } from '@labdat/task-state';
 
 @Injectable()
 export class TaskGuardService implements CanActivate {
@@ -14,8 +15,13 @@ export class TaskGuardService implements CanActivate {
     return this.store
     .select(selectTaskLoaded)
     .pipe(
+      tap(loaded => {
+        if (!loaded) {
+          this.store.dispatch(new fromTask.Load());
+        }
+      }),
       filter(loaded => loaded),
-      take(1)
+      first()
     );
   }
 }
