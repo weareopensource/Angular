@@ -1,10 +1,10 @@
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TaskDeleteDialog } from './components/delete/delete.dialog';
+import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskDetailComponent } from './components/detail/detail.component';
 import { TasksListComponent } from './components/list/list.component';
 import { TasksAddComponent } from './components/add/add.component';
 import { TaskEditComponent } from './components/edit/edit.component';
-import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives';
+import { TaskDeleteDialog } from './components/delete/delete.dialog';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskRoutingModule } from '@labdat/task-routing';
@@ -14,15 +14,15 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import {
   MatButtonModule,
-  MatTooltipModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule,
+  MatCardModule,
   MatDialogModule,
   MatIconModule,
-  MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
+  MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 

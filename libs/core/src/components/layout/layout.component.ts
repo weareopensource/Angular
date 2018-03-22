@@ -6,6 +6,7 @@ import { fromCore, getLogo, getMenuItems, getShowSidenav, getTitle } from '@labd
 import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
+import { fromRouter } from '@labdat/router-state';
 
 @Component({
   selector: 'layout-root',
@@ -45,5 +46,9 @@ export class LayoutComponent implements OnInit {
 
   public closeSidenav(): void {
     this.store.dispatch(new fromCore.CloseSidenav());
+  }
+
+  public editProfile(): void {
+    this.store.dispatch(new fromRouter.Go({ path: ['/', 'profile'] }));
   }
 }

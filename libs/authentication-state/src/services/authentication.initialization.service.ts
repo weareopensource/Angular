@@ -9,12 +9,11 @@ export class AuthenticationInitializationService {
 
   loadUser(): void {
     const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
-    const user = JSON.parse(sessionStorage.getItem('user'));
     if (tokenExpiresIn) {
-      if (tokenExpiresIn < Date.now()) {
-        this.store.dispatch(new fromAutentication.LoadUser({ user, tokenExpiresIn }));
+      if (tokenExpiresIn > Date.now()) {
+        this.store.dispatch(new fromAutentication.LoadUser());
       } else {
-        this.store.dispatch(new fromAutentication.Logout());
+        this.store.dispatch(new fromAutentication.Logout('Token expired'));
       }
     }
   }

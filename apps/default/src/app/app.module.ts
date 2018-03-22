@@ -19,8 +19,8 @@ import { RouterStateModule } from '@labdat/router-state';
 import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
-import { TaskRoutingModule } from '@labdat/task-routing';
 import { FormlyModule } from '@ngx-formly/core';
+import { TaskRoutingModule } from '@labdat/task-routing';
 
 @NgModule({
   imports: [
@@ -38,15 +38,17 @@ import { FormlyModule } from '@ngx-formly/core';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     SidenavModule.forRoot(),
-    AuthenticationModule.forRoot(),
-    CoreModule.forRoot(),
-    TaskRoutingModule.forRoot(),
+    ConnectFormStateModule,
 
     RouterStateModule.forRoot(),
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([coreConfiguration.self, taskConfiguration.core]),
-    ConnectFormStateModule,
-    TaskStateModule.forRoot()
+    TaskStateModule.forRoot(),
+    TaskRoutingModule.forRoot(),
+
+    AuthenticationModule.forRoot(),
+    CoreModule.forRoot()
+
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

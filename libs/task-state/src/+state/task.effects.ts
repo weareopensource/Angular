@@ -13,7 +13,13 @@ import { fromAuthentication } from '@labdat/authentication-state';
 
 @Injectable()
 export class TaskEffects {
-  @Effect() loginSuccess$ = this._actions$.ofType(fromAuthentication.LOGIN_SUCCESS).pipe(mapTo(new fromTasks.Load()));
+  @Effect()
+  loginSuccess$ = this._actions$.ofType(fromAuthentication.LOGIN_SUCCESS)
+  .pipe(mapTo(new fromTasks.Load()));
+
+  @Effect()
+  registerSuccess$ = this._actions$.ofType(fromAuthentication.REGISTER_SUCCESS)
+  .pipe(mapTo(new fromTasks.Load()));
 
   @Effect()
   load$ = this._actions$
