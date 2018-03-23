@@ -9,6 +9,11 @@ export const REGISTER_SUCCESS = '[Auth] Register Success';
 export const REGISTER_FAILURE = '[Auth] Register Failure';
 export const LOGOUT = '[Auth] Logout';
 export const LOAD_USER = '[Auth] Load User';
+export const USER_LOAD_SUCCESS = '[Auth] User Load Success';
+export const USER_LOAD_FAILURE = '[Auth] User Load Failure';
+export const UPDATE_USER = '[Auth] Update User';
+export const USER_UPDATE_SUCCESS = '[Auth] User Update Success';
+export const USER_UPDATE_FAILURE = '[Auth] User Update Failure';
 
 export type Actions =
   | Login
@@ -18,7 +23,10 @@ export type Actions =
   | RegisterSuccess
   | RegisterFailure
   | Logout
-  | LoadUser;
+  | LoadUser
+  | UserLoadSuccess
+  | UserLoadFailure
+  | UpdateUser;
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -57,5 +65,29 @@ export class Logout implements Action {
 
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
-  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+export class UserLoadSuccess implements Action {
+  readonly type = USER_LOAD_SUCCESS;
+  constructor(public payload: { user: User }) { }
+}
+
+export class UserLoadFailure implements Action {
+  readonly type = USER_LOAD_FAILURE;
+  constructor(public payload: any) { }
+}
+
+export class UpdateUser implements Action {
+  readonly type = UPDATE_USER;
+  constructor(public payload: { user: User }) {}
+}
+
+export class UserUpdateSuccess implements Action {
+  readonly type = USER_UPDATE_SUCCESS;
+  constructor(public payload: { user: User }) {}
+}
+
+export class UserUpdateFailure implements Action {
+  readonly type = USER_UPDATE_FAILURE;
+  constructor(public payload?: any) {}
 }

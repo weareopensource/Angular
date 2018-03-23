@@ -1,0 +1,32 @@
+<mat-card>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit$.next()">
+    <div fxLayout="column" fxLayoutAlign="space-around start">
+      <mat-form-field>
+          <input
+            matInput
+            formControlName="firstName"
+            placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="lastName"
+            placeholder="Last Name">
+        </mat-form-field>
+        <mat-form-field>
+            <input
+              matInput
+              formControlName="username"
+              placeholder="User Name">
+          </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Email">
+        </mat-form-field>
+      </div>
+      <button mat-button type="submit">Update</button>
+  </form>
+  <button mat-button (click)="goBack$.next()">Back</button>
+</mat-card>
