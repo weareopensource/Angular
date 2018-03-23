@@ -61,7 +61,7 @@ app.module.ts:
 ```
 
 <br>
-To modify the logo and the title, directy edit the `self` entry of the coreConfiguration object.
+In order to modify the logo and the title, directy edit the `self` entry of the coreConfiguration object.
 <br>
 core.configuration.ts:
 ```
