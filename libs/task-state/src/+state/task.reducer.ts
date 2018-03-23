@@ -35,7 +35,7 @@ export function taskReducer(
     }
 
     case fromTask.UPDATE_SUCCESS: {
-      return taskAdapter.updateOne(action.payload.task.changes, state);
+      return taskAdapter.updateOne(action.payload.task, state);
     }
 
     case fromTask.DELETE_SUCCESS: {

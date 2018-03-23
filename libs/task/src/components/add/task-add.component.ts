@@ -26,12 +26,10 @@ export class TaskAddComponent implements OnInit, OnDestroy {
       const closeDialogSubscription = dialogRef
       .afterClosed()
       .subscribe((taskModel: Task) => {
-        console.log(taskModel);
         if (taskModel) {
           this.store.dispatch(new fromTask.Add({ task: taskModel }));
-        } else {
-          this.store.dispatch(new fromRouter.Back());
         }
+        this.store.dispatch(new fromRouter.Back());
       });
       this.subscriptions = closeDialogSubscription;
     });

@@ -44,6 +44,7 @@ import { TaskRoutingModule } from '@labdat/task-routing';
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([coreConfiguration.self, taskConfiguration.core]),
     TaskStateModule.forRoot(),
+
     TaskRoutingModule.forRoot(),
 //    TaskModule,
 
