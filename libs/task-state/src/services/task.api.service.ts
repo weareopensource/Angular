@@ -20,7 +20,7 @@ export class TaskApiService {
   }
 
   updateTask(task: Task): Observable<any> {
-    return this.http.patch(`http://localhost:3000/api/tasks/${task.id}`, task);
+    return this.http.put(`http://localhost:3000/api/tasks/`, task);
   }
 
   deleteImage(imageId: string): Observable<any> {

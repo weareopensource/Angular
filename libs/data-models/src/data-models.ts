@@ -22,8 +22,8 @@ export interface MenuItem {
 
 export interface Task {
   readonly id: number;
-  readonly title: string;
-  readonly description: string;
+  title: string;
+  description: string;
   readonly createdDate: Date;
   readonly updatedDate: Date;
   readonly userIds: Array<number>;

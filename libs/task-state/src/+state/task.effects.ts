@@ -8,8 +8,8 @@ import { switchMap } from 'rxjs/operators/switchMap';
 import { of } from 'rxjs/observable/of';
 import { TaskApiService } from '../services/task.api.service';
 import * as fromTasks from './task.actions';
-import * as fromConnecForm from '@labdat/connect-form-state/src/+state/actions/connect-form-state.actions';
 import { fromAuthentication } from '@labdat/authentication-state';
+import { Task } from '@labdat/data-models';
 
 @Injectable()
 export class TaskEffects {
@@ -36,8 +36,8 @@ export class TaskEffects {
     .pipe(
       map(toPayload),
       switchMap(payload => this._taskApiService.addTask(payload.task)),
-      map(() => new fromConnecForm.SubmitFormSuccess({ path: 'addTaskForm' })),
-      catchError(error => of(new fromConnecForm.SubmitFormError({ path: 'addTaskForm', error })))
+      map((task: Task) => new fromTasks.AddSuccess({ task })),
+      catchError(error => of(new fromTasks.AddFailure({ error })))
     );
 
   @Effect()

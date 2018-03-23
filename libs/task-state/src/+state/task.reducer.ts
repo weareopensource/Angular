@@ -15,8 +15,6 @@ export function taskReducer(
       return { ...state, loading: true };
     }
     case fromTask.LOAD_SUCCESS: {
-      console.log('????');
-
       return taskAdapter.addAll(action.payload.tasks, { ...state, loading: false, loaded: true });
     }
 
@@ -37,7 +35,7 @@ export function taskReducer(
     }
 
     case fromTask.UPDATE_SUCCESS: {
-      return taskAdapter.updateOne(action.payload.task, state);
+      return taskAdapter.updateOne(action.payload.task.changes, state);
     }
 
     case fromTask.DELETE_SUCCESS: {

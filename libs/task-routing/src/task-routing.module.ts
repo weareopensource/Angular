@@ -1,23 +1,29 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TaskDetailComponent, TasksAddComponent, TasksListComponent } from '@labdat/task/components';
+import { TaskAddComponent, TaskDetailComponent, TaskEditComponent, TasksListComponent } from '@labdat/task/components';
 import { TaskGuardService } from './services/task.guard.service';
 
 const tasksRoutes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: TasksListComponent,
     data: {
       page: 'list'
-    }
-  },
-  {
-    path: 'add',
-    component: TasksAddComponent,
-    data: {
-      page: 'add'
-    }
+    },
+    children: [
+      {
+        path: 'add',
+        component: TaskAddComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: ':id/edit',
+        component: TaskEditComponent,
+        pathMatch: 'full'
+      }
+    ]
+//    canDeactivate: [TaskGuardService]
   },
   {
     path: ':id',

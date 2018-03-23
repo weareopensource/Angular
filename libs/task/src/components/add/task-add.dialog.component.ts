@@ -2,16 +2,20 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-task-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  selector: 'app-task-add-dialog',
+  templateUrl: './task-add.dialog.component.html',
+  styleUrls: ['./task-add.dialog.component.scss']
 })
-export class TaskEditComponent {
-  editTaskForm = new FormGroup({});
-  taskModel = { title: 'test', description: 'description' };
-  taskFields: Array<FormlyFieldConfig> = [
+export class TaskAddDialogComponent {
+  public addTaskForm = new FormGroup({});
+  public taskModel = {
+    title: '',
+    description: ''
+  };
+  public taskFields: Array<FormlyFieldConfig> = [
     {
       key: 'title',
       type: 'input',
@@ -34,14 +38,9 @@ export class TaskEditComponent {
     }
   ];
 
-  constructor(public dialogRef: MatDialogRef<TaskEditComponent>) {}
+  constructor(private dialogRef: MatDialogRef<TaskAddDialogComponent>) { }
 
-  cancel(): void {
-    this.dialogRef.close();
-  }
-  // Function called when form is submitted
   onSubmit(): void {
-    this.dialogRef.close(this.taskModel);
-    // this.store.dispatch(new fromTask.Add({ task }));
+    this.dialogRef.close(cloneDeep(this.taskModel));
   }
 }

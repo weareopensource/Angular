@@ -10,6 +10,7 @@ import { first } from 'rxjs/operators/first';
 import { User } from '@labdat/data-models';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 import { Subject } from 'rxjs/Subject';
+import { fromRouter } from '@labdat/router-state';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +20,7 @@ import { Subject } from 'rxjs/Subject';
 export class ProfileComponent implements OnInit {
   public user$ = this.store.select(getUser);
   public onSubmit$ = new Subject();
+  public goBack$ = new Subject();
 
   constructor(private store: Store<AuthenticationState>, private formBuilder: FormBuilder) {}
 
@@ -45,5 +47,8 @@ export class ProfileComponent implements OnInit {
         email: user.email
       });
     });
+
+    this.goBack$
+    .subscribe(_x => this.store.dispatch(new fromRouter.Back()));
   }
 }
