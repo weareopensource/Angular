@@ -1,4 +1,5 @@
-export { TaskDetailComponent } from './src/components/detail/detail.component';
-export { TasksListComponent } from './src/components/list/list.component';
-export { TasksAddComponent } from './src/components/add/add.component';
-export { TaskEditComponent } from './src/components/edit/edit.component';
+export { TaskDetailComponent } from './src/components/detail/task-detail.component';
+export { TasksListComponent } from './src/components/list/task-list.component';
+export { TaskAddComponent } from './src/components/add/task-add.component';
+export { TaskAddDialogComponent } from './src/components/add/task-add.dialog.component';
+export { TaskEditComponent } from './src/components/edit/task-edit.component';

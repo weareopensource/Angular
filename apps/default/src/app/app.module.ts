@@ -16,7 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { metaReducers } from './+state/app.reducer';
 import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/router-state';
-import { ConnectFormStateModule } from '@labdat/connect-form-state';
+// import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
 import { FormlyModule } from '@ngx-formly/core';
@@ -38,13 +38,15 @@ import { TaskRoutingModule } from '@labdat/task-routing';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     SidenavModule.forRoot(),
-    ConnectFormStateModule,
+//    ConnectFormStateModule,
 
     RouterStateModule.forRoot(),
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([coreConfiguration.self, taskConfiguration.core]),
     TaskStateModule.forRoot(),
+
     TaskRoutingModule.forRoot(),
+//    TaskModule,
 
     AuthenticationModule.forRoot(),
     CoreModule.forRoot()
