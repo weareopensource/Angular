@@ -49,6 +49,7 @@ export const myFeatureConfiguration: FeatureConfiguration = {
   ...
 };
 ```
+
 Your feature can provide multiple entries to the sidenav since the `menuItems` entry is an array.
 Once defined, you have to pass the configuration to the core-state module (ie the core module part that manages the datas or state) when it's initilizing.
 <br>
@@ -58,6 +59,7 @@ app.module.ts:
   CoreStateModule.forRoot([..., myFeatureConfiguration.core]),
   ...
 ```
+
 <br>
 To modify the logo and the title, directy edit the `self` entry of the coreConfiguration object.
 <br>
