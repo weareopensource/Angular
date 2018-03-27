@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { fromRouter } from '@labdat/router-state';
 import { Store } from '@ngrx/store';
-import { selectCurrentUser } from '@labdat/task-state';
+import { selectSelectedUser } from '@labdat/user-state';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -13,7 +13,7 @@ export class UserDetailComponent {
   public comments$: Observable<Array<any>>;
 
   constructor(private store: Store<any>) {}
-  public currentUser$ = this.store.select(selectCurrentUser);
+  public currentUser$ = this.store.select(selectSelectedUser);
 
   back(): void {
     this.store.dispatch(new fromRouter.Back());

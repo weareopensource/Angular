@@ -12,27 +12,62 @@ import { cloneDeep } from 'lodash';
 export class UserEditDialogComponent implements OnInit {
   public editUserForm = new FormGroup({});
   public userModel = {
-    title: '',
-    description: ''
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: ''
   };
   public userFields: Array<FormlyFieldConfig> = [
     {
-      key: 'title',
+      key: 'firstName',
       type: 'input',
       templateOptions: {
         type: 'text',
-        label: 'Title',
-        placeholder: 'Enter title',
+        label: 'First Name',
+        placeholder: 'Enter the user first name',
         required: true
       }
     },
     {
-      key: 'description',
-      type: 'textarea',
+      key: 'lastName',
+      type: 'input',
       templateOptions: {
         type: 'text',
-        label: 'Description',
-        placeholder: 'Enter description',
+        label: 'Last Name',
+        placeholder: 'Enter the user last name',
+        required: true
+      }
+    },
+    {
+      key: 'userName',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'User Name',
+        placeholder: 'Enter the user nick name',
+        required: true
+      }
+    },
+    {
+      key: 'email',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'Email',
+        placeholder: 'Enter the user email',
+        required: true
+      }
+    },
+    {
+      key: 'roles',
+      type: 'select',
+      templateOptions: {
+        label: 'Roles',
+        multiple: true,
+        options: [
+          {label: 'User', value: 'user'},
+          {label: 'Admin', value: 'iron_man'}
+        ],
         required: true
       }
     }

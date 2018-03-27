@@ -5,34 +5,69 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-task-add-dialog',
-  templateUrl: './task-add.dialog.component.html',
-  styleUrls: ['./task-add.dialog.component.scss']
+  selector: 'app-user-add-dialog',
+  templateUrl: './user-add.dialog.component.html',
+  styleUrls: ['./user-add.dialog.component.scss']
 })
 export class UserAddDialogComponent {
   public addUserForm = new FormGroup({});
-  public taskModel = {
-    title: '',
-    description: ''
+  public userModel = {
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: ''
   };
-  public taskFields: Array<FormlyFieldConfig> = [
+  public userFields: Array<FormlyFieldConfig> = [
     {
-      key: 'title',
+      key: 'firstName',
       type: 'input',
       templateOptions: {
         type: 'text',
-        label: 'Title',
-        placeholder: 'Enter title',
+        label: 'First Name',
+        placeholder: 'Enter the user first name',
         required: true
       }
     },
     {
-      key: 'description',
-      type: 'textarea',
+      key: 'lastName',
+      type: 'input',
       templateOptions: {
         type: 'text',
-        label: 'Description',
-        placeholder: 'Enter description',
+        label: 'Last Name',
+        placeholder: 'Enter the user last name',
+        required: true
+      }
+    },
+    {
+      key: 'userName',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'User Name',
+        placeholder: 'Enter the user nick name',
+        required: true
+      }
+    },
+    {
+      key: 'email',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'Email',
+        placeholder: 'Enter the user email',
+        required: true
+      }
+    },
+    {
+      key: 'roles',
+      type: 'select',
+      templateOptions: {
+        label: 'Roles',
+        multiple: true,
+        options: [
+          {label: 'User', value: 'user'},
+          {label: 'Admin', value: 'iron_man'}
+        ],
         required: true
       }
     }
@@ -41,7 +76,6 @@ export class UserAddDialogComponent {
   constructor(private dialogRef: MatDialogRef<UserAddDialogComponent>) { }
 
   onSubmit(): void {
-    console.log('??');
-    this.dialogRef.close(cloneDeep(this.taskModel));
+    this.dialogRef.close(cloneDeep(this.userModel));
   }
 }

@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   public edit$ = new Subject();
   public add$ = new Subject();
 
-  public displayedColumns = ['id', 'title', 'action'];
+  public displayedColumns = ['id', 'firstName', 'lastName', 'userName', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
 
   private subscriptions: Subscription;
@@ -48,7 +48,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions = allUsersSubscriptions;
 
     this.view$
-    .subscribe(userId => this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', userId] })));
+    .subscribe(userId => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
 
     this.delete$
     .pipe(
@@ -64,11 +64,11 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe(userId => this.store.dispatch(new fromUser.Delete({ userId })));
 
     this.edit$
-    .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['/', 'users', Number(userId), 'edit']})));
+    .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', Number(userId), 'edit']})));
       //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', id] }))
 
     this.add$
-    .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', 'add'] })));
+    .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', 'add'] })));
   }
 
   ngAfterViewInit(): void {

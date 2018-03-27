@@ -7,6 +7,7 @@ import { getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
 import { fromRouter } from '@labdat/router-state';
+import { User } from '@labdat/data-models';
 
 @Component({
   selector: 'layout-root',
@@ -24,6 +25,10 @@ export class LayoutComponent implements OnInit {
   public menuItems$;
   public isSidenavOpened$ = this.store.select(getShowSidenav);
   public isLoggedIn$ = this.store.select(getLoggedIn);
+  public currentUser$ = this.store.select(getUser);
+  public isAdmin$ = this.currentUser$.pipe(
+    map((user: User) => (user) ? user.roles.includes('admin') : false)
+  );
 
   constructor(private store: Store<any>) { }
 
@@ -50,5 +55,9 @@ export class LayoutComponent implements OnInit {
 
   public editProfile(): void {
     this.store.dispatch(new fromRouter.Go({ path: ['/', 'profile'] }));
+  }
+
+  public userManagement(): void {
+    this.store.dispatch(new fromRouter.Go({ path: ['/', 'admin', 'users'] }));
   }
 }

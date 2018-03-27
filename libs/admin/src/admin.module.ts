@@ -9,7 +9,7 @@ import { UserEditDialogComponent } from './components/edit/user-edit.dialog.comp
 import { UserDeleteDialogComponent } from './components/delete/user-delete.dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserRoutingModule } from '@labdat/user-routing';
+import { AdminRoutingModule } from '@labdat/admin-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -68,10 +68,10 @@ const MATERIAL_MODULES = [
   ],
   entryComponents: [UserDeleteDialogComponent, UserEditDialogComponent, UserAddDialogComponent]
 })
-export class UserModule {}
+export class AdminModule {}
 
 @NgModule({
-  imports: [UserModule, UserRoutingModule],
+  imports: [ AdminModule, AdminRoutingModule ],
   providers: []
 })
-export class RootUserModule {}
+export class RootAdminModule {}

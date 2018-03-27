@@ -4,7 +4,7 @@ export {
   selectUserEntities,
   selectAllUsers,
   selectUserTotal,
-  selectCurrentUser,
+  selectSelectedUser,
   selectUserLoading,
   selectUserLoaded
 } from './src/+state/user.selectors';

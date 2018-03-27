@@ -11,6 +11,8 @@ export function statusReducer(state = initialStatusState, action: fromAuthentica
     case fromAuthentication.USER_LOAD_SUCCESS:
     case fromAuthentication.REGISTER_SUCCESS:
     case fromAuthentication.LOGIN_SUCCESS: {
+      console.log('bah alors ???????');
+
       return {
         ...state,
         loggedIn: true,
@@ -18,7 +20,12 @@ export function statusReducer(state = initialStatusState, action: fromAuthentica
       };
     }
     case fromAuthentication.LOGOUT: {
-      return initialStatusState;
+      console.log('bah voila !!!!!!!!');
+
+      return {
+        ...state,
+        ...initialStatusState
+      };
     }
     default: {
       return state;

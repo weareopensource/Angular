@@ -13,9 +13,21 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'ID'"></mat-header-cell>
       <mat-cell *matCellDef="let row" [innerHtml]="row.id"></mat-cell>
     </ng-container>
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Titre'"></mat-header-cell>
-      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.title"></mat-cell>
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'First Name'"></mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.firstName"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Last Name'"></mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.lastName"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'User Name'"></mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.userName"></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Email'"></mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.email"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef [innerHtml]="'Action'"></mat-header-cell>

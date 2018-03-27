@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-delete-dialog',
-  templateUrl: './task-delete.dialog.component.html'
+  templateUrl: './user-delete.dialog.component.html'
 })
 export class UserDeleteDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }

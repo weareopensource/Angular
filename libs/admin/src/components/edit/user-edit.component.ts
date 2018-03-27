@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditDialogComponent } from './user-edit.dialog.component';
-import { fromUser, selectCurrentUser, UserState } from '@labdat/user-state';
+import { fromUser, selectSelectedUser, UserState } from '@labdat/user-state';
 import { Store } from '@ngrx/store';
 import { fromRouter } from '@labdat/router-state';
 import { User } from '@labdat/data-models';
@@ -24,7 +24,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog, private store: Store<UserState>) { }
 
   ngOnInit(): void {
-    const dialogSubscription = this.store.select(selectCurrentUser)
+    const dialogSubscription = this.store.select(selectSelectedUser)
     .pipe(
       first(),
       delay(0),
