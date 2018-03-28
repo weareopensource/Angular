@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng serve",
+    "start": "ng serve --aot --locale fr",
     "compodoc": "compodoc -p ./tsconfig.json",
     "format": "prettier --single-quote --print-width 120 --write \"{apps,libs}/**/*.ts\""
   },

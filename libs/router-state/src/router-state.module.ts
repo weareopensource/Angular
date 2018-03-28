@@ -22,4 +22,4 @@ export class RouterStateModule {
     StoreRouterConnectingModule
   ]
 })
-class RootRouterStateModule {}
+export class RootRouterStateModule {}
