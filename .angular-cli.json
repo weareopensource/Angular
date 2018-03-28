@@ -95,7 +95,7 @@
       "root": "libs/admin/src",
       "test": "../../../test.js",
       "appRoot": ""
-    },,
+    },
     {
       "name": "admin-routing",
       "root": "libs/admin-routing/src",
