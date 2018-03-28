@@ -21,6 +21,8 @@ import { TaskStateModule } from '@labdat/task-state';
 import { taskConfiguration } from '@labdat/task';
 import { FormlyModule } from '@ngx-formly/core';
 import { TaskRoutingModule } from '@labdat/task-routing';
+import { UserStateModule } from '@labdat/user-state';
+import { AdminRoutingModule } from '@labdat/admin-routing';
 
 @NgModule({
   imports: [
@@ -44,7 +46,9 @@ import { TaskRoutingModule } from '@labdat/task-routing';
     AuthenticationStateModule.forRoot(),
     CoreStateModule.forRoot([coreConfiguration.self, taskConfiguration.core]),
     TaskStateModule.forRoot(),
+    UserStateModule.forRoot(),
 
+    AdminRoutingModule.forRoot(),
     TaskRoutingModule.forRoot(),
 //    TaskModule,
 

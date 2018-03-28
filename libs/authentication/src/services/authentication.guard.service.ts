@@ -31,7 +31,6 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
     return Observable.combineLatest(
       this.store.select(getLoggedIn),
       loggedIn => {
-        console.log(loggedIn);
         const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
           if (path === 'auth') {
@@ -50,7 +49,6 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
                 return false;
               } else {
                 this.store.dispatch(new fromAuthentication.LoadUser());
-                console.log('here');
 
                 return false;
               }

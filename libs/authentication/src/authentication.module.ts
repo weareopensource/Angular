@@ -20,8 +20,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LogoutDirective } from './directives/logout/logout.directive';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 import { AuthenticationGuardService } from './services/authentication.guard.service';
+import { RoleGuardService } from './services/role.guard.service';
 
-const COMPONENTS = [AuthenticationComponent, LoginComponent, RegisterComponent, ProfileComponent];
+const COMPONENTS = [
+  AuthenticationComponent,
+  LoginComponent,
+  RegisterComponent,
+  ProfileComponent
+];
 
 const DIRECTIVES = [LogoutDirective];
 
@@ -38,7 +44,13 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ...MATERIAL_MODULES,
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: DIRECTIVES
 })
@@ -48,6 +60,7 @@ export class AuthenticationModule {
       ngModule: AuthenticationModule,
       providers: [
         AuthenticationGuardService,
+        RoleGuardService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthenticationInterceptorService,

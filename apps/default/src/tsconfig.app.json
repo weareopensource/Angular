@@ -6,7 +6,8 @@
   },
   "include": [
     "**/*.ts",
-    "../../../libs/task"
+    "../../../libs/task",
+    "../../../libs/admin"
   ],
   "exclude": [
     "**/*.spec.ts"

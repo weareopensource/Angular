@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
 import { AuthenticationGuardService } from '@labdat/authentication';
+import { RoleGuardService } from '@labdat/authentication';
 import { AuthenticationComponent, ProfileComponent } from '@labdat/authentication';
 import { TaskGuardService } from '@labdat/task-routing';
 
@@ -29,6 +30,15 @@ const coreRoutes: Routes = [
         canActivate: [AuthenticationGuardService],
         data: {
           page: 'authentication'
+        }
+      },
+      {
+        path: 'admin',
+        loadChildren: '../../admin/src/admin.module#RootAdminModule',
+        canActivate: [AuthenticationGuardService, RoleGuardService],
+        data: {
+          page: 'users-management',
+          roles: ['admin']
         }
       },
       {
