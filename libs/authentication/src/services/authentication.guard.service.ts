@@ -49,7 +49,6 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
                 return false;
               } else {
                 this.store.dispatch(new fromAuthentication.LoadUser());
-                console.log('here');
 
                 return false;
               }

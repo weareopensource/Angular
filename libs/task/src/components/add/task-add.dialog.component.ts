@@ -41,7 +41,6 @@ export class TaskAddDialogComponent {
   constructor(private dialogRef: MatDialogRef<TaskAddDialogComponent>) { }
 
   onSubmit(): void {
-    console.log('??');
     this.dialogRef.close(cloneDeep(this.taskModel));
   }
 }

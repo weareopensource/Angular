@@ -66,7 +66,7 @@ export class UserAddDialogComponent {
         multiple: true,
         options: [
           {label: 'User', value: 'user'},
-          {label: 'Admin', value: 'iron_man'}
+          {label: 'Admin', value: 'admin'}
         ],
         required: true
       }
