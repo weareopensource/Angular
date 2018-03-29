@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="deleteUser" datatype="html">
+        <source>Delete User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userDeleteConfirmation" datatype="html">
+        <source>Confirme user delete ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noButton" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yesButton" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addUser" datatype="html">
+        <source>Add User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addButton" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editUser" datatype="html">
+        <source>Edit User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/edit/user-edit.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="updateButton" datatype="html">
+        <source>Update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/edit/user-edit.dialog.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source>Supprimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteConfirmation" datatype="html">
+        <source>Confirmer la suppression ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="no" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yes" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addTask" datatype="html">
+        <source>Add Task</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editTask" datatype="html">
+        <source>Edit Task</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emptyValueError" datatype="html">
+        <source>You must enter a value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="backButton" datatype="html">
+        <source>Back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editProfile" datatype="html">
+        <source>Edit Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usersManagement" datatype="html">
+        <source>Users Management</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pageNotFound" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>Page not Found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="404Header" datatype="html">
+        <source>We couldn&apos;t find what you&apos;re looking for on <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5dd0c332936969a2da61fc1bcda000b9524f496f" datatype="html">
+        <source>What happened ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="404Error" datatype="html">
+        <source>A 404 error status implies that the file or page that you&apos;re looking for could not be found&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
