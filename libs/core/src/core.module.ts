@@ -1,12 +1,12 @@
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from '@labdat/core-routing';
-import { AuthenticationModule } from '@labdat/authentication';
+// import { AuthenticationModule } from '@labdat/authentication';
 import {
   MatButtonModule,
   MatCardModule,
@@ -43,19 +43,15 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, SidenavModule, AuthenticationModule, ...MATERIAL_MODULES, FlexLayoutModule],
-  declarations: COMPONENTS,
-  exports: COMPONENTS
+  imports: [
+    CommonModule,
+    RouterModule,
+    SidenavModule,
+    ...MATERIAL_MODULES,
+    FlexLayoutModule,
+//    AuthenticationModule,
+    CoreRoutingModule
+  ],
+  declarations: COMPONENTS
 })
-export class CoreModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: RootCoreModule
-    };
-  }
-}
-
-@NgModule({
-  imports: [CoreModule, CoreRoutingModule]
-})
-export class RootCoreModule {}
+export class CoreModule { }

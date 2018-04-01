@@ -13,9 +13,9 @@ export const {
 } = userAdapter.getSelectors(selectUserState);
 
 export const selectSelectedUser = createSelector(selectUserEntities, selectCurrentUrl, (userEntities, currentUrl) => {
-  const userId = currentUrl.split('/')[2];
+  const userId = currentUrl.split('/')[3];
 
-  return !isEmpty(userEntities[userId]) ? userEntities[userId] : ({ comments: [] } as any);
+  return !isEmpty(userEntities[userId]) ? userEntities[userId] : undefined;
 });
 
 export const selectUserLoading = createSelector(selectUserState, (state: UserState) => state.loading);

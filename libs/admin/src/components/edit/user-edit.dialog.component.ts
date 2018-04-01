@@ -14,8 +14,9 @@ export class UserEditDialogComponent implements OnInit {
   public userModel = {
     firstName: '',
     lastName: '',
-    userName: '',
-    email: ''
+    username: '',
+    email: '',
+    roles: ''
   };
   public userFields: Array<FormlyFieldConfig> = [
     {
@@ -39,7 +40,7 @@ export class UserEditDialogComponent implements OnInit {
       }
     },
     {
-      key: 'userName',
+      key: 'username',
       type: 'input',
       templateOptions: {
         type: 'text',
@@ -66,7 +67,7 @@ export class UserEditDialogComponent implements OnInit {
         multiple: true,
         options: [
           {label: 'User', value: 'user'},
-          {label: 'Admin', value: 'iron_man'}
+          {label: 'Admin', value: 'admin'}
         ],
         required: true
       }

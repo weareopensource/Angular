@@ -9,7 +9,7 @@ export const taskConfiguration: TaskConfiguration = {
   core: {
     sidenav: [{
       order: 2,
-      link: '/tasks',
+      link: 'tasks',
       name: 'Tasks',
       icon: 'action:ic_chrome_reader_mode_24px',
       roles: ['user', 'admin']

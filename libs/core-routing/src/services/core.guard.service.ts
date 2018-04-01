@@ -21,7 +21,7 @@ export class CoreGuardService implements CanActivate {
   hasExpectedRoles(user, route): boolean {
     const expectedRoles = route.data.expectedRoles;
     if (difference(user.roles, expectedRoles).length === expectedRoles.length) {
-      this.store.dispatch(new fromRouter.Go({ path: ['/', 'auth'] }));
+      this.store.dispatch(new fromRouter.Go({ path: ['auth'] }));
 
       return false;
     }

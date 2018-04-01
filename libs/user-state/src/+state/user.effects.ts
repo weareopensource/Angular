@@ -89,7 +89,7 @@ export class UserEffects {
     .pipe(
       map(toPayload),
       switchMap(payload => this._userApiService.updateUser(payload.user)),
-      map((response: any) => new fromUsers.UpdateSuccess({ user: { id: response.id, changes: { ...response } } })),
+      map((response: any) => new fromUsers.UpdateSuccess({ user: { id: response._id, changes: { ...response } } })),
       catchError(error => of(new fromUsers.UpdateFailure(error)))
     );
 
@@ -126,7 +126,7 @@ export class UserEffects {
     .pipe(
       map(toPayload),
       switchMap(payload => this._userApiService.deleteUser(payload.userId)),
-      map((response: any) => new fromUsers.DeleteSuccess(response)),
+      map((response: any) => new fromUsers.DeleteSuccess({ userId: response.id })),
       catchError(error => of(new fromUsers.DeleteFailure(error)))
     );
 

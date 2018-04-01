@@ -12,9 +12,9 @@ const adminsRoutes: Routes = [
   {
     path: 'users',
     component: UsersListComponent,
-    canActivate: [UserGuardService],
+    canActivate: [ UserGuardService ],
     data: {
-      page: 'xlist'
+      page: 'user-list'
     },
     children: [
       {
@@ -34,7 +34,7 @@ const adminsRoutes: Routes = [
     path: ':id',
     component: UserDetailComponent,
     data: {
-      page: 'xdetail'
+      page: 'user-detail'
     }
   },
   {
@@ -42,26 +42,17 @@ const adminsRoutes: Routes = [
     redirectTo: 'list'
   }
 ];
-/*
-if (!isEmpty(taskConfiguration.self.roles)) {
-  Object.assign(tasksRoutes[0], {
-    data: {
-      expectedRoles: taskConfiguration.self.roles
-    }
-  });
-}
-*/
-
-@NgModule()
-export class RootAdminRoutingModule {}
 
 @NgModule({
-  imports: [RouterModule.forChild(adminsRoutes)]
+  imports: [ RouterModule.forChild(adminsRoutes) ]
 })
+export class RootAdminRoutingModule {}
+
+@NgModule()
 export class AdminRoutingModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootAdminRoutingModule,
+      ngModule: AdminRoutingModule,
       providers: [ UserGuardService ]
     };
   }

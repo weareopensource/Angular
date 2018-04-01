@@ -87,22 +87,22 @@ export class AddFailure implements Action {
 
 export class Update implements Action {
   readonly type = UPDATE;
-  constructor(public payload: { user: { id: number; changes: any } }) {}
+  constructor(public payload: { user: { id: string; changes: any } }) {}
 }
 
 export class UpdateSuccess implements Action {
   readonly type = UPDATE_SUCCESS;
-  constructor(public payload: { user: { id: number; changes: any } }) {}
+  constructor(public payload: { user: { id: string; changes: any } }) {}
 }
 
 export class AddMediasSuccess implements Action {
   readonly type = ADD_MEDIAS_SUCCESS;
-  constructor(public payload: { user: { id: number; changes: any } }) {}
+  constructor(public payload: { user: { id: string; changes: any } }) {}
 }
 
 export class DeleteMediasSuccess implements Action {
   readonly type = DELETE_MEDIAS_SUCCESS;
-  constructor(public payload: { user: { id: number; changes: any } }) {}
+  constructor(public payload: { user: { id: string; changes: any } }) {}
 }
 
 export class UpdateFailure implements Action {

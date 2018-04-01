@@ -9,36 +9,36 @@
     </button>
   </div>
   <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'ID'"></mat-header-cell>
-      <mat-cell *matCellDef="let row" [innerHtml]="row.id"></mat-cell>
+    <ng-container matColumnDef="_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row" [innerHtml]="row._id"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'First Name'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.firstName"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Last Name'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.lastName"></mat-cell>
     </ng-container>
-    <ng-container matColumnDef="userName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'User Name'"></mat-header-cell>
-      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.userName"></mat-cell>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>User Name</mat-header-cell>
+      <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.username"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Email'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.email"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef [innerHtml]="'Action'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="view$.next(row.id)">
+        <button mat-icon-button (click)="view$.next(row._id)">
           <mat-icon svgIcon="action:ic_visibility_24px"></mat-icon>
         </button>
-        <button mat-icon-button (click)="edit$.next(row.id)">
+        <button mat-icon-button (click)="edit$.next(row._id)">
           <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
         </button>
-        <button mat-icon-button (click)="delete$.next(row.id)">
+        <button mat-icon-button (click)="delete$.next(row._id)">
           <mat-icon svgIcon="action:ic_delete_24px"></mat-icon>
         </button>
       </mat-cell>
