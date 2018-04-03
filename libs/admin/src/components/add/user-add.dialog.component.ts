@@ -14,8 +14,10 @@ export class UserAddDialogComponent {
   public userModel = {
     firstName: '',
     lastName: '',
-    userName: '',
-    email: ''
+    username: '',
+    email: '',
+    roles: [],
+    password: ''
   };
   public userFields: Array<FormlyFieldConfig> = [
     {
@@ -39,7 +41,7 @@ export class UserAddDialogComponent {
       }
     },
     {
-      key: 'userName',
+      key: 'username',
       type: 'input',
       templateOptions: {
         type: 'text',
@@ -57,6 +59,14 @@ export class UserAddDialogComponent {
         placeholder: 'Enter the user email',
         required: true
       }
+    },
+    {
+      key: 'password',
+      type: 'password',
+      templateOptions: {
+        type: 'text'
+      }
+//      validation: Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(2)])
     },
     {
       key: 'roles',

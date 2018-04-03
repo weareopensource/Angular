@@ -1,13 +1,14 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/apps/storytelling",
+    "outDir": "../../../dist/out-tsc/apps/default",
     "module": "es2015"
   },
   "include": [
     "**/*.ts",
+    "../../../libs/admin",
     "../../../libs/task",
-    "../../../libs/admin"
+    "../../../libs/authentication"
   ],
   "exclude": [
     "**/*.spec.ts"

@@ -9,7 +9,7 @@ import {
   fromAuthentication,
   getLoggedIn } from '@labdat/authentication-state';
 import { fromRouter } from '@labdat/router-state';
-import { filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators/map';
 
 @Injectable()
 export class AuthenticationGuardService implements CanActivate, CanLoad {
@@ -18,24 +18,23 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean | Promise<boolean> {
     const currentUrl = route.url[0].path;
 
-    return this.hasPermission(currentUrl);
+    return this.hasPermission(currentUrl, route);
   }
 
   canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
     const currentUrl = route.path;
 
-    return this.hasPermission(currentUrl);
+    return this.hasPermission(currentUrl, undefined);
   }
 
-  hasPermission(path: string): boolean | Observable<boolean> | Promise<boolean> {
-    return Observable.combineLatest(
-      this.store.select(getLoggedIn),
-      loggedIn => {
+  hasPermission(path: string, route: ActivatedRouteSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    return this.store.select(getLoggedIn)
+    .pipe(
+      map(loggedIn => {
         const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
-          if (path === 'auth') {
-            this.store.dispatch(new fromRouter.Go({ path: ['/', 'home'] }));
-
+          if (path === 'auth' && route.children[0].url[0].path !== 'profile') {
+            this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
             return false;
           }
 
@@ -44,7 +43,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
           if (tokenExpiresIn) {
             if (tokenExpiresIn > Date.now()) {
               if (path === 'auth') {
-                this.store.dispatch(new fromRouter.Go({ path: ['/', 'home'] }));
+                this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
 
                 return false;
               } else {
@@ -59,17 +58,16 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
             }
           } else {
             if (path === 'auth') {
+
               return true;
             } else {
-              this.store.dispatch(new fromRouter.Go({ path: ['/', 'auth'] }));
+              this.store.dispatch(new fromRouter.Go({ path: ['auth'] }));
 
               return false;
             }
           }
         }
       })
-      .pipe(
-        filter(pass => pass)
-      );
+    );
   }
 }

@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
+import { filter } from 'rxjs/operators/filter';
 
 /**
  * @title Table with filtering
@@ -33,7 +34,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   public edit$ = new Subject();
   public add$ = new Subject();
 
-  public displayedColumns = ['id', 'firstName', 'lastName', 'userName', 'email', 'action'];
+  public displayedColumns = ['_id', 'firstName', 'lastName', 'username', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
 
   private subscriptions: Subscription;
@@ -59,12 +60,13 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
           data: { userId }
         })
       ),
-      switchMap(dialogRef => dialogRef.afterClosed())
+      switchMap(dialogRef => dialogRef.afterClosed()),
+      filter(userId => userId)
     )
     .subscribe(userId => this.store.dispatch(new fromUser.Delete({ userId })));
 
     this.edit$
-    .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', Number(userId), 'edit']})));
+    .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', userId, 'edit']})));
       //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', id] }))
 
     this.add$

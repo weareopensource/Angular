@@ -6,6 +6,7 @@ import { userReducer } from './+state/user.reducer';
 import { UserEffects } from './+state/user.effects';
 import { UserApiService } from './services/user.api.service';
 import { UserSnackComponent } from './components/user-snack/user-snack.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function userInitialisationFactory(userInitialization): any {
   return () => userInitialization.loadUsers();
@@ -15,7 +16,11 @@ export function userInitialisationFactory(userInitialization): any {
   declarations: [ UserSnackComponent ],
   exports: [ UserSnackComponent ],
   entryComponents: [ UserSnackComponent ],
-  imports: [StoreModule.forFeature('user', userReducer), EffectsModule.forFeature([UserEffects])],
+  imports: [
+    MatSnackBarModule,
+    StoreModule.forFeature('user', userReducer),
+    EffectsModule.forFeature([UserEffects])
+  ],
   providers: [
     UserInitializationService,
     UserApiService,

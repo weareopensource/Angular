@@ -3,12 +3,11 @@ import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { intersection, isEmpty, values } from 'lodash';
 import { fromCore, getLogo, getMenuItems, getShowSidenav, getTitle } from '@labdat/core-state';
-import { getLoggedIn, getUser } from '@labdat/authentication-state';
+import { fromAuthentication, getLoggedIn, getUser } from '@labdat/authentication-state';
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '@labdat/animations';
 import { fromRouter } from '@labdat/router-state';
 import { User } from '@labdat/data-models';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'layout-root',
@@ -37,7 +36,6 @@ export class LayoutComponent implements OnInit {
     const items$ = this.store.select(getMenuItems);
     const user$ = this.store.select(getUser);
     this.menuItems$ = items$.pipe(
-      tap(x => console.log(values(x))),
       combineLatest(
         user$,
         (items, user) =>
@@ -57,10 +55,22 @@ export class LayoutComponent implements OnInit {
   }
 
   public editProfile(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['/', 'profile'] }));
+    this.store.dispatch(new fromRouter.Go({ path: ['auth', 'profile'] }));
   }
 
   public userManagement(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['/', 'admin', 'users'] }));
+    this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users'] }));
+  }
+
+  public goToAuthenticationPage(): void {
+    this.store.dispatch(new fromRouter.Go({ path: ['auth'] }));
+  }
+
+  public goTo(link: string): void {
+    this.store.dispatch(new fromRouter.Go({ path: [ link ] }));
+  }
+
+  public logout(): void {
+    this.store.dispatch(new fromAuthentication.Logout());
   }
 }

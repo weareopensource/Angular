@@ -1,1 +1,1 @@
-export { AdminRoutingModule } from './src/admin-routing.module';
+export { AdminRoutingModule, RootAdminRoutingModule } from './src/admin-routing.module';

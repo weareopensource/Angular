@@ -9,11 +9,11 @@ import { UserEditDialogComponent } from './components/edit/user-edit.dialog.comp
 import { UserDeleteDialogComponent } from './components/delete/user-delete.dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminRoutingModule } from '@labdat/admin-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule } from '@angular/router';
+import { RootAdminRoutingModule } from '@labdat/admin-routing';
 
 import {
   MatButtonModule,
@@ -66,12 +66,15 @@ const MATERIAL_MODULES = [
     FormlyMaterialModule,
     RouterModule
   ],
-  entryComponents: [UserDeleteDialogComponent, UserEditDialogComponent, UserAddDialogComponent]
+  entryComponents: [
+    UserDeleteDialogComponent,
+    UserEditDialogComponent,
+    UserAddDialogComponent
+  ]
 })
-export class AdminModule {}
+export class AdminModule { }
 
 @NgModule({
-  imports: [ AdminModule, AdminRoutingModule ],
-  providers: []
+  imports: [ AdminModule, RootAdminRoutingModule ]
 })
-export class RootAdminModule {}
+export class RootAdminModule { }
