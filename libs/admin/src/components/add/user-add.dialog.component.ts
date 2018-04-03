@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
@@ -63,9 +63,11 @@ export class UserAddDialogComponent {
     {
       key: 'password',
       type: 'password',
-      templateOptions: {
-        type: 'text'
-      }
+      validation: Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(2)])
+    },
+    {
+      key: 'passwordConfirmation',
+      type: 'password'
 //      validation: Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(2)])
     },
     {

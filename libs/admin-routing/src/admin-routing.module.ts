@@ -31,7 +31,7 @@ const adminsRoutes: Routes = [
 //    canDeactivate: [TaskGuardService]
   },
   {
-    path: ':id',
+    path: 'users/:id',
     component: UserDetailComponent,
     data: {
       page: 'user-detail'

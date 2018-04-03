@@ -13,7 +13,7 @@ export class UserDetailComponent {
   public comments$: Observable<Array<any>>;
 
   constructor(private store: Store<any>) {}
-  public currentUser$ = this.store.select(selectSelectedUser);
+  public selectedUser$ = this.store.select(selectSelectedUser);
 
   back(): void {
     this.store.dispatch(new fromRouter.Back());
