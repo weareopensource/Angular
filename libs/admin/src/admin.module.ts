@@ -10,7 +10,6 @@ import { UserDeleteDialogComponent } from './components/delete/user-delete.dialo
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule } from '@angular/router';
 import { RootAdminRoutingModule } from '@labdat/admin-routing';
@@ -28,6 +27,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormlyPasswordComponent } from './components/formly-password/formly-password.component';
+import { FormlyModule } from '@ngx-formly/core';
 
 const COMPONENTS = [
   UsersListComponent,
@@ -37,7 +38,8 @@ const COMPONENTS = [
   UserEditDialogComponent,
   UserAddComponent,
 //  ConnectFormDirective,
-  UserAddDialogComponent
+  UserAddDialogComponent,
+  FormlyPasswordComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -62,7 +64,14 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormlyModule,
+    FormlyModule.forChild({
+      types: [
+      {
+        name: 'password',
+        component: FormlyPasswordComponent
+      }
+    ]
+    }),
     FormlyMaterialModule,
     RouterModule
   ],

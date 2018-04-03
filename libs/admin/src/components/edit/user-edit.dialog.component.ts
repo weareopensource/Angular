@@ -53,7 +53,7 @@ export class UserEditDialogComponent implements OnInit {
       key: 'email',
       type: 'input',
       templateOptions: {
-        type: 'text',
+        type: 'email',
         label: 'Email',
         placeholder: 'Enter the user email',
         required: true

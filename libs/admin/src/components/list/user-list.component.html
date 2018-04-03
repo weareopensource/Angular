@@ -4,9 +4,9 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
     </mat-form-field>
 
-    <button mat-icon-button (click)="add$.next()">
+    <!--button mat-icon-button (click)="add$.next()">
       <mat-icon svgIcon="content:ic_add_24px"></mat-icon>
-    </button>
+    </button-->
   </div>
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="_id">

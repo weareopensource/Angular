@@ -14,6 +14,7 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
+import { tap } from 'rxjs/operators';
 
 /**
  * @title Table with filtering
@@ -48,10 +49,11 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe(users => (this.dataSource.data = users));
     this.subscriptions = allUsersSubscriptions;
 
-    this.view$
+    const viewSubscription = this.view$.pipe(tap(console.log))
     .subscribe(userId => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
+    this.subscriptions.add(viewSubscription);
 
-    this.delete$
+    const deleteSubscription = this.delete$
     .pipe(
       map(userId => this.dialog.open(
         UserDeleteDialogComponent,
@@ -64,13 +66,17 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       filter(userId => userId)
     )
     .subscribe(userId => this.store.dispatch(new fromUser.Delete({ userId })));
+    this.subscriptions.add(deleteSubscription);
 
-    this.edit$
+    const editSubscription = this.edit$
     .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', userId, 'edit']})));
       //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', id] }))
-
-    this.add$
+    this.subscriptions.add(editSubscription);
+/*
+    const addSubscription = this.add$
     .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', 'add'] })));
+    this.subscriptions.add(addSubscription);
+*/
   }
 
   ngAfterViewInit(): void {

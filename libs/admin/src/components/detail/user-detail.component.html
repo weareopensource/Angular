@@ -1,10 +1,18 @@
 <mat-card>
-  <mat-card-title>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ (selectedUser$ | async)?.username }}</mat-card-title>
+    <mat-card-subtitle>{{ (selectedUser$ | async)?.fistName }} {{ (selectedUser$ | async)?.lastName }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image>
+  <mat-card-content>
+    <p>
+      {{ (selectedUser$ | async)?.email }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
     <button mat-icon-button (click)="back()">
       <mat-icon svgIcon="navigation:ic_arrow_back_24px" matTooltip="close"></mat-icon>
     </button>
-  </mat-card-title>
-  <mat-card-content>
-    {{ (currentUser$ | async)?.description }}
-  </mat-card-content>
+  </mat-card-actions>
 </mat-card>
