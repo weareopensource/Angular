@@ -9,7 +9,7 @@ import { TaskEditDialogComponent } from './components/edit/task-edit.dialog.comp
 import { TaskDeleteDialogComponent } from './components/delete/task-delete.dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskRoutingModule } from '@labdat/task-routing';
+import { RootTaskRoutingModule } from '@labdat/task-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -66,12 +66,15 @@ const MATERIAL_MODULES = [
     FormlyMaterialModule,
     RouterModule
   ],
-  entryComponents: [TaskDeleteDialogComponent, TaskEditDialogComponent, TaskAddDialogComponent]
+  entryComponents: [
+    TaskDeleteDialogComponent,
+    TaskEditDialogComponent,
+    TaskAddDialogComponent
+  ]
 })
-export class TaskModule {}
+export class TaskModule { }
 
 @NgModule({
-  imports: [TaskModule, TaskRoutingModule],
-  providers: []
+  imports: [ TaskModule, RootTaskRoutingModule ]
 })
-export class RootTaskModule {}
+export class RootTaskModule { }

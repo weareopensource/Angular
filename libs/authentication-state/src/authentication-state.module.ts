@@ -7,6 +7,8 @@ import { authenticationReducers } from './+state/reducers/authentication-state.r
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginSnackComponent } from './components/login-snack/login-snack.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 
 export function initialisationFactory(authenticationInitialisation): any {
   return () => authenticationInitialisation.loadUser();
@@ -35,6 +37,11 @@ export class AuthenticationStateModule {
           provide: APP_INITIALIZER,
           useFactory: initialisationFactory,
           deps: [AuthenticationInitializationService],
+          multi: true
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthenticationInterceptorService,
           multi: true
         }
       ]

@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators/catchError';
-import { AuthenticationState, fromAuthentication } from '@labdat/authentication-state';
+import { AuthenticationState } from '../+state/states/authentication-state.state';
+import * as fromAuthentication from '../+state/actions/authentication-state.actions';
 
 @Injectable()
 export class AuthenticationInterceptorService implements HttpInterceptor {

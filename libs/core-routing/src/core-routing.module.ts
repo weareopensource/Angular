@@ -2,8 +2,8 @@ import { HomeComponent, LayoutComponent, NotFoundComponent } from '@labdat/core/
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
-import { AuthenticationGuardService } from '@labdat/authentication';
-import { AuthenticationComponent, ProfileComponent } from '@labdat/authentication';
+import { AuthenticationGuardService, RoleGuardService } from '@labdat/authentication-routing';
+// import { ProfileComponent } from '@labdat/authentication';
 import { TaskGuardService } from '@labdat/task-routing';
 
 const coreRoutes: Routes = [
@@ -25,25 +25,30 @@ const coreRoutes: Routes = [
       },
       {
         path: 'auth',
-        component: AuthenticationComponent,
-        canActivate: [AuthenticationGuardService],
+        loadChildren: '../../authentication/src/authentication.module#RootAuthenticationModule',
+        canActivate: [ AuthenticationGuardService ],
         data: {
           page: 'authentication'
         }
       },
       {
-        path: 'profile',
-        component: ProfileComponent,
-        canActivate: [AuthenticationGuardService],
+        path: 'admin',
+        loadChildren: '../../admin/src/admin.module#RootAdminModule',
+        canActivate: [ AuthenticationGuardService, RoleGuardService ],
         data: {
-          page: 'profile'
+          page: 'administration',
+          roles: ['admin']
         }
       },
       {
         path: 'tasks',
-        canActivate: [AuthenticationGuardService, TaskGuardService],
-//        canLoad: [AuthenticationGuardService],
-        loadChildren: '../../task/src/task.module#RootTaskModule'
+        loadChildren: '../../task/src/task.module#RootTaskModule',
+        canActivate: [ AuthenticationGuardService, TaskGuardService ],
+//        canLoad: [ AuthenticationGuardService ],
+        data: {
+          page: 'task',
+          roles: ['user']
+        }
       },
       {
         path: '**',
@@ -56,9 +61,18 @@ const coreRoutes: Routes = [
   }
 ];
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
+/*
+if (!isEmpty(taskConfiguration.self.roles)) {
+  Object.assign(tasksRoutes[0], {
+    data: {
+      expectedRoles: taskConfiguration.self.roles
+    }
+  });
+}
+*/
 
 @NgModule({
-  imports: [RouterModule.forRoot(coreRoutes)],
-  providers: [CoreGuardService]
+  imports: [ RouterModule.forRoot(coreRoutes) ],
+  providers: [ CoreGuardService ]
 })
 export class CoreRoutingModule {}

@@ -55,6 +55,12 @@
       "appRoot": ""
     },
     {
+      "name": "authentication-routing",
+      "root": "libs/authentication-routing/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "authentication-state",
       "root": "libs/authentication-state/src",
       "test": "../../../test.js",
@@ -87,6 +93,36 @@
     {
       "name": "task",
       "root": "libs/task/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "task-routing",
+      "root": "libs/task-routing/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "task-state",
+      "root": "libs/task-state/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "admin",
+      "root": "libs/admin/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "admin-routing",
+      "root": "libs/admin-routing/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "user-state",
+      "root": "libs/user-state/src",
       "test": "../../../test.js",
       "appRoot": ""
     },
