@@ -2,9 +2,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import {
   MatButtonModule,
@@ -17,13 +16,17 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LogoutDirective } from './directives/logout/logout.directive';
-import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
-import { AuthenticationGuardService } from './services/authentication.guard.service';
+import { RootAuthenticationRoutingModule } from '@labdat/authentication-routing';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { CustomFormlyModule } from '@labdat/custom-formly';
 
-const COMPONENTS = [AuthenticationComponent, LoginComponent, RegisterComponent, ProfileComponent];
-
-const DIRECTIVES = [LogoutDirective];
+const COMPONENTS = [
+  AuthenticationComponent,
+  LoginComponent,
+  RegisterComponent,
+  ProfileComponent
+];
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -38,22 +41,22 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...MATERIAL_MODULES, FlexLayoutModule, FormsModule, ReactiveFormsModule],
-  declarations: [...COMPONENTS, ...DIRECTIVES],
-  exports: DIRECTIVES
+  imports: [
+    CommonModule,
+    ...MATERIAL_MODULES,
+    FlexLayoutModule,
+    FormlyModule,
+    CustomFormlyModule,
+
+    FormlyMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  declarations: [ ...COMPONENTS ]
 })
-export class AuthenticationModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: AuthenticationModule,
-      providers: [
-        AuthenticationGuardService,
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: AuthenticationInterceptorService,
-          multi: true
-        }
-      ]
-    };
-  }
-}
+export class AuthenticationModule { }
+
+@NgModule({
+  imports: [ AuthenticationModule, RootAuthenticationRoutingModule]
+})
+export class RootAuthenticationModule { }

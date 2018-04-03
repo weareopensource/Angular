@@ -10,15 +10,15 @@
   </div>
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'ID'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@taskId">ID</mat-header-cell>
       <mat-cell *matCellDef="let row" [innerHtml]="row.id"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header [innerHtml]="'Titre'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@taskTitle">Title</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.title"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef [innerHtml]="'Action'"></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef i18n="@@action">Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-icon-button (click)="view$.next(row.id)">
           <mat-icon svgIcon="action:ic_visibility_24px"></mat-icon>

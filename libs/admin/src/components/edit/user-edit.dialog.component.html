@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit User</h1>
+<mat-dialog-content>
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit(userModel)">
+    <formly-form
+      [form]="editUserForm"
+      [model]="userModel"
+      [fields]="userFields">
+    </formly-form>
+    <button mat-button type="submit" i18n>Update</button>
+  </form>
+</mat-dialog-content>

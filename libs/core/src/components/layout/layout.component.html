@@ -2,7 +2,7 @@
   <mean2-sidenav mode="side" [opened]="isSidenavOpened$ | async">
     <img [attr.src]="logo$ | async" width="36px" style="color:black;">
     <mat-nav-list>
-      <mat-list-item *ngFor="let item of menuItems$ | async" routerLink="{{item.link}}">
+      <mat-list-item *ngFor="let item of menuItems$ | async" (click)="goTo(item.link)">
         <mat-icon mat-list-icon svgIcon="{{item.icon}}"></mat-icon>
         <h4 mat-line i18n>{{item.name}}</h4>
       </mat-list-item>
@@ -23,20 +23,25 @@
     <mat-toolbar>
       <h1>{{ title$ | async }}</h1>
       <span class="toolbar-spacer"></span>
-      <button mat-icon-button *ngIf="isLoggedIn$ | async" [matMenuTriggerFor]="appMenu">
-        <mat-icon svgIcon="social:ic_person_24px" matTooltip="Profile"></mat-icon>
+      <button mat-icon-button *ngIf="isLoggedIn$ | async" [matMenuTriggerFor]="profileMenu">
+        <mat-icon svgIcon="social:ic_person_24px" matTooltip="Profile" [ngClass]="{ 'red': isAdmin$ | async }"></mat-icon>
       </button>
-      <mat-menu #appMenu="matMenu">
-        <button mat-menu-item (click)="editProfile()">Edit Profile</button>
+      <mat-menu #profileMenu="matMenu" yPosition="above" [overlapTrigger]="false">
+        <button mat-menu-item (click)="editProfile()" i18n="@@editProfile">Edit Profile</button>
+        <div *ngIf="isAdmin$ | async">
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="userManagement()" i18n="@@usersManagement" >Users Management</button>
+        </div>
       </mat-menu>
+
       <div *ngIf="isLoggedIn$ | async; then logoutButton else loginButton"></div>
       <ng-template #logoutButton>
-        <button mat-icon-button Logout>
+        <button mat-icon-button Logout (click)="logout()">
           <mat-icon svgIcon="action:ic_power_settings_new_24px" matTooltip="exit"></mat-icon>
         </button>
       </ng-template>
       <ng-template #loginButton>
-        <button mat-icon-button routerLink="/auth">
+        <button mat-icon-button (click)="goToAuthenticationPage()">
           <mat-icon svgIcon="action:ic_exit_to_app_24px" matTooltip="login"></mat-icon>
         </button>
       </ng-template>

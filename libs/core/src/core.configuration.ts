@@ -14,7 +14,7 @@ export const coreConfiguration: CoreConfiguration = {
     title: 'Angular Kick Starter',
     sidenav: [{
       order: 1,
-      link: '/home',
+      link: 'home',
       name: 'Home',
       icon: 'action:ic_home_24px'
     }]

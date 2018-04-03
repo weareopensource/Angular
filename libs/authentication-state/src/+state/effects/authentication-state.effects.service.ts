@@ -49,7 +49,7 @@ export class AuthenticationEffectsService {
         verticalPosition: 'top'
       });
     }),
-    mapTo(new fromRouter.Go({ path: ['/', 'auth'] }))
+    mapTo(new fromRouter.Go({ path: ['auth'] }))
   );
 
   @Effect()
@@ -63,7 +63,7 @@ export class AuthenticationEffectsService {
         verticalPosition: 'top'
       });
     }),
-    mapTo(new fromRouter.Go({ path: ['/', 'tasks'] }))
+    mapTo(new fromRouter.Go({ path: ['tasks'] }))
   );
 
   @Effect({ dispatch: false })
@@ -116,7 +116,7 @@ export class AuthenticationEffectsService {
         verticalPosition: 'top'
       });
     }),
-    mapTo(new fromRouter.Go({ path: ['/', 'tasks'] }))
+    mapTo(new fromRouter.Go({ path: ['tasks'] }))
   );
 
   @Effect({ dispatch: false })

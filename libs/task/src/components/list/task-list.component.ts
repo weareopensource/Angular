@@ -48,7 +48,7 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions = allTasksSubscriptions;
 
     this.view$
-    .subscribe(taskId => this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', taskId] })));
+    .subscribe(taskId => this.store.dispatch(new fromRouter.Go({ path: ['tasks', taskId] })));
 
     this.delete$
     .pipe(
@@ -64,11 +64,11 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe(taskId => this.store.dispatch(new fromTask.Delete({ taskId })));
 
     this.edit$
-    .subscribe(taskId => this.store.dispatch(new fromRouter.Go({path: ['/', 'tasks', Number(taskId), 'edit']})));
+    .subscribe(taskId => this.store.dispatch(new fromRouter.Go({path: ['tasks', Number(taskId), 'edit']})));
       //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', id] }))
 
     this.add$
-    .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['/', 'tasks', 'add'] })));
+    .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] })));
   }
 
   ngAfterViewInit(): void {

@@ -15,16 +15,19 @@ export function taskInitialisationFactory(taskInitialization): any {
   declarations: [ TaskSnackComponent ],
   exports: [ TaskSnackComponent ],
   entryComponents: [ TaskSnackComponent ],
-  imports: [StoreModule.forFeature('task', taskReducer), EffectsModule.forFeature([TaskEffects])],
+  imports: [
+    StoreModule.forFeature('task', taskReducer),
+    EffectsModule.forFeature([TaskEffects])
+  ],
   providers: [
     TaskInitializationService,
     TaskApiService,
     { provide: APP_INITIALIZER, useFactory: taskInitialisationFactory, deps: [TaskInitializationService], multi: true }
   ]
 })
-export class RootTaskStateModule {}
+export class RootTaskStateModule { }
 
-@NgModule({})
+@NgModule()
 export class TaskStateModule {
   public static forRoot(): ModuleWithProviders {
     return {
@@ -35,7 +38,7 @@ export class TaskStateModule {
         {
           provide: APP_INITIALIZER,
           useFactory: taskInitialisationFactory,
-          deps: [TaskInitializationService],
+          deps: [ TaskInitializationService ],
           multi: true
         }
       ]

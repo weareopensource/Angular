@@ -1,7 +1,11 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { TaskAddComponent, TaskDetailComponent, TaskEditComponent, TasksListComponent } from '@labdat/task/components';
+import {
+  TaskAddComponent,
+  TaskDetailComponent,
+  TaskEditComponent,
+  TasksListComponent
+} from '@labdat/task/components';
 import { TaskGuardService } from './services/task.guard.service';
 
 const tasksRoutes: Routes = [
@@ -47,17 +51,17 @@ if (!isEmpty(taskConfiguration.self.roles)) {
 }
 */
 
-@NgModule()
-export class RootTaskRoutingModule {}
-
 @NgModule({
   imports: [RouterModule.forChild(tasksRoutes)]
 })
+export class RootTaskRoutingModule {}
+
+@NgModule()
 export class TaskRoutingModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootTaskRoutingModule,
-      providers: [TaskGuardService]
+      ngModule: TaskRoutingModule,
+      providers: [ TaskGuardService ]
     };
   }
 }

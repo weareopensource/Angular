@@ -1,0 +1,6 @@
+<h2 mat-dialog-title i18n>Supprimer</h2>
+<mat-dialog-content i18n>Confirmer la suppression ?</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close i18n>Non</button>
+  <button mat-button [mat-dialog-close]="data.userId" i18n>Oui</button>
+</mat-dialog-actions>
