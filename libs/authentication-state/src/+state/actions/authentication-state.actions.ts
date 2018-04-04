@@ -14,6 +14,12 @@ export const USER_LOAD_FAILURE = '[Auth] User Load Failure';
 export const UPDATE_USER = '[Auth] Update User';
 export const USER_UPDATE_SUCCESS = '[Auth] User Update Success';
 export const USER_UPDATE_FAILURE = '[Auth] User Update Failure';
+export const CHANGE_PASSWORD = '[Auth] Change Password';
+export const CHANGE_PASSWORD_SUCCESS = '[Auth] Change Password Success';
+export const CHANGE_PASSWORD_FAILURE = '[Auth] Change Password Failure';
+export const RESET_PASSWORD = '[Auth] Reset Password';
+export const RESET_PASSWORD_SUCCESS = '[Auth] Reset Password Success';
+export const RESET_PASSWORD_FAILURE = '[Auth] Reset Password Failure';
 
 export type Actions =
   | Login
@@ -26,6 +32,12 @@ export type Actions =
   | LoadUser
   | UserLoadSuccess
   | UserLoadFailure
+  | ChangePassword
+  | ChangePasswordSuccess
+  | ChangePasswordFailure
+  | ResetPassword
+  | ResetPasswordSuccess
+  | ResetPasswordFailure
   | UpdateUser;
 
 export class Login implements Action {
@@ -89,5 +101,35 @@ export class UserUpdateSuccess implements Action {
 
 export class UserUpdateFailure implements Action {
   readonly type = USER_UPDATE_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+export class ChangePassword implements Action {
+  readonly type = CHANGE_PASSWORD;
+  constructor(public payload?: { email: string }) {}
+}
+
+export class ChangePasswordSuccess implements Action {
+  readonly type = CHANGE_PASSWORD_SUCCESS;
+  constructor(public payload?: any) {}
+}
+
+export class ChangePasswordFailure implements Action {
+  readonly type = CHANGE_PASSWORD_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+export class ResetPassword implements Action {
+  readonly type = RESET_PASSWORD;
+  constructor(public payload: { newPassword: string, token: string }) {}
+}
+
+export class ResetPasswordSuccess implements Action {
+  readonly type = RESET_PASSWORD_SUCCESS;
+  constructor(public payload?: any) {}
+}
+
+export class ResetPasswordFailure implements Action {
+  readonly type = RESET_PASSWORD_FAILURE;
   constructor(public payload?: any) {}
 }

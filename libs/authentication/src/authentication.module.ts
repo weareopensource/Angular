@@ -5,6 +5,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -25,7 +27,8 @@ const COMPONENTS = [
   AuthenticationComponent,
   LoginComponent,
   RegisterComponent,
-  ProfileComponent
+  ProfileComponent,
+  PasswordResetComponent
 ];
 
 const MATERIAL_MODULES = [

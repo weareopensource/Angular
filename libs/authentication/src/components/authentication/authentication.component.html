@@ -3,7 +3,8 @@
     <mat-tab-group>
       <mat-tab label="Login">
         <app-login
-          (submitted)="onLogin($event)"
+          (loginSubmitted)="onLogin($event)"
+          (emailSubmitted)="onEmail($event)"
           [pending]="pending$ | async"
           [errorMessage]="error$ | async">
         </app-login>

@@ -1,17 +1,30 @@
-<form [formGroup]="form" fxLayout="column" fxLayoutAlign="start stretch" (ngSubmit)="onSubmit()">
+<form id="login-form" [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="start stretch" (ngSubmit)="onLoginSubmit()">
   <mat-form-field fxFlex=50>
     <input matInput placeholder="Email" formControlName="email" required>
-    <mat-error *ngIf="form.controls['email'].invalid">You must enter a value</mat-error>
+    <mat-error *ngIf="loginForm.controls['email'].invalid">You must enter a value</mat-error>
   </mat-form-field>
   <mat-form-field fxFlex="40">
     <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
     <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
-    <mat-error *ngIf="form.controls['password'].invalid">You must enter a value</mat-error>
+    <mat-error *ngIf="loginForm.controls['password'].invalid">You must enter a value</mat-error>
   </mat-form-field>
   <br>
-  <button type="submit" [disabled]="!form.valid" mat-raised-button>Login</button>
+  <button type="submit" [disabled]="!loginForm.valid" mat-raised-button>Login</button>
   <br>
   <p *ngIf="errorMessage" class="loginError">
     {{ errorMessage }}
   </p>
+</form>
+<a *ngIf="!forgotPassword" (click)="forgotPassword = true">Forgot password ?</a>
+<form *ngIf="forgotPassword" (ngSubmit)="onForgotPasswordSubmit(forgotField.value)">
+  Enter your email
+  <br>
+  <mat-form-field>
+    <input #forgotField matInput placeholder="Email" [formControl]="forgotControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="forgotControl.hasError('email') && !forgotControl.hasError('required')">Please enter a valid email address</mat-error>
+    <mat-error *ngIf="forgotControl.hasError('required')">Email is <strong>required</strong></mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-button type="submit" [disabled]="forgotControl.invalid" mat-raised-button>Submit</button>
+  <button mat-button (click)="forgotPassword = false">Cancel</button>
 </form>

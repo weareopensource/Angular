@@ -31,7 +31,7 @@ export class AuthenticationEffectsService {
       )
     ),
     tap((payload: any) => {
-      sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
+      localStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
     }),
     map(payload => new fromAuthentication.LoginSuccess({ user: payload.user, tokenExpiresIn: payload.tokenExpiresIn }))
   );
@@ -41,7 +41,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map(toPayload),
     tap(message => {
-      sessionStorage.removeItem('tokenExpiresIn');
+      localStorage.removeItem('tokenExpiresIn');
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
         data: message || 'Logout',
@@ -100,7 +100,7 @@ export class AuthenticationEffectsService {
         )
     ),
     tap((payload: any) => {
-      sessionStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
+      localStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
     }),
     map(payload => new fromAuthentication.RegisterSuccess({ ...payload }))
   );
@@ -199,6 +199,101 @@ export class AuthenticationEffectsService {
 
   @Effect({ dispatch: false })
   userLoadFailure$ = this.actions$.ofType(fromAuthentication.USER_LOAD_FAILURE)
+  .pipe(
+    map(toPayload),
+    tap(message =>
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: message,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+    )
+  );
+
+  @Effect()
+  changePassword$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD)
+  .pipe(
+    map(toPayload),
+    exhaustMap(payload =>
+      this.authenticationApiService
+        .changePassword(payload.email)
+        .pipe(
+          catchError(error => {
+            console.log(error);
+            this.store.dispatch(new fromAuthentication.ChangePasswordFailure(error.error.message));
+
+            return empty();
+          })
+        )
+    ),
+    map(response => new fromAuthentication.ChangePasswordSuccess(response.message))
+  );
+
+  @Effect({ dispatch: false })
+  changePassordSuccess$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_SUCCESS)
+  .pipe(
+    map(toPayload),
+    tap(() =>
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: 'An email has been sent to the provided email with further instructions',
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+    )
+  );
+
+  @Effect({ dispatch: false })
+  changePassordFailure$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_FAILURE)
+  .pipe(
+    map(toPayload),
+    tap(message =>
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: message,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+    )
+  );
+
+  @Effect()
+  resetPassword$ = this.actions$.ofType(fromAuthentication.RESET_PASSWORD)
+  .pipe(
+    map(toPayload),
+    exhaustMap(payload =>
+      this.authenticationApiService
+        .resetPassword(payload.newPassword, payload.token)
+        .pipe(
+          catchError(error => {
+            console.log(error);
+            this.store.dispatch(new fromAuthentication.ResetPasswordFailure(error.error.message));
+
+            return empty();
+          })
+        )
+    ),
+    map(response => new fromAuthentication.ResetPasswordSuccess(response.message))
+  );
+
+  @Effect({ dispatch: false })
+  resetPassordSuccess$ = this.actions$.ofType(fromAuthentication.RESET_PASSWORD_SUCCESS)
+  .pipe(
+    map(toPayload),
+    tap(() =>
+      this.snackBar.openFromComponent(LoginSnackComponent, {
+        duration: 1000,
+        data: 'Password Reseted',
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      })
+    ),
+    tap(() => this.store.dispatch(new fromRouter.Go({ path: ['auth'] })))
+  );
+
+  @Effect({ dispatch: false })
+  resetPassordFailure$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_FAILURE)
   .pipe(
     map(toPayload),
     tap(message =>

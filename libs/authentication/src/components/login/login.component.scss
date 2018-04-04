@@ -5,9 +5,13 @@
 }
 
 mat-form-field {
-  width: auto;
+  width: 100%;
 }
 
-button {
+#login-form button {
   display: block;
+}
+
+a {
+  text-decoration: underline;
 }

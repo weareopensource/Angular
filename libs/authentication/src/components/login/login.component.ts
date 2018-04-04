@@ -1,6 +1,16 @@
 import { Authenticate } from './../../models/user.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -8,32 +18,52 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
   @Input()
   set pending(isPending: boolean) {
     if (isPending) {
-      this.form.disable();
+      this.loginForm.disable();
     } else {
-      this.form.enable();
+      this.loginForm.enable();
     }
   }
 
-  @Input() public errorMessage: string | null;
+  @Input()
+  public errorMessage: string | null;
 
-  @Output() public submitted = new EventEmitter<Authenticate>();
+  @Output()
+  public loginSubmitted = new EventEmitter<Authenticate>();
+
+  @Output()
+  public emailSubmitted = new EventEmitter<string>();
+
+  public forgotPassword = false;
 
   public hide = true;
-  public form = this.formBuilder.group({
-    email: this.formBuilder.control('', [Validators.required, Validators.email]),
-    password: this.formBuilder.control('', [Validators.required])
+  public loginForm = this._formBuilder.group({
+    email: this._formBuilder.control('', [Validators.required, Validators.email]),
+    password: this._formBuilder.control('', [Validators.required])
   });
+
+  public forgotControl = this._formBuilder.control('', [
+    Validators.required,
+    Validators.email
+  ]);
+
+  public matcher = new MyErrorStateMatcher();
 
   get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) {}
 
-  onSubmit(): void {
-    this.submitted.emit(this.form.value);
+  public onLoginSubmit(): void {
+    this.loginSubmitted.emit(this.loginForm.value);
+  }
+
+  public onForgotPasswordSubmit(email: string): void {
+    this.emailSubmitted.emit(email);
+    this.forgotPassword = false;
   }
 }
