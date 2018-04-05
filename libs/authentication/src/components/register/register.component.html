@@ -9,24 +9,24 @@
   </mat-radio-group>
   <br-->
   <mat-form-field>
-    <input matInput placeholder="First Name" formControlName="firstName" required>
-    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>    
+    <input matInput placeholder="First Name" formControlName="firstName">
+    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Last Name" formControlName="lastName" required>
-    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>    
+    <input matInput placeholder="Last Name" formControlName="lastName">
+    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Email" formControlName="email" required>
+    <input matInput placeholder="Email" formControlName="email">
     <mat-error *ngIf="form.controls['email'].invalid" i18n>{{emailErrorMessage}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+    <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
     <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
-    <mat-error *ngIf="form.controls['password'].invalid" i18n>You must enter a value</mat-error>    
+    <mat-error *ngIf="form.controls['password'].invalid" i18n>You must enter a value</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" required>
+    <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'">
   </mat-form-field>
   <br>
   <button type="submit" [disabled]="!form.valid" mat-raised-button i18n>Register</button>

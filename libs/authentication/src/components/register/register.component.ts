@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Authenticate } from '../../models/user.model';
+//import { PasswordValidation } from './password-validation';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +11,11 @@ import { Authenticate } from '../../models/user.model';
 export class RegisterComponent implements OnInit {
   public hide = true;
   public form = this.formBuilder.group({
-    firstName: this.formBuilder.control(''),
-    lastName: this.formBuilder.control(''),
+    firstName: this.formBuilder.control('', [Validators.required]),
+    lastName: this.formBuilder.control('', [Validators.required]),
     email: this.formBuilder.control('', [Validators.required, Validators.email]),
-    password: this.formBuilder.control('')
+    password: this.formBuilder.control('', [Validators.required]),
+    confirmPassword: this.formBuilder.control('', [Validators.required])
   });
 
   @Output() public submitted = new EventEmitter<Authenticate>();

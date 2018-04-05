@@ -3,25 +3,35 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import * as jwtDecode from 'jwt-decode';
 import { fromRouter } from '@labdat/router-state';
 import { AuthenticationState } from '@labdat/authentication-state';
 import { Store } from '@ngrx/store';
+import * as jsrsasign from 'jsrsasign';
 
 @Injectable()
 export class PasswordResetGuardService implements CanActivate {
   constructor(private _store: Store<AuthenticationState>) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean | Promise<boolean> {
-    if (route.queryParams.token) {
-      const token: any = jwtDecode(route.queryParams.token);
-      if (token.tokenExpiresIn > Date.now()) {
+
+    const token = route.queryParams.token;
+
+    if (token) {
+//      const IntDate = jsrsasign.KJUR.jws.IntDate;
+      const isValid = jsrsasign.KJUR.jws.JWS.verifyJWT(
+        token,
+        'test',
+        {
+          alg: ['HS256']
+          // verifyAt: IntDate.get('20150601000000Z')
+        }
+      );
+
+      if (isValid && jsrsasign.KJUR.jws.JWS.readSafeJSONString(atob(token.split('.')[1]))
+      .exp > Date.now()) {
 
         return true;
       }
-      this._store.dispatch(new fromRouter.Go({ path: ['auth'] }));
-
-      return false;
     }
     this._store.dispatch(new fromRouter.Go({ path: ['auth'] }));
 
