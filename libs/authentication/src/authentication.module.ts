@@ -22,7 +22,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RootAuthenticationRoutingModule } from '@labdat/authentication-routing';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
-import { CustomFormlyModule } from '@labdat/custom-formly';
 
 const COMPONENTS = [
   AuthenticationComponent,
@@ -50,7 +49,6 @@ const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
     FlexLayoutModule,
     FormlyModule,
-    CustomFormlyModule,
 
     FormlyMaterialModule,
     FormsModule,

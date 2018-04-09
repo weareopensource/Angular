@@ -4,7 +4,7 @@
     <mat-nav-list>
       <mat-list-item *ngFor="let item of menuItems$ | async" (click)="goTo(item.link)">
         <mat-icon mat-list-icon svgIcon="{{item.icon}}"></mat-icon>
-        <h4 mat-line i18n>{{item.name}}</h4>
+        <h4 mat-line>{{item.name}}</h4>
       </mat-list-item>
     </mat-nav-list>
     <div *ngIf="isSidenavOpened$ | async; then sidenavOpen else sidenavClose"></div>

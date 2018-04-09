@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Authenticate } from '../../models/user.model';
 import { ConfirmValidParentMatcher, CustomValidators } from './password-match.validator';
+import { first, keys } from 'lodash';
 
 @Component({
   selector: 'app-register',
@@ -26,12 +27,34 @@ export class RegisterComponent implements OnInit {
 
   @Output() public submitted = new EventEmitter<Authenticate>();
 
-  constructor(private formBuilder: FormBuilder) {
-    this.registerForm.valueChanges.subscribe(() => console.log(this.registerForm));
-  }
+  constructor(private formBuilder: FormBuilder) { }
 
   get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
+  }
+
+  get firstNameError(): string {
+    return first(keys(this.registerForm.get('firstName').errors)) || '';
+  }
+
+  get lastNameError(): string {
+    return first(keys(this.registerForm.get('lastName').errors)) || '';
+  }
+
+  get emailError(): string {
+    return first(keys(this.registerForm.get('emailGroup').get('email').errors)) || '';
+  }
+
+  get confirmEmailError(): string {
+    return first(keys(this.registerForm.get('emailGroup').errors)) || '';
+  }
+
+  get passwordError(): string {
+    return first(keys(this.registerForm.get('passwordGroup').get('password').errors)) || '';
+  }
+
+  get confirmPasswordError(): string {
+    return first(keys(this.registerForm.get('passwordGroup').errors)) || '';
   }
 
   ngOnInit(): void {

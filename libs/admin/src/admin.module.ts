@@ -27,7 +27,6 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormlyPasswordComponent } from './components/formly-password/formly-password.component';
 import { FormlyModule } from '@ngx-formly/core';
 
 const COMPONENTS = [
@@ -38,8 +37,7 @@ const COMPONENTS = [
   UserEditDialogComponent,
   UserAddComponent,
 //  ConnectFormDirective,
-  UserAddDialogComponent,
-  FormlyPasswordComponent
+  UserAddDialogComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -64,14 +62,7 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormlyModule.forChild({
-      types: [
-      {
-        name: 'password',
-        component: FormlyPasswordComponent
-      }
-    ]
-    }),
+    FormlyModule,
     FormlyMaterialModule,
     RouterModule
   ],

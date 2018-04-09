@@ -1,16 +1,7 @@
 import { Authenticate } from './../../models/user.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { FormBuilder, Validators } from '@angular/forms';
+import { first, keys } from 'lodash';
 
 @Component({
   selector: 'app-login',
@@ -50,10 +41,20 @@ export class LoginComponent {
     Validators.email
   ]);
 
-  public matcher = new MyErrorStateMatcher();
-
   get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
+  }
+
+  get emailError(): string {
+    return first(keys(this.loginForm.get('email').errors)) || '';
+  }
+
+  get forgotError(): string {
+    return first(keys(this.forgotControl.errors)) || '';
+  }
+
+  get passwordError(): string {
+    return first(keys(this.loginForm.get('password').errors)) || '';
   }
 
   constructor(private _formBuilder: FormBuilder) {}
