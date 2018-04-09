@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Authenticate } from '../../models/user.model';
+import { ConfirmValidParentMatcher, CustomValidators } from './password-match.validator';
+import { first, keys } from 'lodash';
 
 @Component({
   selector: 'app-register',
@@ -8,38 +10,58 @@ import { Authenticate } from '../../models/user.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  public confirmValidParentMatcher = new ConfirmValidParentMatcher();
   public hide = true;
-  public form = this.formBuilder.group({
-    firstName: this.formBuilder.control(''),
-    lastName: this.formBuilder.control(''),
-    email: this.formBuilder.control('', [Validators.required, Validators.email]),
-    password: this.formBuilder.control('')
+  public registerForm = this.formBuilder.group({
+    firstName: this.formBuilder.control('', [Validators.required]),
+    lastName: this.formBuilder.control('', [Validators.required]),
+    emailGroup: this.formBuilder.group({
+      email: this.formBuilder.control('', [Validators.required, Validators.email]),
+      confirmEmail: this.formBuilder.control('', Validators.required)
+    }, { validator: CustomValidators.childrenEqual }),
+    passwordGroup: this.formBuilder.group({
+      password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword: this.formBuilder.control('', Validators.required)
+    }, { validator: CustomValidators.childrenEqual })
   });
 
   @Output() public submitted = new EventEmitter<Authenticate>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get visibility(): string {
     return this.hide ? 'action:ic_visibility_off_24px' : 'action:ic_visibility_24px';
   }
 
-  get emailErrorMessage(): string {
-    let errorMessage = '';
-    if (this.form.controls.email.hasError('required')) {
-      errorMessage = 'You must enter a value';
-    } else if (this.form.controls.email.hasError('email')) {
-      errorMessage = 'Not a valid email';
-    }
+  get firstNameError(): string {
+    return first(keys(this.registerForm.get('firstName').errors)) || '';
+  }
 
-    return errorMessage;
+  get lastNameError(): string {
+    return first(keys(this.registerForm.get('lastName').errors)) || '';
+  }
+
+  get emailError(): string {
+    return first(keys(this.registerForm.get('emailGroup').get('email').errors)) || '';
+  }
+
+  get confirmEmailError(): string {
+    return first(keys(this.registerForm.get('emailGroup').errors)) || '';
+  }
+
+  get passwordError(): string {
+    return first(keys(this.registerForm.get('passwordGroup').get('password').errors)) || '';
+  }
+
+  get confirmPasswordError(): string {
+    return first(keys(this.registerForm.get('passwordGroup').errors)) || '';
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(() => ({}));
+    this.registerForm.valueChanges.subscribe(() => ({}));
   }
 
   onSubmit(): void {
-    this.submitted.emit(this.form.value);
+    this.submitted.emit(this.registerForm.value);
   }
 }

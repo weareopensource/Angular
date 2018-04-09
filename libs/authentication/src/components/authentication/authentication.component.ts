@@ -24,6 +24,10 @@ export class AuthenticationComponent {
     this.store.dispatch(new fromAuthentication.Login(authenticate));
   }
 
+  onEmail(email: string): void {
+    this.store.dispatch(new fromAuthentication.ChangePassword({ email }));
+  }
+
   onRegister(registration: any): void {
     this.store.dispatch(new fromAuthentication.Register(registration));
   }

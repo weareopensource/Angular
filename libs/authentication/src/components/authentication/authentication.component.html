@@ -1,14 +1,15 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <mat-card>
     <mat-tab-group>
-      <mat-tab label="Login">
+      <mat-tab label="Login" i18n-label="@@loginTab">
         <app-login
-          (submitted)="onLogin($event)"
+          (loginSubmitted)="onLogin($event)"
+          (emailSubmitted)="onEmail($event)"
           [pending]="pending$ | async"
           [errorMessage]="error$ | async">
         </app-login>
       </mat-tab>
-      <mat-tab label="Register">
+      <mat-tab label="Register" i18n-label="@@registerTab">
         <app-register
         (submitted)="onRegister($event)">
       </app-register>

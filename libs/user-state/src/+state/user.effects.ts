@@ -161,7 +161,7 @@ export class UserEffects {
   saveDescription$ = this._actions$
     .ofType(fromUsers.SAVE_DESCRIPTION)
     .pipe(
-      map(toPayload), tap(payload => sessionStorage.setItem(`user${payload.userId}Desciption`, payload.text))
+      map(toPayload), tap(payload => localStorage.setItem(`user${payload.userId}Desciption`, payload.text))
     );
 
   constructor(private _actions$: Actions, private _userApiService: UserApiService, private snackBar: MatSnackBar) { }

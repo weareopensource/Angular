@@ -20,7 +20,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
       return next.handle(nextRequest);
     }
 
-    const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
+    const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
     if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
       this.store.dispatch(new fromAuthentication.Logout('Token expired'));
 

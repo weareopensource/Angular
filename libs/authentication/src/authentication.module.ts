@@ -5,6 +5,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { DisableControlDirective } from './directives/disable-control/disable-control.directive';
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -19,13 +22,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RootAuthenticationRoutingModule } from '@labdat/authentication-routing';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
-import { CustomFormlyModule } from '@labdat/custom-formly';
 
 const COMPONENTS = [
   AuthenticationComponent,
   LoginComponent,
   RegisterComponent,
-  ProfileComponent
+  ProfileComponent,
+  PasswordResetComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -46,13 +49,12 @@ const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
     FlexLayoutModule,
     FormlyModule,
-    CustomFormlyModule,
 
     FormlyMaterialModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ ...COMPONENTS ]
+  declarations: [ ...COMPONENTS, DisableControlDirective ]
 })
 export class AuthenticationModule { }
 

@@ -31,7 +31,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
     return this.store.select(getLoggedIn)
     .pipe(
       map(loggedIn => {
-        const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
+        const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
           if (path === 'auth' && route.children[0].url[0].path !== 'profile') {
             this.store.dispatch(new fromRouter.Go({ path: ['home'] }));

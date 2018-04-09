@@ -35,4 +35,15 @@ export class AuthenticationApiService {
     return this.http.put(`${this.baseUrl}/users`, user);
     //      .do(token => this.setAuthorizationHeader(token));
   }
+
+  changePassword(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/forgot`, { email });
+    //      .do(token => this.setAuthorizationHeader(token));
+  }
+
+  resetPassword(newPassword: string, token: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/reset`, { newPassword, token });
+    //      .do(token => this.setAuthorizationHeader(token));
+  }
+
 }

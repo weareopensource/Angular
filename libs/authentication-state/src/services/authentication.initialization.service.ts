@@ -8,7 +8,7 @@ export class AuthenticationInitializationService {
   constructor(private store: Store<AuthenticationState>) {}
 
   loadUser(): void {
-    const tokenExpiresIn = Number(sessionStorage.getItem('tokenExpiresIn'));
+    const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
     if (tokenExpiresIn) {
       if (tokenExpiresIn > Date.now()) {
         this.store.dispatch(new fromAutentication.LoadUser());

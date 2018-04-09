@@ -161,7 +161,7 @@ export class TaskEffects {
   saveDescription$ = this._actions$
     .ofType(fromTasks.SAVE_DESCRIPTION)
     .pipe(
-      map(toPayload), tap(payload => sessionStorage.setItem(`task${payload.taskId}Desciption`, payload.text))
+      map(toPayload), tap(payload => localStorage.setItem(`task${payload.taskId}Desciption`, payload.text))
     );
 
   constructor(private _actions$: Actions, private _taskApiService: TaskApiService, private snackBar: MatSnackBar) { }
