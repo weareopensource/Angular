@@ -1,33 +1,41 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="stretch stretch">
-  <!--mat-radio-group name="gender" formControlName="gender" required>
-    <mat-radio-button name="gender" value="Female">
-      Mrs.
-    </mat-radio-button>
-    <mat-radio-button name="gender" value="Male">
-      Mr.
-    </mat-radio-button>
-  </mat-radio-group>
-  <br-->
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="stretch stretch">
   <mat-form-field>
     <input matInput placeholder="First Name" formControlName="firstName">
-    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>
+    <mat-error i18n>{registerForm.controls['firstName'].errors, select, required {You  must enter a value}}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Last Name" formControlName="lastName">
-    <mat-error *ngIf="form.controls['email'].invalid" i18n>You must enter a value</mat-error>
+    <mat-error i18n>{registerForm.controls['lastName'].errors, select, required {You  must enter a value}}</mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Email" formControlName="email">
-    <mat-error *ngIf="form.controls['email'].invalid" i18n>{{emailErrorMessage}}</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
-    <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
-    <mat-error *ngIf="form.controls['password'].invalid" i18n>You must enter a value</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'">
-  </mat-form-field>
+  <fieldset formGroupName="emailGroup">
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error i18n>{registerForm.controls['emailGroup'].controls['email'].errors, select, required {You  must enter a value} email {Wrong Email format}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Confirm Email" formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-error i18n>{registerForm.controls['emailGroup'].errors, select, required {You  must enter a value} childrenNotEqual {Emails don't match}}</mat-error>
+    </mat-form-field>
+  </fieldset>
+  <fieldset formGroupName="passwordGroup">
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+      <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
+      <mat-error i18n>{registerForm.controls['passwordGroup'].controls['password'].errors, select, required {You must enter a value} minLength {A minimum of 8 caraters are required}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="confirmPassword"
+        placeholder="Confirm Password"
+        [type]="hide ? 'password' : 'text'"
+        [disableControl]="registerForm.controls['passwordGroup'].controls['password'].invalid"
+        [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
+      <mat-error i18n>{registerForm.controls['passwordGroup'].controls['confirmPassword'].errors, select, required {You must enter a value} childrenNotEqual {Passwords don't match}}</mat-error>
+    </mat-form-field>
+  </fieldset>
   <br>
-  <button type="submit" [disabled]="!form.valid" mat-raised-button i18n>Register</button>
+  <button type="submit" [disabled]="!registerForm.valid" mat-raised-button i18n>Register</button>
 </form>

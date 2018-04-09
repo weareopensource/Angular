@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { DisableControlDirective } from './directives/disable-control/disable-control.directive';
 
 import {
   MatButtonModule,
@@ -55,7 +56,7 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ ...COMPONENTS ]
+  declarations: [ ...COMPONENTS, DisableControlDirective ]
 })
 export class AuthenticationModule { }
 
