@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationState, fromAuthentication } from '@labdat/authentication-state';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -15,8 +15,8 @@ export class PasswordResetComponent implements OnInit {
   public hide = true;
   public confirmValidParentMatcher = new ConfirmValidParentMatcher();
   public resetPasswordForm = this._formBuilder.group({
-    password: this._formBuilder.control(''),
-    confirmPassword: this._formBuilder.control('')
+    password: this._formBuilder.control('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: this._formBuilder.control('', Validators.required)
   }, { validator: CustomValidators.childrenEqual });
 
   constructor(
