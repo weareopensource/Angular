@@ -15,7 +15,7 @@ import { RouterStateModule } from '@labdat/common/router-state';
 // import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { taskConfiguration, TaskRoutingModule, TaskStateModule } from '@labdat/task';
 // import { FormlyModule } from '@ngx-formly/core';
-import { AdminRoutingModule, UserStateModule } from '@labdat/admin';
+import { AdministrationRoutingModule, UserStateModule } from '@labdat/administration';
 import { MatIconModule } from '@angular/material';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { MatIconModule } from '@angular/material';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     AuthenticationRoutingModule.forRoot(),
-    AdminRoutingModule.forRoot(),
+    AdministrationRoutingModule.forRoot(),
     TaskRoutingModule.forRoot(),
 
     CoreStateModule.forRoot([ coreConfiguration.self, taskConfiguration.core ]),

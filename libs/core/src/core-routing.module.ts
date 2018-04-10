@@ -35,7 +35,7 @@ const coreRoutes: Routes = [
       },
       {
         path: 'admin',
-        loadChildren: '../../admin/src/routing-admin.module#RoutingAdminModule',
+        loadChildren: '../../administration/src/routing-administration.module#RoutingAdministrationModule',
         canActivate: [ AuthenticationGuardService, RoleGuardService ],
         data: {
           page: 'administration',

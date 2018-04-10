@@ -1,5 +1,5 @@
-export { adminConfiguration } from './src/admin.configuration';
-export { AdminRoutingModule } from './src/admin-routing.module';
+export { administrationConfiguration } from './src/administration.configuration';
+export { AdministrationRoutingModule } from './src/administration-routing.module';
 export { UserStateModule } from './src/user-state.module';
 export {
   selectUserIds,

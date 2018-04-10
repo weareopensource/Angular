@@ -3,7 +3,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-// import { routesAnimation } from '@labdat/animations';
 import * as fromUser from '../../+state/user.actions';
 import { UserState } from '../../+state/user.interfaces';
 import { selectAllUsers } from '../../+state/user.selectors';
@@ -16,16 +15,11 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
-import { tap } from 'rxjs/operators';
 
-/**
- * @title Table with filtering
- */
 @Component({
   selector: 'app-users-list',
   styleUrls: ['./users-list.component.scss'],
   templateUrl: './users-list.component.html'
-//  animations: [routesAnimation]
 })
 export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
@@ -51,7 +45,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe(users => (this.dataSource.data = users));
     this.subscriptions = allUsersSubscriptions;
 
-    const viewSubscription = this.view$.pipe(tap(console.log))
+    const viewSubscription = this.view$
     .subscribe(userId => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
     this.subscriptions.add(viewSubscription);
 
@@ -72,13 +66,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const editSubscription = this.edit$
     .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', userId, 'edit']})));
-      //    this.store.dispatch(new fromRouter.Go({ path: ['/', 'users', id] }))
     this.subscriptions.add(editSubscription);
-/*
-    const addSubscription = this.add$
-    .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', 'add'] })));
-    this.subscriptions.add(addSubscription);
-*/
   }
 
   ngAfterViewInit(): void {
@@ -87,8 +75,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 

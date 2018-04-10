@@ -40,7 +40,8 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
     .take(1)
     .subscribe(val => this.formGroupDirective.form.patchValue(val));
 
-    this.formChange = this.formGroupDirective.form.valueChanges.pipe(debounceTime(this.debounce)).subscribe(value => {
+    this.formChange = this.formGroupDirective.form.valueChanges.pipe(debounceTime(this.debounce))
+    .subscribe(value => {
       this.store.dispatch(new fromConnectForm.UpdateForm({ value, path: this.path }));
     });
 

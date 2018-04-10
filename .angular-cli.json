@@ -73,8 +73,8 @@
       "appRoot": ""
     },
     {
-      "name": "admin",
-      "root": "libs/admin/src",
+      "name": "administration",
+      "root": "libs/administration/src",
       "test": "../../../test.js",
       "appRoot": ""
     }

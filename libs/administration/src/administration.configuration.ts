@@ -5,7 +5,7 @@ export interface UserConfiguration {
   self: { roles: Array<string>; };
 }
 
-export const adminConfiguration: UserConfiguration = {
+export const administrationConfiguration: UserConfiguration = {
   core: {
     sidenav: [{
       order: 2,

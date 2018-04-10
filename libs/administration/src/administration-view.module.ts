@@ -1,4 +1,3 @@
-// import { ConnectFormDirective } from '@labdat/connect-form/src/components/directives';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/detail/user-detail.component';
 import { UsersListComponent } from './components/list/users-list.component';
@@ -35,7 +34,6 @@ const COMPONENTS = [
   UserEditComponent,
   UserEditDialogComponent,
   UserAddComponent,
-//  ConnectFormDirective,
   UserAddDialogComponent
 ];
 
@@ -71,4 +69,4 @@ const MATERIAL_MODULES = [
     UserAddDialogComponent
   ]
 })
-export class AdminViewModule { }
+export class AdministrationViewModule { }

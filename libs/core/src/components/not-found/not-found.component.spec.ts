@@ -10,7 +10,8 @@ describe('NotFoundComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [NotFoundComponent]
-      }).compileComponents();
+      })
+      .compileComponents();
     })
   );
 
@@ -21,6 +22,7 @@ describe('NotFoundComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+    .toBeTruthy();
   });
 });

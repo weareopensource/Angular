@@ -37,6 +37,10 @@ if (!isEmpty(taskConfiguration.self.roles)) {
 }
 */
 
+@NgModule()
+export class RootAuthenticationRoutingModule { }
+
+// tslint:disable-next-line:max-classes-per-file
 @NgModule({
   imports: [ RouterModule.forChild(authenticationRoutes) ]
 })
@@ -52,7 +56,3 @@ export class AuthenticationRoutingModule {
     };
   }
 }
-
-// tslint:disable-next-line:max-classes-per-file
-@NgModule()
-export class RootAuthenticationRoutingModule { }

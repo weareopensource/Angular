@@ -10,12 +10,12 @@
     <div *ngIf="isSidenavOpened$ | async; then sidenavOpen else sidenavClose"></div>
     <ng-template #sidenavOpen>
       <button class="menu-trigger" mat-icon-button (click)="closeSidenav()">
-          <mat-icon svgIcon="navigation:ic_chevron_left_24px" matTooltip="close"></mat-icon>
+          <mat-icon svgIcon="navigation:ic_chevron_left_24px" matTooltip="close" i18n-matTooltip="@@close"></mat-icon>
       </button>
     </ng-template>
     <ng-template #sidenavClose>
       <button class="menu-trigger" mat-icon-button (click)="openSidenav()">
-        <mat-icon svgIcon="navigation:ic_chevron_right_24px" matTooltip="open"></mat-icon>
+        <mat-icon svgIcon="navigation:ic_chevron_right_24px" matTooltip="open" i18n-matTooltip="@@open"></mat-icon>
       </button>
     </ng-template>
   </mean2-sidenav>
@@ -24,7 +24,7 @@
       <h1>{{ title$ | async }}</h1>
       <span class="toolbar-spacer"></span>
       <button mat-icon-button *ngIf="isLoggedIn$ | async" [matMenuTriggerFor]="profileMenu">
-        <mat-icon svgIcon="social:ic_person_24px" matTooltip="Profile" [ngClass]="{ 'red': isAdmin$ | async }"></mat-icon>
+        <mat-icon svgIcon="social:ic_person_24px" matTooltip="menu" i18n-matTooltip="@@menu" [ngClass]="{ 'red': isAdmin$ | async }"></mat-icon>
       </button>
       <mat-menu #profileMenu="matMenu" yPosition="above" [overlapTrigger]="false">
         <button mat-menu-item (click)="editProfile()" i18n="@@editProfile">Edit Profile</button>
@@ -37,7 +37,7 @@
       <div *ngIf="isLoggedIn$ | async; then logoutButton else loginButton"></div>
       <ng-template #logoutButton>
         <button mat-icon-button Logout (click)="logout()">
-          <mat-icon svgIcon="action:ic_power_settings_new_24px" matTooltip="exit"></mat-icon>
+          <mat-icon svgIcon="action:ic_power_settings_new_24px" matTooltip="exit" i18n-matTooltip="@@exit"></mat-icon>
         </button>
       </ng-template>
       <ng-template #loginButton>

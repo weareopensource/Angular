@@ -41,18 +41,18 @@ const adminsRoutes: Routes = [
   }
 ];
 
+@NgModule()
+export class RootAdministrationRoutingModule { }
+
+// tslint:disable-next-line:max-classes-per-file
 @NgModule({
   imports: [ RouterModule.forChild(adminsRoutes) ]
 })
-export class AdminRoutingModule {
+export class AdministrationRoutingModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootAdminRoutingModule,
+      ngModule: RootAdministrationRoutingModule,
       providers: [ UserGuardService ]
     };
   }
 }
-
-// tslint:disable-next-line:max-classes-per-file
-@NgModule()
-export class RootAdminRoutingModule { }

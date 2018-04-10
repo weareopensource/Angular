@@ -3,7 +3,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-//import { routesAnimation } from '@labdat/animations';
 import * as fromTask from '../../+state/task.actions';
 import { selectAllTasks } from '../../+state/task.selectors';
 import { TaskState } from '../../+state/task.interfaces';

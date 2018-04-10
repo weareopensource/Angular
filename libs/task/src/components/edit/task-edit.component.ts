@@ -13,7 +13,6 @@ import { delay } from 'rxjs/operators/delay';
 import { cloneDeep } from 'lodash';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { tap } from 'rxjs/operators/tap';
 
 @Component({
   selector: 'app-task-edit',
@@ -30,7 +29,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     .pipe(
       first(),
       delay(0),
-      tap(console.log),
       map(task => this.dialog.open(TaskEditDialogComponent, {
         width: '700px',
         data: { task: cloneDeep(task) }
