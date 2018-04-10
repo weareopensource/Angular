@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Authenticate } from '../../models/user.model';
+import { Authenticate } from '../../models/authenticate.model';
 import { ConfirmValidParentMatcher, CustomValidators } from './password-match.validator';
 import { first, keys } from 'lodash';
 

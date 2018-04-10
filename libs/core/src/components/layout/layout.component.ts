@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { intersection, isEmpty, values } from 'lodash';
-import { fromCore, getLogo, getMenuItems, getShowSidenav, getTitle } from '@labdat/core-state';
-import { fromAuthentication, getLoggedIn, getUser } from '@labdat/authentication-state';
+import * as fromCore from '../../+state/actions/core-state.actions';
+import { getLogo, getMenuItems, getShowSidenav, getTitle } from '../../+state/selectors/core-state.selectors';
+import { fromAuthentication, getLoggedIn, getUser, User } from '@labdat/authentication';
 import { map } from 'rxjs/operators/map';
-import { routesAnimation } from '@labdat/animations';
-import { fromRouter } from '@labdat/router-state';
-import { User } from '@labdat/data-models';
+import { routesAnimation } from '../../animations/routes.animation';
+import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
   selector: 'layout-root',

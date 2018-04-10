@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { fromRouter } from '@labdat/router-state';
+import { fromRouter } from '@labdat/common/router-state';
 import { Store } from '@ngrx/store';
-import { selectSelectedUser } from '@labdat/user-state';
+import { selectSelectedUser } from '../../+state/user.selectors';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditDialogComponent } from './user-edit.dialog.component';
-import { fromUser, selectSelectedUser, UserState } from '@labdat/user-state';
+import * as fromUser from '../../+state/user.actions';
+import { UserState } from '../../+state/user.interfaces';
+import { selectSelectedUser } from '../../+state/user.selectors';
 import { Store } from '@ngrx/store';
-import { fromRouter } from '@labdat/router-state';
-import { User } from '@labdat/data-models';
+import { fromRouter } from '@labdat/common/router-state';
+import { User } from '../../models/user.model';
 import { first } from 'rxjs/operators/first';
 import { Subscription } from 'rxjs/Subscription';
 import { delay } from 'rxjs/operators/delay';

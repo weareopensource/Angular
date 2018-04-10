@@ -44,7 +44,7 @@
     },
     {
       "name": "environments",
-      "root": "libs/environments/src",
+      "root": "libs/common/environments/src",
       "test": "../../../test.js",
       "appRoot": ""
     },
@@ -55,38 +55,14 @@
       "appRoot": ""
     },
     {
-      "name": "authentication-routing",
-      "root": "libs/authentication-routing/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "authentication-state",
-      "root": "libs/authentication-state/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
       "name": "core",
       "root": "libs/core/src",
       "test": "../../../test.js",
       "appRoot": ""
     },
     {
-      "name": "core-state",
-      "root": "libs/core-state/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
       "name": "router-state",
-      "root": "libs/router-state/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "sidenav",
-      "root": "libs/sidenav/src",
+      "root": "libs/common/router-state/src",
       "test": "../../../test.js",
       "appRoot": ""
     },
@@ -97,38 +73,8 @@
       "appRoot": ""
     },
     {
-      "name": "task-routing",
-      "root": "libs/task-routing/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "task-state",
-      "root": "libs/task-state/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
       "name": "admin",
       "root": "libs/admin/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "admin-routing",
-      "root": "libs/admin-routing/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "user-state",
-      "root": "libs/user-state/src",
-      "test": "../../../test.js",
-      "appRoot": ""
-    },
-    {
-      "name": "animations",
-      "root": "libs/animations/src",
       "test": "../../../test.js",
       "appRoot": ""
     }

@@ -1,4 +1,4 @@
-import { MenuItem } from '@labdat/data-models';
+import { MenuItem } from '@labdat/core';
 
 export interface UserConfiguration {
   core: { sidenav: Array<MenuItem> };

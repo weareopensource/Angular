@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AuthenticationState,
-  fromAuthentication,
-  getUser
-} from '@labdat/authentication-state';
+import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
+import { getUser } from '../../+state/selectors/authentication-state.selectors';
+import { AuthenticationState } from '../../+state/states/authentication-state.state';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { first } from 'rxjs/operators/first';
-import { User } from '@labdat/data-models';
+import { User } from '../../models/user.model';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 import { Subject } from 'rxjs/Subject';
-import { fromRouter } from '@labdat/router-state';
+import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
   selector: 'app-profile',

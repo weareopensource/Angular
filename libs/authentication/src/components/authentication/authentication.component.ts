@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AuthenticationState } from '../../+state/states/authentication-state.state';
+import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
 import {
-  AuthenticationState,
-  fromAuthentication,
   getLoginPageError,
   getLoginPagePending
-} from '@labdat/authentication-state';
+} from '../../+state/selectors/authentication-state.selectors';
 import { Store } from '@ngrx/store';
-import { Authenticate } from '../../models/user.model';
+import { Authenticate } from '../../models/authenticate.model';
 
 @Component({
   selector: 'app-auth',

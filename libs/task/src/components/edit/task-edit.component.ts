@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskEditDialogComponent } from './task-edit.dialog.component';
-import { fromTask, selectCurrentTask, TaskState } from '@labdat/task-state';
+import * as fromTask from '../../+state/task.actions';
+import { selectCurrentTask } from '../../+state/task.selectors';
+import { TaskState } from '../../+state/task.interfaces';
 import { Store } from '@ngrx/store';
-import { fromRouter } from '@labdat/router-state';
-import { Task } from '@labdat/data-models';
+import { fromRouter } from '@labdat/common/router-state';
+import { Task } from '../../models/task.model';
 import { first } from 'rxjs/operators/first';
 import { Subscription } from 'rxjs/Subscription';
 import { delay } from 'rxjs/operators/delay';

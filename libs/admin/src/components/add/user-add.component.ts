@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserAddDialogComponent } from './user-add.dialog.component';
-import { fromUser, UserState } from '@labdat/user-state';
+import { UserState } from '../../+state/user.interfaces';
+import * as fromUser from '../../+state/user.actions';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
-import { User } from '@labdat/data-models';
-import { fromRouter } from '@labdat/router-state';
+import { User } from '../../models/user.model';
+import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
   selector: 'app-user-add',
