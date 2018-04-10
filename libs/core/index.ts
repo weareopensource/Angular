@@ -12,7 +12,4 @@ export {
   getLogo
 } from './src/+state/selectors/core-state.selectors';
 export { CoreState } from './src/+state/states/core-state.state';
-export { HomeComponent } from './src/components/home/home.component';
-export { LayoutComponent } from './src/components/layout/layout.component';
-export { NotFoundComponent } from './src/components/not-found/not-found.component';
 export { MenuItem } from './src/models/menu-item.model';

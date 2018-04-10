@@ -20,17 +20,12 @@ export function userInitialisationFactory(userInitialization): any {
     MatSnackBarModule,
     StoreModule.forFeature('user', userReducer),
     EffectsModule.forFeature([UserEffects])
-  ],
-  providers: [
-    UserInitializationService,
-    UserApiService,
-    { provide: APP_INITIALIZER, useFactory: userInitialisationFactory, deps: [UserInitializationService], multi: true }
   ]
 })
 export class UserStateModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootUserStateModule,
+      ngModule: UserStateModule,
       providers: [
         UserInitializationService,
         UserApiService,
@@ -44,7 +39,3 @@ export class UserStateModule {
     };
   }
 }
-
-// tslint:disable-next-line:max-classes-per-file
-@NgModule()
-export class RootUserStateModule { }
