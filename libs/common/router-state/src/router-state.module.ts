@@ -5,16 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './+state/router-state.effects';
 import { CustomSerializer } from './services/custom-serializer.service';
 
-@NgModule()
-export class RouterStateModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: RootRouterStateModule,
-      providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }]
-    };
-  }
-}
-
 @NgModule({
   imports: [
     StoreModule.forFeature('router', routerReducer),
@@ -22,4 +12,11 @@ export class RouterStateModule {
     StoreRouterConnectingModule
   ]
 })
-export class RootRouterStateModule {}
+export class RouterStateModule {
+  public static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: RouterStateModule,
+      providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }]
+    };
+  }
+}
