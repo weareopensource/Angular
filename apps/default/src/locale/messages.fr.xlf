@@ -2,6 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="fr" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="resetPassword" datatype="html">
+        <source>Reset Password</source>
+        <target>Réinitilisation du mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="loginTab" datatype="html">
         <source>Login</source>
         <target>Connexion</target>

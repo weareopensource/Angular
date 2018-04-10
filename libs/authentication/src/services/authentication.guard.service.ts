@@ -34,6 +34,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
         if (loggedIn) {
           if (path === 'auth' && route.children[0].url[0].path !== 'profile') {
             this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
+
             return false;
           }
 

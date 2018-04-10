@@ -38,18 +38,117 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="emptyValueError" datatype="html">
-        <source>You must enter a value</source>
+      <trans-unit id="resetPassword" datatype="html">
+        <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordPlaceholder" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
           <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordError" datatype="html">
+        <source> <x id="ICU" equiv-text="{passwordError, select, required {...} minlength {...}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cebb94290c1ab9172b6135b6630308c081c03e38" datatype="html">
+        <source>{VAR_SELECT, select, required {You must enter a value} minlength {A minimum of 8 caraters are required} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmPasswordPlaceholder" datatype="html">
+        <source>Confirm Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmPasswordError" datatype="html">
+        <source> <x id="ICU" equiv-text="{confirmPasswordError, select, required {...} childrenNotEqual {...}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="29cd98660a815152868756abed884a762b9f8e01" datatype="html">
+        <source>{VAR_SELECT, select, required {You must enter a value} childrenNotEqual {Passwords don&apos;t match} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="submitButton" datatype="html">
         <source>Submit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addUser" datatype="html">
+        <source>Add User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addButton" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editUser" datatype="html">
+        <source>Edit User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/admin/src/components/edit/user-edit.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteUser" datatype="html">
@@ -80,28 +179,17 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="addUser" datatype="html">
-        <source>Add User</source>
+      <trans-unit id="addTask" datatype="html">
+        <source>Add Task</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="addButton" datatype="html">
-        <source>Add</source>
+      <trans-unit id="editTask" datatype="html">
+        <source>Edit Task</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/admin/src/components/add/user-add.dialog.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="editUser" datatype="html">
-        <source>Edit User</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/admin/src/components/edit/user-edit.dialog.component.ts</context>
+          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
@@ -152,20 +240,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/task/src/components/list/task-list.component.ts</context>
           <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="addTask" datatype="html">
-        <source>Add Task</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="editTask" datatype="html">
-        <source>Edit Task</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="editProfile" datatype="html">
@@ -228,6 +302,10 @@
           <context context-type="linenumber">4</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
           <context context-type="linenumber">13</context>
         </context-group>
@@ -239,37 +317,11 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="passwordPlaceholder" datatype="html">
-        <source>Password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="passwordError" datatype="html">
-        <source> <x id="ICU" equiv-text="{passwordError, select, required {...} minlength {...}}"/></source>
+      <trans-unit id="4090475bb2460e09eae078af8ac06bb2eb53a9f2" datatype="html">
+        <source>{VAR_SELECT, select, required {You must enter a value} }</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
           <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cebb94290c1ab9172b6135b6630308c081c03e38" datatype="html">
-        <source>{VAR_SELECT, select, required {You must enter a value} minlength {A minimum of 8 caraters are required} }</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loginButton" datatype="html">
@@ -291,6 +343,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
           <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b76a64604e1a84877e373fbcb913e1e66c1167e0" datatype="html">
+        <source>{VAR_SELECT, select, required {You must enter a value} email {Wrong Email format} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="firstNamePlaceholder" datatype="html">
@@ -361,27 +420,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
           <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="confirmPasswordPlaceholder" datatype="html">
-        <source>Confirm Password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">37</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="confirmPasswordError" datatype="html">
-        <source> <x id="ICU" equiv-text="{confirmPasswordError, select, required {...} childrenNotEqual {...}}"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="29cd98660a815152868756abed884a762b9f8e01" datatype="html">
-        <source>{VAR_SELECT, select, required {You must enter a value} childrenNotEqual {Passwords don&apos;t match} }</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
-          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="registerButton" datatype="html">

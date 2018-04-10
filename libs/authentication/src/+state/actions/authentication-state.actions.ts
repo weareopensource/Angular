@@ -46,90 +46,108 @@ export class Login implements Action {
   constructor(public payload: Authenticate) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
   constructor(public payload: { user: User; tokenExpiresIn: number }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class LoginFailure implements Action {
   readonly type = LOGIN_FAILURE;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class Register implements Action {
   readonly type = REGISTER;
   constructor(public payload: Authenticate) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class RegisterSuccess implements Action {
   readonly type = REGISTER_SUCCESS;
   constructor(public payload: { user: User; tokenExpiresIn: number }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class RegisterFailure implements Action {
   readonly type = REGISTER_FAILURE;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class Logout implements Action {
   readonly type = LOGOUT;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UserLoadSuccess implements Action {
   readonly type = USER_LOAD_SUCCESS;
   constructor(public payload: { user: User }) { }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UserLoadFailure implements Action {
   readonly type = USER_LOAD_FAILURE;
   constructor(public payload: any) { }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UpdateUser implements Action {
   readonly type = UPDATE_USER;
   constructor(public payload: { user: User }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UserUpdateSuccess implements Action {
   readonly type = USER_UPDATE_SUCCESS;
   constructor(public payload: { user: User }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UserUpdateFailure implements Action {
   readonly type = USER_UPDATE_FAILURE;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ChangePassword implements Action {
   readonly type = CHANGE_PASSWORD;
   constructor(public payload?: { email: string }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ChangePasswordSuccess implements Action {
   readonly type = CHANGE_PASSWORD_SUCCESS;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ChangePasswordFailure implements Action {
   readonly type = CHANGE_PASSWORD_FAILURE;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ResetPassword implements Action {
   readonly type = RESET_PASSWORD;
   constructor(public payload: { newPassword: string, token: string }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ResetPasswordSuccess implements Action {
   readonly type = RESET_PASSWORD_SUCCESS;
   constructor(public payload?: any) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class ResetPasswordFailure implements Action {
   readonly type = RESET_PASSWORD_FAILURE;
   constructor(public payload?: any) {}
