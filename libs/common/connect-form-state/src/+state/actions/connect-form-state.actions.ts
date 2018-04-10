@@ -13,21 +13,25 @@ export class InitForm implements Action {
   constructor(public payload: { path: string }) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class SubmitForm implements Action {
   readonly type = FORM_SUBMIT;
   constructor(public payload: { path: string }) { }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class SubmitFormSuccess implements Action {
   readonly type = FORM_SUBMIT_SUCCESS;
   constructor(public payload: { path: string }) { }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class SubmitFormError implements Action {
   readonly type = FORM_SUBMIT_ERROR;
   constructor(public payload: { path: string; error: string }) { }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UpdateForm implements Action {
   readonly type = UPDATE_FORM;
   constructor(public payload: { path: string; value: any }) { }

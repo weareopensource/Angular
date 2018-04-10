@@ -10,27 +10,27 @@
   </div>
   <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="_id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@id">ID</mat-header-cell>
       <mat-cell *matCellDef="let row" [innerHtml]="row._id"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@firstName">First Name</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.firstName"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@lastName">Last Name</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.lastName"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>User Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@userName">User Name</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.username"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@email">Email</mat-header-cell>
       <mat-cell draggable="true" *matCellDef="let row" [innerHtml]="row.email"></mat-cell>
     </ng-container>
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef i18n="@@action">Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-icon-button (click)="view$.next(row._id)">
           <mat-icon svgIcon="action:ic_visibility_24px"></mat-icon>

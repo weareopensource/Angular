@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-//import { routesAnimation } from '@labdat/animations';
+// import { routesAnimation } from '@labdat/animations';
 import * as fromUser from '../../+state/user.actions';
 import { UserState } from '../../+state/user.interfaces';
 import { selectAllUsers } from '../../+state/user.selectors';

@@ -2,7 +2,7 @@ import { Directive, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormGroupDirective } from '@angular/forms';
 import { Subscription } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
-import { Actions, toPayload } from '@ngrx/effects';
+import { Actions } from '@ngrx/effects';
 
 import { map } from 'rxjs/operators/map';
 import { filter } from 'rxjs/operators/filter';
@@ -15,13 +15,17 @@ import { ConnectFormStateSelectors } from '@labdat/connect-form-state/src/+state
   selector: '[connectForm]'
 })
 export class ConnectFormDirective implements OnInit, OnDestroy {
-  @Input('connectForm') path: string;
+  @Input('connectForm')
+  path: string;
 
-  @Input() debounce = 300;
+  @Input()
+  debounce = 300;
 
-  @Output() error = new EventEmitter();
+  @Output()
+  error = new EventEmitter();
 
-  @Output() success = new EventEmitter();
+  @Output()
+  success = new EventEmitter();
 
   public formChange: Subscription;
   public formSuccess: Subscription;
@@ -42,7 +46,9 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
 
     this.formSuccess = this.actions$
       .ofType(fromConnectForm.FORM_SUBMIT_SUCCESS)
-      .pipe(map(toPayload), filter(payload => payload.path === this.path))
+      .pipe(
+        map((action: any) => action.payload),
+        filter(payload => payload.path === this.path))
       .subscribe(() => {
         this.formGroupDirective.form.reset();
         this.success.emit();
@@ -51,7 +57,7 @@ export class ConnectFormDirective implements OnInit, OnDestroy {
     this.formError = this.actions$
       .ofType(fromConnectForm.FORM_SUBMIT_ERROR)
       .pipe(
-        map(toPayload),
+        map((action: any) => action.payload),
         filter(payload => payload.path === this.path)
       )
       .subscribe(payload => this.error.emit(payload.error));

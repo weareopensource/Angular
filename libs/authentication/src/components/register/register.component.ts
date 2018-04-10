@@ -34,27 +34,57 @@ export class RegisterComponent implements OnInit {
   }
 
   get firstNameError(): string {
-    return first(keys(this.registerForm.get('firstName').errors)) || '';
+    return first(
+      keys(
+        this.registerForm.get('firstName').errors
+      )
+    ) || '';
   }
 
   get lastNameError(): string {
-    return first(keys(this.registerForm.get('lastName').errors)) || '';
+    return first(
+      keys(
+        this.registerForm.get('lastName').errors
+      )
+    ) || '';
   }
 
   get emailError(): string {
-    return first(keys(this.registerForm.get('emailGroup').get('email').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('emailGroup')
+        .get('email').errors
+      )
+    ) || '';
   }
 
   get confirmEmailError(): string {
-    return first(keys(this.registerForm.get('emailGroup').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('emailGroup').errors
+      )
+    ) || '';
   }
 
   get passwordError(): string {
-    return first(keys(this.registerForm.get('passwordGroup').get('password').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('passwordGroup')
+        .get('password').errors
+      )
+    ) || '';
   }
 
   get confirmPasswordError(): string {
-    return first(keys(this.registerForm.get('passwordGroup').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('passwordGroup').errors
+      )
+    ) || '';
   }
 
   ngOnInit(): void {

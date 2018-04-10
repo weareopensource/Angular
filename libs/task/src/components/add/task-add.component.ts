@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskAddDialogComponent } from './task-add.dialog.component';
-import * as fromTask  from '../../+state/task.actions';
+import * as fromTask from '../../+state/task.actions';
 import { TaskState } from '../../+state/task.interfaces';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';

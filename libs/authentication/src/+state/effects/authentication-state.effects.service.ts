@@ -1,6 +1,6 @@
 import { fromRouter } from '@labdat/common/router-state';
 import { Injectable } from '@angular/core';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
 import { LoginSnackComponent } from '../../components/login-snack/login-snack.component';
 import { AuthenticationApiService } from '../../services/authentication.api.service';
@@ -18,7 +18,7 @@ export class AuthenticationEffectsService {
   @Effect()
   login$ = this.actions$.ofType(fromAuthentication.LOGIN)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.Login) => action.payload),
     exhaustMap(auth =>
       this.authenticationApiService.login(auth)
       .pipe(
@@ -39,7 +39,7 @@ export class AuthenticationEffectsService {
   @Effect()
   logout$ = this.actions$.ofType(fromAuthentication.LOGOUT)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.Logout) => action.payload),
     tap(message => {
       localStorage.removeItem('tokenExpiresIn');
       this.snackBar.openFromComponent(LoginSnackComponent, {
@@ -69,7 +69,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   loginFailure$ = this.actions$.ofType(fromAuthentication.LOGIN_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.LoginFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -83,7 +83,7 @@ export class AuthenticationEffectsService {
   @Effect()
   register$ = this.actions$.ofType(fromAuthentication.REGISTER)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.RegisterFailure) => action.payload),
     exhaustMap(auth =>
       this.authenticationApiService
         .register({
@@ -122,7 +122,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   registerFailure$ = this.actions$.ofType(fromAuthentication.REGISTER_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.RegisterFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -136,7 +136,7 @@ export class AuthenticationEffectsService {
   @Effect()
   updateUser$ = this.actions$.ofType(fromAuthentication.UPDATE_USER)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.UpdateUser) => action.payload),
     exhaustMap(payload =>
       this.authenticationApiService
         .updateUser(payload.user)
@@ -168,7 +168,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   UserUpdateFailure$ = this.actions$.ofType(fromAuthentication.USER_UPDATE_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.UserUpdateFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -200,7 +200,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   userLoadFailure$ = this.actions$.ofType(fromAuthentication.USER_LOAD_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.UserLoadFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -214,7 +214,7 @@ export class AuthenticationEffectsService {
   @Effect()
   changePassword$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ChangePassword) => action.payload),
     exhaustMap(payload =>
       this.authenticationApiService
         .changePassword(payload.email)
@@ -233,7 +233,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   changePassordSuccess$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_SUCCESS)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ChangePasswordSuccess) => action.payload),
     tap(() =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -247,7 +247,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   changePassordFailure$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ChangePasswordFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -261,7 +261,7 @@ export class AuthenticationEffectsService {
   @Effect()
   resetPassword$ = this.actions$.ofType(fromAuthentication.RESET_PASSWORD)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ResetPassword) => action.payload),
     exhaustMap(payload =>
       this.authenticationApiService
         .resetPassword(payload.newPassword, payload.token)
@@ -280,7 +280,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   resetPassordSuccess$ = this.actions$.ofType(fromAuthentication.RESET_PASSWORD_SUCCESS)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ResetPasswordSuccess) => action.payload),
     tap(() =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
@@ -295,7 +295,7 @@ export class AuthenticationEffectsService {
   @Effect({ dispatch: false })
   resetPassordFailure$ = this.actions$.ofType(fromAuthentication.CHANGE_PASSWORD_FAILURE)
   .pipe(
-    map(toPayload),
+    map((action: fromAuthentication.ResetPasswordFailure) => action.payload),
     tap(message =>
       this.snackBar.openFromComponent(LoginSnackComponent, {
         duration: 1000,
