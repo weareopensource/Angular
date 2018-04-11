@@ -1,4 +1,4 @@
-import { Authenticate } from './../../models/user.model';
+import { Authenticate } from '../../models/authenticate.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first, keys } from 'lodash';

@@ -7,10 +7,12 @@ export class ConfirmValidParentMatcher implements ErrorStateMatcher {
   }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class CustomValidators {
-	static childrenEqual: ValidatorFn = (formGroup: FormGroup) => {
+  static childrenEqual: ValidatorFn = (formGroup: FormGroup) => {
     const [firstControlName, ...otherControlNames] = Object.keys(formGroup.controls || {});
-		  const isValid = otherControlNames.every(controlName => formGroup.get(controlName).value === formGroup.get(firstControlName).value);
-		  return isValid ? null : { childrenNotEqual: true };
-	}
+    const isValid = otherControlNames.every(controlName => formGroup.get(controlName).value === formGroup.get(firstControlName).value);
+
+    return isValid ? undefined : { childrenNotEqual: true };
+  }
 }

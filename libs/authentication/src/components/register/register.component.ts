@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Authenticate } from '../../models/user.model';
+import { Authenticate } from '../../models/authenticate.model';
 import { ConfirmValidParentMatcher, CustomValidators } from './password-match.validator';
 import { first, keys } from 'lodash';
 
@@ -34,27 +34,57 @@ export class RegisterComponent implements OnInit {
   }
 
   get firstNameError(): string {
-    return first(keys(this.registerForm.get('firstName').errors)) || '';
+    return first(
+      keys(
+        this.registerForm.get('firstName').errors
+      )
+    ) || '';
   }
 
   get lastNameError(): string {
-    return first(keys(this.registerForm.get('lastName').errors)) || '';
+    return first(
+      keys(
+        this.registerForm.get('lastName').errors
+      )
+    ) || '';
   }
 
   get emailError(): string {
-    return first(keys(this.registerForm.get('emailGroup').get('email').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('emailGroup')
+        .get('email').errors
+      )
+    ) || '';
   }
 
   get confirmEmailError(): string {
-    return first(keys(this.registerForm.get('emailGroup').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('emailGroup').errors
+      )
+    ) || '';
   }
 
   get passwordError(): string {
-    return first(keys(this.registerForm.get('passwordGroup').get('password').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('passwordGroup')
+        .get('password').errors
+      )
+    ) || '';
   }
 
   get confirmPasswordError(): string {
-    return first(keys(this.registerForm.get('passwordGroup').errors)) || '';
+    return first(
+      keys(
+        this.registerForm
+        .get('passwordGroup').errors
+      )
+    ) || '';
   }
 
   ngOnInit(): void {
@@ -62,6 +92,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.submitted.emit(this.registerForm.value);
+    const {
+      firstName,
+      lastName, userName,
+      emailGroup,
+      passwordGroup
+    } = this.registerForm.value;
+
+    const subscription = {
+      firstName,
+      lastName,
+      userName,
+      email: emailGroup.email,
+      password: passwordGroup.password
+    };
+
+    this.submitted.emit(subscription);
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { fromRouter } from '@labdat/router-state';
+import { fromRouter } from '@labdat/common/router-state';
 import { Store } from '@ngrx/store';
-import { selectCurrentTask } from '@labdat/task-state';
+import { selectCurrentTask } from '../../+state/task.selectors';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

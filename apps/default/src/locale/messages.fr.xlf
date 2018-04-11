@@ -2,6 +2,74 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="fr" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="userDetails" datatype="html">
+        <source>User Details</source>
+        <target>Détails de l'utilisateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/detail/user-detail.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="id" datatype="html">
+        <source>ID</source>
+        <target>ID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firstName" datatype="html">
+        <source>First Name</source>
+        <target>Prénom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lastName" datatype="html">
+        <source>Name</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userName" datatype="html">
+        <source>User Name</source>
+        <target>Surnom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action" datatype="html">
+        <source>Action</source>
+        <target>Action</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/list/task-list.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resetPassword" datatype="html">
+        <source>Reset Password</source>
+        <target>Réinitilisation du mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="loginTab" datatype="html">
         <source>Login</source>
         <target>Connexion</target>
@@ -134,6 +202,46 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="cancelButton" datatype="html">
+        <source>Cancel</source>
+        <target>Annuler</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/login/login.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="close" datatype="html">
+        <source>close</source>
+        <target>fermer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="open" datatype="html">
+        <source>open</source>
+        <target>ouvrir</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="exit" datatype="html">
+        <source>exit</source>
+        <target>quitter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="menu" datatype="html">
+        <source>menu</source>
+        <target>menu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="taskId" datatype="html">
         <source>ID</source>
         <target>ID</target>
@@ -148,14 +256,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/task/src/components/list/task-list.component.ts</context>
           <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="action" datatype="html">
-        <source>Action</source>
-        <target>Action</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/list/task-list.component.ts</context>
-          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="addTask" datatype="html">
@@ -448,6 +548,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
           <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="whatHappened" datatype="html">
+        <source>What happened ?</source>
+        <target>Mais que s'est il passé ?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5dd0c332936969a2da61fc1bcda000b9524f496f" datatype="html">

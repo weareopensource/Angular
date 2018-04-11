@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationState, fromAuthentication } from '@labdat/authentication-state';
+import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
+import { AuthenticationState } from '../../+state/states/authentication-state.state';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmValidParentMatcher, CustomValidators } from './password-match.validator';
