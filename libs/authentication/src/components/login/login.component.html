@@ -10,11 +10,8 @@
   </mat-form-field>
   <br>
   <button type="submit" [disabled]="!loginForm.valid" mat-raised-button i18n="@@loginButton">Login</button>
-  <br>
-  <p *ngIf="errorMessage" class="loginError">
-    {{ errorMessage }}
-  </p>
 </form>
+<br>
 <a *ngIf="!forgotPassword" (click)="forgotPassword = true" i18n="@@forgotPassword">Forgot password ?</a>
 <form *ngIf="forgotPassword" (ngSubmit)="onForgotPasswordSubmit(forgotField.value)">
   <span i18n="@@enterEmail">Enter your email</span>

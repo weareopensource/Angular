@@ -1,5 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/detail/user-detail.component';
+import { UserDetailDialogComponent } from './components/detail/user-detail.dialog.component';
 import { UsersListComponent } from './components/list/users-list.component';
 import { UserAddComponent } from './components/add/user-add.component';
 import { UserAddDialogComponent } from './components/add/user-add.dialog.component';
@@ -30,6 +31,7 @@ import { FormlyModule } from '@ngx-formly/core';
 const COMPONENTS = [
   UsersListComponent,
   UserDetailComponent,
+  UserDetailDialogComponent,
   UserDeleteDialogComponent,
   UserEditComponent,
   UserEditDialogComponent,
@@ -65,6 +67,7 @@ const MATERIAL_MODULES = [
   ],
   entryComponents: [
     UserDeleteDialogComponent,
+    UserDetailDialogComponent,
     UserEditDialogComponent,
     UserAddDialogComponent
   ]

@@ -24,17 +24,18 @@ const adminsRoutes: Routes = [
         path: ':id/edit',
         component: UserEditComponent,
         pathMatch: 'full'
+      },
+      {
+        path: ':id',
+        component: UserDetailComponent,
+        data: {
+          page: 'user-detail'
+        }
       }
     ]
 //    canDeactivate: [TaskGuardService]
   },
-  {
-    path: 'users/:id',
-    component: UserDetailComponent,
-    data: {
-      page: 'user-detail'
-    }
-  },
+
   {
     path: '**',
     redirectTo: 'list'

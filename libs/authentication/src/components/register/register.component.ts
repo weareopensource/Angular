@@ -92,6 +92,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.submitted.emit(this.registerForm.value);
+    const {
+      firstName,
+      lastName, userName,
+      emailGroup,
+      passwordGroup
+    } = this.registerForm.value;
+
+    const subscription = {
+      firstName,
+      lastName,
+      userName,
+      email: emailGroup.email,
+      password: passwordGroup.password
+    };
+
+    this.submitted.emit(subscription);
   }
 }

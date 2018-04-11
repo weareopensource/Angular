@@ -2,6 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="fr" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="userDetails" datatype="html">
+        <source>User Details</source>
+        <target>Détails de l'utilisateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/administration/src/components/detail/user-detail.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="id" datatype="html">
         <source>ID</source>
         <target>ID</target>

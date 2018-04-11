@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TaskInitializationService } from './+state/task.initialization';
@@ -8,10 +8,6 @@ import { TaskApiService } from './services/task.api.service';
 import { TaskSnackComponent } from './components/task-snack/task-snack.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-export function taskInitialisationFactory(taskInitialization): any {
-  return () => taskInitialization.loadTasks();
-}
 
 @NgModule({
   declarations: [ TaskSnackComponent ],
@@ -30,13 +26,7 @@ export class TaskStateModule {
       ngModule: TaskStateModule,
       providers: [
         TaskInitializationService,
-        TaskApiService,
-        {
-          provide: APP_INITIALIZER,
-          useFactory: taskInitialisationFactory,
-          deps: [ TaskInitializationService ],
-          multi: true
-        }
+        TaskApiService
       ]
     };
   }
