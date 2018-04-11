@@ -15,7 +15,6 @@ import * as fromUser from '../../+state/user.actions';
 import { User } from '../../models/user.model';
 
 @Component({
-  selector: 'app-user-detail',
   template: ''
 })
 export class UserDetailComponent implements OnInit, OnDestroy {

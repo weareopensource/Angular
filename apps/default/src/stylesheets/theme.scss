@@ -4,6 +4,6 @@
 @include angular-material-theme($default-light-theme);
 
 @import '../../../../libs/core/src/components/sidenav/sidenav-theme';
-@include mean2-sidenav-theme($default-dark-theme);
+@include core-sidenav-theme($default-dark-theme);
 
 @include mat-list-theme($default-dark-theme);

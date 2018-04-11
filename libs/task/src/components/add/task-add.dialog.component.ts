@@ -5,7 +5,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-task-add-dialog',
   templateUrl: './task-add.dialog.component.html',
   styleUrls: ['./task-add.dialog.component.scss']
 })

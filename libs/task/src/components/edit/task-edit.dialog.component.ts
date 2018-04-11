@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-task-edit-dialog',
   templateUrl: './task-edit.dialog.component.html',
   styleUrls: ['./task-edit.dialog.component.scss']
 })

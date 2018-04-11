@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-user-edit-dialog',
   templateUrl: './user-edit.dialog.component.html',
   styleUrls: ['./user-edit.dialog.component.scss']
 })

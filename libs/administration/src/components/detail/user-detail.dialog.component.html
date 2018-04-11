@@ -1,0 +1,22 @@
+<h1 mat-dialog-title i18n="@@userDetails">User Details</h1>
+<mat-dialog-content>
+  <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{ (selectedUser$ | async)?.username }}</mat-card-title>
+        <mat-card-subtitle>{{ (selectedUser$ | async)?.fistName }} {{ (selectedUser$ | async)?.lastName }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          {{ (selectedUser$ | async)?.email }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button (click)="back()">
+          <mat-icon svgIcon="navigation:ic_arrow_back_24px" matTooltip="close"></mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+</mat-dialog-content>
+

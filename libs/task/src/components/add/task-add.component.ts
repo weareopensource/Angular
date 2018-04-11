@@ -9,7 +9,6 @@ import { Task } from '../../models/task.model';
 import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
-  selector: 'app-task-add',
   template: ''
 })
 export class TaskAddComponent implements OnInit, OnDestroy {

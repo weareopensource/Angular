@@ -14,7 +14,7 @@ export const {
 
 export const selectSelectedUser = createSelector(selectUserEntities, selectCurrentUrl, (userEntities, currentUrl) => {
   const userId = currentUrl.split('/')[3];
-  console.log(userEntities, currentUrl.split('/')[3]);
+
   return !isEmpty(userEntities[userId]) ? userEntities[userId] : undefined;
 });
 

@@ -9,7 +9,6 @@ import { User } from '../../models/user.model';
 import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
-  selector: 'app-user-add',
   template: ''
 })
 export class UserAddComponent implements OnInit, OnDestroy {

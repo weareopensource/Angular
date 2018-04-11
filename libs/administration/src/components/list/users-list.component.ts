@@ -17,7 +17,6 @@ import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
 
 @Component({
-  selector: 'app-users-list',
   styleUrls: ['./users-list.component.scss'],
   templateUrl: './users-list.component.html'
 })

@@ -6,10 +6,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from './core-routing.module';
-import { Mean2Drawer, Mean2DrawerContainer, Mean2DrawerContent } from './components/sidenav/drawer.component';
-import { Mean2Sidenav, Mean2SidenavContainer, Mean2SidenavContent } from './components/sidenav/sidenav.component';
+import { CoreDrawer, CoreDrawerContainer, CoreDrawerContent } from './components/sidenav/drawer.component';
+import { CoreSidenav, CoreSidenavContainer, CoreSidenavContent } from './components/sidenav/sidenav.component';
 
-// import { AuthenticationModule } from '@labdat/authentication';
 import {
   MatButtonModule,
   MatCardModule,
@@ -27,12 +26,12 @@ import {
 } from '@angular/material';
 
 const SIDENAV_COMPONENTS = [
-  Mean2Drawer,
-  Mean2DrawerContainer,
-  Mean2DrawerContent,
-  Mean2Sidenav,
-  Mean2SidenavContainer,
-  Mean2SidenavContent
+  CoreDrawer,
+  CoreDrawerContainer,
+  CoreDrawerContent,
+  CoreSidenav,
+  CoreSidenavContainer,
+  CoreSidenavContent
 ];
 
 export const COMPONENTS = [
@@ -64,7 +63,6 @@ const MATERIAL_MODULES = [
     RouterModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
-//    AuthenticationModule,
     CoreRoutingModule
   ],
   declarations: COMPONENTS

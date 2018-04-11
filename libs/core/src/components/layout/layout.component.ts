@@ -8,9 +8,10 @@ import { fromAuthentication, getLoggedIn, getUser, User } from '@labdat/authenti
 import { map } from 'rxjs/operators/map';
 import { routesAnimation } from '../../animations/routes.animation';
 import { fromRouter } from '@labdat/common/router-state';
+import { MenuItem } from '../../models/menu-item.model';
 
 @Component({
-  selector: 'layout-root',
+  selector: 'core-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   animations: [routesAnimation]
@@ -72,5 +73,9 @@ export class LayoutComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(new fromAuthentication.Logout());
+  }
+
+  public trackByOrder(item: MenuItem): number {
+    return item.order;
   }
 }
