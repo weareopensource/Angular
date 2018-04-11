@@ -10,7 +10,8 @@ describe('LoginComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [LoginComponent]
-      }).compileComponents();
+      })
+      .compileComponents();
     })
   );
 
@@ -21,6 +22,7 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+    .toBeTruthy();
   });
 });

@@ -1,27 +1,21 @@
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppComponent } from './components/app.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavModule } from '@labdat/sidenav';
-import { coreConfiguration, CoreModule } from '@labdat/core';
+import { coreConfiguration, CoreStateModule, CoreViewModule } from '@labdat/core';
 import { StoreModule } from '@ngrx/store';
-import { AppComponent } from './components/app.component';
-import { CoreStateModule } from '@labdat/core-state';
-import { AuthenticationStateModule } from '@labdat/authentication-state';
+import { AuthenticationRoutingModule, AuthenticationStateModule } from '@labdat/authentication';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgModule } from '@angular/core';
 import { metaReducers } from './+state/app.reducer';
 import { environment } from '../environments/environment';
-import { RouterStateModule } from '@labdat/router-state';
+import { RouterStateModule } from '@labdat/common/router-state';
 // import { ConnectFormStateModule } from '@labdat/connect-form-state';
-import { TaskStateModule } from '@labdat/task-state';
-import { taskConfiguration } from '@labdat/task/src/task.configuration';
+import { taskConfiguration, TaskRoutingModule, TaskStateModule } from '@labdat/task';
 // import { FormlyModule } from '@ngx-formly/core';
-import { TaskRoutingModule } from '@labdat/task-routing';
-import { UserStateModule } from '@labdat/user-state';
-import { AdminRoutingModule } from '@labdat/admin-routing';
-import { AuthenticationRoutingModule } from '@labdat/authentication-routing';
+import { AdministrationRoutingModule, UserStateModule } from '@labdat/administration';
 import { MatIconModule } from '@angular/material';
 
 @NgModule({
@@ -36,10 +30,9 @@ import { MatIconModule } from '@angular/material';
     RouterStateModule.forRoot(),
     RouterModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    SidenavModule.forRoot(),
 
     AuthenticationRoutingModule.forRoot(),
-    AdminRoutingModule.forRoot(),
+    AdministrationRoutingModule.forRoot(),
     TaskRoutingModule.forRoot(),
 
     CoreStateModule.forRoot([ coreConfiguration.self, taskConfiguration.core ]),
@@ -47,7 +40,7 @@ import { MatIconModule } from '@angular/material';
     UserStateModule.forRoot(),
     TaskStateModule.forRoot(),
 
-    CoreModule
+    CoreViewModule
 //    ConnectFormStateModule,
   ],
   declarations: [ AppComponent ],

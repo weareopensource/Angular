@@ -1,20 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskEditDialogComponent } from './task-edit.dialog.component';
-import { fromTask, selectCurrentTask, TaskState } from '@labdat/task-state';
+import * as fromTask from '../../+state/task.actions';
+import { selectCurrentTask } from '../../+state/task.selectors';
+import { TaskState } from '../../+state/task.interfaces';
 import { Store } from '@ngrx/store';
-import { fromRouter } from '@labdat/router-state';
-import { Task } from '@labdat/data-models';
+import { fromRouter } from '@labdat/common/router-state';
+import { Task } from '../../models/task.model';
 import { first } from 'rxjs/operators/first';
 import { Subscription } from 'rxjs/Subscription';
 import { delay } from 'rxjs/operators/delay';
 import { cloneDeep } from 'lodash';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { tap } from 'rxjs/operators/tap';
 
 @Component({
-  selector: 'app-task-edit',
   template: ''
 })
 export class TaskEditComponent implements OnInit, OnDestroy {
@@ -28,7 +28,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     .pipe(
       first(),
       delay(0),
-      tap(console.log),
       map(task => this.dialog.open(TaskEditDialogComponent, {
         width: '700px',
         data: { task: cloneDeep(task) }

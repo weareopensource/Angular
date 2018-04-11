@@ -3,25 +3,21 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { routesAnimation } from '@labdat/animations';
-import { fromTask, selectAllTasks, TaskState } from '@labdat/task-state';
-import { fromRouter } from '@labdat/router-state';
+import * as fromTask from '../../+state/task.actions';
+import { selectAllTasks } from '../../+state/task.selectors';
+import { TaskState } from '../../+state/task.interfaces';
+import { fromRouter } from '@labdat/common/router-state';
 import { Store } from '@ngrx/store';
-import { Task } from '@labdat/data-models';
+import { Task } from '../../models/task.model';
 import 'rxjs/add/operator/do';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 
-/**
- * @title Table with filtering
- */
 @Component({
-  selector: 'app-tasks-list',
   styleUrls: ['./task-list.component.scss'],
-  templateUrl: './task-list.component.html',
-  animations: [routesAnimation]
+  templateUrl: './task-list.component.html'
 })
 export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
@@ -77,8 +73,8 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 

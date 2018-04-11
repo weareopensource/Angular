@@ -1,4 +1,4 @@
-import { MenuItem } from '@labdat/data-models';
+import { MenuItem } from './models/menu-item.model';
 
 interface CoreConfiguration {
   self: {

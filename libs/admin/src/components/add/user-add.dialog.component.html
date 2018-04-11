@@ -1,9 +1,0 @@
-<h1 mat-dialog-title>Add User</h1>
-<mat-dialog-content>
-  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit(userModel)">
-    <formly-form [form]="addUserForm" [model]="userModel" [fields]="userFields">
-      <button mat-button type="submit" i18n>Add</button>
-    </formly-form>
-  </form>
-</mat-dialog-content>
-{{ userModel | json }}
