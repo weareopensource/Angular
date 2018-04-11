@@ -11,4 +11,5 @@ export {
   getLoginPageError
 } from './src/+state/selectors/authentication-state.selectors';
 export { AuthenticationState } from './src/+state/states/authentication-state.state';
+export { authenticationReducers } from './src/+state/reducers/authentication-state.reducers';
 export { User } from './src/models/user.model';
