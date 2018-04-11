@@ -25,8 +25,8 @@ import { map } from 'rxjs/operators/map';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
-/** Throws an exception when two Mean2Drawer are matching the same position. */
-export function throwMean2DuplicatedDrawerError(position: string): void {
+/** Throws an exception when two CoreDrawer are matching the same position. */
+export function throwCoreDuplicatedDrawerError(position: string): void {
   throw Error(`A drawer was already declared for 'position="${position}"'`);
 }
 
@@ -34,29 +34,35 @@ export function throwMean2DuplicatedDrawerError(position: string): void {
  * Drawer toggle promise result.
  * @deprecated
  */
-export class Mean2DrawerToggleResult {
+export class CoreDrawerToggleResult {
   constructor(public type: 'open' | 'close', public animationFinished: boolean) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 @Component({
   moduleId: module.id,
-  selector: 'mean2-drawer-content',
+  // tslint:disable-next-line:component-selector
+  selector: 'core-drawer-content',
   template: '<ng-content></ng-content>',
+  // tslint:disable-next-line:use-host-property-decorator
   host: {
-    class: 'mean2-drawer-content',
+    class: 'core-drawer-content',
     '[style.margin-left.px]': '_margin'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // tslint:disable-next-line:use-view-encapsulation
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
 })
-export class Mean2DrawerContent implements AfterContentInit {
+// tslint:disable-next-line:component-class-suffix
+export class CoreDrawerContent implements AfterContentInit {
   _margin: number;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
-    @Inject(forwardRef(() => Mean2DrawerContainer))
-    private _container: Mean2DrawerContainer
+    // tslint:disable-next-line:no-forward-ref
+    @Inject(forwardRef(() => CoreDrawerContainer))
+    private _container: CoreDrawerContainer
   ) {}
 
   ngAfterContentInit(): void {
@@ -67,10 +73,12 @@ export class Mean2DrawerContent implements AfterContentInit {
   }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 @Component({
   moduleId: module.id,
-  selector: 'mean2-drawer',
-  exportAs: 'Mean2Drawer',
+  // tslint:disable-next-line:component-selector
+  selector: 'core-drawer',
+  exportAs: 'CoreDrawer',
   template: '<ng-content></ng-content>',
   animations: [
     trigger('transform', [
@@ -90,24 +98,27 @@ export class Mean2DrawerContent implements AfterContentInit {
       transition('close <=> open, open-instant => close', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
     ])
   ],
+  // tslint:disable-next-line:use-host-property-decorator
   host: {
-    class: 'mean2-drawer',
+    class: 'core-drawer',
     '[@transform]': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
     '(@transform.done)': '_onAnimationEnd($event)',
     '(keydown)': 'handleKeydown($event)',
     // must prevent the browser from aligning text based on value
     '[attr.align]': 'null',
-    '[class.mean2-drawer-end]': 'false',
-    '[class.mean2-drawer-start]': 'true',
-    '[class.mean2-drawer-side]': 'true',
+    '[class.core-drawer-end]': 'false',
+    '[class.core-drawer-start]': 'true',
+    '[class.core-drawer-side]': 'true',
     tabIndex: '-1'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // tslint:disable-next-line:use-view-encapsulation
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
 })
-export class Mean2Drawer implements AfterContentInit {
+// tslint:disable-next-line:component-class-suffix
+export class CoreDrawer implements AfterContentInit {
   private _elementFocusedBeforeDrawerWasOpened: HTMLElement | null = undefined;
 
   /** Whether the drawer is initialized. Used for disabling the initial animation. */
@@ -257,7 +268,7 @@ export class Mean2Drawer implements AfterContentInit {
       this.openedChange
       .pipe(take(1))
       .subscribe(open => {
-        resolve(new Mean2DrawerToggleResult(open ? 'open' : 'close', true));
+        resolve(new CoreDrawerToggleResult(open ? 'open' : 'close', true));
       });
     });
   }
@@ -306,28 +317,33 @@ export class Mean2Drawer implements AfterContentInit {
 }
 
 /**
- * <mean2-drawer-container> component.
+ * <core-drawer-container> component.
  *
- * This is the parent component to one or two <mean2-drawer>s that validates the state internally
+ * This is the parent component to one or two <core-drawer>s that validates the state internally
  * and coordinates the backdrop and content styling.
  */
+// tslint:disable-next-line:max-classes-per-file
 @Component({
   moduleId: module.id,
-  selector: 'mean2-drawer-container',
-  exportAs: 'Mean2DrawerContainer',
+  // tslint:disable-next-line:component-selector
+  selector: 'core-drawer-container',
+  exportAs: 'CoreDrawerContainer',
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.css'],
+  // tslint:disable-next-line:use-host-property-decorator
   host: {
-    class: 'mean2-drawer-container'
+    class: 'core-drawer-container'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // tslint:disable-next-line:use-view-encapsulation
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
 })
-export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
-  @ContentChild(Mean2Drawer) _drawer: Mean2Drawer;
+// tslint:disable-next-line:component-class-suffix
+export class CoreDrawerContainer implements AfterContentInit, OnDestroy {
+  @ContentChild(CoreDrawer) _drawer: CoreDrawer;
 
-  @ContentChild(Mean2DrawerContent) _content: Mean2DrawerContent;
+  @ContentChild(CoreDrawerContent) _content: CoreDrawerContent;
 
   /** Emits when the component is destroyed. */
   private _destroyed = new Subject<void>();
@@ -374,7 +390,7 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
         // Set the transition class on the container so that the animations occur. This should not
         // be set initially because animations should only be triggered via a change in state.
         if (event.toState !== 'open-instant') {
-          this._element.nativeElement.classList.add('mean2-drawer-transition');
+          this._element.nativeElement.classList.add('core-drawer-transition');
         }
 
         this._updateContentMargins();
@@ -386,12 +402,12 @@ export class Mean2DrawerContainer implements AfterContentInit, OnDestroy {
       .subscribe(() => this._setContainerClass(this._drawer.opened));
   }
 
-  /** Toggles the 'mean2-drawer-opened' class on the main 'mean2-drawer-container' element. */
+  /** Toggles the 'core-drawer-opened' class on the main 'core-drawer-container' element. */
   private _setContainerClass(isAdd: boolean): void {
     if (isAdd) {
-      this._element.nativeElement.classList.add('mean2-drawer-opened');
+      this._element.nativeElement.classList.add('core-drawer-opened');
     } else {
-      this._element.nativeElement.classList.remove('mean2-drawer-opened');
+      this._element.nativeElement.classList.remove('core-drawer-opened');
     }
   }
 

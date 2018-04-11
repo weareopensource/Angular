@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { first, keys } from 'lodash';
 
 @Component({
-  selector: 'app-login',
+  selector: 'auth-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

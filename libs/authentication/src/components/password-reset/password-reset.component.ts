@@ -8,7 +8,6 @@ import { ConfirmValidParentMatcher, CustomValidators } from './password-match.va
 import { first, keys } from 'lodash';
 
 @Component({
-  selector: 'app-password-reset',
   templateUrl: './password-reset.component.html',
   styleUrls: ['./password-reset.component.scss']
 })

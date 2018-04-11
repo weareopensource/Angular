@@ -16,10 +16,12 @@ export class Go implements Action {
   ) {}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class Back implements Action {
   readonly type = BACK;
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class Forward implements Action {
   readonly type = FORWARD;
 }

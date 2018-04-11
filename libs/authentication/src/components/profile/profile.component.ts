@@ -11,7 +11,6 @@ import { Subject } from 'rxjs/Subject';
 import { fromRouter } from '@labdat/common/router-state';
 
 @Component({
-  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

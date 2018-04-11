@@ -15,7 +15,6 @@ import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 @Component({
-  selector: 'app-task-edit',
   template: ''
 })
 export class TaskEditComponent implements OnInit, OnDestroy {

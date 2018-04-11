@@ -5,7 +5,6 @@ import { selectCurrentTask } from '../../+state/task.selectors';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-task-detail',
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss']
 })

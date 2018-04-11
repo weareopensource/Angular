@@ -5,7 +5,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'app-user-add-dialog',
   templateUrl: './user-add.dialog.component.html',
   styleUrls: ['./user-add.dialog.component.scss']
 })

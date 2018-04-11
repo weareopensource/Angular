@@ -15,14 +15,9 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 
-/**
- * @title Table with filtering
- */
 @Component({
-  selector: 'app-tasks-list',
   styleUrls: ['./task-list.component.scss'],
   templateUrl: './task-list.component.html'
-//  animations: [routesAnimation]
 })
 export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
@@ -78,8 +73,8 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 

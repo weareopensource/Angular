@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store';
 import { Authenticate } from '../../models/authenticate.model';
 
 @Component({
-  selector: 'app-auth',
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

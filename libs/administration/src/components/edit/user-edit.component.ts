@@ -15,7 +15,6 @@ import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 @Component({
-  selector: 'app-user-edit',
   template: ''
 })
 export class UserEditComponent implements OnInit, OnDestroy {
