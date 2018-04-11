@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskSnackComponent } from './task-snack.component';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 describe('TaskSnackComponent', () => {
   let component: TaskSnackComponent;
@@ -8,7 +9,8 @@ describe('TaskSnackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskSnackComponent ]
+      declarations: [ TaskSnackComponent ],
+      providers: [ { provide: MAT_SNACK_BAR_DATA, useValue: {} }]
     })
     .compileComponents();
   }));
