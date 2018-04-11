@@ -4,7 +4,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material';
 @Component({
   template: '{{ data }}'
 })
-export class LoginSnackComponent {
+export class AuthenticationSnackComponent {
 
   @HostBinding('class.mat-typography')
   matTypo(): boolean {

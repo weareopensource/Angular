@@ -2,8 +2,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/detail/user-detail.component';
 import { UserDetailDialogComponent } from './components/detail/user-detail.dialog.component';
 import { UsersListComponent } from './components/list/users-list.component';
-import { UserAddComponent } from './components/add/user-add.component';
-import { UserAddDialogComponent } from './components/add/user-add.dialog.component';
 import { UserEditComponent } from './components/edit/user-edit.component';
 import { UserEditDialogComponent } from './components/edit/user-edit.dialog.component';
 import { UserDeleteDialogComponent } from './components/delete/user-delete.dialog.component';
@@ -34,9 +32,7 @@ const COMPONENTS = [
   UserDetailDialogComponent,
   UserDeleteDialogComponent,
   UserEditComponent,
-  UserEditDialogComponent,
-  UserAddComponent,
-  UserAddDialogComponent
+  UserEditDialogComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -68,8 +64,7 @@ const MATERIAL_MODULES = [
   entryComponents: [
     UserDeleteDialogComponent,
     UserDetailDialogComponent,
-    UserEditDialogComponent,
-    UserAddDialogComponent
+    UserEditDialogComponent
   ]
 })
 export class AdministrationViewModule { }

@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserAddComponent } from './components/add/user-add.component';
 import { UserDetailComponent } from './components/detail/user-detail.component';
 import { UserEditComponent } from './components/edit/user-edit.component';
 import { UsersListComponent } from './components/list/users-list.component';
@@ -15,11 +14,6 @@ const adminsRoutes: Routes = [
       page: 'user-list'
     },
     children: [
-      {
-        path: 'add',
-        component: UserAddComponent,
-        pathMatch: 'full'
-      },
       {
         path: ':id/edit',
         component: UserEditComponent,
