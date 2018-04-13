@@ -5,7 +5,7 @@
         <auth-login
           (loginSubmitted)="onLogin($event)"
           (emailSubmitted)="onEmail($event)"
-          [pending]="pending$ | async"
+          [isPending]="pending$ | async"
           [errorMessage]="error$ | async">
         </auth-login>
       </mat-tab>

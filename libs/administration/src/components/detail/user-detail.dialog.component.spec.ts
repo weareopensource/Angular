@@ -4,6 +4,11 @@ import { UserDetailDialogComponent } from './user-detail.dialog.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { combineReducers, StoreModule } from '@ngrx/store';
+import { authenticationReducers } from '@labdat/authentication';
+import { userReducer } from '@labdat/administration';
+import { userReducer } from '@labdat/administration';
+import { routerReducer } from '@ngrx/router-store';
 
 describe('UserDetailDialogComponent', () => {
   let component: UserDetailDialogComponent;
@@ -14,7 +19,12 @@ describe('UserDetailDialogComponent', () => {
       imports: [
         MatIconModule,
         MatCardModule,
-        MatDialogModule
+        MatDialogModule,
+        StoreModule.forRoot({
+          authentication: combineReducers(authenticationReducers),
+          user: combineReducers(userReducer),
+          router: combineReducers(routerReducer)
+        })
       ],
       declarations: [ UserDetailDialogComponent ]
     })

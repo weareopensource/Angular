@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthenticationComponent } from './authentication.component';
+import { LoginComponent } from '../login/login.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RegisterComponent } from '../register/register.component';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule, MatInputModule } from '@angular/material';
+import { DisableControlDirective } from '../../directives/disable-control/disable-control.directive';
+import { authenticationReducers } from '@labdat/authentication';
+import { combineReducers, StoreModule } from '@ngrx/store';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AuthenticationComponent', () => {
   let component: AuthenticationComponent;
@@ -8,7 +18,19 @@ describe('AuthenticationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthenticationComponent ]
+      imports: [
+        MatTabsModule,
+        MatCardModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        NoopAnimationsModule,
+        StoreModule.forRoot({
+          authentication: combineReducers(authenticationReducers)
+        })
+      ],
+      declarations: [ AuthenticationComponent, LoginComponent, RegisterComponent, DisableControlDirective ]
     })
     .compileComponents();
   }));

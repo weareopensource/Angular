@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material';
+import { combineReducers, StoreModule } from '@ngrx/store';
+import { authenticationReducers } from '@labdat/authentication';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -13,7 +16,11 @@ describe('ProfileComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatCardModule,
+        StoreModule.forRoot({
+          authentication: combineReducers(authenticationReducers)
+        })
       ],
       declarations: [ ProfileComponent ]
     })

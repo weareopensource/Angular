@@ -2,6 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserEditDialogComponent } from './user-edit.dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserEditDialogComponent', () => {
   let component: UserEditDialogComponent;
@@ -11,9 +15,17 @@ describe('UserEditDialogComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormlyModule.forRoot(),
+        FormlyMaterialModule,
+        MatDialogModule,
+        NoopAnimationsModule
       ],
-      declarations: [ UserEditDialogComponent ]
+      declarations: [ UserEditDialogComponent ],
+      providers: [
+        { provide: MatDialogRef, useValue: {open: () => {}} },
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+    ]
     })
     .compileComponents();
   }));

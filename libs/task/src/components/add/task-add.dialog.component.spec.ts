@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskAddDialogComponent } from './task-add.dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
+import { MatDialogModule, MatDialogRef } from '@angular/material';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TaskAddDialogComponent', () => {
   let component: TaskAddDialogComponent;
@@ -8,7 +13,16 @@ describe('TaskAddDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskAddDialogComponent ]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        FormlyModule.forRoot(),
+        FormlyMaterialModule,
+        MatDialogModule,
+        NoopAnimationsModule
+      ],
+      declarations: [ TaskAddDialogComponent ],
+      providers: [ { provide: MatDialogRef, useValue: { open: () => {}} } ]
     })
     .compileComponents();
   }));
