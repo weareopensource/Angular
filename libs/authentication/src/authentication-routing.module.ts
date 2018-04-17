@@ -1,5 +1,4 @@
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { AuthenticationGuardService } from './services/authentication.guard.service';
 import { ModuleWithProviders, NgModule } from '@angular/core';
@@ -16,14 +15,6 @@ const authenticationRoutes: Routes = [
     path: 'password-reset',
     component: PasswordResetComponent,
     canActivate: [ PasswordResetGuardService ]
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [ AuthenticationGuardService ],
-    data: {
-      page: 'profile'
-    }
   }
 ];
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },

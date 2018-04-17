@@ -26,7 +26,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public delete$ = new Subject();
   public view$ = new Subject();
-  public edit$ = new Subject();
   public add$ = new Subject();
 
   public displayedColumns = ['_id', 'firstName', 'lastName', 'username', 'email', 'action'];
@@ -61,10 +60,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     )
     .subscribe(userId => this._store.dispatch(new fromUser.Delete({ userId })));
     this.subscriptions.add(deleteSubscription);
-
-    const editSubscription = this.edit$
-    .subscribe(userId => this._store.dispatch(new fromRouter.Go({path: ['admin', 'users', userId, 'edit']})));
-    this.subscriptions.add(editSubscription);
   }
 
   ngAfterViewInit(): void {

@@ -1,9 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/detail/user-detail.component';
-import { UserDetailDialogComponent } from './components/detail/user-detail.dialog.component';
 import { UsersListComponent } from './components/list/users-list.component';
-import { UserEditComponent } from './components/edit/user-edit.component';
-import { UserEditDialogComponent } from './components/edit/user-edit.dialog.component';
 import { UserDeleteDialogComponent } from './components/delete/user-delete.dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -29,10 +26,7 @@ import { FormlyModule } from '@ngx-formly/core';
 const COMPONENTS = [
   UsersListComponent,
   UserDetailComponent,
-  UserDetailDialogComponent,
-  UserDeleteDialogComponent,
-  UserEditComponent,
-  UserEditDialogComponent
+  UserDeleteDialogComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -62,9 +56,7 @@ const MATERIAL_MODULES = [
     RouterModule
   ],
   entryComponents: [
-    UserDeleteDialogComponent,
-    UserDetailDialogComponent,
-    UserEditDialogComponent
+    UserDeleteDialogComponent
   ]
 })
 export class AdministrationViewModule { }

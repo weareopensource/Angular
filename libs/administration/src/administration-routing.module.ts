@@ -1,7 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailComponent } from './components/detail/user-detail.component';
-import { UserEditComponent } from './components/edit/user-edit.component';
 import { UsersListComponent } from './components/list/users-list.component';
 import { UserGuardService } from './services/user.guard.service';
 
@@ -15,16 +14,8 @@ const adminsRoutes: Routes = [
     },
     children: [
       {
-        path: ':id/edit',
-        component: UserEditComponent,
-        pathMatch: 'full'
-      },
-      {
         path: ':id',
-        component: UserDetailComponent,
-        data: {
-          page: 'user-detail'
-        }
+        component: UserDetailComponent
       }
     ]
 //    canDeactivate: [TaskGuardService]

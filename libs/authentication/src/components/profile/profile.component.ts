@@ -1,51 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
-import { getUser } from '../../+state/selectors/authentication-state.selectors';
-import { AuthenticationState } from '../../+state/states/authentication-state.state';
+import { ProfileDialogComponent } from './profile.dialog.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { getUser } from '../../+state/selectors/authentication-state.selectors';
 import { first } from 'rxjs/operators/first';
-import { User } from '../../models/user.model';
-import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
-import { Subject } from 'rxjs/Subject';
+import { delay } from 'rxjs/operators/delay';
+import { map } from 'rxjs/operators/map';
 import { fromRouter } from '@labdat/common/router-state';
+import { switchMap } from 'rxjs/operators/switchMap';
+import { Subscription } from 'rxjs/Subscription';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationState } from '../../+state/states/authentication-state.state';
+import { cloneDeep } from 'lodash';
+import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
+import { User } from '../../models/user.model';
 
 @Component({
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  template: ''
 })
-export class ProfileComponent implements OnInit {
-  public user$ = this.store.select(getUser);
-  public onSubmit$ = new Subject();
-  public goBack$ = new Subject();
+export class ProfileComponent implements OnInit, OnDestroy {
 
-  constructor(private store: Store<AuthenticationState>, private formBuilder: FormBuilder) {}
+  constructor(
+    private _dialog: MatDialog,
+    private store: Store<AuthenticationState>
+  ) { }
 
-  public profileForm: FormGroup;
+  public selectedUser$ = this.store.select(getUser);
+  private subscriptions: Subscription;
+
+  back(): void {
+    this.store.dispatch(new fromRouter.Back());
+  }
 
   ngOnInit(): void {
-
-    this.onSubmit$
+    const dialogSubscription = this.store.select(getUser)
     .pipe(
-      withLatestFrom(this.user$, (_x, user) => user)
+      first(),
+      delay(0),
+      map(user => this._dialog.open(ProfileDialogComponent, {
+        height: '700px',
+        data: cloneDeep(user)
+      })),
+      switchMap(dialogRef => dialogRef.afterClosed())
     )
-    .subscribe(user => {
-      const toUpdate = this.profileForm.value;
-      this.store.dispatch(new fromAuthentication.UpdateUser({ user: { id: user.id, ...toUpdate }}));
-    });
-
-    this.user$
-    .pipe(first())
     .subscribe((user: User) => {
-      this.profileForm = this.formBuilder.group({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        username: user.username,
-        email: user.email
-      });
+      if (user) {
+        this.store.dispatch(new fromAuthentication.UpdateUser({ user }));
+      }
+      this.store.dispatch(new fromRouter.Back());
     });
-
-    this.goBack$
-    .subscribe(_x => this.store.dispatch(new fromRouter.Back()));
+    this.subscriptions = dialogSubscription;
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
 }
