@@ -21,8 +21,12 @@ describe('UserDetailComponent', () => {
         MatDialogModule,
         StoreModule.forRoot({
           authentication: combineReducers(authenticationReducers),
-          user: combineReducers(userReducer),
-          router: combineReducers(routerReducer)
+          user: combineReducers(userReducer, { entities: {} }),
+          router: combineReducers(routerReducer, { state: {
+            params: {},
+            queryParams: {},
+            url: "/admin/users/1"
+          }})
         })
       ],
       declarations: [ UserDetailComponent ]

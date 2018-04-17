@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsersListComponent } from './users-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +27,7 @@ describe('UsersListComponent', () => {
         MatCardModule,
         RouterTestingModule,
         StoreModule.forRoot({
-          user: combineReducers(userReducer)
+          user: combineReducers(userReducer, { entities: {}, userIds: [] })
         })
       ],
       declarations: [ UsersListComponent ],
