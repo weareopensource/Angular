@@ -1,0 +1,28 @@
+<h1 mat-dialog-title i18n="@@userDetails">User Details</h1>
+<button *ngIf="editMode === true" mat-mini-fab (click)="saveOnClose()" color="warn">
+  <mat-icon svgIcon="content:ic_save_24px"></mat-icon>
+</button>
+<button *ngIf="editMode === false" mat-mini-fab color="warn" (click)="editMode = true;">
+  <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
+</button>
+<mat-dialog-content>
+  <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title [attr.contenteditable]="editMode"><span #userName>{{ user.username }}</span></mat-card-title>
+        <mat-card-subtitle [attr.contenteditable]="editMode"><span #firstName>{{ user.fistName }}</span> <span #lastName>{{ user.lastName }}</span></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="/assets/ic_profile.png" alt="photo of the profile">
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" [formControl]="emailControl" [disableControl]="!editMode">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Roles" [formControl]="rolesControl" multiple [disableControl]="!editMode">
+            <mat-option [value]="'user'">user</mat-option>
+            <mat-option [value]="'admin'">admin</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+</mat-dialog-content>
