@@ -57,7 +57,11 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
       ),
       switchMap(dialogRef => dialogRef.afterClosed())
     )
-    .subscribe(taskId => this.store.dispatch(new fromTask.Delete({ taskId })));
+    .subscribe(taskId => {
+      if (taskId) {
+        this.store.dispatch(new fromTask.Delete({ taskId }));
+      }
+    });
 
     this.edit$
     .subscribe(taskId => this.store.dispatch(new fromRouter.Go({path: ['tasks', Number(taskId), 'edit']})));
