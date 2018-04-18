@@ -8,14 +8,25 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { taskReducer } from '../../+state/task.reducer';
-import { combineReducers, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { TasksListComponent } from './tasks-list.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TasksListComponent', () => {
   let component: TasksListComponent;
   let fixture: ComponentFixture<TasksListComponent>;
 
   beforeEach(async(() => {
+
+    const storeMock = {
+      task: {
+        ids: [],
+        entities: {},
+        loaded: true,
+        loading: false
+      }
+    };
+
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -27,8 +38,9 @@ describe('TasksListComponent', () => {
         MatCardModule,
         RouterTestingModule,
         StoreModule.forRoot({
-          task: combineReducers(taskReducer, { entities: {}, userIds: [] })
-        })
+          task: taskReducer
+        }, { initialState: storeMock }),
+        NoopAnimationsModule
       ],
       declarations: [ TasksListComponent ],
       providers: [

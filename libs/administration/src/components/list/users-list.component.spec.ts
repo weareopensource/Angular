@@ -9,13 +9,24 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { userReducer } from '../../+state/user.reducer';
-import { combineReducers, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UsersListComponent', () => {
   let component: UsersListComponent;
   let fixture: ComponentFixture<UsersListComponent>;
 
   beforeEach(async(() => {
+
+    const storeMock = {
+      user: {
+        ids: [],
+        entities: {},
+        loaded: true,
+        loading: false
+      }
+    };
+
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -27,8 +38,9 @@ describe('UsersListComponent', () => {
         MatCardModule,
         RouterTestingModule,
         StoreModule.forRoot({
-          user: combineReducers(userReducer, { entities: {}, userIds: [] })
-        })
+          user: userReducer
+        }, { initialState: storeMock }),
+        NoopAnimationsModule
       ],
       declarations: [ UsersListComponent ],
       providers: [

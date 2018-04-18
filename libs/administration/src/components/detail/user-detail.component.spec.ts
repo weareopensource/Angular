@@ -14,6 +14,42 @@ describe('UserDetailComponent', () => {
   let fixture: ComponentFixture<UserDetailComponent>;
 
   beforeEach(async(() => {
+
+    const storeMock = {
+        authentication: {
+          status: {
+            user: {
+              _id: 1,
+              id: 1,
+              firstName: 'test',
+              lastName: 'test',
+              username: 'test',
+              email: 'test@test.com',
+              roles: ['user', 'admin']
+            },
+            loggedIn: true
+          },
+          loginPage: {
+            pending: false,
+            error: ''
+          }
+        },
+        user: {
+          ids: [],
+          entities: {},
+          loaded: true,
+          loading: false
+        },
+        router: {
+          navigationId: 1,
+          state: {
+            params: {},
+            queryParams: {},
+            url: '/home'
+          }
+        }
+    };
+
     TestBed.configureTestingModule({
       imports: [
         MatIconModule,
@@ -21,13 +57,9 @@ describe('UserDetailComponent', () => {
         MatDialogModule,
         StoreModule.forRoot({
           authentication: combineReducers(authenticationReducers),
-          user: combineReducers(userReducer, { entities: {} }),
-          router: combineReducers(routerReducer, { state: {
-            params: {},
-            queryParams: {},
-            url: "/admin/users/1"
-          }})
-        })
+          user: userReducer,
+          router: routerReducer
+        }, { initialState: storeMock as any })
       ],
       declarations: [ UserDetailComponent ]
     })

@@ -11,6 +11,24 @@ describe('TaskDetailComponent', () => {
   let fixture: ComponentFixture<TaskDetailComponent>;
 
   beforeEach(async(() => {
+
+    const storeMock = {
+      task: {
+        ids: [],
+        entities: {},
+        loaded: true,
+        loading: false
+      },
+      router: {
+        navigationId: 1,
+        state: {
+          params: {},
+          queryParams: {},
+          url: '/home'
+        }
+      }
+    };
+
     TestBed.configureTestingModule({
       imports: [
         MatIconModule,
@@ -18,7 +36,7 @@ describe('TaskDetailComponent', () => {
         StoreModule.forRoot({
           router: combineReducers(routerReducer),
           task: combineReducers(taskReducer)
-        })
+        }, { initialState: storeMock })
       ],
       declarations: [ TaskDetailComponent ]
     })
