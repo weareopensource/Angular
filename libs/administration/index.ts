@@ -13,3 +13,4 @@ export {
 export { UserState } from './src/+state/user.interfaces';
 import * as fromUser from './src/+state/user.actions';
 export { fromUser };
+export { userReducer } from './src/+state/user.reducer';

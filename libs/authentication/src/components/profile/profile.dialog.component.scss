@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+mat-card {
+  display:block;
+  width: 350px;
+}
+
+[mat-card-avatar] {
+  background-image: url('/assets/ic_profile.png');
+  background-color: gainsboro;
+  background-size: cover;
+}
+
+[contenteditable=true] {
+  outline: none;
+  text-decoration: underline;
+}
+
+mat-card-subtitle[contenteditable=true], mat-card-title[contenteditable=true] {
+  outline-offset: 2px;
+}
+
+[contenteditable=false] {
+  outline: none;
+}
+
+[mat-card-image] {
+  background-color: gainsboro;
+}
+
+button {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
