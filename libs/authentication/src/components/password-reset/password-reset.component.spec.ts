@@ -9,7 +9,7 @@ import { DisableControlDirective } from '../../directives/disable-control/disabl
 import { combineReducers, StoreModule } from '@ngrx/store';
 import { authenticationReducers } from '../../+state/reducers/authentication-state.reducers';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;

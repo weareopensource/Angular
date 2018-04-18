@@ -19,8 +19,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Roles" [formControl]="rolesControl" multiple [disableControl]="!editMode">
-            <mat-option [value]="'user'">user</mat-option>
-            <mat-option [value]="'admin'">admin</mat-option>
+            <mat-option [value]="'user'" i18n="@@userOption">user</mat-option>
+            <mat-option [value]="'admin'" i18n="@@adminOption">admin</mat-option>
           </mat-select>
         </mat-form-field>
       </mat-card-content>

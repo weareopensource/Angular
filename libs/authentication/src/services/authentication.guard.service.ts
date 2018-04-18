@@ -55,7 +55,8 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
 
 //                return false;
 //              }
-return true;
+
+                return true;
             } else {
               this.store.dispatch(new fromAuthentication.Logout('Token expired'));
 
@@ -71,8 +72,8 @@ return true;
               return false;
             }
           }
-        };
+        }
       })
-    )
+    );
   }
 }
