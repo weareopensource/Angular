@@ -14,6 +14,8 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
+import { getUser } from '@labdat/authentication';
+import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -31,6 +33,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   public displayedColumns = ['_id', 'firstName', 'lastName', 'username', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
 
+  private currentUser$ = this._store.select(getUser);
+
   private subscriptions: Subscription;
 
   constructor(public _dialog: MatDialog, private _store: Store<UserState>) {}
@@ -39,6 +43,10 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource = new MatTableDataSource();
     const allUsersSubscriptions = this._store
     .select(selectAllUsers)
+    .pipe(
+      withLatestFrom(this.currentUser$,
+      (users, currentUser) => users.filter(user => user.id !== currentUser.id))
+    )
     .subscribe(users => (this.dataSource.data = users));
     this.subscriptions = allUsersSubscriptions;
 
