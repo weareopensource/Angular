@@ -25,6 +25,12 @@ export function statusReducer(state = initialStatusState, action: fromAuthentica
         ...initialStatusState
       };
     }
+    case fromAuthentication.USER_UPDATE_SUCCESS: {
+      return {
+        ...state,
+        user: action.payload.user
+      };
+    }
     default: {
       return state;
     }

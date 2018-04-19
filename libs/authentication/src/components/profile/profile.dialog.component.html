@@ -8,11 +8,12 @@
 <mat-dialog-content>
   <mat-card>
       <mat-card-header>
-        <div mat-card-avatar></div>
+        <div #avatar mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + user.profileImageURL + ')'}"></div>
         <mat-card-title [attr.contenteditable]="editMode"><span #userName>{{ user.username }}</span></mat-card-title>
         <mat-card-subtitle [attr.contenteditable]="editMode"><span #firstName>{{ user.fistName }}</span> <span #lastName>{{ user.lastName }}</span></mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="/assets/ic_profile.png" alt="photo of the profile">
+      <img #image mat-card-image [attr.src]="user.profileImageURL" alt="photo of the profile" (click)="editMode && uploadInput.click()">
+      <input #uploadInput type="file" name="file" accept="image/png" [hidden]=true (change)="fileChanged($event)">
       <mat-card-content>
         <mat-form-field>
           <input matInput type="email" placeholder="Email" [formControl]="emailControl" [disableControl]="!editMode">

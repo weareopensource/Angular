@@ -34,29 +34,26 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
       map(loggedIn => {
         const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
-          /*
           if (path === 'auth') {
             this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
 
             return false;
           }
-*/
+
           return true;
         } else {
           if (tokenExpiresIn) {
             if (tokenExpiresIn > Date.now()) {
 
-  //            if (path === 'auth') {
-//                this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
+              if (path === 'auth') {
+                this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
 
-//                return false;
-//              } else {
+                return false;
+              } else {
                 this.store.dispatch(new fromAuthentication.LoadUser());
 
-//                return false;
-//              }
-
-                return true;
+                return false;
+              }
             } else {
               this.store.dispatch(new fromAuthentication.Logout('Token expired'));
 

@@ -2,7 +2,6 @@ import { ProfileDialogComponent } from './profile.dialog.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getUser } from '../../+state/selectors/authentication-state.selectors';
-import { first } from 'rxjs/operators/first';
 import { delay } from 'rxjs/operators/delay';
 import { map } from 'rxjs/operators/map';
 import { fromRouter } from '@labdat/common/router-state';
@@ -13,6 +12,7 @@ import { AuthenticationState } from '../../+state/states/authentication-state.st
 import { cloneDeep } from 'lodash';
 import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
 import { User } from '../../models/user.model';
+import { tap } from 'rxjs/operators/tap';
 
 @Component({
   template: ''
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const dialogSubscription = this.store.select(getUser)
     .pipe(
-      first(),
+      tap(console.log),
       delay(0),
       map(user => this._dialog.open(ProfileDialogComponent, {
         height: '700px',
