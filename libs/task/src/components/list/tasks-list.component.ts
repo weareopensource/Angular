@@ -16,8 +16,8 @@ import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 @Component({
-  styleUrls: ['./task-list.component.scss'],
-  templateUrl: './task-list.component.html'
+  styleUrls: ['./tasks-list.component.scss'],
+  templateUrl: './tasks-list.component.html'
 })
 export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
@@ -57,7 +57,11 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
       ),
       switchMap(dialogRef => dialogRef.afterClosed())
     )
-    .subscribe(taskId => this.store.dispatch(new fromTask.Delete({ taskId })));
+    .subscribe(taskId => {
+      if (taskId) {
+        this.store.dispatch(new fromTask.Delete({ taskId }));
+      }
+    });
 
     this.edit$
     .subscribe(taskId => this.store.dispatch(new fromRouter.Go({path: ['tasks', Number(taskId), 'edit']})));

@@ -9,7 +9,7 @@ export class Go implements Action {
   readonly type = GO;
   constructor(
     public payload: {
-      path: Array<any>;
+      path?: Array<any>;
       query?: object;
       extras?: NavigationExtras;
     }

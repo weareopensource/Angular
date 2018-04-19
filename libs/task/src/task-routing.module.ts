@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskAddComponent } from './components/add/task-add.component';
 import { TaskDetailComponent } from './components/detail/task-detail.component';
 import { TaskEditComponent } from './components/edit/task-edit.component';
-import { TasksListComponent } from './components/list/task-list.component';
+import { TasksListComponent } from './components/list/tasks-list.component';
 import { TaskGuardService } from './services/task.guard.service';
 
 const tasksRoutes: Routes = [

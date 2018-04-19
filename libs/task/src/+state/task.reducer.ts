@@ -21,15 +21,8 @@ export function taskReducer(
     case fromAuthentication.LOGOUT: {
       //      return adapter.removeAll({ ...state, selectedUserId: null });
       return taskInitialState;
-    } /*
-    case task.HANDLE_SUCCESS: {
-      return {
-        tasks: {
-          ...state.tasks,
-          ...keyBy(action.payload.tasks, 'id'),
-        }
-      };
-    }*/
+    }
+
     case fromTask.ADD_SUCCESS: {
       return taskAdapter.addOne(action.payload.task, state);
     }

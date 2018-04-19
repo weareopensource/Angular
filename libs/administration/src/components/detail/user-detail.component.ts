@@ -1,4 +1,3 @@
-import { UserDetailDialogComponent } from './user-detail.dialog.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectSelectedUser } from '../../+state/user.selectors';
@@ -13,6 +12,7 @@ import { UserState } from '../../+state/user.interfaces';
 import { cloneDeep } from 'lodash';
 import * as fromUser from '../../+state/user.actions';
 import { User } from '../../models/user.model';
+import { ProfileDialogComponent } from '@labdat/authentication';
 
 @Component({
   template: ''
@@ -33,14 +33,15 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     .pipe(
       first(),
       delay(0),
-      map(user => this.dialog.open(UserDetailDialogComponent, {
-        data: { user: cloneDeep(user) }
+      map(user => this.dialog.open(ProfileDialogComponent, {
+        height: '700px',
+        data: cloneDeep(user)
       })),
       switchMap(dialogRef => dialogRef.afterClosed())
     )
-    .subscribe((userModel: User) => {
-      if (userModel) {
-        this.store.dispatch(new fromUser.Update({ user: { id: userModel.id, changes: userModel } }));
+    .subscribe((user: User) => {
+      if (user) {
+        this.store.dispatch(new fromUser.Update({ user: { id: user.id, changes: user } }));
       }
       this.store.dispatch(new fromRouter.Back());
     });

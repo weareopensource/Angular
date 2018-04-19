@@ -1,12 +1,18 @@
+import {
+  AuthenticationGuardService,
+  AuthenticationRoutingModule,
+  AuthenticationStateModule,
+  ProfileComponent,
+  ProfileDialogComponent
+} from '@labdat/authentication';
 import { AppComponent } from './components/app.component';
-import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { coreConfiguration, CoreStateModule, CoreViewModule } from '@labdat/core';
 import { StoreModule } from '@ngrx/store';
-import { AuthenticationRoutingModule, AuthenticationStateModule } from '@labdat/authentication';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgModule } from '@angular/core';
 import { metaReducers } from './+state/app.reducer';
@@ -14,17 +20,26 @@ import { environment } from '../environments/environment';
 import { RouterStateModule } from '@labdat/common/router-state';
 // import { ConnectFormStateModule } from '@labdat/connect-form-state';
 import { taskConfiguration, TaskRoutingModule, TaskStateModule } from '@labdat/task';
-// import { FormlyModule } from '@ngx-formly/core';
 import { AdministrationRoutingModule, UserStateModule } from '@labdat/administration';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     NxModule.forRoot(),
     BrowserModule,
-    RouterModule/*.forRoot([], { initialNavigation: 'enabled' })*/,
+    RouterModule.forRoot([{
+      path: 'profile',
+      outlet: 'profile',
+      canActivate: [ AuthenticationGuardService ],
+      component: ProfileComponent
+    }])/*.forRoot([], { initialNavigation: 'enabled' })*/,
     BrowserAnimationsModule,
     MatIconModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     RouterStateModule.forRoot(),
@@ -44,6 +59,7 @@ import { MatIconModule } from '@angular/material';
 //    ConnectFormStateModule,
   ],
   declarations: [ AppComponent ],
+  entryComponents: [ ProfileDialogComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

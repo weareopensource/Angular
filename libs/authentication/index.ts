@@ -11,4 +11,8 @@ export {
   getLoginPageError
 } from './src/+state/selectors/authentication-state.selectors';
 export { AuthenticationState } from './src/+state/states/authentication-state.state';
+export { authenticationReducers } from './src/+state/reducers/authentication-state.reducers';
 export { User } from './src/models/user.model';
+export { ProfileComponent } from './src/components/profile/profile.component';
+export { ProfileDialogComponent } from './src/components/profile/profile.dialog.component';
+export { AuthenticationViewModule } from './src/authentication-view.module';

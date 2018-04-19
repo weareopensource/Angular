@@ -9,12 +9,13 @@ import { selectAllUsers } from '../../+state/user.selectors';
 import { fromRouter } from '@labdat/common/router-state';
 import { Store } from '@ngrx/store';
 import { User } from '../../models/user.model';
-import 'rxjs/add/operator/do';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
+import { getUser } from '@labdat/authentication';
+import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -27,30 +28,35 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public delete$ = new Subject();
   public view$ = new Subject();
-  public edit$ = new Subject();
   public add$ = new Subject();
 
   public displayedColumns = ['_id', 'firstName', 'lastName', 'username', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
 
+  private currentUser$ = this._store.select(getUser);
+
   private subscriptions: Subscription;
 
-  constructor(public dialog: MatDialog, private store: Store<UserState>) {}
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
-    const allUsersSubscriptions = this.store
+    const allUsersSubscriptions = this._store
     .select(selectAllUsers)
+    .pipe(
+      withLatestFrom(this.currentUser$,
+      (users, currentUser) => users.filter(user => user.id !== currentUser.id))
+    )
     .subscribe(users => (this.dataSource.data = users));
     this.subscriptions = allUsersSubscriptions;
 
     const viewSubscription = this.view$
-    .subscribe(userId => this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
+    .subscribe(userId => this._store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
     this.subscriptions.add(viewSubscription);
 
     const deleteSubscription = this.delete$
     .pipe(
-      map(userId => this.dialog.open(
+      map(userId => this._dialog.open(
         UserDeleteDialogComponent,
         {
           width: '250px',
@@ -60,12 +66,8 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       switchMap(dialogRef => dialogRef.afterClosed()),
       filter(userId => userId)
     )
-    .subscribe(userId => this.store.dispatch(new fromUser.Delete({ userId })));
+    .subscribe(userId => this._store.dispatch(new fromUser.Delete({ userId })));
     this.subscriptions.add(deleteSubscription);
-
-    const editSubscription = this.edit$
-    .subscribe(userId => this.store.dispatch(new fromRouter.Go({path: ['admin', 'users', userId, 'edit']})));
-    this.subscriptions.add(editSubscription);
   }
 
   ngAfterViewInit(): void {

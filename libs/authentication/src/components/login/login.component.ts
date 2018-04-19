@@ -10,7 +10,7 @@ import { first, keys } from 'lodash';
 })
 export class LoginComponent {
 
-  @Input()
+  @Input('isPending')
   set pending(isPending: boolean) {
     if (isPending) {
       this.loginForm.disable();

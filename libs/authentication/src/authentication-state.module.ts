@@ -1,4 +1,4 @@
-import { LoginSnackComponent } from './components/login-snack/login-snack.component';
+import { AuthenticationSnackComponent } from './components/authentication-snack/authentication-snack.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { authenticationReducers } from './+state/reducers/authentication-state.reducers';
 import { StoreModule } from '@ngrx/store';
@@ -15,14 +15,14 @@ export function initialisationFactory(authenticationInitialisation): any {
 }
 
 @NgModule({
-  declarations: [LoginSnackComponent],
+  declarations: [AuthenticationSnackComponent],
   imports: [
     HttpClientModule,
     MatSnackBarModule,
     StoreModule.forFeature('authentication', authenticationReducers),
     EffectsModule.forFeature([AuthenticationEffectsService])
   ],
-  entryComponents: [LoginSnackComponent]
+  entryComponents: [AuthenticationSnackComponent]
 })
 export class AuthenticationStateModule {
   public static forRoot(): ModuleWithProviders {

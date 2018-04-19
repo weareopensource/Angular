@@ -21,21 +21,21 @@ export class LayoutComponent implements OnInit {
   @ViewChild('outlet')
   public outlet;
 
-  public logo$ = this.store.select(getLogo);
-  public title$ = this.store.select(getTitle);
+  public logo$ = this._store.select(getLogo);
+  public title$ = this._store.select(getTitle);
   public menuItems$;
-  public isSidenavOpened$ = this.store.select(getShowSidenav);
-  public isLoggedIn$ = this.store.select(getLoggedIn);
-  public currentUser$ = this.store.select(getUser);
+  public isSidenavOpened$ = this._store.select(getShowSidenav);
+  public isLoggedIn$ = this._store.select(getLoggedIn);
+  public currentUser$ = this._store.select(getUser);
   public isAdmin$ = this.currentUser$.pipe(
     map((user: User) => (user) ? user.roles.includes('admin') : false)
   );
 
-  constructor(private store: Store<any>) { }
+  constructor(private _store: Store<any>) { }
 
   ngOnInit(): void {
-    const items$ = this.store.select(getMenuItems);
-    const user$ = this.store.select(getUser);
+    const items$ = this._store.select(getMenuItems);
+    const user$ = this._store.select(getUser);
     this.menuItems$ = items$.pipe(
       combineLatest(
         user$,
@@ -48,31 +48,33 @@ export class LayoutComponent implements OnInit {
   }
 
   public openSidenav(): void {
-    this.store.dispatch(new fromCore.OpenSidenav());
+    this._store.dispatch(new fromCore.OpenSidenav());
   }
 
   public closeSidenav(): void {
-    this.store.dispatch(new fromCore.CloseSidenav());
+    this._store.dispatch(new fromCore.CloseSidenav());
   }
 
   public editProfile(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['auth', 'profile'] }));
+    this._store.dispatch(new fromRouter.Go({
+      path: [{outlets: { profile: 'profile' }}]
+    }));
   }
 
   public userManagement(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['admin', 'users'] }));
+    this._store.dispatch(new fromRouter.Go({ path: ['admin', 'users'] }));
   }
 
   public goToAuthenticationPage(): void {
-    this.store.dispatch(new fromRouter.Go({ path: ['auth'] }));
+    this._store.dispatch(new fromRouter.Go({ path: ['auth'] }));
   }
 
   public goTo(link: string): void {
-    this.store.dispatch(new fromRouter.Go({ path: [ link ] }));
+    this._store.dispatch(new fromRouter.Go({ path: [ link ] }));
   }
 
   public logout(): void {
-    this.store.dispatch(new fromAuthentication.Logout());
+    this._store.dispatch(new fromAuthentication.Logout());
   }
 
   public trackByOrder(item: MenuItem): number {

@@ -120,6 +120,11 @@ ngx-tooltip-content.ngx-tooltip-content.position-right.type-tooltip.animate {
  .base.dark {
    background: #f6f6f6;
  }
+
 .mat-dialog-container{
   max-width: 100% !important;
+}
+
+mat-dialog-content{
+  max-height: none !important;
 }

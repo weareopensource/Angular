@@ -8,13 +8,14 @@ import { map } from 'rxjs/operators/map';
 import { filter } from 'rxjs/operators/filter';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 
-import { fromConnectForm } from '@labdat/connect-form-state';
-import { ConnectFormStateSelectors } from '@labdat/connect-form-state/src/+state/selectors/connect-form-state.selectors';
+import { fromConnectForm } from '@labdat/common/connect-form-state';
+import { ConnectFormStateSelectors } from '@labdat/common/connect-form-state/src/+state/selectors/connect-form-state.selectors';
 
 @Directive({
   selector: '[connectForm]'
 })
 export class ConnectFormDirective implements OnInit, OnDestroy {
+
   @Input('connectForm')
   path: string;
 

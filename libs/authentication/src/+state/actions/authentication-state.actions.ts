@@ -39,7 +39,9 @@ export type Actions =
   | ResetPassword
   | ResetPasswordSuccess
   | ResetPasswordFailure
-  | UpdateUser;
+  | UpdateUser
+  | UserUpdateSuccess
+  | UserUpdateFailure;
 
 export class Login implements Action {
   readonly type = LOGIN;

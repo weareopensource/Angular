@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreGuardService } from './services/core.guard.service';
 import { AuthenticationGuardService, RoleGuardService } from '@labdat/authentication';
-// import { ProfileComponent } from '@labdat/authentication';
+// import {  } from '@labdat/authentication';
 import { TaskGuardService } from '@labdat/task';
 
 const coreRoutes: Routes = [
@@ -74,7 +74,7 @@ if (!isEmpty(taskConfiguration.self.roles)) {
 */
 
 @NgModule({
-  imports: [ RouterModule.forRoot(coreRoutes) ],
+  imports: [ RouterModule.forChild(coreRoutes) ],
   providers: [ CoreGuardService ]
 })
 export class CoreRoutingModule { }

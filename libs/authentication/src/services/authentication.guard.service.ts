@@ -26,14 +26,15 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
     return this.hasPermission(currentUrl, undefined);
   }
 
-  hasPermission(path: string, route: ActivatedRouteSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+  hasPermission(path: string, _route: ActivatedRouteSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    console.log('??', path);
+
     return this.store.select(getLoggedIn)
     .pipe(
       map(loggedIn => {
         const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
         if (loggedIn) {
-          console.log('????', path, (path === 'auth' && route.children[0].url[0]));
-          if (path === 'auth' && (route.children[0].url[0] === undefined || route.children[0].url[0].path !== 'profile')) {
+          if (path === 'auth') {
             this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
 
             return false;
@@ -43,6 +44,7 @@ export class AuthenticationGuardService implements CanActivate, CanLoad {
         } else {
           if (tokenExpiresIn) {
             if (tokenExpiresIn > Date.now()) {
+
               if (path === 'auth') {
                 this.store.dispatch(new fromRouter.Go({ path: ['home'] }));
 

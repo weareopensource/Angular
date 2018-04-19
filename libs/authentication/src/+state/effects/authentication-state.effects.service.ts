@@ -2,7 +2,7 @@ import { fromRouter } from '@labdat/common/router-state';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material';
-import { LoginSnackComponent } from '../../components/login-snack/login-snack.component';
+import { AuthenticationSnackComponent } from '../../components/authentication-snack/authentication-snack.component';
 import { AuthenticationApiService } from '../../services/authentication.api.service';
 import * as fromAuthentication from '../actions/authentication-state.actions';
 import { Store } from '@ngrx/store';
@@ -42,7 +42,7 @@ export class AuthenticationEffectsService {
     map((action: fromAuthentication.Logout) => action.payload),
     tap(message => {
       localStorage.removeItem('tokenExpiresIn');
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message || 'Logout',
         horizontalPosition: 'right',
@@ -56,7 +56,7 @@ export class AuthenticationEffectsService {
   loginSuccess$ = this.actions$.ofType(fromAuthentication.LOGIN_SUCCESS)
   .pipe(
     tap(() => {
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: 'Login Success',
         horizontalPosition: 'right',
@@ -71,7 +71,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.LoginFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',
@@ -109,7 +109,7 @@ export class AuthenticationEffectsService {
   registerSuccess$ = this.actions$.ofType(fromAuthentication.REGISTER_SUCCESS)
   .pipe(
     tap(() => {
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: 'Register Success',
         horizontalPosition: 'right',
@@ -124,7 +124,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.RegisterFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',
@@ -156,7 +156,7 @@ export class AuthenticationEffectsService {
   UserUpdateSuccess$ = this.actions$.ofType(fromAuthentication.USER_UPDATE_SUCCESS)
   .pipe(
     tap(() => {
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: 'User Update Success',
         horizontalPosition: 'right',
@@ -170,7 +170,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.UserUpdateFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',
@@ -202,7 +202,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.UserLoadFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',
@@ -235,7 +235,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.ChangePasswordSuccess) => action.payload),
     tap(() =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: 'An email has been sent to the provided email with further instructions',
         horizontalPosition: 'right',
@@ -249,7 +249,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.ChangePasswordFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',
@@ -282,7 +282,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.ResetPasswordSuccess) => action.payload),
     tap(() =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: 'Password Reseted',
         horizontalPosition: 'right',
@@ -297,7 +297,7 @@ export class AuthenticationEffectsService {
   .pipe(
     map((action: fromAuthentication.ResetPasswordFailure) => action.payload),
     tap(message =>
-      this.snackBar.openFromComponent(LoginSnackComponent, {
+      this.snackBar.openFromComponent(AuthenticationSnackComponent, {
         duration: 1000,
         data: message,
         horizontalPosition: 'right',

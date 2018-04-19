@@ -2,6 +2,22 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="fr" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="userOption" datatype="html">
+        <source>user</source>
+        <target>user</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.dialog.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminOption" datatype="html">
+        <source>admin</source>
+        <target>admin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.dialog.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="userDetails" datatype="html">
         <source>User Details</source>
         <target>Détails de l'utilisateur</target>
