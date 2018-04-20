@@ -111,22 +111,247 @@
       <trans-unit id="userDetails" datatype="html">
         <source>User Details</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.dialog.component.ts</context>
+          <context context-type="sourcefile">../../../libs/user/src/components/detail/user-detail.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/detail/user-detail.page.component.ts</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userOption" datatype="html">
         <source>user</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.dialog.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="sourcefile">../../../libs/user/src/components/detail/user-detail.dialog.component.ts</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminOption" datatype="html">
         <source>admin</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/authentication/src/components/profile/profile.dialog.component.ts</context>
+          <context context-type="sourcefile">../../../libs/user/src/components/detail/user-detail.dialog.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteUser" datatype="html">
+        <source>Delete User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userDeleteConfirmation" datatype="html">
+        <source>Confirme user delete ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noButton" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yesButton" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/delete/user-delete.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="id" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="avatar" datatype="html">
+        <source>Avatar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firstName" datatype="html">
+        <source>First Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lastName" datatype="html">
+        <source>Last Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userName" datatype="html">
+        <source>User Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action" datatype="html">
+        <source>Action</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/user/src/components/list/users-list.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="close" datatype="html">
+        <source>close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="open" datatype="html">
+        <source>open</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="menu" datatype="html">
+        <source>menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editProfile" datatype="html">
+        <source>Edit Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usersManagement" datatype="html">
+        <source>Users Management</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="exit" datatype="html">
+        <source>exit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pageNotFound" datatype="html">
+        <source>Page not Found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="404Header" datatype="html">
+        <source>We couldn&apos;t find what you&apos;re looking for.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="whatHappened" datatype="html">
+        <source>What happened ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="404Error" datatype="html">
+        <source>A 404 error status implies that the file or page that you&apos;re looking for could not be found&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addTask" datatype="html">
+        <source>Add Task</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addButton" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editTask" datatype="html">
+        <source>Edit Task</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="updateButton" datatype="html">
+        <source>Update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source>Supprimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteConfirmation" datatype="html">
+        <source>Confirmer la suppression ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="no" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yes" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskId" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTitle" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailPlaceholder" datatype="html">
@@ -279,220 +504,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../../../libs/authentication/src/components/register/register.component.ts</context>
           <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="deleteUser" datatype="html">
-        <source>Delete User</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/delete/user-delete.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="userDeleteConfirmation" datatype="html">
-        <source>Confirme user delete ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/delete/user-delete.dialog.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="noButton" datatype="html">
-        <source>No</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/delete/user-delete.dialog.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="yesButton" datatype="html">
-        <source>Yes</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/delete/user-delete.dialog.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="id" datatype="html">
-        <source>ID</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="firstName" datatype="html">
-        <source>First Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="lastName" datatype="html">
-        <source>Last Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="userName" datatype="html">
-        <source>User Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="email" datatype="html">
-        <source>Email</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="action" datatype="html">
-        <source>Action</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/administration/src/components/list/users-list.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="addTask" datatype="html">
-        <source>Add Task</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="addButton" datatype="html">
-        <source>Add</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/add/task-add.dialog.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="editTask" datatype="html">
-        <source>Edit Task</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="updateButton" datatype="html">
-        <source>Update</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/edit/task-edit.dialog.component.ts</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="delete" datatype="html">
-        <source>Supprimer</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="deleteConfirmation" datatype="html">
-        <source>Confirmer la suppression ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="no" datatype="html">
-        <source>No</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="yes" datatype="html">
-        <source>Yes</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/delete/task-delete.dialog.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="taskId" datatype="html">
-        <source>ID</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="taskTitle" datatype="html">
-        <source>Title</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/task/src/components/list/tasks-list.component.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="close" datatype="html">
-        <source>close</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="open" datatype="html">
-        <source>open</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="menu" datatype="html">
-        <source>menu</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="editProfile" datatype="html">
-        <source>Edit Profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="usersManagement" datatype="html">
-        <source>Users Management</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="exit" datatype="html">
-        <source>exit</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="pageNotFound" datatype="html">
-        <source>Page not Found</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="404Header" datatype="html">
-        <source>We couldn&apos;t find what you&apos;re looking for.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="whatHappened" datatype="html">
-        <source>What happened ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="404Error" datatype="html">
-        <source>A 404 error status implies that the file or page that you&apos;re looking for could not be found&gt;</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../../../libs/core/src/components/not-found/not-found.component.ts</context>
-          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
     </body>

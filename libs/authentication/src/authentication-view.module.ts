@@ -1,7 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ProfileDialogComponent } from './components/profile/profile.dialog.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,8 +29,7 @@ const COMPONENTS = [
   LoginComponent,
   RegisterComponent,
   ProfileComponent,
-  PasswordResetComponent,
-  ProfileDialogComponent
+  PasswordResetComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -59,7 +57,6 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ ...COMPONENTS, DisableControlDirective ],
-  entryComponents: [ ProfileDialogComponent ]
+  declarations: [...COMPONENTS, DisableControlDirective]
 })
 export class AuthenticationViewModule { }

@@ -14,8 +14,6 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
-import { getUser } from '@labdat/authentication';
-import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -28,12 +26,11 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public delete$ = new Subject();
   public view$ = new Subject();
+  public edit$ = new Subject();
   public add$ = new Subject();
 
-  public displayedColumns = ['_id', 'firstName', 'lastName', 'username', 'email', 'action'];
+  public displayedColumns = ['avatar', 'firstName', 'lastName', 'username', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
-
-  private currentUser$ = this._store.select(getUser);
 
   private subscriptions: Subscription;
 
@@ -43,15 +40,15 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource = new MatTableDataSource();
     const allUsersSubscriptions = this._store
     .select(selectAllUsers)
-    .pipe(
-      withLatestFrom(this.currentUser$,
-      (users, currentUser) => users.filter(user => user.id !== currentUser.id))
-    )
     .subscribe(users => (this.dataSource.data = users));
     this.subscriptions = allUsersSubscriptions;
 
+    const editSubscription = this.edit$
+    .subscribe(userId => this._store.dispatch(new fromRouter.Go({ path: ['users', userId, 'edit'] })));
+    this.subscriptions.add(editSubscription);
+
     const viewSubscription = this.view$
-    .subscribe(userId => this._store.dispatch(new fromRouter.Go({ path: ['admin', 'users', userId] })));
+    .subscribe(userId => this._store.dispatch(new fromRouter.Go({ path: ['users', userId] })));
     this.subscriptions.add(viewSubscription);
 
     const deleteSubscription = this.delete$
@@ -76,9 +73,9 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
+    this.dataSource.filter = filterValue
+    .trim()
+    .toLowerCase();
   }
 
   getState(outlet): any {

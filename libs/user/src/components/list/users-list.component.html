@@ -5,9 +5,11 @@
     </mat-form-field>
   </div>
   <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="_id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@id">ID</mat-header-cell>
-      <mat-cell *matCellDef="let row" [innerHtml]="row._id"></mat-cell>
+    <ng-container matColumnDef="avatar">
+      <mat-header-cell *matHeaderCellDef i18n="@@avatar">Avatar</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          <img [attr.src]="row.profileImageURL" (click)="view$.next(row._id)">
+      </mat-cell>
     </ng-container>
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@firstName">First Name</mat-header-cell>
@@ -28,8 +30,8 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef i18n="@@action">Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="view$.next(row._id)">
-          <mat-icon svgIcon="action:ic_visibility_24px"></mat-icon>
+        <button mat-icon-button (click)="edit$.next(row._id)">
+          <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
         </button>
         <button mat-icon-button (click)="delete$.next(row._id)">
           <mat-icon svgIcon="action:ic_delete_24px"></mat-icon>

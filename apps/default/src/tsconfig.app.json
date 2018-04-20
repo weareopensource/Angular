@@ -6,7 +6,7 @@
   },
   "include": [
     "**/*.ts",
-    "../../../libs/administration",
+    "../../../libs/user",
     "../../../libs/task",
     "../../../libs/authentication"
   ],
