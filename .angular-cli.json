@@ -74,8 +74,8 @@
       "appRoot": ""
     },
     {
-      "name": "administration",
-      "root": "libs/administration/src",
+      "name": "user",
+      "root": "libs/user/src",
       "test": "../../../test.js",
       "appRoot": ""
     }
@@ -105,6 +105,9 @@
     }
   },
   "defaults": {
+    "build": {
+      "showCircularDependencies": false
+    },
     "schematics": {
       "collection": "@nrwl/schematics",
       "postGenerate": "npm run format",

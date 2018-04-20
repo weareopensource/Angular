@@ -21,15 +21,16 @@ export function userReducer(
     case fromAuthentication.LOGOUT: {
       //      return adapter.removeAll({ ...state, selectedUserId: null });
       return userInitialState;
-    } /*
-    case user.HANDLE_SUCCESS: {
-      return {
-        users: {
-          ...state.users,
-          ...keyBy(action.payload.users, 'id'),
-        }
-      };
-    }*/
+    }
+    case fromAuthentication.USER_UPDATE_SUCCESS: {
+      return userAdapter.updateOne(
+        {
+          id: action.payload.user.id,
+          changes: action.payload.user
+        },
+        state
+      );
+    }
     case fromUser.ADD_SUCCESS: {
       return userAdapter.addOne(action.payload.user, state);
     }

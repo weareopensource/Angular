@@ -11,7 +11,7 @@ const tasksRoutes: Routes = [
     path: '',
     component: TasksListComponent,
     data: {
-      page: 'list'
+      page: 'tasks-list'
     },
     children: [
       {
@@ -31,7 +31,7 @@ const tasksRoutes: Routes = [
     path: ':id',
     component: TaskDetailComponent,
     data: {
-      page: 'detail'
+      page: 'task-detail'
     }
   },
   {
@@ -60,7 +60,7 @@ export class TaskRoutingModule {
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootTaskRoutingModule,
-      providers: [ TaskGuardService ]
+      providers: [TaskGuardService]
     };
   }
 }

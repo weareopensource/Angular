@@ -6,7 +6,8 @@
   <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
 </button>
 <mat-dialog-content>
-  <mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
       <mat-card-header>
         <div #avatar mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + user.profileImageURL + ')'}"></div>
         <mat-card-title [attr.contenteditable]="editMode"><span #userName>{{ user.username }}</span></mat-card-title>
@@ -26,4 +27,5 @@
         </mat-form-field>
       </mat-card-content>
     </mat-card>
+  </div>
 </mat-dialog-content>
