@@ -62,7 +62,7 @@ export class LayoutComponent implements OnInit {
   }
 
   public userManagement(): void {
-    this._store.dispatch(new fromRouter.Go({ path: ['admin', 'users'] }));
+    this._store.dispatch(new fromRouter.Go({ path: ['users'] }));
   }
 
   public goToAuthenticationPage(): void {
@@ -70,7 +70,7 @@ export class LayoutComponent implements OnInit {
   }
 
   public goTo(link: string): void {
-    this._store.dispatch(new fromRouter.Go({ path: [ link ] }));
+    this._store.dispatch(new fromRouter.Go({ path: [link] }));
   }
 
   public logout(): void {

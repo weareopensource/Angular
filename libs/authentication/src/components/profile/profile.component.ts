@@ -1,4 +1,3 @@
-import { ProfileDialogComponent } from './profile.dialog.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getUser } from '../../+state/selectors/authentication-state.selectors';
@@ -13,6 +12,7 @@ import { cloneDeep } from 'lodash';
 import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
 import { User } from '../../models/user.model';
 import { tap } from 'rxjs/operators/tap';
+import { UserDetailDialogComponent } from '@labdat/user';
 
 @Component({
   template: ''
@@ -36,8 +36,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     .pipe(
       tap(console.log),
       delay(0),
-      map(user => this._dialog.open(ProfileDialogComponent, {
-        height: '700px',
+      map(user => this._dialog.open(UserDetailDialogComponent, {
+        width: '75%',
         data: cloneDeep(user)
       })),
       switchMap(dialogRef => dialogRef.afterClosed())

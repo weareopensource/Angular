@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { combineReducers, StoreModule } from '@ngrx/store';
 import { authenticationReducers } from '@labdat/authentication';
-import { userReducer } from '@labdat/administration';
+import { userReducer } from '@labdat/user';
 import { routerReducer } from '@ngrx/router-store';
 
 describe('UserDetailComponent', () => {
@@ -16,7 +16,7 @@ describe('UserDetailComponent', () => {
   beforeEach(async(() => {
 
     const storeMock = {
-        authentication: {
+      authentication: {
           status: {
             user: {
               _id: 1,
@@ -34,13 +34,13 @@ describe('UserDetailComponent', () => {
             error: ''
           }
         },
-        user: {
+      user: {
           ids: [],
           entities: {},
           loaded: true,
           loading: false
         },
-        router: {
+      router: {
           navigationId: 1,
           state: {
             params: {},
@@ -61,7 +61,7 @@ describe('UserDetailComponent', () => {
           router: routerReducer
         }, { initialState: storeMock as any })
       ],
-      declarations: [ UserDetailComponent ]
+      declarations: [UserDetailComponent]
     })
     .compileComponents();
   }));

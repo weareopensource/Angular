@@ -1,5 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/detail/user-detail.component';
+import { UserDetailDialogComponent } from './components/detail/user-detail.dialog.component';
+import { UserDetailPageComponent } from './components/detail/user-detail.page.component';
 import { UsersListComponent } from './components/list/users-list.component';
 import { UserDeleteDialogComponent } from './components/delete/user-delete.dialog.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule } from '@angular/router';
+import { DisableControlDirective } from './directives/disable-control/disable-control.directive';
 
 import {
   MatButtonModule,
@@ -16,6 +19,7 @@ import {
   MatInputModule,
   MatListModule,
   MatPaginatorModule,
+  MatSelectModule,
   MatSortModule,
   MatTableModule,
   MatTooltipModule
@@ -26,7 +30,9 @@ import { FormlyModule } from '@ngx-formly/core';
 const COMPONENTS = [
   UsersListComponent,
   UserDetailComponent,
-  UserDeleteDialogComponent
+  UserDetailPageComponent,
+  UserDeleteDialogComponent,
+  UserDetailDialogComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -39,11 +45,12 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatSelectModule
 ];
 
 @NgModule({
-  declarations: COMPONENTS,
+  declarations: [...COMPONENTS, DisableControlDirective],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -56,7 +63,8 @@ const MATERIAL_MODULES = [
     RouterModule
   ],
   entryComponents: [
-    UserDeleteDialogComponent
+    UserDeleteDialogComponent,
+    UserDetailDialogComponent
   ]
 })
-export class AdministrationViewModule { }
+export class UserViewModule { }

@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
-  templateUrl: './profile.dialog.component.html',
-  styleUrls: ['./profile.dialog.component.scss']
+  templateUrl: './user-detail.dialog.component.html',
+  styleUrls: ['./user-detail.dialog.component.scss']
 })
-export class ProfileDialogComponent implements OnInit {
+export class UserDetailDialogComponent implements OnInit {
 
   @ViewChild('userName')
   public userName;
@@ -37,7 +37,7 @@ export class ProfileDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public user,
-    private _dialogRef: MatDialogRef<ProfileDialogComponent>,
+    private _dialogRef: MatDialogRef<UserDetailDialogComponent>,
     private _formBuilder: FormBuilder
   ) { }
 

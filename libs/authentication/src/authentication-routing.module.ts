@@ -9,12 +9,13 @@ import { RoleGuardService } from './services/role.guard.service';
 const authenticationRoutes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent
+    component: AuthenticationComponent,
+    canActivate: [AuthenticationGuardService]
   },
   {
     path: 'password-reset',
     component: PasswordResetComponent,
-    canActivate: [ PasswordResetGuardService ]
+    canActivate: [PasswordResetGuardService]
   }
 ];
 //  { path: 'forbiden', component: ForbidenComponent, data: { title: 'Forbiden'} },
@@ -33,7 +34,7 @@ export class RootAuthenticationRoutingModule { }
 
 // tslint:disable-next-line:max-classes-per-file
 @NgModule({
-  imports: [ RouterModule.forChild(authenticationRoutes) ]
+  imports: [RouterModule.forChild(authenticationRoutes)]
 })
 export class AuthenticationRoutingModule {
   public static forRoot(): ModuleWithProviders {

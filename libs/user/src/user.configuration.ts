@@ -5,11 +5,11 @@ export interface UserConfiguration {
   self: { roles: Array<string>; };
 }
 
-export const administrationConfiguration: UserConfiguration = {
+export const userConfiguration: UserConfiguration = {
   core: {
     sidenav: [{
       order: 2,
-      link: '/admin',
+      link: '/users',
       name: 'User',
       icon: 'action:ic_chrome_reader_mode_24px',
       roles: ['admin']
