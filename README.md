@@ -1,6 +1,6 @@
 # WAOS Angular
 [![Build Status](https://travis-ci.org/weareopensource/meanjs-2.svg?branch=master)](https://travis-ci.org/weareopensource/meanjs-2)
-## Angular 5 / material / ngRx Starter 
+## Angular X / material / ngRx Starter 
 ## Presentation 
 This project is part of MEANie stack but can be ran as a standalone application. It's build upon angular 5+ , [angular material](https://github.com/angular/material2), [angular-cli](https://github.com/angular/angular-cli) / [Nx](https://github.com/nrwl/nx) and [ngRx](https://github.com/ngrx).
 <br><br><br>
@@ -9,12 +9,12 @@ This project is part of MEANie stack but can be ran as a standalone application.
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
 * Git - [Download & Install Git](https://git-scm.com/downloads)
-* Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) or [GitHub Gist](https://gist.github.com/isaacs/579814)
+* Node.js (7.x, 8.x) - [Download & Install Node.js](https://nodejs.org/en/download/) or [GitHub Gist](https://gist.github.com/isaacs/579814)
 
 ## Installation
 It's straightforward
 ```bash
-$ git clone https://github.com/weareopensource/Angular.git
+$ git clone https://github.com/weareopensource/Angular.git && cd Angular
 $ npm i
 ```
 
