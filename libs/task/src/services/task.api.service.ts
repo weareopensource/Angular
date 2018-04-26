@@ -2,28 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../models/task.model';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '@labdat/common/environments';
 
 @Injectable()
 export class TaskApiService {
-  constructor(private http: HttpClient) {}
+  private _baseUrl: string;
+  private _endpoints: any
+
+  constructor(private http: HttpClient) {
+    const { protocol, host, port, endpoints } = environment.api;
+    this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basepath}`;
+    this._endpoints = endpoints;
+  }
 
   loadTasks(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/tasks');
+    return this.http.get(`${this._baseUrl}/${this._endpoints.tasks}`);
   }
 
   addTask(task: Task): Observable<any> {
-    return this.http.post('http://localhost:3000/api/tasks', task);
+    return this.http.post(`${this._baseUrl}/${this._endpoints.tasks}`, task);
   }
 
   deleteTask(taskId: string): Observable<any> {
-    return this.http.delete(`http://localhost:3000/api/tasks/${taskId}`);
+    return this.http.delete(`${this._baseUrl}/${this._endpoints.tasks}/${taskId}`);
   }
 
   updateTask(task: any): Observable<any> {
-    return this.http.put(`http://localhost:3000/api/tasks/`, task.changes);
+    return this.http.put(`${this._baseUrl}/${this._endpoints.tasks}`, task.changes);
   }
 
   deleteImage(imageId: string): Observable<any> {
-    return this.http.delete(`http://localhost:3000/api/media/${imageId}`);
+    return this.http.delete(`${this._baseUrl}/${this._endpoints.media}/${imageId}`);
   }
 }

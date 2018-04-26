@@ -3,7 +3,7 @@
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
   ],
-  "extends": ["codelyzer", "angular-tslint-rules", "tslint-angular"],
+  "extends": ["tslint-config-airbnb", "codelyzer", "angular-tslint-rules", "tslint-angular"],
   "rules": {
 
     "no-implicit-dependencies": false,

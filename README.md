@@ -22,7 +22,13 @@ $ npm i
    ### Development
    * Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
    ### Production
-   * Run `npm run start:prod` to build your client app and start a web server on `http://localhost:4200/`
+   * Run `npm run build:prod` to build your client App
+   
+   This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering paths from the varialbles name, and merges it to the environment object defined on environment.prod.ts to regenerate that file. You can for instance define the API server coordonates by defining those system environment variables:
+
+-  FRONT_API_HOST='my-server'
+-  FRONT_API_PORT=4000
+-  FRONT_API_ENDPOINTS_BASEPATH='api2'
 
 <!--
 ## Running unit tests

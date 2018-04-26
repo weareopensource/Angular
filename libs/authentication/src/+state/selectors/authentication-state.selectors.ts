@@ -10,7 +10,7 @@ const selectAuthenticationStatusState = createSelector(
 );
 const selectLoginPageState = createSelector(selectAuthenticationState, (state: AuthenticationState) => state.loginPage);
 
-export const getLoggedIn = createSelector(selectAuthenticationStatusState, (state: StatusState) => state.loggedIn);
+export const getLoggedIn = createSelector(selectAuthenticationStatusState, (state: StatusState) => !!state.user);
 export const getUser = createSelector(selectAuthenticationStatusState, (state: StatusState) => state.user);
 export const getLoginPageError = createSelector(selectLoginPageState, (state: LoginPageState) => state.error);
 export const getLoginPagePending = createSelector(selectLoginPageState, (state: LoginPageState) => state.pending);
