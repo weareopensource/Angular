@@ -1,15 +1,15 @@
 export const environment = {
-  production: true,
-  backend: {
-    protocol: 'http',
-    host: 'localhost',
-    port: 4002,
+  production: false,
+  api: {
+    protocol: "http",
+    host: "localhost",
+    port: "3000",
     endpoints: {
-      basePath: 'api',
-      signup: 'auth/signup',
-      signin: 'auth/signin',
-      articles: 'articles',
-      users: 'users'
+      basePath: "api",
+      auth: "auth",
+      users: "monusers",
+      tasks: "tasks",
+      media: "media"
     }
   }
 };
