@@ -23,6 +23,7 @@ $ npm i
    * Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
    ### Production
    * Run `npm run build:prod` to build your client App
+   
    This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering the path from the string, and merges it to the environment object defined on environment.prod.ts to regenerate that file. 
 
 <!--
