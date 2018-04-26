@@ -11,7 +11,7 @@ export class TaskApiService {
 
   constructor(private http: HttpClient) {
     const { protocol, host, port, endpoints } = environment.api;
-    this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
+    this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basepath}`;
     this._endpoints = endpoints;
   }
 
