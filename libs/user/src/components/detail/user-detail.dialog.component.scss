@@ -4,7 +4,6 @@
 }
 
 [mat-card-avatar] {
-  background-color: gainsboro;
   background-size: cover;
 }
 
@@ -21,12 +20,17 @@ mat-card-subtitle[contenteditable=true], mat-card-title[contenteditable=true] {
   outline: none;
 }
 
-[mat-card-image] {
-  background-color: gainsboro;
-}
-
 button {
   position: absolute;
   right: 0px;
   top: 0px;
+}
+
+img {
+  background-size: cover !important;
+}
+
+img.edit {
+  object-fit: none;
+  cursor: pointer;
 }

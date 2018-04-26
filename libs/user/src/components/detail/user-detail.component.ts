@@ -35,7 +35,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       delay(0),
       map(user => this._dialog.open(UserDetailDialogComponent,
         {
-          width: '75%',
+          width: '70%',
           data: cloneDeep(user)
         })
       ),

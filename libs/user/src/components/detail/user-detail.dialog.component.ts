@@ -44,7 +44,7 @@ export class UserDetailDialogComponent implements OnInit {
   ngOnInit(): void {
     this._reader.addEventListener('load', () => {
       this.avatar.nativeElement.style.backgroundImage = `url(${this._reader.result})`;
-      this.image.nativeElement.src = this._reader.result;
+      this.image.nativeElement.style.background = `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${this._reader.result})`;
     });
   }
 
@@ -54,15 +54,17 @@ export class UserDetailDialogComponent implements OnInit {
 
   public saveOnClose(): void {
 
-    this._dialogRef.close({
+    const updateProfile = {
       id: this.user.id,
       username: this.userName.nativeElement.innerText,
       firstName: this.firstName.nativeElement.innerText,
       lastName: this.lastName.nativeElement.innerText,
       email: this.emailControl.value,
       roles: this.rolesControl.value,
-      profileImageURL: this._reader.result || this.image.nativeElement.src
-    });
+      profileImageURL: this._reader.result || this.user.profileImageURL
+    }
+
+    this._dialogRef.close(updateProfile);
   }
 
 }
