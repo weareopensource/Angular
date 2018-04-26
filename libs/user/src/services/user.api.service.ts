@@ -7,13 +7,13 @@ import { environment } from '@labdat/common/environments';
 
 @Injectable()
 export class UserApiService {
-  
+
   private _baseUrl: string;
   private _endpoints: any;
 
   constructor(private http: HttpClient) {
     const { protocol, host, port, endpoints } = environment.api;
-    this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basePath}`;
+    this._baseUrl = `${protocol}://${host}:${port}/${endpoints.basepath}`;
     this._endpoints = endpoints;
   }
 

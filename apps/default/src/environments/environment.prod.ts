@@ -5,11 +5,12 @@ export const environment = {
     host: 'localhost',
     port: '3000',
     endpoints: {
-      basePath: 'api',
+      basepath: 'api',
       auth: 'auth',
       users: 'users',
       tasks: 'tasks',
-      media: 'media'
+      media: 'media',
+      baseurl: 'api2'
     }
   }
 };
