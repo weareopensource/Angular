@@ -24,7 +24,7 @@ $ npm i
    ### Production
    * Run `npm run build:prod` to build your client App
    
-   This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering the paths from the system environment varialbles name, and merges it to the environment object defined on environment.prod.ts to regenerate that file. You can for instance define the API server coordonates by defining those system environment variables:
+   This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering paths from the varialbles name, and merges it to the environment object defined on environment.prod.ts to regenerate that file. You can for instance define the API server coordonates by defining those system environment variables:
 
 -  FRONT_API_HOST='my-server'
 -  FRONT_API_PORT=4000
