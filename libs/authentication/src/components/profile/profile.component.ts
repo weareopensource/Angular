@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       tap(console.log),
       delay(0),
       map(user => this._dialog.open(UserDetailDialogComponent, {
-        width: '70%',
+        width: '50%',
         data: cloneDeep(user)
       })),
       switchMap(dialogRef => dialogRef.afterClosed())
