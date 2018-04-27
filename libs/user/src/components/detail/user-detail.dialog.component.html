@@ -6,8 +6,7 @@
   <mat-icon svgIcon="image:ic_edit_24px"></mat-icon>
 </button>
 <mat-dialog-content>
-  {{user.firstName}}
-  <div fxLayout="row" fxLayoutAlign="center center">
+  <div id="dialog-content" fxLayout="row" fxLayoutAlign="center center">
     <mat-card>
       <mat-card-header>
         <div #avatar mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + user.profileImageURL + ')'}"></div>
@@ -27,6 +26,7 @@
         <mat-form-field>
           <input matInput type="email" placeholder="Email" [formControl]="emailControl" [disableControl]="!editMode">
         </mat-form-field>
+        <br>
         <mat-form-field>
           <mat-select placeholder="Roles" [formControl]="rolesControl" multiple [disableControl]="!editMode">
             <mat-option [value]="'user'" i18n="@@userOption">user</mat-option>
