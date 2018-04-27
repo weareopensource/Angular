@@ -6,3 +6,7 @@
 mat-card {
   flex: 0 0 50% !important;
 }
+
+[mat-card-avatar] {
+  background-size: cover;
+}
