@@ -1,6 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep } from 'lodash';
 
@@ -8,44 +7,22 @@ import { cloneDeep } from 'lodash';
   templateUrl: './task-edit.dialog.component.html',
   styleUrls: ['./task-edit.dialog.component.scss']
 })
-export class TaskEditDialogComponent implements OnInit {
-  public editTaskForm = new FormGroup({});
-  public taskModel = {
-    title: '',
-    description: ''
-  };
-  public taskFields: Array<FormlyFieldConfig> = [
-    {
-      key: 'title',
-      type: 'input',
-      templateOptions: {
-        type: 'text',
-        label: 'Title',
-        placeholder: 'Enter title',
-        required: true
-      }
-    },
-    {
-      key: 'description',
-      type: 'textarea',
-      templateOptions: {
-        type: 'text',
-        label: 'Description',
-        placeholder: 'Enter description',
-        required: true
-      }
-    }
-  ];
+export class TaskEditDialogComponent {
+  public taskForm = this._formBuilder.group({
+    title: this._formBuilder.control(this.data.task && this.data.task.title || '', Validators.required),
+    description: this._formBuilder.control(this.data.task && this.data.task.description || '', Validators.required)
+  });
 
   constructor(
     private dialogRef: MatDialogRef<TaskEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  ngOnInit(): void {
-    this.taskModel = this.data.task;
-  }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _formBuilder: FormBuilder) { }
 
   onSubmit(): void {
-    this.dialogRef.close(cloneDeep(this.taskModel));
+    console.log(this.taskForm.value);
+    this.dialogRef.close({
+      ...this.data.task,
+      ...cloneDeep(this.taskForm.value)
+    });
   }
 }

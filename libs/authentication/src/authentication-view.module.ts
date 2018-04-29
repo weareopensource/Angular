@@ -11,7 +11,6 @@ import { DisableControlDirective } from './directives/disable-control/disable-co
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -21,8 +20,6 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
 
 const COMPONENTS = [
   AuthenticationComponent,
@@ -35,7 +32,6 @@ const COMPONENTS = [
 const MATERIAL_MODULES = [
   MatButtonModule,
   MatIconModule,
-  MatCheckboxModule,
   MatCardModule,
   MatInputModule,
   MatTabsModule,
@@ -51,9 +47,6 @@ const MATERIAL_MODULES = [
     CommonModule,
     ...MATERIAL_MODULES,
     FlexLayoutModule,
-    FormlyModule,
-
-    FormlyMaterialModule,
     FormsModule,
     ReactiveFormsModule
   ],
