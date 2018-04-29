@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TaskAddDialogComponent } from './task-add.dialog.component';
+import { TaskEditDialogComponent } from '../edit/task-edit.dialog.component';
 import * as fromTask from '../../+state/task.actions';
 import { TaskState } from '../../+state/task.interfaces';
 import { Store } from '@ngrx/store';
@@ -19,8 +19,9 @@ export class TaskAddComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     setTimeout(() => {
-      const dialogRef = this.dialog.open(TaskAddDialogComponent, {
-        width: '700px'
+      const dialogRef = this.dialog.open(TaskEditDialogComponent, {
+        width: '700px',
+        data: { title: 'Add Task' }
       });
 
       const closeDialogSubscription = dialogRef

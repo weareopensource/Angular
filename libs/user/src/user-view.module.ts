@@ -7,7 +7,6 @@ import { UserDeleteDialogComponent } from './components/delete/user-delete.dialo
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule } from '@angular/router';
 import { DisableControlDirective } from './directives/disable-control/disable-control.directive';
 
@@ -25,7 +24,6 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormlyModule } from '@ngx-formly/core';
 
 const COMPONENTS = [
   UsersListComponent,
@@ -58,8 +56,6 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormlyModule,
-    FormlyMaterialModule,
     RouterModule
   ],
   entryComponents: [
