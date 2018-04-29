@@ -1,6 +1,6 @@
 # WAOS Angular
 [![Build Status](https://travis-ci.org/weareopensource/meanjs-2.svg?branch=master)](https://travis-ci.org/weareopensource/meanjs-2)
-## Angular 5 / material / ngRx Starter 
+## Angular X / material / ngRx Starter 
 ## Presentation 
 This project is part of MEANie stack but can be ran as a standalone application. It's build upon angular 5+ , [angular material](https://github.com/angular/material2), [angular-cli](https://github.com/angular/angular-cli) / [Nx](https://github.com/nrwl/nx) and [ngRx](https://github.com/ngrx).
 <br><br><br>
@@ -9,12 +9,12 @@ This project is part of MEANie stack but can be ran as a standalone application.
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
 * Git - [Download & Install Git](https://git-scm.com/downloads)
-* Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) or [GitHub Gist](https://gist.github.com/isaacs/579814)
+* Node.js (7.x, 8.x) - [Download & Install Node.js](https://nodejs.org/en/download/) or [GitHub Gist](https://gist.github.com/isaacs/579814)
 
 ## Installation
 It's straightforward
 ```bash
-$ git clone https://github.com/weareopensource/Angular.git
+$ git clone https://github.com/weareopensource/Angular.git && cd Angular
 $ npm i
 ```
 
@@ -22,7 +22,13 @@ $ npm i
    ### Development
    * Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
    ### Production
-   * Run `npm run start:prod` to build your client app and start a web server on `http://localhost:4200/`
+   * Run `npm run build:prod` to build your client App
+   
+   This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering paths from the varialbles name, and merges it to the environment object defined on environment.prod.ts to regenerate that file. You can for instance define the API server coordonates by defining those system environment variables:
+
+-  FRONT_API_HOST='my-server'
+-  FRONT_API_PORT=4000
+-  FRONT_API_ENDPOINTS_BASEPATH='api2'
 
 <!--
 ## Running unit tests
