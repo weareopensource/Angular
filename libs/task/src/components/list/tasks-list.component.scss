@@ -30,3 +30,21 @@
   justify-content: center;
   padding: 50px;
 }
+
+mat-row:hover {
+  cursor: pointer;
+  position: relative;
+  background-color: #F5F5F5;
+}
+
+.icon {
+  position: relative;
+  visibility: hidden;
+  opacity: 0.54;
+  transform: scale(0.8);
+  z-index: 1000;
+}
+
+mat-row:hover .icon {
+  visibility: visible;
+}
