@@ -30,13 +30,16 @@ export class TaskEditComponent implements OnInit, OnDestroy {
       delay(0),
       map(task => this.dialog.open(TaskEditDialogComponent, {
         width: '700px',
-        data: { task: cloneDeep(task) }
+        data: {
+          title: 'Edit Task',
+          task: cloneDeep(task)
+        }
       })),
       switchMap(dialogRef => dialogRef.afterClosed())
     )
-    .subscribe((taskModel: Task) => {
-      if (taskModel) {
-        this.store.dispatch(new fromTask.Update({ task: { id: taskModel.id, changes: taskModel } }));
+    .subscribe((task: Task) => {
+      if (task) {
+        this.store.dispatch(new fromTask.Update({ task: { id: task.id, changes: task } }));
       }
       this.store.dispatch(new fromRouter.Back());
     });

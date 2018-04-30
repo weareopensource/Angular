@@ -3,21 +3,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskDetailComponent } from './components/detail/task-detail.component';
 import { TasksListComponent } from './components/list/tasks-list.component';
 import { TaskAddComponent } from './components/add/task-add.component';
-import { TaskAddDialogComponent } from './components/add/task-add.dialog.component';
 import { TaskEditComponent } from './components/edit/task-edit.component';
 import { TaskEditDialogComponent } from './components/edit/task-edit.dialog.component';
 import { TaskDeleteDialogComponent } from './components/delete/task-delete.dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule } from '@angular/router';
 
 import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -34,9 +32,7 @@ const COMPONENTS = [
   TaskDeleteDialogComponent,
   TaskEditComponent,
   TaskEditDialogComponent,
-  TaskAddComponent,
-//  ConnectFormDirective,
-  TaskAddDialogComponent
+  TaskAddComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -49,7 +45,8 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatFormFieldModule
 ];
 
 @NgModule({
@@ -61,14 +58,11 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormlyModule,
-    FormlyMaterialModule,
     RouterModule
   ],
   entryComponents: [
     TaskDeleteDialogComponent,
-    TaskEditDialogComponent,
-    TaskAddDialogComponent
+    TaskEditDialogComponent
   ]
 })
 export class TaskViewModule { }
