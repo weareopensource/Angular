@@ -5,6 +5,7 @@
     </button>
   </mat-card-title>
   <mat-card-content>
-    {{ (currentTask$ | async)?.description }}
+    <h1>{{ (currentTask$ | async)?.title }}</h1>
+    <p>{{ (currentTask$ | async)?.description }}</p>
   </mat-card-content>
 </mat-card>
