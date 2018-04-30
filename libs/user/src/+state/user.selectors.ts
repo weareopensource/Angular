@@ -13,9 +13,8 @@ export const {
 } = userAdapter.getSelectors(selectUserState);
 
 export const selectSelectedUser = createSelector(selectUserEntities, selectCurrentUrl, (userEntities, currentUrl) => {
-  const userId = currentUrl
-  .split('/')[2]
-  .split('(')[0];
+  // tslint:disable-next-line:newline-per-chained-call
+  const userId = currentUrl.split('/')[2] && currentUrl.split('/')[2].split('(')[0];
 
   return !isEmpty(userEntities[userId]) ? userEntities[userId] : undefined;
 });

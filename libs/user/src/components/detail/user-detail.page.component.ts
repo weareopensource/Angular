@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   templateUrl: './user-detail.page.component.html',
-  styleUrls: ['./user-detail.page.component.scss']
+  styleUrls: ['./user-detail.page.component.scss'],
 })
 export class UserDetailPageComponent {
   public currentUser$ = this._store.select(selectSelectedUser);
