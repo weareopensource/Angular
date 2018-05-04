@@ -26,7 +26,8 @@ const userRoutes: Routes = [
     path: ':id',
     component: UserDetailPageComponent,
     data: {
-      page: 'user-detail'
+      page: 'user-detail',
+      roles: ['admin']
     },
     canActivate: [AuthenticationGuardService, RoleGuardService, UserGuardService]
   },
