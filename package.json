@@ -24,7 +24,7 @@
     "@angular/material": "^6.0.0",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
-    "@angular/router": "^6.0.0-rc.5",
+    "@angular/router": "^6.0.0",
     "@ngrx/effects": "^6.0.0-beta.1",
     "@ngrx/entity": "^6.0.0-beta.1",
     "@ngrx/router-store": "^6.0.0-beta.1",
