@@ -19,8 +19,26 @@ export class AuthenticationComponent {
 
   constructor(private store: Store<AuthenticationState>) {}
 
-  onLogin(authenticate: Authenticate): void {
-    this.store.dispatch(new fromAuthentication.Login(authenticate));
+  onLogin(authenticate: Authenticate | String): void {
+    switch (authenticate) {
+      case 'google':
+        this.store.dispatch(new fromAuthentication.GoogleLogin());
+
+        break;
+      case 'facebook':
+        this.store.dispatch(new fromAuthentication.FacebookLogin());
+
+        break;
+      case 'twitter':
+        this.store.dispatch(new fromAuthentication.TwitterLogin());
+
+        break;
+      case 'github':
+        this.store.dispatch(new fromAuthentication.GithubLogin());
+        break;
+      default:
+        this.store.dispatch(new fromAuthentication.LocalLogin(authenticate as Authenticate));
+    }
   }
 
   onEmail(email: string): void {

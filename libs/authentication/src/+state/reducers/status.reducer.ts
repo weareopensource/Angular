@@ -18,7 +18,7 @@ export function statusReducer(state = initialStatusState, action: fromAuthentica
     }
     case fromAuthentication.USER_LOAD_SUCCESS:
     case fromAuthentication.REGISTER_SUCCESS:
-    case fromAuthentication.LOGIN_SUCCESS: {
+    case fromAuthentication.LOCAL_LOGIN_SUCCESS: {
 
       return {
         ...state,

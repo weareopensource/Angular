@@ -5,6 +5,22 @@
 
 export const environment = {
   production: false,
+  authentication: {
+    providers: {
+      google: {
+        clientId: ''
+      },
+      facebook: {
+        app_id: ''
+      },
+      twitter: {
+        id: ''
+      },
+      github: {
+        id: ''
+      }
+    }
+  },
   api: {
     protocol: 'http',
     host: 'localhost',

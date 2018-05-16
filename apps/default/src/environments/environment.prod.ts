@@ -1,5 +1,21 @@
 export const environment = {
   production: false,
+  authentication: {
+    providers: {
+      google: {
+        id: ''
+      },
+      facebook: {
+        id: ''
+      },
+      twitter: {
+        id: ''
+      },
+      github: {
+        id: ''
+      }
+    }
+  },
   api: {
     protocol: 'http',
     host: 'localhost',

@@ -2,9 +2,21 @@ import { Action } from '@ngrx/store';
 import { User } from '../../models/user.model';
 import { Authenticate } from '../../models/authenticate.model';
 
-export const LOGIN = '[Auth] Login';
-export const LOGIN_SUCCESS = '[Auth] Login Success';
-export const LOGIN_FAILURE = '[Auth] Login Failure';
+export const LOCAL_LOGIN = '[Auth] Local Login';
+export const LOCAL_LOGIN_SUCCESS = '[Auth] Local Login Success';
+export const LOCAL_LOGIN_FAILURE = '[Auth] Local Login Failure';
+export const GOOGLE_LOGIN = '[Auth] Google Login';
+export const GOOGLE_LOGIN_SUCCESS = '[Auth] Google Login Success';
+export const GOOGLE_LOGIN_FAILURE = '[Auth] Google Login Failure';
+export const FACEBOOK_LOGIN = '[Auth] Facebook Login';
+export const FACEBOOK_LOGIN_SUCCESS = '[Auth] Facebook Login Success';
+export const FACEBOOK_LOGIN_FAILURE = '[Auth] Facebook Login Failure';
+export const TWITTER_LOGIN = '[Auth] Twitter Login';
+export const TWITTER_LOGIN_SUCCESS = '[Auth] Twitter Login Success';
+export const TWITTER_LOGIN_FAILURE = '[Auth] Twitter Login Failure';
+export const GITHUB_LOGIN = '[Auth] Github Login';
+export const GITHUB_LOGIN_SUCCESS = '[Auth] Github Login Success';
+export const GITHUB_LOGIN_FAILURE = '[Auth] Github Login Failure';
 export const REGISTER = '[Auth] Register';
 export const REGISTER_SUCCESS = '[Auth] Register Success';
 export const REGISTER_FAILURE = '[Auth] Register Failure';
@@ -23,9 +35,21 @@ export const RESET_PASSWORD_SUCCESS = '[Auth] Reset Password Success';
 export const RESET_PASSWORD_FAILURE = '[Auth] Reset Password Failure';
 
 export type Actions =
-  | Login
-  | LoginSuccess
-  | LoginFailure
+  | LocalLogin
+  | LocalLoginSuccess
+  | LocalLoginFailure
+  | GoogleLogin
+  | GoogleLoginSuccess
+  | GoogleLoginFailure
+  | FacebookLogin
+  | FacebookLoginSuccess
+  | FacebookLoginFailure
+  | TwitterLogin
+  | TwitterLoginSuccess
+  | TwitterLoginFailure
+  | GithubLogin
+  | GithubLoginSuccess
+  | GithubLoginFailure
   | Register
   | RegisterSuccess
   | RegisterFailure
@@ -43,20 +67,88 @@ export type Actions =
   | UserUpdateSuccess
   | UserUpdateFailure;
 
-export class Login implements Action {
-  readonly type = LOGIN;
+export class LocalLogin implements Action {
+  readonly type = LOCAL_LOGIN;
   constructor(public payload: Authenticate) {}
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class LoginSuccess implements Action {
-  readonly type = LOGIN_SUCCESS;
+export class LocalLoginSuccess implements Action {
+  readonly type = LOCAL_LOGIN_SUCCESS;
   constructor(public payload: { user: User; tokenExpiresIn: number }) {}
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class LoginFailure implements Action {
-  readonly type = LOGIN_FAILURE;
+export class LocalLoginFailure implements Action {
+  readonly type = LOCAL_LOGIN_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GoogleLogin implements Action {
+  readonly type = GOOGLE_LOGIN;
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GoogleLoginSuccess implements Action {
+  readonly type = GOOGLE_LOGIN_SUCCESS;
+  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GoogleLoginFailure implements Action {
+  readonly type = GOOGLE_LOGIN_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class FacebookLogin implements Action {
+  readonly type = FACEBOOK_LOGIN;
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class FacebookLoginSuccess implements Action {
+  readonly type = FACEBOOK_LOGIN_SUCCESS;
+  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class FacebookLoginFailure implements Action {
+  readonly type = FACEBOOK_LOGIN_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class TwitterLogin implements Action {
+  readonly type = TWITTER_LOGIN;
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class TwitterLoginSuccess implements Action {
+  readonly type = TWITTER_LOGIN_SUCCESS;
+  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class TwitterLoginFailure implements Action {
+  readonly type = TWITTER_LOGIN_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GithubLogin implements Action {
+  readonly type = GITHUB_LOGIN;
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GithubLoginSuccess implements Action {
+  readonly type = GITHUB_LOGIN_SUCCESS;
+  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GithubLoginFailure implements Action {
+  readonly type = GITHUB_LOGIN_FAILURE;
   constructor(public payload?: any) {}
 }
 
@@ -87,6 +179,7 @@ export class Logout implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
+  constructor(public payload: string) { }
 }
 
 // tslint:disable-next-line:max-classes-per-file

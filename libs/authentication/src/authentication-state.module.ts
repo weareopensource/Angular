@@ -6,9 +6,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffectsService } from './+state/effects/authentication-state.effects.service';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { AuthenticationInitializationService } from './services/authentication.initialization.service';
-import { AuthenticationApiService } from './services/authentication.api.service';
+import { LocalAuthenticationService } from './services/local-authentication.service';
 import { AuthenticationInterceptorService } from './services/authentication.interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+// import { environment } from '@labdat/common/environments'
 
 export function initialisationFactory(authenticationInitialisation): any {
   return () => authenticationInitialisation.loadUser();
@@ -30,7 +31,7 @@ export class AuthenticationStateModule {
       ngModule: AuthenticationStateModule,
       providers: [
         AuthenticationInitializationService,
-        AuthenticationApiService,
+        LocalAuthenticationService,
         {
           provide: APP_INITIALIZER,
           useFactory: initialisationFactory,

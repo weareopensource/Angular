@@ -36,7 +36,12 @@
         "./stylesheets/styles.scss",
         "./stylesheets/theme.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../../../node_modules/twitter-login-client/src/twitter-client.min.js",
+        "../../../node_modules/hellojs/dist/hello.all.js",
+        "../../../node_modules/hellojs/src/modules/twitter.js",
+        "../../../node_modules/hellojs/src/modules/github.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

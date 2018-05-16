@@ -30,5 +30,10 @@ export class AppComponent {
       )
     );
     this._mdIconRegistry.addSvgIcon('file-image', this._sanitizer.bypassSecurityTrustResourceUrl('assets/file.svg'));
+    this._mdIconRegistry.addSvgIcon('google', this._sanitizer.bypassSecurityTrustResourceUrl('assets/google.svg'));
+    this._mdIconRegistry.addSvgIcon('twitter', this._sanitizer.bypassSecurityTrustResourceUrl('assets/twitter.svg'));
+    this._mdIconRegistry.addSvgIcon('facebook', this._sanitizer.bypassSecurityTrustResourceUrl('assets/facebook.svg'));
+    this._mdIconRegistry.addSvgIcon('github', this._sanitizer.bypassSecurityTrustResourceUrl('assets/github.svg'));
+    this._mdIconRegistry.addSvgIcon('windows', this._sanitizer.bypassSecurityTrustResourceUrl('assets/windows.svg'));
   }
 }
