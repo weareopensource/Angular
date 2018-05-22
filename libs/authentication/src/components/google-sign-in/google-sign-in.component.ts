@@ -1,18 +1,14 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 
-export class GoogleSignInSuccess {
-  public googleUser: gapi.auth2.GoogleUser;
-
-  constructor(googleUser: gapi.auth2.GoogleUser) {
-    this.googleUser = googleUser;
-  }
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class GoogleSignInFailure {
-}
-
-// tslint:disable-next-line:max-classes-per-file
 @Component({
   selector: 'google-signin',
   template: `
@@ -64,10 +60,10 @@ export class GoogleSignInComponent implements AfterViewInit {
   public hostedDomain: string;
 
   @Output()
-  public googleSignInSuccess = new EventEmitter<GoogleSignInSuccess>();
+  public signInSuccess = new EventEmitter();
 
   @Output()
-  public googleSignInFailure = new EventEmitter<GoogleSignInFailure>();
+  public signInFailure = new EventEmitter();
 
   ngAfterViewInit(): void {
     gapi.load('auth2', () => {
@@ -81,13 +77,10 @@ export class GoogleSignInComponent implements AfterViewInit {
         this.signInButton.nativeElement,
         {},
         (googleUser: any) => {
-          console.log(
-          `Signed in: ${googleUser
-            .getBasicProfile()
-            .getName()}`);
-        }, (error: any) => {
-          alert(JSON.stringify(error, undefined, 2));
-        });
+          const idToken = googleUser.getAuthResponse().id_token;
+          this.signInSuccess.emit(idToken);
+        },
+        undefined);
     });
   }
 }

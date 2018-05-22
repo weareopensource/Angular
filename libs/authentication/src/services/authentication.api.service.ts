@@ -5,7 +5,7 @@ import { environment } from '@labdat/common/environments';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class LocalAuthenticationService {
+export class AuthenticationApiService {
   private _baseUrl: string;
   private _endpoints: any;
 
@@ -25,6 +25,11 @@ export class LocalAuthenticationService {
 
   register(registration: any): Observable<any> {
     return this.http.post(`${this._baseUrl}/${this._endpoints.auth}/signup`, registration);
+    //      .do(token => this.setAuthorizationHeader(token));
+  }
+
+  addUser(idToken: any): Observable<any> {
+    return this.http.post(`${this._baseUrl}/${this._endpoints.users}/accounts`, idToken);
     //      .do(token => this.setAuthorizationHeader(token));
   }
 

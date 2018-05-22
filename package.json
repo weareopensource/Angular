@@ -72,6 +72,7 @@
     "prettier": "1.8.2",
     "protractor": "~5.1.2",
     "rxjs-compat": "^6.0.0",
+    "rxjs-tslint": "^0.1.4",
     "rxjs-tslint-rules": "^4.0.2",
     "ts-node": "^3.2.2",
     "tslint": "^5.9.1",

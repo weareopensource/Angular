@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -15,8 +14,7 @@ declare var hello;
       <mat-icon svgIcon="twitter"></mat-icon>
       <span>Login with Twitter</span>
     </button>`,
-  styles: [':host { display: block; }'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [':host { display: block; }']
 })
 export class TwitterLoginButtonComponent implements AfterViewInit {
 
@@ -33,23 +31,16 @@ export class TwitterLoginButtonComponent implements AfterViewInit {
   public twitterLoginFailure = new EventEmitter();
 
   ngAfterViewInit(): void {
+
     hello.init({
       twitter: this.apiKey
     }, {
-      display: 'popup'
-    });
-
-    hello.on('auth.login', (auth: any) => {
-      hello(auth.network)
-      .api('me')
-      .then((r: any) => {
-        console.log(r);
-      });
+      redirect_uri : '../redirect.html'
     });
   }
 
   login(): void {
-    hello
-    .login('twitter', { response_type: 'token' });
+    hello('twitter')
+    .login({ response_type: 'token', scope: ['user'] });
   }
 }

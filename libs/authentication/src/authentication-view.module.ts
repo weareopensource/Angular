@@ -11,7 +11,7 @@ import { GoogleSignInComponent } from './components/google-sign-in/google-sign-i
 import { FacebookLoginButtonComponent } from './components/facebook-login-button/facebook-login-button.component';
 import { TwitterLoginButtonComponent } from './components/twitter-login-button/twitter-login-button.component';
 import { GithubLoginButtonComponent } from './components/github-login-button/github-login-button.component';
-import { MicrosoftGraphApiComponent } from './components/microsoft-graph-api/microsoft-graph-api.component';
+import { MicrosoftAuthenticationComponent } from './components/microsoft-authentication/microsoft-authentication.component';
 
 import {
   MatButtonModule,
@@ -35,7 +35,7 @@ const COMPONENTS = [
   GoogleSignInComponent,
   FacebookLoginButtonComponent,
   TwitterLoginButtonComponent,
-  MicrosoftGraphApiComponent,
+  MicrosoftAuthenticationComponent,
   GithubLoginButtonComponent
 ];
 

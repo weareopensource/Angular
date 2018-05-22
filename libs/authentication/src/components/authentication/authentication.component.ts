@@ -6,7 +6,6 @@ import {
   getLoginPagePending
 } from '../../+state/selectors/authentication-state.selectors';
 import { Store } from '@ngrx/store';
-import { Authenticate } from '../../models/authenticate.model';
 
 @Component({
   templateUrl: './authentication.component.html',
@@ -19,25 +18,25 @@ export class AuthenticationComponent {
 
   constructor(private store: Store<AuthenticationState>) {}
 
-  onLogin(authenticate: Authenticate | String): void {
-    switch (authenticate) {
+  onLogin(authentication: any): void {
+    switch (authentication.provider) {
       case 'google':
-        this.store.dispatch(new fromAuthentication.GoogleLogin());
-
+        this.store.dispatch(new fromAuthentication.GoogleLogin(authentication.idToken));
+        break;
+      case 'microsoft':
+        this.store.dispatch(new fromAuthentication.MicrosoftLogin(authentication.idToken));
         break;
       case 'facebook':
         this.store.dispatch(new fromAuthentication.FacebookLogin());
-
         break;
       case 'twitter':
         this.store.dispatch(new fromAuthentication.TwitterLogin());
-
         break;
       case 'github':
         this.store.dispatch(new fromAuthentication.GithubLogin());
         break;
       default:
-        this.store.dispatch(new fromAuthentication.LocalLogin(authenticate as Authenticate));
+        this.store.dispatch(new fromAuthentication.LocalLogin(authentication));
     }
   }
 

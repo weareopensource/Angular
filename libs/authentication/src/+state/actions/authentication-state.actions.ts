@@ -8,6 +8,9 @@ export const LOCAL_LOGIN_FAILURE = '[Auth] Local Login Failure';
 export const GOOGLE_LOGIN = '[Auth] Google Login';
 export const GOOGLE_LOGIN_SUCCESS = '[Auth] Google Login Success';
 export const GOOGLE_LOGIN_FAILURE = '[Auth] Google Login Failure';
+export const MICROSOFT_LOGIN = '[Auth] Microsoft Login';
+export const MICROSOFT_LOGIN_SUCCESS = '[Auth] Microsoft Login Success';
+export const MICROSOFT_LOGIN_FAILURE = '[Auth] Microsoft Login Failure';
 export const FACEBOOK_LOGIN = '[Auth] Facebook Login';
 export const FACEBOOK_LOGIN_SUCCESS = '[Auth] Facebook Login Success';
 export const FACEBOOK_LOGIN_FAILURE = '[Auth] Facebook Login Failure';
@@ -41,6 +44,9 @@ export type Actions =
   | GoogleLogin
   | GoogleLoginSuccess
   | GoogleLoginFailure
+  | MicrosoftLogin
+  | MicrosoftLoginSuccess
+  | MicrosoftLoginFailure
   | FacebookLogin
   | FacebookLoginSuccess
   | FacebookLoginFailure
@@ -87,6 +93,8 @@ export class LocalLoginFailure implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class GoogleLogin implements Action {
   readonly type = GOOGLE_LOGIN;
+  constructor(public payload: any) {}
+
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -98,6 +106,25 @@ export class GoogleLoginSuccess implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class GoogleLoginFailure implements Action {
   readonly type = GOOGLE_LOGIN_FAILURE;
+  constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class MicrosoftLogin implements Action {
+  readonly type = MICROSOFT_LOGIN;
+  constructor(public payload: any) {}
+
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class MicrosoftLoginSuccess implements Action {
+  readonly type = MICROSOFT_LOGIN_SUCCESS;
+  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class MicrosoftLoginFailure implements Action {
+  readonly type = MICROSOFT_LOGIN_FAILURE;
   constructor(public payload?: any) {}
 }
 
@@ -179,7 +206,6 @@ export class Logout implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
-  constructor(public payload: string) { }
 }
 
 // tslint:disable-next-line:max-classes-per-file

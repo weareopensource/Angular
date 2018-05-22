@@ -15,9 +15,17 @@
 <google-signin
   fxLayout="row" fxLayoutAlign="space-between center"
   [clientId]="clientId"
-  (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+  (signInSuccess)="onGoogleSignInSuccess($event)">
 </google-signin>
-<facebook-login-button
+<microsoft-authentication
+  fxLayout="row" fxLayoutAlign="space-between center"
+  clientID="5707a45e-3a3b-40fc-9827-f51c697e6fdd"
+  redirectUri="http://localhost:4200/"
+  graphApiEndpoint="https://graph.microsoft.com/v1.0/me"
+  [graphAPIScopes]="['https://graph.microsoft.com/user.read']"
+  (signInSuccess)="onMSSignInSuccess($event)">
+</microsoft-authentication>
+<!--facebook-login-button
   fxLayout="row" fxLayoutAlign="space-between center"
   appId="637386269936890"
   [cookie]="false"
@@ -29,14 +37,11 @@
   apiKey="tGp3mIPh4tJxjIp9s4jYUlqNe"
   requestUrl="https://api.twitter.com/oauth/request_token">
 </twitter-login-button>
-<microsoft-graph-api
-  fxLayout="row" fxLayoutAlign="space-between center"
-  clientID="5707a45e-3a3b-40fc-9827-f51c697e6fdd">
-</microsoft-graph-api>
 <github-login-button
   clientId="fd9eef2bbd9e2a94dca5"
   fxLayout="row" fxLayoutAlign="space-between center">
-</github-login-button>
+</github-login-button-->
+
 <br>
 <a *ngIf="!forgotPassword" (click)="forgotPassword = true" i18n="@@forgotPassword">Forgot password ?</a>
 <form *ngIf="forgotPassword" (ngSubmit)="onForgotPasswordSubmit(forgotField.value)">

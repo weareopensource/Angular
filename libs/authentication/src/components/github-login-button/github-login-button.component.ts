@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -15,8 +14,7 @@ declare var hello;
       <mat-icon svgIcon="github"></mat-icon>
       <span>Login with Github</span>
     </button>`,
-  styles: [':host { display: block; }'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [':host { display: block; }']
 })
 export class GithubLoginButtonComponent implements AfterViewInit {
 
@@ -30,21 +28,19 @@ export class GithubLoginButtonComponent implements AfterViewInit {
   public twitterLoginFailure = new EventEmitter();
 
   ngAfterViewInit(): void {
+
     hello.init({
       github: this.clientId
+    }, {
+      redirect_uri : '../redirect.html'
     });
 
-    hello.on('auth.login', (auth: any) => {
-      hello(auth.network)
-      .api('me')
-      .then((r: any) => {
-        console.log(r);
-      });
-    });
   }
 
   login(): void {
     hello('github')
-    .login();
+    .login({
+      scope: 'user'
+    });
   }
 }

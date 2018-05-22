@@ -1,8 +1,6 @@
-import { Authenticate } from '../../models/authenticate.model';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first, keys } from 'lodash';
-import { GoogleSignInSuccess } from '../google-sign-in/google-sign-in.component';
 declare let FB;
 
 @Component({
@@ -25,7 +23,7 @@ export class LoginComponent implements OnDestroy, OnInit {
   public errorMessage: string | null;
 
   @Output()
-  public login = new EventEmitter<Authenticate | String>();
+  public login = new EventEmitter();
 
   @Output()
   public email = new EventEmitter<string>();
@@ -81,31 +79,16 @@ export class LoginComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
   }
 
-  public google(): void {
-    this.login.emit('google');
+  onGoogleSignInSuccess(idToken: any): void {
+    this.login.emit({ idToken, provider: 'google' });
   }
 
-  public facebook(): void {
-    this.login.emit('facebook');
-  }
-
-  public github(): void {
-    this.login.emit('github');
-  }
-
-  public twitter(): void {
-    this.login.emit('twitter');
-  }
-
-  onGoogleSignInSuccess(event: GoogleSignInSuccess): void {
-    this.login.emit('google',);
-    const googleUser: gapi.auth2.GoogleUser = event.googleUser;
-    const profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-    console.log(`profile: ${JSON.stringify(profile)}`); // Do not send to your backend! Use an ID token instead.
+  onMSSignInSuccess({ idToken, user }): void {
+    this.login.emit({ idToken, user, provider: 'microsoft' });
   }
 
   checkLoginState(): void {
-    FB.getLoginStatus(response => {
+    FB.getLoginStatus((response: any) => {
       console.log(response);
     });
   }

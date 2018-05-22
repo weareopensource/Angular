@@ -2,11 +2,16 @@ import { Component, HostBinding, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
+// Just to close the MS login popup on redirect
+declare var Msal;
+(() => new Msal.UserAgentApplication())();
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+
   @HostBinding('class.mat-typography')
   matTypo(): Boolean {
     return true;
