@@ -34,13 +34,10 @@
     "angular-google-signin": "^0.1.5",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
-    "hellojs": "^1.16.1",
     "jsrsasign": "^8.0.10",
     "jwt-decode": "^2.2.0",
     "material-design-icons": "^3.0.1",
-    "ng2-ui-auth": "^9.0.0-beta.2",
     "rxjs": "^6.0.0",
-    "twitter-login-client": "^1.0.3",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

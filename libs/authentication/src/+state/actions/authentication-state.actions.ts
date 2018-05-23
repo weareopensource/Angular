@@ -11,15 +11,6 @@ export const GOOGLE_LOGIN_FAILURE = '[Auth] Google Login Failure';
 export const MICROSOFT_LOGIN = '[Auth] Microsoft Login';
 export const MICROSOFT_LOGIN_SUCCESS = '[Auth] Microsoft Login Success';
 export const MICROSOFT_LOGIN_FAILURE = '[Auth] Microsoft Login Failure';
-export const FACEBOOK_LOGIN = '[Auth] Facebook Login';
-export const FACEBOOK_LOGIN_SUCCESS = '[Auth] Facebook Login Success';
-export const FACEBOOK_LOGIN_FAILURE = '[Auth] Facebook Login Failure';
-export const TWITTER_LOGIN = '[Auth] Twitter Login';
-export const TWITTER_LOGIN_SUCCESS = '[Auth] Twitter Login Success';
-export const TWITTER_LOGIN_FAILURE = '[Auth] Twitter Login Failure';
-export const GITHUB_LOGIN = '[Auth] Github Login';
-export const GITHUB_LOGIN_SUCCESS = '[Auth] Github Login Success';
-export const GITHUB_LOGIN_FAILURE = '[Auth] Github Login Failure';
 export const REGISTER = '[Auth] Register';
 export const REGISTER_SUCCESS = '[Auth] Register Success';
 export const REGISTER_FAILURE = '[Auth] Register Failure';
@@ -47,15 +38,6 @@ export type Actions =
   | MicrosoftLogin
   | MicrosoftLoginSuccess
   | MicrosoftLoginFailure
-  | FacebookLogin
-  | FacebookLoginSuccess
-  | FacebookLoginFailure
-  | TwitterLogin
-  | TwitterLoginSuccess
-  | TwitterLoginFailure
-  | GithubLogin
-  | GithubLoginSuccess
-  | GithubLoginFailure
   | Register
   | RegisterSuccess
   | RegisterFailure
@@ -125,57 +107,6 @@ export class MicrosoftLoginSuccess implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class MicrosoftLoginFailure implements Action {
   readonly type = MICROSOFT_LOGIN_FAILURE;
-  constructor(public payload?: any) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class FacebookLogin implements Action {
-  readonly type = FACEBOOK_LOGIN;
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class FacebookLoginSuccess implements Action {
-  readonly type = FACEBOOK_LOGIN_SUCCESS;
-  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class FacebookLoginFailure implements Action {
-  readonly type = FACEBOOK_LOGIN_FAILURE;
-  constructor(public payload?: any) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class TwitterLogin implements Action {
-  readonly type = TWITTER_LOGIN;
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class TwitterLoginSuccess implements Action {
-  readonly type = TWITTER_LOGIN_SUCCESS;
-  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class TwitterLoginFailure implements Action {
-  readonly type = TWITTER_LOGIN_FAILURE;
-  constructor(public payload?: any) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class GithubLogin implements Action {
-  readonly type = GITHUB_LOGIN;
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class GithubLoginSuccess implements Action {
-  readonly type = GITHUB_LOGIN_SUCCESS;
-  constructor(public payload: { user: User; tokenExpiresIn: number }) {}
-}
-
-// tslint:disable-next-line:max-classes-per-file
-export class GithubLoginFailure implements Action {
-  readonly type = GITHUB_LOGIN_FAILURE;
   constructor(public payload?: any) {}
 }
 
