@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -14,9 +13,8 @@ declare var FB;
     <button mat-button (click)="login()">
       <mat-icon svgIcon="facebook"></mat-icon>
       <span>Login with Facebook</span>
-    </button>`,
+    </button>`
 //  styles: [':host { display: block; }'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FacebookLoginButtonComponent implements AfterViewInit {
 

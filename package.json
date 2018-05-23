@@ -29,7 +29,7 @@
     "@ngrx/entity": "^6.0.0-beta.1",
     "@ngrx/router-store": "^6.0.0-beta.1",
     "@ngrx/store": "^6.0.0-beta.1",
-    "@nrwl/nx": "^6.0.0-rc.1",
+    "@nrwl/nx": "^6.0.0",
     "angular-auth-oidc-client": "^6.0.0",
     "angular-google-signin": "^0.1.5",
     "core-js": "^2.4.1",

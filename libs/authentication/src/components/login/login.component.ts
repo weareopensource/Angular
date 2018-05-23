@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first, keys } from 'lodash';
-declare let FB;
+import { environment } from '@labdat/common/environments';
 
 @Component({
   selector: 'auth-login',
@@ -21,6 +21,10 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   @Input()
   public errorMessage: string | null;
+
+  public googleClientId = environment.authentication.providers.google.clientId;
+  public microsoftClientId = environment.authentication.providers.microsoft.clientId;
+  public microsoftRedirectUri = environment.authentication.providers.microsoft.redirectUri;
 
   @Output()
   public login = new EventEmitter();
@@ -57,8 +61,6 @@ export class LoginComponent implements OnDestroy, OnInit {
     return first(keys(this.loginForm.get('password').errors)) || '';
   }
 
-  public clientId = '307800239261-8ghk4lu2me211p9ucialjl6ujer8v10j.apps.googleusercontent.com';
-
   constructor(
     private _formBuilder: FormBuilder
   ) {
@@ -85,11 +87,5 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   onMSSignInSuccess({ idToken, user }): void {
     this.login.emit({ idToken, user, provider: 'microsoft' });
-  }
-
-  checkLoginState(): void {
-    FB.getLoginStatus((response: any) => {
-      console.log(response);
-    });
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthenticationState } from '../../+state/states/authentication-state.state';
 import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
 import {
@@ -9,8 +9,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent {
   public pending$ = this.store.select(getLoginPagePending);
@@ -25,15 +24,6 @@ export class AuthenticationComponent {
         break;
       case 'microsoft':
         this.store.dispatch(new fromAuthentication.MicrosoftLogin(authentication.idToken));
-        break;
-      case 'facebook':
-        this.store.dispatch(new fromAuthentication.FacebookLogin());
-        break;
-      case 'twitter':
-        this.store.dispatch(new fromAuthentication.TwitterLogin());
-        break;
-      case 'github':
-        this.store.dispatch(new fromAuthentication.GithubLogin());
         break;
       default:
         this.store.dispatch(new fromAuthentication.LocalLogin(authentication));

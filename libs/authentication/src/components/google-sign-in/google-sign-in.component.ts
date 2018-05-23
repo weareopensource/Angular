@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -17,8 +16,7 @@ import {
       <mat-icon svgIcon="google"></mat-icon>
       <span>Login with Google</span>
     </button>
-    </div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    </div>`
 })
 export class GoogleSignInComponent implements AfterViewInit {
 
