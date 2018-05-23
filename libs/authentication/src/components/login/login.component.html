@@ -19,8 +19,9 @@
 </google-signin>
 <microsoft-authentication
   fxLayout="row" fxLayoutAlign="space-between center"
-  clientID="microsoftClientId"
-  redirectUri="microsoftRedirectUri"
+  [clientID]="microsoftClientId"
+  [redirectUri]="microsoftRedirectUri"
+  [grapApiScopes]="microsoftGrapApiScopes"
   (signInSuccess)="onMSSignInSuccess($event)">
 </microsoft-authentication>
 <!--facebook-login-button

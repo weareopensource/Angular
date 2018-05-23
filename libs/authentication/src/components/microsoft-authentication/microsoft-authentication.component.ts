@@ -25,10 +25,7 @@ export class MicrosoftAuthenticationComponent implements AfterViewInit {
   public redirectUri: string;
 
   @Input()
-  public graphApiEndpoint;
-
-  @Input()
-  public graphAPIScopes;
+  public grapApiScopes;
 
   @Output()
   public signInSuccess = new EventEmitter();
@@ -39,18 +36,13 @@ export class MicrosoftAuthenticationComponent implements AfterViewInit {
   private _userAgentApplication: any;
 
   ngAfterViewInit(): void {
-    this.clientID = '5707a45e-3a3b-40fc-9827-f51c697e6fdd';
-    this.redirectUri = 'http://localhost:4200/';
-//    this.graphApiEndpoint = 'https://graph.microsoft.com/v1.0/me';
-//    this.graphAPIScopes = ['https://graph.microsoft.com/user.read'];
-
     this._userAgentApplication = new Msal.UserAgentApplication(this.clientID, undefined, undefined, {
       redirectUri: this.redirectUri
     });
   }
 
   authenticate(): void {
-    this._userAgentApplication.loginPopup(this.graphAPIScopes)
+    this._userAgentApplication.loginPopup([this.grapApiScopes])
     .then((idToken: any) => {
       const user = this._userAgentApplication.getUser();
       this.signInSuccess.emit({ idToken, user });

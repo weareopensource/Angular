@@ -22,9 +22,10 @@ export class LoginComponent implements OnDestroy, OnInit {
   @Input()
   public errorMessage: string | null;
 
-  public googleClientId = environment.authentication.providers.google.clientId;
-  public microsoftClientId = environment.authentication.providers.microsoft.clientId;
-  public microsoftRedirectUri = environment.authentication.providers.microsoft.redirectUri;
+  public googleClientId = environment.authentication.providers.google.clientid;
+  public microsoftClientId = environment.authentication.providers.microsoft.clientid;
+  public microsoftRedirectUri = environment.authentication.providers.microsoft.redirecturi;
+  public microsoftGrapApiScopes = environment.authentication.providers.microsoft.scopes;
 
   @Output()
   public login = new EventEmitter();
