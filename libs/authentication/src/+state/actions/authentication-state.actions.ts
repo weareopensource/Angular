@@ -16,7 +16,8 @@ export const MICROSOFT_LOGIN_FAILURE = '[Auth] Microsoft Login Failure';
 export const REGISTER = '[Auth] Register';
 export const REGISTER_SUCCESS = '[Auth] Register Success';
 export const REGISTER_FAILURE = '[Auth] Register Failure';
-export const LOGOUT = '[Auth] Logout';
+export const LOCAL_LOGOUT = '[Auth] Local Logout';
+export const REMOTE_LOGOUT = '[Auth] Remote Logout';
 export const LOAD_USER = '[Auth] Load User';
 export const USER_LOAD_SUCCESS = '[Auth] User Load Success';
 export const USER_LOAD_FAILURE = '[Auth] User Load Failure';
@@ -45,7 +46,8 @@ export type Actions =
   | Register
   | RegisterSuccess
   | RegisterFailure
-  | Logout
+  | LocalLogout
+  | RemoteLogout
   | LoadUser
   | UserLoadSuccess
   | UserLoadFailure
@@ -143,9 +145,15 @@ export class RegisterFailure implements Action {
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class Logout implements Action {
-  readonly type = LOGOUT;
-  constructor(public payload?: any) {}
+export class LocalLogout implements Action {
+  readonly type = LOCAL_LOGOUT;
+  constructor(public payload?: string) { }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class RemoteLogout implements Action {
+  readonly type = REMOTE_LOGOUT;
+  constructor(public payload?: string) { }
 }
 
 // tslint:disable-next-line:max-classes-per-file

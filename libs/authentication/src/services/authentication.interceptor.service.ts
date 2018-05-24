@@ -22,7 +22,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
 
     const tokenExpiresIn = Number(localStorage.getItem('tokenExpiresIn'));
     if (tokenExpiresIn && tokenExpiresIn < Date.now()) {
-      this.store.dispatch(new fromAuthentication.Logout('Token expired'));
+      this.store.dispatch(new fromAuthentication.RemoteLogout('Token expired'));
 
       return empty();
     }
@@ -31,7 +31,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
     .pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
-          this.store.dispatch(new fromAuthentication.Logout('Unauthorized Operation'));
+          this.store.dispatch(new fromAuthentication.RemoteLogout('Unauthorized Operation'));
 
           return empty();
         }
