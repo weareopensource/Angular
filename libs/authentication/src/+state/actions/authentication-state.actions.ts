@@ -1,13 +1,15 @@
 import { Action } from '@ngrx/store';
 import { User } from '../../models/user.model';
-import { Authenticate } from '../../models/authenticate.model';
+import { Credentials } from '../../models/authenticate.model';
 
 export const LOCAL_LOGIN = '[Auth] Local Login';
 export const LOCAL_LOGIN_SUCCESS = '[Auth] Local Login Success';
 export const LOCAL_LOGIN_FAILURE = '[Auth] Local Login Failure';
+export const GOOGLE_SIGN_IN = '[Auth] Google Sign In';
 export const GOOGLE_LOGIN = '[Auth] Google Login';
 export const GOOGLE_LOGIN_SUCCESS = '[Auth] Google Login Success';
 export const GOOGLE_LOGIN_FAILURE = '[Auth] Google Login Failure';
+export const MICROSOFT_SIGN_IN = '[Auth] Microsoft Sign In';
 export const MICROSOFT_LOGIN = '[Auth] Microsoft Login';
 export const MICROSOFT_LOGIN_SUCCESS = '[Auth] Microsoft Login Success';
 export const MICROSOFT_LOGIN_FAILURE = '[Auth] Microsoft Login Failure';
@@ -32,9 +34,11 @@ export type Actions =
   | LocalLogin
   | LocalLoginSuccess
   | LocalLoginFailure
+  | GoogleSignIn
   | GoogleLogin
   | GoogleLoginSuccess
   | GoogleLoginFailure
+  | MicrosoftSignIn
   | MicrosoftLogin
   | MicrosoftLoginSuccess
   | MicrosoftLoginFailure
@@ -57,7 +61,7 @@ export type Actions =
 
 export class LocalLogin implements Action {
   readonly type = LOCAL_LOGIN;
-  constructor(public payload: Authenticate) {}
+  constructor(public payload: Credentials) {}
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -70,6 +74,11 @@ export class LocalLoginSuccess implements Action {
 export class LocalLoginFailure implements Action {
   readonly type = LOCAL_LOGIN_FAILURE;
   constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class GoogleSignIn implements Action {
+  readonly type = GOOGLE_SIGN_IN;
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -89,6 +98,11 @@ export class GoogleLoginSuccess implements Action {
 export class GoogleLoginFailure implements Action {
   readonly type = GOOGLE_LOGIN_FAILURE;
   constructor(public payload?: any) {}
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class MicrosoftSignIn implements Action {
+  readonly type = MICROSOFT_SIGN_IN;
 }
 
 // tslint:disable-next-line:max-classes-per-file
@@ -113,7 +127,7 @@ export class MicrosoftLoginFailure implements Action {
 // tslint:disable-next-line:max-classes-per-file
 export class Register implements Action {
   readonly type = REGISTER;
-  constructor(public payload: Authenticate) {}
+  constructor(public payload: Credentials) {}
 }
 
 // tslint:disable-next-line:max-classes-per-file
