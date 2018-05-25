@@ -4,6 +4,7 @@ import {
   Component,
   ContentChild,
   forwardRef,
+  HostBinding,
   Inject,
   Input,
   ViewEncapsulation
@@ -57,8 +58,8 @@ export class CoreSidenavContent extends CoreDrawerContent {
       state(
         'close',
         style({
-          width: '70px'
-        })
+          width: '{{collapsedWidth}}px'
+        }), { params: { collapsedWidth: 0 } }
       ),
       transition('close => open-instant', animate('0ms')),
       transition('close <=> open, open-instant => close', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
@@ -68,7 +69,6 @@ export class CoreSidenavContent extends CoreDrawerContent {
   host: {
     class: 'core-drawer core-sidenav',
     tabIndex: '-1',
-    '[@transform]': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
     '(@transform.done)': '_onAnimationEnd($event)',
     '(keydown)': 'handleKeydown($event)',
@@ -123,6 +123,21 @@ export class CoreSidenav extends CoreDrawer {
     this._fixedBottomGap = coerceNumberProperty(value);
   }
   private _fixedBottomGap = 0;
+
+  @HostBinding('@transform')
+  get animationState(): any {
+    return { value: this._animationState, params: { collapsedWidth: this._collapsedWidth } };
+  }
+
+  @Input()
+  get collapsedWidth(): number {
+    return this._collapsedWidth;
+  }
+  set collapsedWidth(value) {
+    this._collapsedWidth = value;
+    this.collapsedWidthChange.emit();
+  }
+
 }
 
 // tslint:disable-next-line:max-classes-per-file
