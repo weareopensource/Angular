@@ -1,5 +1,5 @@
+import { DOCUMENT } from '@angular/common';
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import {
@@ -18,7 +18,7 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { filter } from 'rxjs/operators/filter';
 import { take } from 'rxjs/operators/take';
 import { map } from 'rxjs/operators/map';
@@ -91,7 +91,7 @@ export class CoreDrawerContent implements AfterContentInit {
       state(
         'close',
         style({
-          width: '70px'
+          width: 0
         })
       ),
       transition('close => open-instant', animate('0ms')),
@@ -101,7 +101,7 @@ export class CoreDrawerContent implements AfterContentInit {
   // tslint:disable-next-line:use-host-property-decorator
   host: {
     class: 'core-drawer',
-    '[@transform]': '_animationState',
+    '@transform': '_animationState',
     '(@transform.start)': '_onAnimationStart($event)',
     '(@transform.done)': '_onAnimationEnd($event)',
     '(keydown)': 'handleKeydown($event)',
@@ -147,6 +147,15 @@ export class CoreDrawer implements AfterContentInit {
   }
   private _opened = false;
 
+  @Input()
+  get show(): boolean {
+    return this._show;
+  }
+  set show(value) {
+    this._show = value;
+  }
+  private _show = true;
+
   private _expandedWidth = 300;
 
   /** How the sidenav was opened (keypress, mouse click etc.) */
@@ -158,15 +167,19 @@ export class CoreDrawer implements AfterContentInit {
   /** Current state of the sidenav animation. */
   public _animationState: 'open-instant' | 'open' | 'close' = 'close';
 
-  private _collapsedWidth = 70;
+  public _collapsedWidth = 0;
 
   /** Event emitted when the drawer open state is changed. */
   @Output() openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  /** Event emitted when the drawer width changed. */
+  @Output()
+  collapsedWidthChange: EventEmitter<number> = new EventEmitter<number>();
+
   /** Event emitted when the drawer has been opened. */
   @Output('opened')
   get _openedStream(): Observable<void> {
-    return this.openedChange.pipe(filter(o => o), map(() => {}));
+    return this.openedChange.pipe(filter(o => !!o), map(() => {}));
   }
 
   /** Event emitted when the drawer has started opening. */
@@ -353,6 +366,7 @@ export class CoreDrawerContainer implements AfterContentInit, OnDestroy {
   constructor(private _element: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterContentInit(): void {
+    this._watchDrawerCollapsedWidth();
     this._watchDrawerToggle();
     if (this._drawer.open) {
       this._updateContentMargins();
@@ -402,6 +416,11 @@ export class CoreDrawerContainer implements AfterContentInit, OnDestroy {
       .subscribe(() => this._setContainerClass(this._drawer.opened));
   }
 
+  private _watchDrawerCollapsedWidth(): void {
+    this._drawer.collapsedWidthChange
+      .subscribe(() => this._updateContentMargins());
+  }
+
   /** Toggles the 'core-drawer-opened' class on the main 'core-drawer-container' element. */
   private _setContainerClass(isAdd: boolean): void {
     if (isAdd) {
@@ -421,7 +440,8 @@ export class CoreDrawerContainer implements AfterContentInit, OnDestroy {
    * Recalculates and updates the inline styles for the content. Note that this should be used
    * sparingly, because it causes a reflow.
    */
-  private _updateContentMargins(): void {
+  public _updateContentMargins(): void {
+    console.log('updated !!!!', this._drawer.collapsedWidth);
     const margin = this._drawer.opened ? this._drawer.expandedWidth : this._drawer.collapsedWidth;
     this._contentMargin.next(margin);
   }
