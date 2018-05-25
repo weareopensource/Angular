@@ -43,7 +43,7 @@
     top: 0;
     bottom: 0;
     z-index: 3;
-    min-width: 3vw;
+/*    min-width: 3vw; */
     outline: 0;
     box-sizing: border-box;
     overflow-y: auto;

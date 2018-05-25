@@ -1,14 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators/map';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 import { intersection, isEmpty, values } from 'lodash';
 import * as fromCore from '../../+state/actions/core-state.actions';
 import { getLogo, getMenuItems, getShowSidenav, getTitle } from '../../+state/selectors/core-state.selectors';
 import { fromAuthentication, getLoggedIn, getUser, User } from '@labdat/authentication';
-import { map } from 'rxjs/operators/map';
+import { Store } from '@ngrx/store';
 import { routesAnimation } from '../../animations/routes.animation';
 import { fromRouter } from '@labdat/common/router-state';
 import { MenuItem } from '../../models/menu-item.model';
+import { ObservableMedia } from '@angular/flex-layout';
+import { tap } from 'rxjs/operators/tap';
+import { CoreSidenavContainer } from '../../components/sidenav/sidenav.component';
+import { Observable } from 'rxjs/Observable';
+import { delay } from 'rxjs/operators/delay';
 
 @Component({
   selector: 'core-layout',
@@ -16,10 +21,13 @@ import { MenuItem } from '../../models/menu-item.model';
   styleUrls: ['./layout.component.scss'],
   animations: [routesAnimation]
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, AfterViewInit {
 
   @ViewChild('outlet')
   public outlet;
+
+  @ViewChild(CoreSidenavContainer)
+  public sidenavContainer;
 
   public logo$ = this._store.select(getLogo);
   public title$ = this._store.select(getTitle);
@@ -30,8 +38,13 @@ export class LayoutComponent implements OnInit {
   public isAdmin$ = this.currentUser$.pipe(
     map((user: User) => (user) ? user.roles.includes('admin') : false)
   );
+  public collapsedWidth$: Observable<number>;
 
-  constructor(private _store: Store<any>) { }
+  public mode$ = this.media
+  .asObservable()
+  .pipe(map(media => (media.mqAlias === 'xs') ? 'over' : 'slide'));
+
+  constructor(private _store: Store<any>, public media: ObservableMedia) { }
 
   ngOnInit(): void {
     const items$ = this._store.select(getMenuItems);
@@ -44,6 +57,16 @@ export class LayoutComponent implements OnInit {
           .filter(item => isEmpty(item.roles) || (user && intersection(item.roles, user.roles).length > 0))
           .filter(item => !isEmpty(item))
       )
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.collapsedWidth$ = this.media
+    .asObservable()
+    .pipe(
+      delay(0),
+      tap((media: any) => console.log(media.mqAlias)),
+      map(media => (media.mqAlias === 'xs') ? 0 : 70)
     );
   }
 

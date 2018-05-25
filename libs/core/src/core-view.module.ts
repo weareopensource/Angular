@@ -2,7 +2,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './containers/layout/layout.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from './core-routing.module';
@@ -18,6 +18,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatPaginatorModule,
+  MatSidenavModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule,
@@ -53,7 +54,8 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatCardModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatSidenavModule
   //  MatProgressBarModule
 ];
 
