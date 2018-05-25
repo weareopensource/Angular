@@ -18,6 +18,7 @@ import { getUser } from '../../+state/selectors/authentication-state.selectors';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 import { User } from '../../models/user.model';
 import { AuthenticationState } from '../../+state/states/authentication-state.state';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 @Injectable()
 export class AuthenticationEffectsService {
@@ -79,16 +80,14 @@ export class AuthenticationEffectsService {
     withLatestFrom(
       this._currentUser$,
       (_: any, user: User) => user.provider),
-    tap((provider: string) => {
+    switchMap((provider: string) => {
       switch (provider) {
         case 'google':
-          this._googleSignInService.signOut();
-          break;
+          return this._googleSignInService.signOut();
         case 'microsoft':
-          this._msalService.signOut();
-          break;
+          return this._msalService.signOut();
         default:
-          break;
+          return;
       }
     }),
     map(() => new fromAuthentication.LocalLogout())
@@ -139,7 +138,6 @@ export class AuthenticationEffectsService {
           return empty();
         }),
         tap((payload: any) => {
-          console.log(payload.user);
           localStorage.setItem('tokenExpiresIn', payload.tokenExpiresIn);
         })
       )

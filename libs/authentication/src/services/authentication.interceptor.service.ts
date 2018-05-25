@@ -29,7 +29,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
 
     return next.handle(request)
     .pipe(
-      catchError(error => {
+      catchError((error: any) => {
         if (error instanceof HttpErrorResponse && error.status === 403 && !error.url.includes('/auth')) {
           this.store.dispatch(new fromAuthentication.RemoteLogout('Unauthorized Operation'));
 
