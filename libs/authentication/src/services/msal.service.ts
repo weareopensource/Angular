@@ -3,7 +3,7 @@ import { environment } from '@labdat/common/environments';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
 
-declare const Msal;
+//declare const Msal;
 
 @Injectable()
 export class MsalService {
@@ -11,13 +11,13 @@ export class MsalService {
   private _userAgentApplication: any;
 
   constructor() {
-    this._userAgentApplication = new Msal.UserAgentApplication(
-      environment.authentication.providers.microsoft.clientid,
-      undefined,
-      undefined,
-      {
-        redirectUri: environment.authentication.providers.microsoft.redirecturi
-      });
+//    this._userAgentApplication = new Msal.UserAgentApplication(
+//      environment.authentication.providers.microsoft.clientid,
+//      undefined,
+//      undefined,
+//      {
+//        redirectUri: environment.authentication.providers.microsoft.redirecturi
+//      });
   }
 
   signIn(): Observable<any> {

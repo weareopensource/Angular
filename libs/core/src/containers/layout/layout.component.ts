@@ -10,10 +10,10 @@ import { routesAnimation } from '../../animations/routes.animation';
 import { fromRouter } from '@labdat/common/router-state';
 import { MenuItem } from '../../models/menu-item.model';
 import { ObservableMedia } from '@angular/flex-layout';
-import { tap } from 'rxjs/operators/tap';
-import { CoreSidenavContainer } from '../../components/sidenav/sidenav.component';
+import { CoreSidenavContainer } from '../../components/sidenav/sidenav';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/operators/delay';
+import { tap } from 'rxjs/operators/tap';
 
 @Component({
   selector: 'core-layout',
@@ -32,7 +32,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   public logo$ = this._store.select(getLogo);
   public title$ = this._store.select(getTitle);
   public menuItems$;
-  public isSidenavOpened$ = this._store.select(getShowSidenav);
+  public isSidenavOpened$ = this._store.select(getShowSidenav).pipe(tap(console.log));
   public isLoggedIn$ = this._store.select(getLoggedIn);
   public currentUser$ = this._store.select(getUser);
   public isAdmin$ = this.currentUser$.pipe(
@@ -42,7 +42,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
   public mode$ = this.media
   .asObservable()
-  .pipe(map(media => (media.mqAlias === 'xs') ? 'over' : 'slide'));
+  .pipe(map(media => (media.mqAlias === 'xs') ? 'over' : 'side'));
 
   constructor(private _store: Store<any>, public media: ObservableMedia) { }
 
@@ -65,8 +65,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     .asObservable()
     .pipe(
       delay(0),
-      tap((media: any) => console.log(media.mqAlias)),
-      map(media => (media.mqAlias === 'xs') ? 0 : 70)
+      map(media => (media.mqAlias === 'xs') ?  0 : 70)
     );
   }
 
