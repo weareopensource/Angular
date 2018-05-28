@@ -11,13 +11,13 @@ export class MsalService {
   private _userAgentApplication: any;
 
   constructor() {
-//    this._userAgentApplication = new Msal.UserAgentApplication(
-//      environment.authentication.providers.microsoft.clientid,
-//      undefined,
-//      undefined,
-//      {
-//        redirectUri: environment.authentication.providers.microsoft.redirecturi
-//      });
+    this._userAgentApplication = new Msal.UserAgentApplication(
+      environment.authentication.providers.microsoft.clientid,
+      undefined,
+      undefined,
+      {
+        redirectUri: environment.authentication.providers.microsoft.redirecturi
+      });
   }
 
   signIn(): Observable<any> {
