@@ -100,3 +100,12 @@ mat-dialog-content{
   width: 100vw !important;
   height: 100vh !important;
 }
+
+.full-screen-content {
+  padding: 0px !important;
+  height: calc(100vh - 56px) !important;
+}
+
+mat-card {
+  height: 100% !important;
+}
