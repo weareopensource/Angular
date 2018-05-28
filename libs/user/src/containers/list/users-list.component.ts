@@ -30,12 +30,12 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
   public edit$ = new Subject();
   public add$ = new Subject();
 
-  public displayedColumns = ['avatar', 'firstName', 'lastName', 'username', 'email', 'action'];
+  public displayedColumns = ['avatar', 'username', 'email', 'action'];
   public dataSource: MatTableDataSource<User>;
 
   private subscriptions: Subscription;
 
-  constructor(public _dialog: MatDialog, private _store: Store<UserState>, private _media: ObservableMedia) {}
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>, public media: ObservableMedia) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
@@ -57,7 +57,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       map(userId => this._dialog.open(
         UserDeleteDialogComponent,
         {
-          panelClass: this._media.isActive('xs') ? 'full-screen-dialog' : '',
           width: '250px',
           data: { userId }
         })
@@ -67,6 +66,20 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     )
     .subscribe(userId => this._store.dispatch(new fromUser.Delete({ userId })));
     this.subscriptions.add(deleteSubscription);
+
+    const displayedColumnsSubscription = this.media
+    .asObservable()
+    .pipe(
+      map((media: any) => {
+        if (media.mqAlias === 'xs') {
+          return ['avatar', 'username', 'action'];
+        }
+
+        return ['avatar', 'username', 'email', 'action'];
+      })
+    )
+    .subscribe(displayedColumns => this.displayedColumns = displayedColumns);
+    this.subscriptions.add(displayedColumnsSubscription);
   }
 
   ngAfterViewInit(): void {

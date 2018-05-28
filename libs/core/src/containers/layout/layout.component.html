@@ -54,7 +54,7 @@
       </ng-template>
     </mat-toolbar>
     <!--mat-progress-bar *ngIf="$ | async"></mat-progress-bar-->
-    <div class="main" [@routesAnimation]="outlet.activatedRouteData['page']">
+    <div class="main" [@routesAnimation]="outlet.activatedRouteData['page']" [ngClass]="{'full-screen-content': media.isActive('xs')}">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </core-sidenav-content>

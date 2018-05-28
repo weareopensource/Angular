@@ -36,17 +36,17 @@ export class LayoutComponent implements OnInit {
     map((user: User) => (user) ? user.roles.includes('admin') : false)
   );
 
-  public mode$ = this._media
+  public mode$ = this.media
   .asObservable()
   .pipe(map(media => (media.mqAlias === 'xs') ? 'over' : 'side'));
 
-  public collapsedWidth$ = this._media
+  public collapsedWidth$ = this.media
   .asObservable()
   .pipe(
     map((media: any) => (media.mqAlias === 'xs') ?  0 : 70)
   );
 
-  constructor(private _store: Store<any>, private _media: ObservableMedia) { }
+  constructor(private _store: Store<any>, public media: ObservableMedia) { }
 
   ngOnInit(): void {
     const items$ = this._store.select(getMenuItems);
@@ -74,18 +74,23 @@ export class LayoutComponent implements OnInit {
     this._store.dispatch(new fromRouter.Go({
       path: [{ outlets: { profile: 'profile' } }]
     }));
+    this._store.dispatch(new fromCore.CloseSidenav());
   }
 
   public userManagement(): void {
     this._store.dispatch(new fromRouter.Go({ path: ['users'] }));
+    this._store.dispatch(new fromCore.CloseSidenav());
+
   }
 
   public goToAuthenticationPage(): void {
     this._store.dispatch(new fromRouter.Go({ path: ['auth'] }));
+    this._store.dispatch(new fromCore.CloseSidenav());
   }
 
   public goTo(link: string): void {
     this._store.dispatch(new fromRouter.Go({ path: [link] }));
+    this._store.dispatch(new fromCore.CloseSidenav());
   }
 
   public logout(): void {

@@ -30,12 +30,12 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
   public edit$ = new Subject();
   public add$ = new Subject();
 
-  public displayedColumns = ['id', 'title', 'action'];
+  public displayedColumns = ['title', 'action'];;
   public dataSource: MatTableDataSource<Task>;
 
   private subscriptions: Subscription;
 
-  constructor(public dialog: MatDialog, private store: Store<TaskState>, private _media: ObservableMedia) {}
+  constructor(public dialog: MatDialog, private store: Store<TaskState>, public media: ObservableMedia) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
@@ -52,7 +52,6 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
       map(taskId => this.dialog.open(
         TaskDeleteDialogComponent,
         {
-          panelClass: this._media.isActive('xs') ? 'full-screen-dialog' : '',
           width: '250px',
           data: { taskId }
         })
@@ -70,6 +69,20 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.add$
     .subscribe(_x => this.store.dispatch(new fromRouter.Go({ path: ['tasks', 'add'] })));
+
+    const displayedColumnsSubscription = this.media
+    .asObservable()
+    .pipe(
+      map((media: any) => {
+        if (media.mqAlias === 'xs') {
+          return ['title', 'action'];
+        }
+
+        return ['title', 'action'];
+      })
+    )
+    .subscribe(displayedColumns => this.displayedColumns = displayedColumns);
+    this.subscriptions.add(displayedColumnsSubscription);
   }
 
   ngAfterViewInit(): void {
