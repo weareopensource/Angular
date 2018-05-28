@@ -23,7 +23,7 @@
   <core-sidenav-content>
     <mat-toolbar>
       <h1 fxHide.xs>{{ title$ | async }}</h1>
-      <button fxHide.sm mat-icon-button (click)="openSidenav()">
+      <button fxHide.gt-xs mat-icon-button (click)="openSidenav()">
           <mat-icon svgIcon="navigation:ic_menu_24px"></mat-icon>
         </button>
       <span class="toolbar-spacer"></span>
