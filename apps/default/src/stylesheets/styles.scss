@@ -94,3 +94,9 @@ html {
 mat-dialog-content{
   max-height: none !important;
 }
+
+.full-screen-dialog {
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
