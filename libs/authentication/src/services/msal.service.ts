@@ -3,7 +3,7 @@ import { environment } from '@labdat/common/environments';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
 
-// declare const Msal;
+declare const Msal;
 
 @Injectable()
 export class MsalService {
