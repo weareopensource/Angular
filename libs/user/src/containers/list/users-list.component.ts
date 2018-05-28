@@ -14,7 +14,6 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
-import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -35,7 +34,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions: Subscription;
 
-  constructor(public _dialog: MatDialog, private _store: Store<UserState>, private _media: ObservableMedia) {}
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
@@ -57,7 +56,6 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
       map(userId => this._dialog.open(
         UserDeleteDialogComponent,
         {
-          panelClass: this._media.isActive('xs') ? 'full-screen-dialog' : '',
           width: '250px',
           data: { userId }
         })
