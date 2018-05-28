@@ -1,5 +1,5 @@
 <router-outlet name="profile"></router-outlet>
-<core-sidenav-container [hasBackdrop]=true>
+<core-sidenav-container [hasBackdrop]=true [collapsedWidth]="collapsedWidth$ | async">
   <core-sidenav [opened]="isSidenavOpened$ | async" [mode]="mode$ | async" [collapsedWidth]="collapsedWidth$ | async">
     <img [attr.src]="logo$ | async" width="36px" style="color:black;">
     <mat-nav-list>
@@ -20,7 +20,7 @@
       </button>
     </ng-template>
   </core-sidenav>
-  <core-sidenav-content #content>
+  <core-sidenav-content>
     <mat-toolbar>
       <h1 fxHide.xs>{{ title$ | async }}</h1>
       <button fxHide.sm mat-icon-button (click)="openSidenav()">

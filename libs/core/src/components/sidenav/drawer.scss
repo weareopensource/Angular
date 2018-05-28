@@ -87,8 +87,6 @@ $core-drawer-over-drawer-z-index: 4;
 
 .core-drawer-content {
 
-  margin-left: 70px;
-
   @include core-drawer-stacking-context($core-drawer-content-z-index);
 
   display: block;

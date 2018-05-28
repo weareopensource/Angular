@@ -41,7 +41,7 @@ export class CoreSidenavContent extends CoreDrawerContent {
   template: '<ng-content></ng-content>',
   animations: [coreDrawerAnimations.transformDrawer],
   host: {
-    '[@transform]': 'animationState',
+    '[@transform]': '_animationState',
     class: 'core-drawer core-sidenav',
     tabIndex: '-1',
     '(@transform.start)': '_onAnimationStart($event)',
