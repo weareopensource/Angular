@@ -14,6 +14,7 @@ import { Subject } from 'rxjs/Subject';
 import { map } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { filter } from 'rxjs/operators/filter';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -34,7 +35,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions: Subscription;
 
-  constructor(public _dialog: MatDialog, private _store: Store<UserState>) {}
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>, private _media: ObservableMedia) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
@@ -65,6 +66,20 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
     )
     .subscribe(userId => this._store.dispatch(new fromUser.Delete({ userId })));
     this.subscriptions.add(deleteSubscription);
+
+    const displayedColumnsSubscription = this._media
+    .asObservable()
+    .pipe(
+      map((media: any) => {
+        if (media.mqAlias === 'xs') {
+          return ['avatar', 'email', 'action'];
+        }
+
+        return ['avatar', 'firstName', 'lastName', 'username', 'email', 'action'];
+      })
+    )
+    .subscribe(displayedColumns => this.displayedColumns = displayedColumns);
+    this.subscriptions.add(displayedColumnsSubscription);
   }
 
   ngAfterViewInit(): void {
