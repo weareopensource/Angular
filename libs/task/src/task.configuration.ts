@@ -1,4 +1,4 @@
-import { MenuItem } from '@labdat/core';
+import { MenuItem } from '@waos/core';
 
 export interface TaskConfiguration {
   core: { sidenav: Array<MenuItem> };

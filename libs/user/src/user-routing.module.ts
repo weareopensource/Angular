@@ -4,7 +4,7 @@ import { UserDetailComponent } from './containers/detail/user-detail.component';
 import { UsersListComponent } from './containers/list/users-list.component';
 import { UsersGuardService } from './services/users.guard.service';
 import { UserDetailPageComponent } from './containers/detail/user-detail.page.component';
-import { AuthenticationGuardService, RoleGuardService } from '@labdat/authentication';
+import { AuthenticationGuardService, RoleGuardService } from '@waos/authentication';
 
 const userRoutes: Routes = [
   {

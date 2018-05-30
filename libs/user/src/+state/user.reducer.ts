@@ -1,6 +1,6 @@
 import * as fromUser from './user.actions';
 import { userAdapter, UserState } from './user.interfaces';
-import { fromAuthentication } from '@labdat/authentication';
+import { fromAuthentication } from '@waos/authentication';
 
 export const userInitialState: UserState = userAdapter.getInitialState({
   loading: false,

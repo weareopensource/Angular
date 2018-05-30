@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { userAdapter, UserState } from './user.interfaces';
 import { isEmpty } from 'lodash';
-import { selectCurrentUrl } from '@labdat/common/router-state';
+import { selectCurrentUrl } from '@waos/common/router-state';
 
 const selectUserState = createFeatureSelector<UserState>('user');
 

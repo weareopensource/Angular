@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { getUser } from '../../+state/selectors/authentication-state.selectors';
 import { delay } from 'rxjs/operators/delay';
 import { map } from 'rxjs/operators/map';
-import { fromRouter } from '@labdat/common/router-state';
+import { fromRouter } from '@waos/common/router-state';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { AuthenticationState } from '../../+state/states/authentication-state.st
 import { cloneDeep } from 'lodash';
 import * as fromAuthentication from '../../+state/actions/authentication-state.actions';
 import { User } from '../../models/user.model';
-import { UserDetailDialogComponent } from '@labdat/user';
+import { UserDetailDialogComponent } from '@waos/user';
 
 @Component({
   template: ''
