@@ -4,7 +4,7 @@ import { selectSelectedUser } from '../../+state/user.selectors';
 import { first } from 'rxjs/operators/first';
 import { delay } from 'rxjs/operators/delay';
 import { map } from 'rxjs/operators/map';
-import { fromRouter } from '@labdat/common/router-state';
+import { fromRouter } from '@waos/common/router-state';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 import { MatDialog } from '@angular/material';
