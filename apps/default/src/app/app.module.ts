@@ -1,9 +1,7 @@
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
-  AuthenticationGuardService,
   AuthenticationRoutingModule,
-  AuthenticationStateModule,
-  ProfileComponent
+  AuthenticationStateModule
 } from '@waos/authentication';
 import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
@@ -28,12 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     NxModule.forRoot(),
     BrowserModule,
-    RouterModule.forRoot([{
-      path: 'profile',
-      outlet: 'profile',
-      canActivate: [AuthenticationGuardService],
-      component: ProfileComponent
-    }])/*.forRoot([], { initialNavigation: 'enabled' })*/,
+    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
@@ -42,7 +35,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     RouterStateModule.forRoot(),
-    RouterModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     AuthenticationRoutingModule.forRoot(),

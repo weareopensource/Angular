@@ -86,9 +86,9 @@ export class AuthenticationEffectsService {
       console.log(provider);
       switch (provider) {
         case 'google':
-          return this._googleSignInService.signOut();
+//          return this._googleSignInService.signOut();
         case 'microsoft':
-          return this._msalService.signOut();
+//          return this._msalService.signOut();
         default:
           return of(empty);
       }

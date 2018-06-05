@@ -113,3 +113,19 @@ mat-card {
 .mat-tab-body-content {
   padding: 25px !important;
 }
+
+mat-dialog-container {
+  padding: 0px !important;
+}
+
+#dialog-content {
+  padding: 0px !important;
+}
+
+mat-dialog-content mat-card {
+  height: 100% !important;
+}
+
+mat-card {
+  width: 100% !important;
+}

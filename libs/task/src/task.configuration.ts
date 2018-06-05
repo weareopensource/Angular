@@ -2,7 +2,7 @@ import { MenuItem } from '@waos/core';
 
 export interface TaskConfiguration {
   core: { sidenav: Array<MenuItem> };
-  self: { roles: Array<string>; };
+  self: { roles: Array<string> };
 }
 
 export const taskConfiguration: TaskConfiguration = {

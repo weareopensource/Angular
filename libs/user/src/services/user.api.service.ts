@@ -17,9 +17,14 @@ export class UserApiService {
     this._endpoints = endpoints;
   }
 
+  loadUser(userId: string): Observable<any> {
+    return this.http.get(`${this._baseUrl}/${this._endpoints.users}/${userId}`)
+    .pipe(map((user: User) => ({ ...user, id: user.id })));
+  }
+
   loadUsers(): Observable<any> {
     return this.http.get(`${this._baseUrl}/${this._endpoints.users}`)
-    .pipe(map((users: Array<User>) => users.map(user => ({ ...user, id: user.id }))));
+    .pipe(map((users: [User]) => users.map(user => ({ ...user, id: user.id }))));
   }
 
   addUser(idToken: any): Observable<any> {
