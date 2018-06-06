@@ -37,7 +37,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       map(user => this._dialog.open(UserDetailDialogComponent,
         {
           width: '50%',
-          panelClass: this._media.isActive('xs') ? 'full-screen-dialog' : '',
+          panelClass: this._media.isActive('xs') ? ['user-edit-dialog', 'full-screen-dialog'] : 'user-edit-dialog',
           data: cloneDeep(user)
         })
       ),

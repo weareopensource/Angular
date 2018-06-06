@@ -39,6 +39,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
+
     const allUsersSubscriptions = this._store
     .select(selectAllUsers)
     .subscribe(users => (this.dataSource.data = users));
