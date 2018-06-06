@@ -67,7 +67,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this._subscriptions = this.profile$
     .pipe(
       withLatestFrom(this.currentUser$, (_click, user) =>
