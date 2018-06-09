@@ -6,7 +6,7 @@
 
 
 
-# WAOS Angular
+# [WeAreOpenSource](https://weareopensource.me) Angular
 
 ### Angular X / material / ngRx Starter
 
