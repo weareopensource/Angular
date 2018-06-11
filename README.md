@@ -14,6 +14,7 @@
 This project a stack Angular that can be ran as a standalone application. Or in a fullstack, like this example, [MEANie](https://github.com/weareopensource/MEANie). We are actually in Beta.
 
 It's build upon angular 5+ , [angular material](https://github.com/angular/material2), [angular-cli](https://github.com/angular/angular-cli) / [Nx](https://github.com/nrwl/nx) and [ngRx](https://github.com/ngrx).
+
 <br><br><br>
 ![demo-stack](https://raw.githubusercontent.com/weareopensource/Angular/assets/screenshot.png)
 
