@@ -1,6 +1,6 @@
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/weareopensource?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [![Build Status](https://travis-ci.org/weareopensource/angular.svg?branch=master)](https://travis-ci.org/weareopensource/angular)
-[![Dependencies Status](https://david-dm.org/weareopensource/angular.svg)](https://david-dm.org/weareopensourceangularnode)
+[![Dependencies Status](https://david-dm.org/weareopensource/angular.svg)](https://david-dm.org/weareopensource/angular)
 [![Coverage Status](https://coveralls.io/repos/weareopensource/angular/badge.svg?branch=master&service=github)](https://coveralls.io/github/weareopensource/angular?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/weareopensource/angular/badge.svg)](https://snyk.io/test/github/weareopensource/angular)
 
