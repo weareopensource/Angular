@@ -8,7 +8,7 @@
 
 # [WeAreOpenSource](https://weareopensource.me) Angular
 
-### Angular X / material / ngRx Starter
+### Angular / material / ngRx Starter
 
 ## Presentation
 This project a stack Angular that can be ran as a standalone application. Or in a fullstack, like this example, [MEANie](https://github.com/weareopensource/MEANie). We are actually in Beta.
@@ -93,10 +93,13 @@ export const coreConfiguration: CoreConfiguration = {
 };
 ```
 
-## Contributing
-We welcome pull requests from the community! Want to contribute ? It's simple as
-  * Forking the repository
-  * Making a PR
+## [Contribute](CONTRIBUTING.md)
+
+## History
+
+This work is based on [MEAN.js](http://meanjs.org). We want to create updated stack with same mindset "simple", "easy to use". The toolbox needed to start projects.
+
+Today, we dreams to create Backs/Fronts, aligns on feats, in multiple languages, in order to allow anyone to compose fullstack on demand. Feel free to discuss, share other bricks, and invite whoever you want with this mindset to come help us.
 
 ## License
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
