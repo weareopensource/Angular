@@ -15,14 +15,12 @@ export const environment = {
   api: {
     protocol: 'http',
     host: 'localhost',
-    port: '3000',
+    port: '8443',
     endpoints: {
       basepath: 'api',
       auth: 'auth',
       users: 'users',
-      tasks: 'tasks',
-      media: 'media',
-      baseurl: 'api2'
+      tasks: 'tasks'
     }
   }
 };

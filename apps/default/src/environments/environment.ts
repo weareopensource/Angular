@@ -25,8 +25,7 @@ export const environment = {
       basepath: 'api',
       auth: 'auth',
       users: 'users',
-      tasks: 'tasks',
-      media: 'media'
+      tasks: 'tasks'
     }
   }
 };
