@@ -12,7 +12,7 @@ import { ObservableMedia } from '@angular/flex-layout';
 import { CoreSidenav } from '../../components/sidenav/sidenav';
 import { MenuItem } from '../../models/menu-item.model';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 @Component({
