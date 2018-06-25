@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/meanie",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -43,7 +43,7 @@
             "showCircularDependencies": false
           },
           "configurations": {
-            "production": {
+            "production-fr": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -64,6 +64,24 @@
               "i18nFormat": "xlf",
               "i18nLocale": "fr",
               "i18nMissingTranslation": "error"
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "outputPath": "dist/en/"
             }
           }
         },
@@ -75,6 +93,9 @@
           "configurations": {
             "production": {
               "browserTarget": "meanie:build:production"
+            },
+            "production-fr": {
+              "browserTarget": "meanie:build:production-fr"
             }
           }
         },

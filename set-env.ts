@@ -17,7 +17,7 @@ const sysMemEnv = { api: { isMailerConfigured } };
 _.forEach(frontSysEnv, (v, k) => objectPath.set(sysMemEnv, k, v));
 const env = _.merge(fileEnv, sysMemEnv);
 
-const filePath = `./src/environments/${(process.env.NODE_ENV === 'prod') ? 'environment.prod.ts' : 'environment.ts'}`;
+const filePath = `./src/environments/${(process.env.NODE_ENV === 'production') ? 'environment.prod.ts' : 'environment.ts'}`;
 
 fs.open(filePath, 'w', (err, fd) => {
   if (err) {
