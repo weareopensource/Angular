@@ -18,6 +18,8 @@ It's build upon angular 5+ , [angular material](https://github.com/angular/mater
 <br><br><br>
 ![demo-stack](https://raw.githubusercontent.com/weareopensource/Angular/assets/screenshot.png)
 
+## [Demo](http://meanie.weareopensource.me)  (This Angular stack is used for this demonstration of MEANie fullstack)
+
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
 * Git - [Download & Install Git](https://git-scm.com/downloads)
@@ -38,11 +40,14 @@ $ npm i
 ### Production
 * Run `npm run build:prod` to build your client App
 
-This process takes into account all system environment variables defined under the form FRONT_PATH_TO_VARIABLE. Basicly, it turns those system environment variables into an object, infering paths from the varialbles name, and merges it to the environment object defined on environment.prod.ts to regenerate that file. You can for instance define the API server coordonates by defining those system environment variables:
+### Configuration
+Both processes take into account all system environment variables defined under the form WAOS_FRONT_<path_toVariable>. A pre-build npm script turns under the hood those system environment variables into an object, infering paths from the varialbles name, merged to the environment object defined on environment.prod.ts to regenerate that file, regardless of the production or developement mode.
 
--  FRONT_API_HOST='my-server'
--  FRONT_API_PORT=4000
--  FRONT_API_ENDPOINTS_BASEPATH='api2'
+All configuration avalable on environment.ts file are overidable. You can for instance define the API server coordonates by defining those system environment variables:
+
+-  WAOS_FRONT_api_host='my-server'
+-  WAOS_FRONT_api_port=4000
+-  WAOS_FRONT_api_endPoints_basePath='api2'
 
 <!--
 ## Running unit tests
@@ -100,7 +105,9 @@ export const coreConfiguration: CoreConfiguration = {
 
 This work is based on [MEAN.js](http://meanjs.org). We want to create updated stack with same mindset "simple", "easy to use". The toolbox needed to start projects.
 
-Today, we dreams to create Backs/Fronts, aligns on feats, in multiple languages, in order to allow anyone to compose fullstack on demand. Feel free to discuss, share other bricks, and invite whoever you want with this mindset to come help us.
+## [We Are Open Source, Who we are ?](https://weareopensource.me)
+Today, we dreams to create Backs/Fronts, aligns on feats, in multiple languages, in order to allow anyone to compose fullstack on demand (React, Angular, VusJS, Node, Nest, Swift, Go).
+Feel free to discuss, share other kind of bricks, and invite whoever you want with this mindset to come help us.
 
 ## License
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE.md)
