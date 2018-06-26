@@ -19,7 +19,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const COMPONENTS = [
