@@ -5,7 +5,7 @@
   </mat-form-field>
   <mat-form-field fxFlex="40">
     <input formControlName="password" matInput placeholder="Password" i18n-placeholder="@@passwordPlaceholder" [type]="hide ? 'password' : 'text'">
-    <mat-icon [svgIcon]="'action:ic_visibility_off_24px'" matSuffix (click)="hide = !hide"></mat-icon>
+    <mat-icon [svgIcon]="visibility" matSuffix (click)="hide = !hide"></mat-icon>
     <mat-error i18n="@@passwordError"> {passwordError, select, required {You must enter a value}}</mat-error>
   </mat-form-field>
   <br>
