@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
-
 import { HomeComponent } from './home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,7 +16,9 @@ describe('HomeComponent', () => {
         imports: [
           MatCardModule,
           FlexLayoutModule,
-          MatIconModule
+          MatIconModule,
+          BrowserModule,
+          HttpClientTestingModule
         ],
         declarations: [HomeComponent]
       })
@@ -23,11 +26,17 @@ describe('HomeComponent', () => {
     })
   );
 
-  beforeEach(() => {
+  beforeEach(inject([MatIconRegistry, DomSanitizer], (matIconRegistry: MatIconRegistry, sanitizer: DomSanitizer) => {
+    ['content'].forEach(iconSet =>
+      matIconRegistry.addSvgIconSetInNamespace(
+        iconSet,
+        sanitizer.bypassSecurityTrustResourceUrl(`assets/svg-sprite-${iconSet}.svg`)
+      )
+    );
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component)
