@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,6 +18,7 @@ describe('HomeComponent', () => {
           MatCardModule,
           FlexLayoutModule,
           MatIconModule,
+          NoopAnimationsModule,
           BrowserModule,
           HttpClientTestingModule
         ],
