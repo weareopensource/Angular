@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   authentication: {
-    providers: { }
+    providers: {}
   },
   api: {
     protocol: 'http',
@@ -13,6 +13,6 @@ export const environment = {
       users: 'users',
       tasks: 'tasks'
     },
-    isMailerConfigured: true
+    isMailerConfigured: false
   }
 };
