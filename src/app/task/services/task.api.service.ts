@@ -19,7 +19,7 @@ export class TaskApiService {
   }
 
   loadTasks(): Observable<any> {
-    return this._http.get(`${this._baseUrl}/${this._endPoints.tasks}/me`);
+    return this._http.get(`${this._baseUrl}/${this._endPoints.tasks}`);
   }
 
   addTask(task: Task): Observable<any> {
