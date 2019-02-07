@@ -36,7 +36,7 @@ export class AuthenticationApiService {
   }
 
   loadUser(): Observable<any> {
-    return this.http.get(`${this._baseUrl}/${this._endPoints.users}/me`);
+    return this.http.get(`${this._baseUrl}/${this._endPoints.users}`);
     //      .do(token => this.setAuthorizationHeader(token));
   }
 
