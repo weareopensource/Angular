@@ -13,12 +13,12 @@ declare const gapi;
 export class GoogleSignInService {
 
   constructor() {
-    gapi.load('auth2', () => {
-      gapi.auth2.init({
-        client_id: get(environment, ['authentication', 'providers', 'google', 'clientId']),
-        fetch_basic_profile: true
-      });
-    });
+//    gapi.load('auth2', () => {
+//      gapi.auth2.init({
+//        client_id: get(environment, ['authentication', 'providers', 'google', 'clientId']),
+//        fetch_basic_profile: true
+//      });
+//    });
   }
 
   signIn(): Observable<any> {
