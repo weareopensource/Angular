@@ -20,7 +20,7 @@ export class AuthenticationApiService {
   login({ email, password }: Credentials): Observable<any> {
     return this.http.post(
       `${this._baseUrl}/${this._endPoints.auth}/signin`,
-      { password, usernameOrEmail: email },
+      { password, email },
       { withCredentials: true }
     );
   }
