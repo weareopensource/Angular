@@ -20,6 +20,17 @@ You can have more informations about :
 
 Our stack Angular is actually in Beta and was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
+## Technology Overview
+
+| Subject | Informations
+| ------- | --------
+| **in development** | 
+| in development  | ....
+| **Being released** | 
+| in development  | ....
+| **In reflexion** | 
+| in development  | ....
+
 ## Features Overview
 
 #### Available
@@ -80,7 +91,7 @@ All configuration avalable on environment.ts file are overidable. You can for in
 
 ## History
 
-This work is based on [MEAN.js](http://meanjs.org) and more precisely on a fork of the developers named [Riess.js](https://github.com/lirantal/Riess.js). The work being stopped we wished to take it back, we want to create updated stack with same mindset "simple", "easy to use". The toolbox needed to start projects.
+This work is based on [MEAN.js](http://meanjs.org) and more precisely on a fork of the developers named [Riess.js](https://github.com/lirantal/Riess.js). The work being stopped we wished to take it back, we want to create updated stack with same mindset "simple", "easy to use". The toolbox needed to start projects, but not only with Node and Angular ...
 
 ## [We Are Open Source, Who we are ?](https://weareopensource.me)
 Today, we dreams to create Backs/Fronts, aligns on feats, in multiple languages, in order to allow anyone to compose fullstack on demand (React, Angular, VusJS, Node, Nest, Swift, Go).
