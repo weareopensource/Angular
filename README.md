@@ -87,7 +87,7 @@ All configuration avalable on environment.ts file are overidable. You can for in
 -  WAOS_FRONT_api_endPoints_basePath='api2'
 
 
-## [Contribute](https://github.com/weareopensource/weareopensource.github.io/wiki/Contribute)
+## [Contribute](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
 
 ## History
 
