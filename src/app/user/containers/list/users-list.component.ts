@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { User } from '../../models/user.model';
 import { Subscription, Subject } from 'rxjs';
 import { map, switchMap, filter } from 'rxjs/operators';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   styleUrls: ['./users-list.component.scss'],
@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions: Subscription;
 
-  constructor(public _dialog: MatDialog, private _store: Store<UserState>, public media: ObservableMedia) {}
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>, public media: MediaObserver) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();

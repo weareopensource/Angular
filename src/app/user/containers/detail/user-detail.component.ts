@@ -10,14 +10,14 @@ import { cloneDeep } from 'lodash';
 import * as fromUser from '../../+state/user.actions';
 import { User } from '../../models/user.model';
 import { UserDetailDialogComponent } from './user-detail.dialog.component';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   template: ''
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
 
-  constructor(public _dialog: MatDialog, private _store: Store<UserState>, private _media: ObservableMedia) { }
+  constructor(public _dialog: MatDialog, private _store: Store<UserState>, private _media: MediaObserver) { }
 
   public selectedUser$ = this._store.select(selectSelectedUser);
   private subscriptions: Subscription;

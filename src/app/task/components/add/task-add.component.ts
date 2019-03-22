@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Task } from '../../models/task.model';
 import { fromRouter } from 'src/app/common/router-state';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   template: ''
@@ -16,7 +16,7 @@ export class TaskAddComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription;
 
-  constructor(public dialog: MatDialog, private store: Store<TaskState>, private _media: ObservableMedia) { }
+  constructor(public dialog: MatDialog, private store: Store<TaskState>, private _media: MediaObserver) { }
 
   ngOnInit(): void {
     setTimeout(() => {

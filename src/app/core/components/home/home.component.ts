@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'core-home',
@@ -7,6 +7,6 @@ import { ObservableMedia } from '@angular/flex-layout';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(public media: ObservableMedia) { }
+  constructor(public media: MediaObserver) { }
 
 }
