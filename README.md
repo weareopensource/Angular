@@ -6,8 +6,6 @@
 
 # [WeAreOpenSource](https://weareopensource.me) Angular
 
-### Angular Cli / RxJS / Material / Jwt
-
 ## Presentation
 
 This project is a stack Angular that can be ran as a standalone frontend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node)). 
@@ -17,8 +15,11 @@ You can have more informations about :
 * our mindset and what we would like to create in our [introduction](https://weareopensource.me/introduction/) (in construction)
 * how to create a fullstack from our repo in our [wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
 * our global roadmap and propose ideas about stacks in our [board](https://github.com/weareopensource/weareopensource.github.io/projects/1)
+* how to contribute and help us [here](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
 
 Our stack Angular is actually in Beta and was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+
+# Angular Cli / RxJS / Material / Jwt
 
 ## Technology Overview
 
