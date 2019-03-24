@@ -10,7 +10,7 @@
 
 This project is a stack Angular that can be ran as a standalone frontend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node)). 
 
-You can have more informations about : 
+You can have more informations about us in our [global repo](https://github.com/weareopensource/weareopensource.github.io): 
 
 * our mindset and what we would like to create in our [introduction](https://weareopensource.me/introduction/) (in construction)
 * how to create a fullstack from our repo in our [wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
