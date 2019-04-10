@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "meanie": {
+    "angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -88,21 +88,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "meanie:build"
+            "browserTarget": "angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "meanie:build:production"
+              "browserTarget": "angular:build:production"
             },
             "production-fr": {
-              "browserTarget": "meanie:build:production-fr"
+              "browserTarget": "angular:build:production-fr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "meanie:build"
+            "browserTarget": "angular:build"
           }
         },
         "test": {
@@ -149,7 +149,7 @@
         }
       }
     },
-    "meanie-e2e": {
+    "angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -157,11 +157,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "meanie:serve"
+            "devServerTarget": "angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "meanie:serve:production"
+              "devServerTarget": "angular:serve:production"
             }
           }
         },
@@ -177,5 +177,5 @@
       }
     }
   },
-  "defaultProject": "meanie"
+  "defaultProject": "angular"
 }
