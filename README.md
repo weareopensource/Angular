@@ -25,11 +25,11 @@ Our stack Angular is actually in Beta and was generated with [Angular CLI](https
 
 | Subject | Informations
 | ------- | --------
-| **in development** | 
+| **in development** |
 | in development  | ....
-| **Being released** | 
+| **Being released** |
 | in development  | ....
-| **In reflexion** | 
+| **In reflexion** |
 | in development  | ....
 
 ## Features Overview
@@ -42,12 +42,14 @@ Our stack Angular is actually in Beta and was generated with [Angular CLI](https
 
 #### In reflexion
 
-RGPD conpliance 
+RGPD compliance
 
-## [Demo](http://meanie.weareopensource.me)  
+## [Demo](http://meanie.weareopensource.me)
+
 (This Angular stack is used for this demonstration with our [Node](https://github.com/weareopensource/Node) Stack)
 
 ## Prerequisites
+
 Make sure you have installed all of the following prerequisites on your development machine:
 
 * Git - [Download & Install Git](https://git-scm.com/downloads)
@@ -55,11 +57,13 @@ Make sure you have installed all of the following prerequisites on your developm
 * Angular cli - npm install -g @angular/cli
 
 ## Installation
+
 It's straightforward (you can use yarn if you want)
 
-```bash
+```
+bash
 $ git clone https://github.com/weareopensource/angular.git && cd Angular
-$ npm i 
+$ npm i
 ```
 
 ## Running Your Application
@@ -72,20 +76,21 @@ $ npm i
 
 * Run `npm run build:prod` to build your client App
 
-### others 
+### Others
 
 * Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 * test : `ng test`
-* test e2e : `npm e2e `
+* test e2e : `npm e2e`
 
 ### Configuration
+
 This process take into account all system environment variables defined under the form WAOS_FRONT_<path_toVariable>. A pre-build npm script turns under the hood those system environment variables into an object, infering paths from the varialbles name, merged to the environment object defined on environment.prod.ts to regenerate that file, regardless of the production or developement mode.
 
 All configuration avalable on environment.ts file are overidable. You can for instance define the API server coordonates by defining those system environment variables:
 
--  WAOS_FRONT_api_host='my-server'
--  WAOS_FRONT_api_port=4000
--  WAOS_FRONT_api_endPoints_basePath='api2'
+- WAOS_FRONT_api_host='my-server'
+- WAOS_FRONT_api_port=4000
+- WAOS_FRONT_api_endPoints_basePath='api2'
 
 
 ## [Contribute](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
@@ -104,11 +109,13 @@ Feel free to discuss, share other kind of bricks, and invite whoever you want wi
 
 ## Main Team
 
-#### Pierre 
+#### Pierre
+
 [![Help](https://badges.weareopensource.me/badge/Help-On%20Patreon-052d49.svg?style=flat-square)](https://www.patreon.com/pbrisorgueil) [![Cofee](https://badges.weareopensource.me/badge/Buy-Me%20a%20Coffee-FF813F.svg?style=flat-square)](https://www.buymeacoffee.com/JrSa9tZGO) [![Github](https://badges.weareopensource.me/badge/Follow-me%20on%20Github-25292E.svg?style=flat-square)](https://github.com/PierreBrisorgueil) [![Twitter](https://badges.weareopensource.me/badge/Follow-me%20on%20Twitter-3498db.svg?style=flat-square)](https://twitter.com/pbrisorgueil?lang=fr)  [![Youtube](https://badges.weareopensource.me/badge/Watch-me%20on%20Youtube-e74c3c.svg?style=flat-square)](https://www.youtube.com/channel/UCIIjHtrZL5-rFFupn7c3OtA)
 
-#### techla 
+#### techla
+
 [![Github](https://badges.weareopensource.me/badge/Follow-me%20on%20Github-25292E.svg?style=flat-square)](https://github.com/techla)
 
-Feel free to come help us ! :) 
+Feel free to come help us ! :)
 
