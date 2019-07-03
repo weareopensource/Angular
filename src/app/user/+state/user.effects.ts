@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, catchError, tap, switchMap, switchMapTo } from 'rxjs/operators';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { UserApiService } from '../services/user.api.service';
 import * as fromUser from './user.actions';
@@ -13,7 +13,7 @@ export class UserEffects {
 
   @Effect()
   loadAll$ = this._actions$
-    .ofType(fromUser.LOAD_ALL)
+    .pipe(ofType(fromUser.LOAD_ALL))
     .pipe(
       switchMapTo(this._userApiService.loadUsers()),
       map((response: any) => new fromUser.LoadAllSuccess({ users: response })),
@@ -21,7 +21,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-  loadAllFailure$ = this._actions$.ofType(fromUser.LOAD_ALL_FAILURE)
+  loadAllFailure$ = this._actions$
+  .pipe(ofType(fromUser.LOAD_ALL_FAILURE))
   .pipe(
     map((action: fromUser.LoadAllFailure) => action.payload),
     tap(() =>
@@ -36,7 +37,7 @@ export class UserEffects {
 
   @Effect()
   loadOne$ = this._actions$
-    .ofType(fromUser.LOAD_ONE)
+    .pipe(ofType(fromUser.LOAD_ONE))
     .pipe(
       switchMap((action: any) => this._userApiService.loadUser(action.payload)),
       map((response: any) => new fromUser.LoadOneSuccess(response)),
@@ -44,7 +45,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-  loadOneFailure$ = this._actions$.ofType(fromUser.LOAD_ONE_FAILURE)
+  loadOneFailure$ = this._actions$
+  .pipe(ofType(fromUser.LOAD_ONE_FAILURE))
   .pipe(
     map((action: fromUser.LoadOneFailure) => action.payload),
     tap(() =>
@@ -59,7 +61,7 @@ export class UserEffects {
 
   @Effect()
   add$ = this._actions$
-    .ofType(fromUser.ADD)
+    .pipe(ofType(fromUser.ADD))
     .pipe(
       map((action: fromUser.Add) => action.payload),
       switchMap(payload => this._userApiService.addUser(payload.user)),
@@ -68,7 +70,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-  addSuccess$ = this._actions$.ofType(fromUser.ADD_SUCCESS)
+  addSuccess$ = this._actions$
+  .pipe(ofType(fromUser.ADD_SUCCESS))
   .pipe(
     tap(() => {
       this.snackBar.openFromComponent(UserSnackComponent, {
@@ -81,7 +84,8 @@ export class UserEffects {
   );
 
   @Effect({ dispatch: false })
-  addFailure$ = this._actions$.ofType(fromUser.ADD_FAILURE)
+  addFailure$ = this._actions$
+  .pipe(ofType(fromUser.ADD_FAILURE))
   .pipe(
     map((action: fromUser.AddFailure) => action.payload),
     tap(() =>
@@ -96,7 +100,7 @@ export class UserEffects {
 
   @Effect()
   update$ = this._actions$
-    .ofType(fromUser.UPDATE)
+    .pipe(ofType(fromUser.UPDATE))
     .pipe(
       map((action: fromUser.Update) => action.payload),
       switchMap(payload => this._userApiService.updateUser(payload.user)),
@@ -105,7 +109,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-    updateSuccess$ = this._actions$.ofType(fromUser.UPDATE_SUCCESS)
+    updateSuccess$ = this._actions$
+    .pipe(ofType(fromUser.UPDATE_SUCCESS))
     .pipe(
       tap(() => {
         this.snackBar.openFromComponent(UserSnackComponent, {
@@ -118,7 +123,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-    updateFailure$ = this._actions$.ofType(fromUser.UPDATE_FAILURE)
+    updateFailure$ = this._actions$
+    .pipe(ofType(fromUser.UPDATE_FAILURE))
     .pipe(
       map((action: fromUser.UpdateFailure) => action.payload),
       tap(() =>
@@ -133,7 +139,7 @@ export class UserEffects {
 
   @Effect()
   delete$ = this._actions$
-    .ofType(fromUser.DELETE)
+    .pipe(ofType(fromUser.DELETE))
     .pipe(
       map((action: fromUser.Delete) => action.payload),
       switchMap(payload => this._userApiService.deleteUser(payload.userId)),
@@ -142,7 +148,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-    deleteSuccess$ = this._actions$.ofType(fromUser.DELETE_SUCCESS)
+    deleteSuccess$ = this._actions$
+    .pipe(ofType(fromUser.DELETE_SUCCESS))
     .pipe(
       tap(() => {
         this.snackBar.openFromComponent(UserSnackComponent, {
@@ -155,7 +162,8 @@ export class UserEffects {
     );
 
   @Effect({ dispatch: false })
-    deleteFailure$ = this._actions$.ofType(fromUser.DELETE_FAILURE)
+    deleteFailure$ = this._actions$
+    .pipe(ofType(fromUser.DELETE_FAILURE))
     .pipe(
       map((action: fromUser.DeleteFailure) => action.payload),
       tap(() =>
@@ -170,7 +178,7 @@ export class UserEffects {
 
   @Effect({ dispatch: false })
   saveDescription$ = this._actions$
-    .ofType(fromUser.SAVE_DESCRIPTION)
+    .pipe(ofType(fromUser.SAVE_DESCRIPTION))
     .pipe(
       map((action: fromUser.SaveDescription) => action.payload),
       tap(payload => localStorage.setItem(`user${payload.userId}Desciption`, payload.text))

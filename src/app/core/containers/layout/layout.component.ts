@@ -8,7 +8,7 @@ import { fromAuthentication, getLoggedIn, getUser, User } from 'src/app/authenti
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRouter } from 'src/app/common/router-state';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 import { CoreSidenav } from '../../components/sidenav/sidenav';
 import { MenuItem } from '../../models/menu-item.model';
 import { Subject, Subscription } from 'rxjs';
@@ -39,18 +39,20 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public mode$ = this.media
   .asObservable()
-  .pipe(map(media => (media.mqAlias === 'xs') ? 'over' : 'side'));
+  .pipe(map(media => ((media as any).mqAlias === 'xs') ? 'over' : 'side'));
 
   public widths$ = this.media
   .asObservable()
   .pipe(
-    map((media: any) => (media.mqAlias === 'xs') ?  { collapsedWidth: 0, width: '100%' } : { collapsedWidth: 70, width: '300px' })
+    map((media: any) => ((media as any).mqAlias === 'xs') ?  { collapsedWidth: 0, width: '100%' } : { collapsedWidth: 70, width: '300px' })
   );
 
   public profile$ = new Subject();
   private _subscriptions: Subscription;
 
-  constructor(private _store: Store<any>, public media: ObservableMedia) { }
+  constructor(private _store: Store<any>, public media: MediaObserver) { 
+    console.log('TUTUTUTU', media);
+  }
 
   ngOnInit(): void {
     const items$ = this._store.select(getMenuItems);

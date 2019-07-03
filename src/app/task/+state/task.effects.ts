@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, catchError, tap, switchMap, switchMapTo } from 'rxjs/operators';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType} from '@ngrx/effects';
 import { of } from 'rxjs';
 import { TaskApiService } from '../services/task.api.service';
 import * as fromTasks from './task.actions';
@@ -13,7 +13,7 @@ export class TaskEffects {
 
   @Effect()
   load$ = this._actions$
-    .ofType(fromTasks.LOAD)
+    .pipe(ofType(fromTasks.LOAD))
     .pipe(
       switchMapTo(this._taskApiService.loadTasks()),
       map((response: any) => new fromTasks.LoadSuccess({ tasks: response })),
@@ -21,7 +21,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    loadFailure$ = this._actions$.ofType(fromTasks.LOAD_FAILURE)
+    loadFailure$ = this._actions$
+    .pipe(ofType(fromTasks.LOAD_FAILURE))
     .pipe(
       map((action: fromTasks.LoadFailure) => action.payload),
       tap(() =>
@@ -36,7 +37,7 @@ export class TaskEffects {
 
   @Effect()
   add$ = this._actions$
-    .ofType(fromTasks.ADD)
+    .pipe(ofType(fromTasks.ADD))
     .pipe(
       map((action: fromTasks.Add) => action.payload),
       switchMap(payload => this._taskApiService.addTask(payload.task)),
@@ -45,7 +46,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    addSuccess$ = this._actions$.ofType(fromTasks.ADD_SUCCESS)
+    addSuccess$ = this._actions$
+    .pipe(ofType(fromTasks.ADD_SUCCESS))
     .pipe(
       tap(() => {
         this.snackBar.openFromComponent(TaskSnackComponent, {
@@ -58,7 +60,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    addFailure$ = this._actions$.ofType(fromTasks.ADD_FAILURE)
+    addFailure$ = this._actions$
+    .pipe(ofType(fromTasks.ADD_FAILURE))
     .pipe(
       map((action: fromTasks.AddFailure) => action.payload),
       tap(() =>
@@ -73,7 +76,7 @@ export class TaskEffects {
 
   @Effect()
   update$ = this._actions$
-    .ofType(fromTasks.UPDATE)
+    .pipe(ofType(fromTasks.UPDATE))
     .pipe(
       map((action: fromTasks.Update) => action.payload),
       switchMap(payload => this._taskApiService.updateTask(payload.task)),
@@ -82,7 +85,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    updateSuccess$ = this._actions$.ofType(fromTasks.UPDATE_SUCCESS)
+    updateSuccess$ = this._actions$
+    .pipe(ofType(fromTasks.UPDATE_SUCCESS))
     .pipe(
       tap(() => {
         this.snackBar.openFromComponent(TaskSnackComponent, {
@@ -95,7 +99,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    updateFailure$ = this._actions$.ofType(fromTasks.UPDATE_FAILURE)
+    updateFailure$ = this._actions$
+    .pipe(ofType(fromTasks.UPDATE_FAILURE))
     .pipe(
       map((action: fromTasks.UpdateFailure) => action.payload),
       tap(() =>
@@ -110,7 +115,7 @@ export class TaskEffects {
 
   @Effect()
   delete$ = this._actions$
-    .ofType(fromTasks.DELETE)
+    .pipe(ofType(fromTasks.DELETE))
     .pipe(
       map((action: fromTasks.Delete) => action.payload),
       switchMap(payload => this._taskApiService.deleteTask(payload.taskId)),
@@ -119,7 +124,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    deleteSuccess$ = this._actions$.ofType(fromTasks.DELETE_SUCCESS)
+    deleteSuccess$ = this._actions$
+    .pipe(ofType(fromTasks.DELETE_SUCCESS))
     .pipe(
       tap(() => {
         this.snackBar.openFromComponent(TaskSnackComponent, {
@@ -132,7 +138,8 @@ export class TaskEffects {
     );
 
   @Effect({ dispatch: false })
-    deleteFailure$ = this._actions$.ofType(fromTasks.DELETE_FAILURE)
+    deleteFailure$ = this._actions$
+    .pipe(ofType(fromTasks.DELETE_FAILURE))
     .pipe(
       map((action: fromTasks.DeleteFailure) => action.payload),
       tap(() =>
@@ -147,7 +154,7 @@ export class TaskEffects {
 
   @Effect({ dispatch: false })
   saveDescription$ = this._actions$
-    .ofType(fromTasks.SAVE_DESCRIPTION)
+    .pipe(ofType(fromTasks.SAVE_DESCRIPTION))
     .pipe(
       map((action: fromTasks.SaveDescription) => action.payload),
       tap(payload => localStorage.setItem(`task${payload.taskId}Desciption`, payload.text))

@@ -10,7 +10,7 @@ import { Task } from '../../models/task.model';
 import { first, delay, map, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { cloneDeep } from 'lodash';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   template: ''
@@ -19,7 +19,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription;
 
-  constructor(public dialog: MatDialog, private store: Store<TaskState>, private _media: ObservableMedia) { }
+  constructor(public dialog: MatDialog, private store: Store<TaskState>, private _media: MediaObserver) { }
 
   ngOnInit(): void {
     const dialogSubscription = this.store.select(selectCurrentTask)

@@ -13,7 +13,7 @@ import { Task } from '../../models/task.model';
 
 import { Subscription, Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { ObservableMedia } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   styleUrls: ['./tasks-list.component.scss'],
@@ -34,7 +34,7 @@ export class TasksListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions: Subscription;
 
-  constructor(public dialog: MatDialog, private store: Store<TaskState>, public media: ObservableMedia) {}
+  constructor(public dialog: MatDialog, private store: Store<TaskState>, public media: MediaObserver) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
